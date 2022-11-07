@@ -6,38 +6,23 @@
     <div class="logo" />
     <div class="nav-bar">
       <ul :class="{ 'hide': mobile && hideMenu }">
-        <li :class="{'active': tab == 'main'}" @click="setTab('main')">
-          HOME
-        </li>
         <li v-if="isAdmin()" :class="{'active': tab == 'siteAdmin'}" @click="setTab('siteAdmin')">
-          SITE ADMIN
+          Admin
         </li>
-        <li v-if="admin" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
-          ADMIN
+        <li :class="{'active': tab == 'transformation'}" @click="setTab('transformation')">
+          Leaders
         </li>
-        <li :class="{'active': tab == 'pricing'}" @click="setUrl('pricing')">
-          PRICING
+        <li v-if="admin" :class="{'active': tab == 'managers'}" @click="setTab('managers')">
+          Managers
         </li>
-        <li :class="{'active': tab == 'faqs'}" @click="setTab('faqs')">
-          FAQs
-        </li>
-        <li :class="{'active': tab == 'resources'}" @click="setTab('resources')">
-          RESOURCES
-        </li>
-        <li :class="{'active': tab == 'labs'}" @click="setTab('labs')">
-          LABS
+        <li :class="{'active': tab == 'pricing'}" @click="setUrl('apprentices')">
+          Apprentices
         </li>
         <li :class="{'active': tab == 'about'}" @click="setUrl('about')">
-          ABOUT
+          About
         </li>
-        <li :class="{'active': tab == 'contact'}" @click="show('feedback')">
-          CONTACT
-        </li>
-        <li v-if="mobile" :class="{'active': tab == 'tandcs'}" @click="setTab('tandcs')">
-          Ts AND Cs
-        </li>
-        <li v-if="mobile" :class="{'active': tab == 'security'}" @click="setTab('security')">
-          SECURITY
+        <li :class="{'active': tab == 'contact'}" @click="show('contact')">
+          Contact
         </li>
         <li v-if="!mobile && !session" class="login" @click="show('login')">
           <i class="fas fa-sign-in-alt" title="Login" />
@@ -90,6 +75,12 @@ export default {
     }
   },
   computed: {
+    site() {
+      return this.$store.getters.getSite
+    },
+    emails() {
+      return this.$store.getters.getEmails
+    },
     id() {
       return this.$store.getters.getId
     },
@@ -219,7 +210,9 @@ export default {
       mailFuns.post({
         action: 'Contact from Agile Simulations',
         email: encodeURIComponent(document.getElementById('email').value),
-        comments: encodeURIComponent(document.getElementById('comments').value)
+        comments: encodeURIComponent(document.getElementById('comments').value),
+        tomail: this.emails,
+        fromsite: this.site
         },
         'Thanks for your interest - we\'ll get back to you soon!'
       )
@@ -250,7 +243,7 @@ export default {
 
     .nav-bar {
       border: 0;
-      font-size: 12px !important;
+      font-size: 16px !important;
       line-height: 1.42857143 !important;
       letter-spacing: 4px;
       border-radius: 0;

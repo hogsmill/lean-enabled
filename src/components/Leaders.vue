@@ -1,6 +1,12 @@
 <template>
   <div id="main-tab" class="container-fluid text-center">
-    <LoggedInGames v-if="session" />
+    <div class="content">
+      <div class="new-content">
+        New Content Here
+      </div>
+    </div>
+
+  <!--
     <div class="row slideanim">
       <h2>We build remote agile <a @click="setTab('games')">games, workshops and activities</a> that are...</h2>
       <div class="col-sm-4">
@@ -103,18 +109,15 @@
         <a @click="contact()">Contact Us</a> for more info...
       </p>
     </div>
+
+    -->
   </div>
 </template>
 
 <script>
 import bus from '../socket.js'
 
-import LoggedInGames from './loggedin/Games.vue'
-
 export default {
-  components: {
-    LoggedInGames
-  },
   computed: {
     session() {
       return this.$store.getters.getSession
@@ -139,6 +142,21 @@ export default {
 
 <style lang="scss">
 #main-tab {
+
+  .content {
+    background-image: url("../assets/img/GettyImages-855597368.jpeg");
+    min-height: 400px;
+
+    .new-content {
+      background-color: #fff;
+      opacity: 0.6;
+      color: #444;
+      font-size: 48px;
+      font-weight: bold;
+      padding: 200px
+    }
+  }
+
   h4 {
     &:hover {
       color: #337ab7;

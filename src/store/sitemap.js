@@ -37,8 +37,9 @@ module.exports = {
 
   createSiteMap: function(db, debugOn) {
 
-    if (debugOn) { console.log('createSiteMap') }
+    if (debugOn) { console.log('createSiteMap - TBD') }
 
+/*
     const tabs = [
       'pricing',
       'subscriptiondescription',
@@ -76,5 +77,6 @@ module.exports = {
         })
       })
     })
+  */
   }
 }

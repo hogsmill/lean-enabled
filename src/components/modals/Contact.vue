@@ -1,23 +1,22 @@
 <template>
-  <vue-final-modal name="feedback" classes="modal-container" content-class="vfm__content modal-content" v-model="modals['feedback']">
+  <vue-final-modal name="contact" classes="modal-container" content-class="vfm__content modal-content" v-model="modals['contact']">
     <div class="float-right mr-2 mt-1">
       <button type="button" class="close" @click="hide" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="mt-4">
-      <h4>Feedback</h4>
+      <h4>Contact Us</h4>
       <p class="modal-form">
-        Thanks for visiting Agile Simulations; we'd love to hear any feedback you have
-        so that we can constantly improve things.
+        If you'd like to learn more, do get in touch...
       </p>
       <div class="modal-form">
         <input type="text" id="email" class="form-control" placeholder="Email (optional)">
         <br>
         <textarea id="comments" rows="6" class="form-control" placeholder="Your comments" />
         <br>
-        <button class="btn btn-sm btn-secondary smaller-font" @click="sendFeedback()">
-          Send Feedback
+        <button class="btn btn-sm btn-secondary smaller-font" @click="sendContact()">
+          Send
         </button>
       </div>
     </div>
@@ -40,11 +39,11 @@ export default {
   },
   methods: {
     hide() {
-      this.$store.dispatch('hideModal', 'feedback')
+      this.$store.dispatch('hideModal', 'contact')
     },
-    sendFeedback() {
+    sendContact() {
       mailFuns.post({
-        action: 'Feedback from ' + this.thisGame,
+        action: 'Contact from ' + this.thisGame,
         email: encodeURIComponent(document.getElementById('email').value),
         comments: encodeURIComponent(document.getElementById('comments').value)
         },

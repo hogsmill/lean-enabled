@@ -2,17 +2,11 @@
   <div>
     <Header />
     <Jumbotron />
-    <Popular />
+    <NextCourse />
     <div class="content">
-      <div class="content">
-        <div class="new-content">
-          New Content Here
-        </div>
-      </div>
+      <Leaders v-if="tab == 'leaders'" />
 
       <!--
-      <Main v-if="tab == 'main'" />
-      <SiteAdmin v-if="tab == 'siteAdmin'" />
       <Admin v-if="tab == 'admin'" />
       <MonteCarlo v-if="tab == 'monte-carlo'" />
       <Pipeline v-if="tab == 'pipeline'" />
@@ -28,11 +22,10 @@
       <About v-if="tab == 'about'" />
       <SubscriptionDescription v-if="tab == 'subscriptiondescription'" />
       <Suggest v-if="tab == 'suggest'" />
-      <TandCs v-if="tab == 'tandcs'" />
-      <Security v-if="tab == 'security'" />
 
       -->
-
+      <TandCs v-if="tab == 'tandcs'" />
+      <Security v-if="tab == 'security'" />
       <Modals />
       <Footer v-if="!mobile" />
     </div>
@@ -46,10 +39,10 @@ import params from './lib/params.js'
 
 import Header from './components/Header.vue'
 import Jumbotron from './components/Jumbotron.vue'
+import NextCourse from './components/NextCourse.vue'
+import Leaders from './components/Leaders.vue'
 
 /*
-import Popular from './components/Popular.vue'
-import Main from './components/Main.vue'
 import SiteAdmin from './components/SiteAdmin.vue'
 import Admin from './components/Admin.vue'
 import MonteCarlo from './components/games/MonteCarlo.vue'
@@ -66,11 +59,10 @@ import Labs from './components/Labs.vue'
 import About from './components/About.vue'
 import SubscriptionDescription from './components/SubscriptionDescription.vue'
 import Suggest from './components/labs/Suggest.vue'
-import TandCs from './components/footer/TandCs.vue'
-import Security from './components/footer/Security.vue'
-
 */
 
+import TandCs from './components/footer/TandCs.vue'
+import Security from './components/footer/Security.vue'
 import Modals from './components/Modals.vue'
 import Footer from './components/Footer.vue'
 
@@ -79,9 +71,9 @@ export default {
   components: {
     Header,
     Jumbotron,
+    NextCourse,
+    Leaders,
     /*
-    Popular,
-    Main,
     SiteAdmin,
     Admin,
     MonteCarlo,
@@ -98,9 +90,9 @@ export default {
     About,
     SubscriptionDescription,
     Suggest,
+    */
     TandCs,
     Security,
-    */
     Modals,
     Footer
   },
@@ -176,18 +168,5 @@ b, strong {
 }
 .fa-rss-square {
   color: #ee802f !important;
-}
-.content {
-  background-image: url("./assets/img/GettyImages-855597368.jpeg");
-  min-height: 400px;
-
-  .new-content {
-    background-color: #fff;
-    opacity: 0.6;
-    color: #444;
-    font-size: 48px;
-    font-weight: bold;
-    padding: 200px
-  }
 }
 </style>

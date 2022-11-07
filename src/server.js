@@ -8,13 +8,7 @@ const prod = os.hostname() == 'agilesimulations' ? true : false
 
 const port = 4850
 const logFile = prod ? process.argv[4] : 'server.log'
-const collection = 'agileSimulations'
-const updatesCollection = 'agileSimulationsUpdates'
-const gameDatesCollection = 'agileSimulationsGameDates'
-const faqsCollection = 'agileSimulationsFaqs'
-const pricingCollection = 'agileSimulationsPricing'
-const gamesCollection = 'agileSimulationsGames'
-const ratingsCollection = 'agileSimulationsRatings'
+const collection = 'leanEnabled'
 
 ON_DEATH(function(signal, err) {
   let logStr = new Date()
@@ -88,24 +82,10 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   const db = client.db('db')
 
   db.createCollection(collection, function(error, collection) {})
-  db.createCollection(updatesCollection, function(error, updatesCollection) {})
-  db.createCollection(gameDatesCollection, function(error, gameDatesCollection) {})
-  db.createCollection(faqsCollection, function(error, faqsCollection) {})
-  db.createCollection(gamesCollection, function(error, gamesCollection) {})
-  db.createCollection(ratingsCollection, function(error, ratingsCollection) {})
 
-  db.updatesCollection = db.collection(updatesCollection)
-  db.gameDatesCollection = db.collection(gameDatesCollection)
-  db.faqsCollection = db.collection(faqsCollection)
-  db.pricingCollection = db.collection(pricingCollection)
-  db.gamesCollection = db.collection(gamesCollection)
-  db.ratingsCollection = db.collection(ratingsCollection)
   db.collection = db.collection(collection)
 
   sitemap.createSiteMap(db, debugOn)
-
-  rss.createGameDates(db, debugOn)
-  rss.createUpdates(db, debugOn)
 
   io.on('connection', (socket) => {
     const connection = socket.handshake.headers.host
@@ -125,6 +105,7 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
       emit('updateConnections', {connections: connections, maxConnections: maxConnections})
     })
 
+/*
     socket.on('sendLogin', (data) => { dbStore.login(db, io, data, debugOn) })
 
     socket.on('sendCheckLogin', (data) => { dbStore.checkLogin(db, io, data, debugOn) })
@@ -132,9 +113,9 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendLogout', (data) => { dbStore.logout(db, io, data, debugOn) })
 
     socket.on('sendRating', (data) => { dbStore.rating(db, io, data, debugOn) })
-
+*/
     // Admin
-
+/*
     socket.on('sendCheckGameDefinitions', () => { adminStore.checkGameDefinitions(db, io, debugOn) })
 
     socket.on('sendLoadGameDates', (data) => { adminStore.loadGameDates(db, io, data, debugOn) })
@@ -180,9 +161,9 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendUpdateGame', (data) => { adminStore.updateGame(db, io, data, debugOn) })
 
     socket.on('sendDeleteGame', (data) => { adminStore.deleteGame(db, io, data, debugOn) })
-
+*/
     // From accounts
-
+/*
     socket.on('sendLoadAccounts', (data) => { dbStore.loadAccounts(db, io, data, debugOn) })
 
     socket.on('sendCheckAdminAccounts', (data) => { dbStore.checkAdminAccounts(db, io, data, debugOn) })
@@ -200,7 +181,7 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendNewPassCode', (data) => { dbStore.newPassCode(db, io, data, debugOn) })
 
     socket.on('sendDeleteAccount', (data) => { dbStore.deleteAccount(db, io, data, debugOn) })
-
+*/
   })
 })
 

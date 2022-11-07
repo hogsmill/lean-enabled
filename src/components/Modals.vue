@@ -1,24 +1,19 @@
 <template>
   <div>
-    <Feedback v-if="modals['feedback']" />
+    {{ modals }}
+    <Contact v-if="modals['contact']" />
     <Login v-if="modals['login']" />
-    <Labs v-if="modals['labs']" />
-    <Pricing v-if="modals['pricing']" />
   </div>
 </template>
 
 <script>
-import Feedback from './modals/Feedback.vue'
+import Contact from './modals/Contact.vue'
 import Login from './modals/Login.vue'
-import Labs from './modals/Labs.vue'
-import Pricing from './modals/Pricing.vue'
 
 export default {
   components: {
-    Feedback,
-    Login,
-    Labs,
-    Pricing
+    Contact,
+    Login
   },
   computed: {
     modals() {

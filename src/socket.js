@@ -1,23 +1,16 @@
 import io from 'socket.io-client'
 import bus from './EventBus'
 
-let connStr, labsConnStr
+let connStr
 if (location.hostname == 'localhost') {
-  connStr = 'http://localhost:3099'
-  labsConnStr = 'http://localhost:3013'
+  connStr = 'http://localhost:4850'
 } else {
-  connStr = 'https://agilesimulations.co.uk:3099'
-  labsConnStr = 'https://agilesimulations.co.uk:3013'
+  connStr = 'https://agilesimulations.co.uk:4850'
 }
 
-const connectToLabs = true // location.hostname != 'localhost'
 console.log('Connecting to: ' + connStr)
 const socket = io(connStr)
-let labsSocket
-if (connectToLabs) {
-  console.log('Connecting to: ' + labsConnStr)
-  labsSocket = io(labsConnStr)
-}
+
 // Send
 
 // Contact
@@ -100,16 +93,5 @@ bus.on('sendUpdateGame', (data) => { socket.emit('sendUpdateGame', data) })
 bus.on('sendDeleteGame', (data) => { socket.emit('sendDeleteGame', data) })
 
 socket.on('loadGames', (data) => { bus.emit('loadGames', data) })
-
-// --------------------------------------------------------------
-// Labs
-
-if (connectToLabs) {
-  bus.on('sendLoadLabGames', () => { labsSocket.emit('sendLoadGames') })
-
-  bus.on('sendVoteFor', (data) => { labsSocket.emit('sendVoteFor', data) })
-
-  labsSocket.on('loadGames', (data) => { bus.emit('loadLabGames', data) })
-}
 
 export default bus

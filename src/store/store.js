@@ -4,21 +4,20 @@ import { createStore } from 'vuex'
 export const store = createStore({
   state: {
     modals: {
-      feedback: false,
-      login: false,
-      pricing: false
+      contact: false,
     },
-    selectedPricing: null,
-    selectedGame: null,
+    emails: [
+      'info@hogsmill.com'
+    ],
+    site: 'lean-enabled.co.uk',
     id: '',
     session: null,
     route: '',
     level: '',
-    loggedInGames: {},
     userName: '',
     admin: false,
     mobile: false,
-    tab: 'main',
+    tab: 'leaders',
     pricings: [],
     games: [],
     labGames: [],
@@ -31,6 +30,12 @@ export const store = createStore({
     faqs: []
   },
   getters: {
+    getSite: (state) => {
+      return state.site
+    },
+    getEmails: (state) => {
+      return state.emails
+    },
     getId: (state) => {
       return state.id
     },
@@ -39,12 +44,6 @@ export const store = createStore({
     },
     getRoute: (state) => {
       return state.route
-    },
-    getLevel: (state) => {
-      return state.level
-    },
-    getLoggedInGames: (state) => {
-      return state.loggedInGames
     },
     getUserName: (state) => {
       return state.userName
@@ -60,21 +59,6 @@ export const store = createStore({
     },
     getModals: (state) => {
       return state.modals
-    },
-    getSelectedGame: (state) => {
-      return state.selectedGame
-    },
-    getSelectedPricing: (state) => {
-      return state.selectedPricing
-    },
-    getGames: (state) => {
-      return state.games
-    },
-    getLabGames: (state) => {
-      return state.labGames
-    },
-    getGameDates: (state) => {
-      return state.gameDates
     },
     getUpdates: (state) => {
       return state.updates
@@ -117,29 +101,11 @@ export const store = createStore({
     hideModal: (state, payload) => {
       state.modals[payload] = false
     },
-    setSelectedGame: (state, payload) => {
-      state.selectedGame = payload
-    },
-    setSelectedPricing: (state, payload) => {
-      state.selectedPricing = payload
-    },
-    loadGames: (state, payload) => {
-      state.games = payload
-    },
-    loadLabGames: (state, payload) => {
-      state.labGames = payload
-    },
-    updateGameDates: (state, payload) => {
-      state.gameDates = payload
-    },
     updateUpdates: (state, payload) => {
       state.updates = payload
     },
     updateFaqs: (state, payload) => {
       state.faqs = payload
-    },
-    updatePricings: (state, payload) => {
-      state.pricings = payload
     },
     setRss: (state, payload) => {
       state.rss = {
@@ -166,21 +132,6 @@ export const store = createStore({
     },
     hideModal: ({ commit }, payload) => {
       commit('hideModal', payload)
-    },
-    setSelectedGame: ({ commit }, payload) => {
-      commit('setSelectedGame', payload)
-    },
-    setSelectedPricing: ({ commit }, payload) => {
-      commit('setSelectedPricing', payload)
-    },
-    loadGames: ({ commit }, payload) => {
-      commit('loadGames', payload)
-    },
-    loadLabGames: ({ commit }, payload) => {
-      commit('loadLabGames', payload)
-    },
-    updateGameDates: ({ commit }, payload) => {
-      commit('updateGameDates', payload)
     },
     updateUpdates: ({ commit }, payload) => {
       commit('updateUpdates', payload)
