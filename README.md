@@ -1,20 +1,17 @@
-# Context Switching
+# Lean Enabled
 
 ## Project setup
 ```
 npm install
 ```
-
 ### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
-
 ### Compiles and minifies for production
 ```
 npm run build
 ```
-
 ### Lints and fixes files
 ```
 npm run lint
@@ -30,10 +27,3 @@ Navigate to coin-game/coin-game/src
 Then run 'node server.js'
 This is will listen on localhost:3003
 ```
-"# mastermind" 
-"# change-management-game" 
-"# battleships" 
-"# labs" 
-"# agilesimulations" 
-# lean-enabled
-# lean-enabled
