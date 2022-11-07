@@ -1,7 +1,7 @@
 <template>
   <div class="hero jumbotron text-center">
     <h1>Lean Enabled Group</h1>
-    <h2>Makng Change Sustainable</h2>
+    <h2>Making Change Sustainable</h2>
     <div class="input-group subscribe">
       <input type="email" id="jumbotron-email" class="form-control" size="50" placeholder="Email Address" required>
       <div class="input-group-btn">
