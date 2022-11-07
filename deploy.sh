@@ -19,12 +19,12 @@ npm run build
 rm /var/www/html/$APP/css/*
 rm /var/www/html/$APP/js/*
 cp -R dist/* /var/www/html/$APP
-#if [ -f "src/server.js" ]; then
-#  SERVER=`ps -ef | grep server.js | grep $PORT | awk {'print $2'}`
-#  if [ "$SERVER" != "" ]; then
-#    kill -9 $SERVER
-#  fi
-#fi
+if [ -f "src/server.js" ]; then
+  SERVER=`ps -ef | grep server.js | grep $PORT | awk {'print $2'}`
+  if [ "$SERVER" != "" ]; then
+    kill -9 $SERVER
+  fi
+fi
 
 rm -rf node_modules/.cache
 rm -rf dist

@@ -183,7 +183,7 @@ b, strong {
 
   .new-content {
     background-color: #fff;
-    opacity: 0.9;
+    opacity: 0.6;
     color: #444;
     font-size: 48px;
     font-weight: bold;
