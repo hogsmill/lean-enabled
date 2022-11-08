@@ -35,6 +35,12 @@ export default {
   computed: {
     modals() {
       return this.$store.getters.getModals
+    },
+    site() {
+      return this.$store.getters.getSite
+    },
+    emails() {
+      return this.$store.getters.getEmails
     }
   },
   methods: {
@@ -45,7 +51,9 @@ export default {
       mailFuns.post({
         action: 'Contact from ' + this.thisGame,
         email: encodeURIComponent(document.getElementById('email').value),
-        comments: encodeURIComponent(document.getElementById('comments').value)
+        comments: encodeURIComponent(document.getElementById('comments').value),
+        tomail: this.emails,
+        fromsite: this.site
         },
         'Thanks for your feedback - we appreciate it!'
       )
