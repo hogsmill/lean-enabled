@@ -10,7 +10,7 @@ const required = {
 function trim(data) {
   let ret = ''
   if (typeof(data) == 'string') {
-    ret = data.trim
+    ret = data.trim()
   } else {
     const arr = []
     for (let i = 0; i < data.length; i++) {
