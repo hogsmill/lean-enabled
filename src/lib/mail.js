@@ -16,7 +16,7 @@ function trim(data) {
     for (let i = 0; i < data.length; i++) {
       arr.push(data[i].trim())
     }
-    ret = arr
+    ret = arr.join(', ')
   }
   console.log(ret)
   return ret
