@@ -24,10 +24,8 @@ function trim(data) {
 const Mail = {
 
   post: function(data, message) {
-    console.log(data)
     let ok = true
     for (const key in data) {
-      console.log('  ', key, ': ', data[key], trim(data[key]))
       data[key] = trim(data[key])
       if (required[key]) {
         if (!data[key] || 0 === data[key].length) {
@@ -35,7 +33,9 @@ const Mail = {
         }
       }
     }
-    console.log(data)
+    for (const key in data) {
+      console.log(key, ': ', data[key])
+    }
     if (!ok) {
       alert('Please complete all fields')
       return false
