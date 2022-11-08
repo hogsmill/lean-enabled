@@ -49,11 +49,11 @@ export default {
     },
     sendContact() {
       mailFuns.post({
-        action: 'Contact from ' + this.thisGame,
+        action: 'Contact from ' + this.site(),
         email: encodeURIComponent(document.getElementById('email').value),
         comments: encodeURIComponent(document.getElementById('comments').value),
-        tomail: this.emails,
-        fromsite: this.site
+        tomail: this.emails(),
+        fromsite: this.site()
         },
         'Thanks for your feedback - we appreciate it!'
       )
