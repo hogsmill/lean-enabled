@@ -18,7 +18,6 @@ function trim(data) {
     }
     ret = arr.join(', ')
   }
-  console.log(ret)
   return ret
 }
 
@@ -28,6 +27,7 @@ const Mail = {
     let ok = true
     for (const key in data) {
       data[key] = trim(data[key])
+      console.log(data)
       if (required[key]) {
         if (!data[key] || 0 === data[key].length) {
           ok = false
