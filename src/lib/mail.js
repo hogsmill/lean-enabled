@@ -18,6 +18,7 @@ function trim(data) {
     }
     ret = arr
   }
+  console.log(ret)
   return ret
 }
 
