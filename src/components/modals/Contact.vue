@@ -48,12 +48,14 @@ export default {
       this.$store.dispatch('hideModal', 'contact')
     },
     sendContact() {
+      const site = this.site
+      const emails = this.getEmails
       mailFuns.post({
-        action: 'Contact from ' + this.site(),
+        action: 'Contact from ' + site,
         email: encodeURIComponent(document.getElementById('email').value),
         comments: encodeURIComponent(document.getElementById('comments').value),
-        tomail: this.emails(),
-        fromsite: this.site()
+        tomail: emails,
+        fromsite: site
         },
         'Thanks for your feedback - we appreciate it!'
       )
