@@ -30,6 +30,22 @@ function _createEmail(data) {
   return initial
 }
 
+function _createCourseDate(data) {
+  const initial = {
+    id: uuidv4(),
+    day: '',
+    month: '',
+    year: '',
+    level: '',
+    description: '',
+  }
+  const keys = Object.keys(data)
+  for (let i = 0; i < keys.length; i++) {
+    initial[keys[i]] = data[keys[i]]
+  }
+  return initial
+}
+
 function _loadUsers(db, io, debugOn) {
 
   if (debugOn) { console.log('loadUsers') }
@@ -55,6 +71,20 @@ function _loadEmails(db, io, debugOn) {
       emails = res
     }
     io.emit('loadEmails', emails)
+  })
+}
+
+function _loadCourseDates(db, io, debugOn) {
+
+  if (debugOn) { console.log('loadCourseDates') }
+
+  db.coursesCollection.find().toArray(function(err, res) {
+    if (err) throw err
+    let courses = []
+    if (res.length) {
+      courses = res
+    }
+    io.emit('loadCourseDates', courses)
   })
 }
 
@@ -186,6 +216,49 @@ module.exports = {
   loadEmails: function(db, io, debugOn) {
 
     _loadEmails(db, io, debugOn)
+  },
+
+  createCourseDate: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('createCourseDate', data) }
+
+    data = _createCourseDate(data)
+    db.coursesCollection.insertOne(data, function(err, res) {
+      if (err) throw err
+      io.emit('courseDateCreated', data)
+      _loadCourseDates(db, io, debugOn)
+    })
+  },
+
+  updateCourseDate: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('updateCourseDate', data) }
+
+    db.coursesCollection.findOne({id: data.id}, function(err, res) {
+      if (err) throw err
+      if (res) {
+        data = _createCourseDate(data)
+        db.coursesCollection.updateOne({'_id': res._id}, {$set: data}, function(err, res) {
+          if (err) throw err
+          _loadCourseDates(db, io, debugOn)
+        })
+      }
+    })
+  },
+
+  deleteCourseDate: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('deleteCourseDate', data) }
+
+    db.coursesCollection.deleteOne({id: data.id}, function(err, res) {
+      if (err) throw err
+      _loadCourseDates(db, io, debugOn)
+    })
+  },
+
+  loadCourseDates: function(db, io, data, debugOn) {
+
+    _loadCourseDates(db, io, debugOn)
   },
 
   login: function(db, io, data, debugOn) {

@@ -36,6 +36,11 @@ export default {
   .footer {
     padding: 30px;
     background-color: #204893;
+    background-image: url("../assets/img/LEG_white_bob.webp");
+    background-repeat: no-repeat;
+    background-size: 50px 75px;
+    background-position-y: center;
+    background-position-x: 22px;
 
     h4 {
       text-align: center;

@@ -1,7 +1,7 @@
 <template>
   <div class="admin">
     <h2>
-      Admin for {{ userName }}
+      Admin (logged in as: {{ userName }})
     </h2>
     <div class="tabs">
       <div :class="{'active': tab == 'users'}" @click="setTab('users')">
@@ -10,6 +10,9 @@
       <div :class="{'active': tab == 'emails'}" @click="setTab('emails')">
         Emails
       </div>
+      <div :class="{'active': tab == 'coursedates'}" @click="setTab('coursedates')">
+        Course Dates
+      </div>
       <div :class="{'active': tab == 'other'}" @click="setTab('other')">
         Other
       </div>
@@ -17,6 +20,7 @@
     <div class="details">
       <Users v-if="tab == 'users'" />
       <Emails v-if="tab == 'emails'" />
+      <CourseDates v-if="tab == 'coursedates'" />
     </div>
   </div>
 </template>
@@ -26,11 +30,13 @@ import bus from '../socket.js'
 
 import Users from './admin/Users.vue'
 import Emails from './admin/Emails.vue'
+import CourseDates from './admin/CourseDates.vue'
 
 export default {
   components: {
     Users,
-    Emails
+    Emails,
+    CourseDates
   },
   data() {
     return {
@@ -87,7 +93,7 @@ export default {
 
     div {
       display: inline-block;
-      width: 100px;
+      width: 120px;
       border-bottom: 1px solid #204893;
       background-color: #fff;
       position: relative;

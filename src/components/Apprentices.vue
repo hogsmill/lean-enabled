@@ -1,8 +1,10 @@
 <template>
   <div class="apprentices">
     <div class="container-fluid text-center">
-      <div class="new-content">
-        Apprentices Content Here
+      <div class="row slideanim">
+        <div v-for="(course, index) in courses" :key="index" class="col-sm-3">
+          <Course :course="course" />
+        </div>
       </div>
     </div>
   </div>
@@ -11,8 +13,16 @@
 <script>
 import bus from '../socket.js'
 
+import Course from './courses/Course.vue'
+
 export default {
+  components: {
+    Course
+  },
   computed: {
+    courses() {
+      return this.$store.getters.getCourses
+    }
   },
   methods: {
   }

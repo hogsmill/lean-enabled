@@ -6,7 +6,6 @@ export const store = createStore({
     modals: {
       contact: false,
     },
-    emails: [],
     site: 'lean-enabled.co.uk',
     session: null,
     route: '',
@@ -17,14 +16,47 @@ export const store = createStore({
     siteAdmin: false,
     mobile: false,
     tab: 'transformation',
-    users: []
+    users: [],
+    emails: [],
+    courseDates: [],
+    courses: [
+      {
+        name: 'Improvement Technician',
+        logo: 'technician',
+        type: 'Standard',
+        level: 3,
+        leanSixSigma: true,
+        belt: 'yellow'
+      },
+      {
+        name: 'Improvement Practitioner',
+        logo: 'practitioner',
+        type: 'Standard',
+        level: 3,
+        leanSixSigma: true,
+        belt: 'green'
+      },
+      {
+        name: 'Improvement Coach (Specialist)',
+        logo: 'coach',
+        type: 'Standard',
+        level: 5,
+        leanSixSigma: true,
+        belt: 'black'
+      },
+      {
+        name: 'Improvement Leader',
+        logo: 'leader',
+        type: 'Standard',
+        level: 6,
+        leanSixSigma: true,
+        belt: 'master-black'
+      }
+    ]
   },
   getters: {
     getSite: (state) => {
       return state.site
-    },
-    getEmails: (state) => {
-      return state.emails
     },
     getEmailAddresses: (state) => {
       const emails = []
@@ -59,6 +91,15 @@ export const store = createStore({
     },
     getUsers: (state) => {
       return state.users
+    },
+    getEmails: (state) => {
+      return state.emails
+    },
+    getCourseDates: (state) => {
+      return state.courses
+    },
+    getCourses: (state) => {
+      return state.courses
     }
   },
   mutations: {
@@ -96,6 +137,9 @@ export const store = createStore({
     updateEmails: (state, payload) => {
       state.emails = payload
     },
+    updateCourseDates: (state, payload) => {
+      state.courseDates = payload
+    }
   },
   actions: {
     updateCanLogin: ({ commit }, payload) => {
@@ -124,6 +168,9 @@ export const store = createStore({
     },
     updateEmails: ({ commit }, payload) => {
       commit('updateEmails', payload)
+    },
+    updateCourseDates: ({ commit }, payload) => {
+      commit('updateCourses', payload)
     }
   }
 })

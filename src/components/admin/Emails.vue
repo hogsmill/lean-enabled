@@ -1,6 +1,5 @@
 <template>
   <div>
-  {{ emails }}
     <h3>
       New Email
     </h3>
