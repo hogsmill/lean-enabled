@@ -6,16 +6,19 @@
     <div class="logo" />
     <div class="nav-bar">
       <ul :class="{ 'hide': mobile && hideMenu }">
-        <li v-if="isAdmin()" :class="{'active': tab == 'siteAdmin'}" @click="setTab('siteAdmin')">
+        <li v-if="canLogin && session" :class="{'active': tab == 'siteAdmin'}" @click="setTab('siteAdmin')">
+          Site Admin
+        </li>
+        <li v-if="canLogin && session && admin" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
           Admin
         </li>
         <li :class="{'active': tab == 'transformation'}" @click="setTab('transformation')">
           Leaders
         </li>
-        <li v-if="admin" :class="{'active': tab == 'managers'}" @click="setTab('managers')">
+        <li :class="{'active': tab == 'managers'}" @click="setTab('managers')">
           Managers
         </li>
-        <li :class="{'active': tab == 'pricing'}" @click="setUrl('apprentices')">
+        <li :class="{'active': tab == 'apprentices'}" @click="setUrl('apprentices')">
           Apprentices
         </li>
         <li :class="{'active': tab == 'about'}" @click="setUrl('about')">
@@ -24,10 +27,10 @@
         <li :class="{'active': tab == 'contact'}" @click="show('contact')">
           Contact
         </li>
-        <li v-if="!mobile && !session" class="login" @click="show('login')">
+        <li v-if="canLogin && !mobile && !session" class="login" @click="show('login')">
           <i class="fas fa-sign-in-alt" title="Login" />
         </li>
-        <li v-if="!mobile && session" class="logout" @click="logout()">
+        <li v-if="canLogin && !mobile && session" class="logout" @click="logout()">
           <i v-if="!admin" class="far fa-handshake" :title="'Logout ' + userName" />
           <i v-if="admin" class="fas fa-handshake" :title="'Logout ' + userName + ' (Admin)'" />
         </li>
@@ -62,8 +65,6 @@
 <script>
 import bus from '../socket.js'
 
-import { v4 as uuidv4 } from 'uuid'
-
 import params from '../lib/params.js'
 import mailFuns from '../lib/mail.js'
 
@@ -79,10 +80,7 @@ export default {
       return this.$store.getters.getSite
     },
     emails() {
-      return this.$store.getters.getEmails
-    },
-    id() {
-      return this.$store.getters.getId
+      return this.$store.getters.getEmailAddresses
     },
     mobile() {
       return this.$store.getters.getMobile
@@ -96,8 +94,14 @@ export default {
     userName() {
       return this.$store.getters.getUserName
     },
+    canLogin() {
+      return this.$store.getters.getCanLogin
+    },
     admin() {
       return this.$store.getters.getAdmin
+    },
+    siteAdmin() {
+      return this.$store.getters.getSiteAdmin
     }
   },
   created() {
@@ -105,14 +109,11 @@ export default {
 
     this.setTabFromParams()
 
-    if (!this.id) {
-      this.$store.dispatch('updateId', uuidv4())
-    }
-
-  let session = localStorage.getItem('session-agilesimulations')
+    const session = localStorage.getItem('session-lean-enabled')
+    console.log('session', session)
     if (session) {
-      session = JSON.parse(session)
-      bus.emit('sendCheckLogin', {id: this.id, session: session})
+      this.$store.dispatch('updateSession', session)
+      bus.emit('sendCheckLogin', {session: session})
     } else {
       this.clearLogin()
     }
@@ -122,17 +123,13 @@ export default {
     })
 
     bus.on('loginSuccess', (data) => {
-      if (data.id == this.id) {
+      console.log(data.session)
+      console.log(this.session)
+      if (data.session == this.session) {
         this.checking = false
         this.$store.dispatch('hideModal', 'login')
         this.$store.dispatch('updateLogin', data)
-        const session = {
-          session: data.session,
-          route: data.route,
-          userName: data.userName,
-          loggedInAsAdmin: data.loggedInAsAdmin
-        }
-        localStorage.setItem('session-agilesimulations', JSON.stringify(session))
+        localStorage.setItem('session-lean-enabled', data.session)
       }
     })
 
@@ -145,21 +142,17 @@ export default {
     })
 
     bus.on('logout', (data) => {
-      this.clearLogin()
-      if (data.userName == this.userName) {
-        localStorage.removeItem('session-agilesimulations')
+      if (data.session == this.session) {
+        this.clearLogin()
       }
     })
   },
   methods: {
-    isAdmin() {
-      return this.admin && this.userName == 'agile-simulations'
-    },
     setTabFromParams() {
       const tabs = [
-        'pricing',
-        'subscriptiondescription',
-        'games',
+        'transformation',
+        'managers',
+        'apprentices',
         'about'
       ]
       for (let i = 0; i < tabs.length; i++) {
@@ -169,8 +162,8 @@ export default {
       }
     },
     clearLogin() {
-      const data = {session: '', userName: '', route: '', loggedInAsAdmin: false}
-      this.$store.dispatch('updateLogin', data)
+      this.$store.dispatch('updateSession', '')
+      localStorage.removeItem('session-lean-enabled')
     },
     toggleMenu() {
       this.hideMenu = !this.hideMenu
@@ -219,7 +212,7 @@ export default {
       this.hide()
     },
     logout() {
-      bus.emit('sendLogout', {id: this.id, userName: this.userName, session: this.session.session})
+      bus.emit('sendLogout', {session: this.session})
     }
   },
 }

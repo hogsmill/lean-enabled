@@ -1,8 +1,8 @@
 <template>
-  <div class="leaders">
+  <div class="managers">
     <div class="container-fluid text-center">
       <div class="new-content">
-        Leaders Content Here
+        Managers Content Here
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-.leaders {
+.managers {
   background-image: url("../assets/img/GettyImages-855597368.jpeg");
   background-size: cover;
 

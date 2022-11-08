@@ -18,7 +18,9 @@ const socket = io(connStr)
 bus.on('contact', () => { bus.emit('showContact') })
 
 // --------------------------------------------------------------
-// Agile Simulations
+// Admin
+
+bus.on('sendCreateAdminUser', (data) => { socket.emit('sendCreateAdminUser', data) })
 
 bus.on('sendLogin', (data) => { socket.emit('sendLogin', data) })
 
@@ -26,9 +28,23 @@ bus.on('sendCheckLogin', (data) => { socket.emit('sendCheckLogin', data) })
 
 bus.on('sendLogout', (data) => { socket.emit('sendLogout', data) })
 
-// Receive
+bus.on('sendCreateUser', (data) => { socket.emit('sendCreateUser', data) })
 
-socket.on('loadPopularGames', (data) => { bus.emit('loadPopularGames', data) })
+bus.on('sendUpdateUser', (data) => { socket.emit('sendUpdateUser', data) })
+
+bus.on('sendDeleteUser', (data) => { socket.emit('sendDeleteUser', data) })
+
+bus.on('sendLoadUsers', (data) => { socket.emit('sendLoadUsers', data) })
+
+bus.on('sendCreateEmail', (data) => { socket.emit('sendCreateEmail', data) })
+
+bus.on('sendUpdateEmail', (data) => { socket.emit('sendUpdateEmail', data) })
+
+bus.on('sendDeleteEmail', (data) => { socket.emit('sendDeleteEmail', data) })
+
+bus.on('sendLoadEmails', (data) => { socket.emit('sendLoadEmails', data) })
+
+// Receive
 
 socket.on('loginSuccess', (data) => { bus.emit('loginSuccess', data) })
 
@@ -38,60 +54,8 @@ socket.on('logout', (data) => { bus.emit('logout', data) })
 
 // Admin
 
-bus.on('sendCheckGameDefinitions', (data) => { socket.emit('sendCheckGameDefinitions', data) })
+socket.on('loadUsers', (data) => { bus.emit('loadUsers', data) })
 
-bus.on('sendLoadUpdates', (data) => { socket.emit('sendLoadUpdates', data) })
-
-bus.on('sendAddUpdate', (data) => { socket.emit('sendAddUpdate', data) })
-
-bus.on('sendUpdateUpdate', (data) => { socket.emit('sendUpdateUpdate', data) })
-
-bus.on('sendDeleteUpdate', (data) => { socket.emit('sendDeleteUpdate', data) })
-
-socket.on('loadUpdates', (data) => { bus.emit('loadUpdates', data) })
-
-bus.on('sendLoadGameDates', (data) => { socket.emit('sendLoadGameDates', data) })
-
-bus.on('sendAddGameDate', (data) => { socket.emit('sendAddGameDate', data) })
-
-bus.on('sendUpdateGameDate', (data) => { socket.emit('sendUpdateGameDate', data) })
-
-bus.on('sendDeleteGameDate', (data) => { socket.emit('sendDeleteGameDate', data) })
-
-socket.on('loadGameDates', (data) => { bus.emit('loadGameDates', data) })
-
-bus.on('sendLoadFaqs', (data) => { socket.emit('sendLoadFaqs', data) })
-
-bus.on('sendAddFaq', (data) => { socket.emit('sendAddFaq', data) })
-
-bus.on('sendUpdateFaq', (data) => { socket.emit('sendUpdateFaq', data) })
-
-bus.on('sendDeleteFaq', (data) => { socket.emit('sendDeleteFaq', data) })
-
-socket.on('loadFaqs', (data) => { bus.emit('loadFaqs', data) })
-
-bus.on('sendLoadPricings', (data) => { socket.emit('sendLoadPricings', data) })
-
-bus.on('sendAddPricing', (data) => { socket.emit('sendAddPricing', data) })
-
-bus.on('sendUpdatePricing', (data) => { socket.emit('sendUpdatePricing', data) })
-
-bus.on('sendSelectPricing', (data) => { socket.emit('sendSelectPricing', data) })
-
-bus.on('sendDeletePricing', (data) => { socket.emit('sendDeletePricing', data) })
-
-socket.on('loadPricings', (data) => { bus.emit('loadPricings', data) })
-
-bus.on('sendLoadGames', (data) => { socket.emit('sendLoadGames', data) })
-
-bus.on('sendLoadPopularGames', (data) => { socket.emit('sendLoadPopularGames', data) })
-
-bus.on('sendAddGame', (data) => { socket.emit('sendAddGame', data) })
-
-bus.on('sendUpdateGame', (data) => { socket.emit('sendUpdateGame', data) })
-
-bus.on('sendDeleteGame', (data) => { socket.emit('sendDeleteGame', data) })
-
-socket.on('loadGames', (data) => { bus.emit('loadGames', data) })
+socket.on('loadEmails', (data) => { bus.emit('loadEmails', data) })
 
 export default bus

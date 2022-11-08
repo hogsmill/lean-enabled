@@ -9,6 +9,10 @@ font-face { font-family: Lato; src: url('./fonts/lato/Lato-Regular.ttf'); }
   color: #204893;
 }
 
+.content {
+  padding-top: 176px;  
+}
+
 h1, h2, h3, h4, p {
   color: #204893;
 }
@@ -19,16 +23,16 @@ p {
 
 button { margin: 2px; }
 
+.float-right {
+  width: 30px;
+  position: absolute;
+  right: 10px;
+}
+
 a { font-weight: bold; }
 
 .rounded {
   border-radius: 3px;
-}
-.game-name {
-  padding-right: 2px;
-}
-.set-game-name-modal {
-  height: 120px;
 }
 
 #game-name {

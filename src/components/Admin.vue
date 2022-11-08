@@ -3,42 +3,20 @@
     <h2>
       Admin for {{ userName }}
     </h2>
+    <div class="tabs">
+      <div :class="{'active': tab == 'users'}" @click="setTab('users')">
+        Users
+      </div>
+      <div :class="{'active': tab == 'emails'}" @click="setTab('emails')">
+        Emails
+      </div>
+      <div :class="{'active': tab == 'other'}" @click="setTab('other')">
+        Other
+      </div>
+    </div>
     <div class="details">
-      <h3>
-        Game Details
-      </h3>
-      <p>
-        Games that are enabled here will be shown on the splash screen list of games on the home
-        page when logged in.
-      </p>
-      <table>
-        <thead>
-          <th>
-            Game
-          </th>
-          <th>
-            Enabled for Users?
-          </th>
-          <th>
-            URL
-          </th>
-        </thead>
-        <tbody>
-          <tr v-for="(g, index) in games" :key="index">
-            <td>
-              {{ g.name }}
-            </td>
-            <td class="center">
-              <input :id="'enabled-' + g.id" type="checkbox" :checked="g.enabled" @click="updateEnabled(g.id)">
-            </td>
-            <td>
-              <a :href="url(g.url)">
-                {{ url(g.url) }}
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <Users v-if="tab == 'users'" />
+      <Emails v-if="tab == 'emails'" />
     </div>
   </div>
 </template>
@@ -46,40 +24,34 @@
 <script>
 import bus from '../socket.js'
 
+import Users from './admin/Users.vue'
+import Emails from './admin/Emails.vue'
+
 export default {
+  components: {
+    Users,
+    Emails
+  },
   data() {
     return {
-      games: []
+      tab: 'users'
     }
   },
   computed: {
     userName() {
       return this.$store.getters.getUserName
-    },
-    route() {
-      return this.$store.getters.getRoute
     }
   },
   created() {
-    bus.emit('sendLoadGames')
+    bus.emit('sendLoadUsers')
 
-    bus.on('loadGames', (data) => {
-      this.games = data
+    bus.on('loadUsers', (data) => {
+      this.users = data
     })
   },
   methods: {
-    game(id) {
-      return this.games.find((d) => {
-        return d.id == id
-      })
-    },
-    url(url) {
-      return this.route ? url + '-' + this.route : url
-    },
-    updateEnabled(id) {
-      const game = this.game(id)
-      game.enabled = document.getElementById('enabled-' + id).checked
-      bus.emit('sendUpdateGame', game)
+    setTab(tab) {
+      this.tab = tab
     }
   }
 }
@@ -88,12 +60,46 @@ export default {
 <style lang="scss">
 .admin {
   max-width: 850px;
-  margin: 0 auto;
+  margin: 100px auto;
 
   h2 {
     text-align: center;
   }
 
+  .far, .fas {
+    margin: 3px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.disabled {
+      color: #aaa;
+
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
+  .tabs {
+    border-bottom: 1px solid #204893;
+
+    div {
+      display: inline-block;
+      width: 100px;
+      border-bottom: 1px solid #204893;
+      background-color: #fff;
+      position: relative;
+      top: 1px;
+
+      &.active {
+        font-weight: bold;
+        border: 1px solid #204893;
+        border-bottom: 1px solid #fff;
+      }
+    }
+  }
   .details {
     margin: 0 24px;
 

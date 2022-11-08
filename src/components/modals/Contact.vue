@@ -5,6 +5,7 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+    <div class="logo" />
     <div class="mt-4">
       <h4>Contact Us</h4>
       <p class="modal-form">
@@ -40,7 +41,7 @@ export default {
       return this.$store.getters.getSite
     },
     emails() {
-      return this.$store.getters.getEmails
+      return this.$store.getters.getEmailAddresses
     }
   },
   methods: {
@@ -67,6 +68,21 @@ export default {
 
 <style scoped lang="scss">
   .modal-container {
+
+    .logo {
+      float: left;
+      width: 50px;
+      height: 50px;
+      background-image: url("../../assets/img/favicon.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .button {
+      border: 1px solid;
+      float: right;
+      width: 30px;
+    }
 
     p.feedback-form {
       margin-bottom: 12px;

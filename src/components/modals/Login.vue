@@ -14,7 +14,7 @@
         <table>
           <tr>
             <td>
-              Username/Company
+              Username
             </td>
             <td>
               <input type="text" id="username" class="form-control" placeholder="Username/Company">
@@ -50,6 +50,8 @@
 <script>
 import bus from '../../socket.js'
 
+import { v4 as uuidv4 } from 'uuid'
+
 import { VueFinalModal } from 'vue-final-modal'
 
 export default {
@@ -82,7 +84,9 @@ export default {
         alert('Incorrect passcode format')
       } else {
         this.checking = true
-        bus.emit('sendLogin', {id: this.id, userName: userName, passCode: passCode})
+        const session = uuidv4()
+        this.$store.dispatch('updateSession', session)
+        bus.emit('sendLogin', {id: this.id, userName: userName, passCode: passCode, session: session})
       }
     },
     clearLogin() {

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.24.1",
+    "core.js": "^0.4.2",
     "death": "^1.1.0",
     "jquery": "^3.6.0",
     "mongodb": "^4.8.1",
