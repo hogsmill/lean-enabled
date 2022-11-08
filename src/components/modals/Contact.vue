@@ -49,8 +49,7 @@ export default {
     },
     sendContact() {
       const site = this.site
-      const emails = this.emails.to
-      console.log(site, emails)
+      const emails = this.emails
       mailFuns.post({
         action: 'Contact from ' + site,
         email: encodeURIComponent(document.getElementById('email').value),

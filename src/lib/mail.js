@@ -27,6 +27,7 @@ const Mail = {
     console.log(data)
     let ok = true
     for (const key in data) {
+      console.log(data[key], trim(data[key]))
       data[key] = trim(data[key])
       if (required[key]) {
         if (!data[key] || 0 === data[key].length) {
