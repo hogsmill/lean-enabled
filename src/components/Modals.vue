@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ modals }}
     <Contact v-if="modals['contact']" />
     <Login v-if="modals['login']" />
   </div>
