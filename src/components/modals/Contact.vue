@@ -40,6 +40,7 @@ export default {
       return this.$store.getters.getSite
     },
     emails() {
+      console.log(this.$store.getters.getEmails)
       return this.$store.getters.getEmails
     }
   },
