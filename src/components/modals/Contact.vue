@@ -40,8 +40,8 @@ export default {
       return this.$store.getters.getSite
     },
     emails() {
-      console.log(this.$store.getters.getEmails())
-      return this.$store.getters.getEmails()
+      console.log(this.$store.getters.getEmails
+      return this.$store.getters.getEmails
     }
   },
   methods: {
@@ -50,7 +50,7 @@ export default {
     },
     sendContact() {
       const site = this.site
-      const emails = this.emails
+      const emails = this.emails()
       console.log(site, emails)
       mailFuns.post({
         action: 'Contact from ' + site,
