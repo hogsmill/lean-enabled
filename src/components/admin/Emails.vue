@@ -93,7 +93,6 @@ export default {
     bus.emit('sendLoadEmails')
 
     bus.on('loadEmails', (data) => {
-      console.log('here')
       this.$store.dispatch('updateEmails', data)
     })
   },

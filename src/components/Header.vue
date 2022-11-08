@@ -110,7 +110,6 @@ export default {
     this.setTabFromParams()
 
     const session = localStorage.getItem('session-lean-enabled')
-    console.log('session', session)
     if (session) {
       this.$store.dispatch('updateSession', session)
       bus.emit('sendCheckLogin', {session: session})
@@ -123,8 +122,6 @@ export default {
     })
 
     bus.on('loginSuccess', (data) => {
-      console.log(data.session)
-      console.log(this.session)
       if (data.session == this.session) {
         this.checking = false
         this.$store.dispatch('hideModal', 'login')

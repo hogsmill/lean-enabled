@@ -33,9 +33,6 @@ const Mail = {
         }
       }
     }
-    for (const key in data) {
-      console.log(key, ': ', data[key])
-    }
     if (!ok) {
       alert('Please complete all fields')
       return false

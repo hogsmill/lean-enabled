@@ -54,7 +54,6 @@ function _loadEmails(db, io, debugOn) {
     if (res.length) {
       emails = res
     }
-    console.log(emails)
     io.emit('loadEmails', emails)
   })
 }
@@ -219,7 +218,6 @@ module.exports = {
     db.usersCollection.findOne({session: data.session}, function(err, res) {
       if (err) throw err
       if (res) {
-        console.log(res)
         _returnLogin(io, res)
       }
     })
@@ -232,7 +230,6 @@ module.exports = {
     db.usersCollection.findOne({session: data.session}, function(err, res) {
       if (err) throw err
       if (res) {
-        console.log(res)
         db.usersCollection.updateOne({'_id': res._id}, {$set: {session: ''}}, function(err, res) {
           io.emit('logout', {session: data.session})
         })
