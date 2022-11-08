@@ -6,10 +6,12 @@ export const store = createStore({
     modals: {
       contact: false,
     },
-    emails: [
-      'info@hogsmill.com',
-      'cheyne_hill@yahoo.co.uk'
-    ],
+    emails: {
+      to: [
+        'info@hogsmill.com',
+        'cheyne_hill@yahoo.co.uk'
+      ]
+    },
     site: 'lean-enabled.co.uk',
     id: '',
     session: null,
