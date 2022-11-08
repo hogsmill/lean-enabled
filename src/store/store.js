@@ -7,7 +7,8 @@ export const store = createStore({
       contact: false,
     },
     emails: [
-      'info@hogsmill.com'
+      'info@hogsmill.com',
+      'cheyne_hill@yahoo.co.uk'
     ],
     site: 'lean-enabled.co.uk',
     id: '',
