@@ -16,6 +16,9 @@
       <div :class="{'active': tab == 'faqs'}" @click="setTab('faqs')">
         FAQs
       </div>
+      <div :class="{'active': tab == 'people'}" @click="setTab('people')">
+        People
+      </div>
     </div>
     <div class="details">
       <Users v-if="tab == 'users'" />

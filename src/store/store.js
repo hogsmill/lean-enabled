@@ -53,6 +53,31 @@ export const store = createStore({
         leanSixSigma: true,
         belt: 'master-black'
       }
+    ],
+    people: [
+      {
+        name: 'Anil Matthew',
+        role: 'Chief Exec Officer',
+        pic: 'anil-pic',
+        text: [
+          'Professional, Chartered Engineer',
+          'Lean Six-Sigma Master Black Belt, programmes with 100 companies globally. With over 25 years Lean experience in FMCG, Pharmaceutical, Consumer Healthcare Industries driving Change, structured Problem Solving & Engineering solutions inc. the business improvement turnaround of "failing" NHS Trust (CQC Rating – GOOD)',
+          'Managed Global Improvement Teams that Coached, Mentored & delivered Supply chain Improvements to Service, Delivery, Cost (in excess of £50M)'
+        ],
+        endorsements: 'anil-endorsements'
+      },
+      {
+        name: 'Nick Chambers',
+        role: 'Chief Operating Officer',
+        pic: 'nick-pic',
+        text: [
+          'With over 15 years Lean transformation experience in FMCG, Pharmaceutical and Healthcare industry, Nick has implemented significant programmes in driving change, structured problem solving & organisational strategy.',
+          'Managed whole organisation improvement Initiatives including coaching, mentored & delivery of lean management systems across entire NHS trusts.',
+          'Proven track record of developing and implementing a fully engaging culture change that links executive boards to front line workforce and creates a successful improvement culture. Winner of HSJ Patient Safety Awards 2018 for Education & Training'
+        ],
+        endorsements: 'nick-endorsements'
+      },
+
     ]
   },
   getters: {
@@ -104,6 +129,9 @@ export const store = createStore({
     },
     getCourses: (state) => {
       return state.courses
+    },
+    getPeople: (state) => {
+      return state.people
     }
   },
   mutations: {

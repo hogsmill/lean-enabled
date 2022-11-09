@@ -4,14 +4,22 @@
       All the legal stuff, etc...
     </h4>
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-6">
         <a @click="setTab('tandcs')">T&Cs and Privacy</a>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-2">
         <a @click="setTab('security')">Security</a>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-2">
         <a @click="contact()">Contact</a>
+      </div>
+      <div class="col-sm-2">
+        <a href="https://www.linkedin.com/company/lean-enabled-group/" title="LinkedIn">
+          <i class="fab fa-linkedin" />
+        </a>
+        <a href="https://youtu.be/KHDSo9vnUiA" title="You Tube">
+          <i class="fab fa-youtube" />
+        </a>
       </div>
     </div>
   </div>
@@ -47,12 +55,19 @@ export default {
       color: #fff;
     }
 
-    .col-sm-4 {
+    .col-sm-2, .col-sm-6 {
       text-align: center;
+      vertical-align: middle;
 
       a {
         margin: 0 auto;
         color: #fff;
+      }
+
+      .fab {
+        color: #fff;
+        margin: 0 12px;
+        font-size: xxx-large
       }
     }
   }
