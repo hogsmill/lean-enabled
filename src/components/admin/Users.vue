@@ -97,7 +97,7 @@
           <td>
             <i class="far fa-edit" :title="'Edit ' + user.userName" @click="editUser(user)" />
             <i class="far fa-save" :title="'Save ' + user.userName" :class="{'disabled': editing != user.userName}" @click="saveUser(user)" />
-            <i class="far fa-trash-alt" :title="'Delete ' + user.userName" @click="deleteUser(user)" />
+            <i v-if="notAdmin(user)" class="far fa-trash-alt" :title="'Delete ' + user.userName" @click="deleteUser(user)" />
           </td>
         </tr>
       </tbody>
@@ -117,6 +117,9 @@ export default {
   computed: {
     users() {
       return this.$store.getters.getUsers
+    },
+    admin() {
+      return this.$store.getters.getAdmin
     }
   },
   created() {
@@ -128,6 +131,9 @@ export default {
     })
   },
   methods: {
+    notAdmin(user) {
+      return user.userName != 'admin' || this.admin
+    },
     addUser() {
       const data = {
         userName: document.getElementById('new-username').value,

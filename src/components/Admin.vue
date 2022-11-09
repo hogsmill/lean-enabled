@@ -25,6 +25,7 @@
       <Emails v-if="tab == 'emails'" />
       <CourseDates v-if="tab == 'coursedates'" />
       <Faqs v-if="tab == 'faqs'" />
+      <People v-if="tab == 'people'" />
     </div>
   </div>
 </template>
@@ -36,13 +37,15 @@ import Users from './admin/Users.vue'
 import Emails from './admin/Emails.vue'
 import CourseDates from './admin/CourseDates.vue'
 import Faqs from './admin/FAQs.vue'
+import People from './admin/People.vue'
 
 export default {
   components: {
     Users,
     Emails,
     CourseDates,
-    Faqs
+    Faqs,
+    People
   },
   data() {
     return {

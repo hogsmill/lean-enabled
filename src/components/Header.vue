@@ -6,10 +6,7 @@
     <div class="logo" />
     <div class="nav-bar">
       <ul :class="{ 'hide': mobile && hideMenu }">
-        <li v-if="canLogin && session" :class="{'active': tab == 'siteAdmin'}" @click="setTab('siteAdmin')">
-          Site Admin
-        </li>
-        <li v-if="canLogin && session && admin" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
+        <li v-if="canLogin && session && (admin || siteAdmin)" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
           Admin
         </li>
         <li :class="{'active': tab == 'transformation'}" @click="setTab('transformation')">

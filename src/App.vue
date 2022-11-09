@@ -8,9 +8,7 @@
       <Apprentices v-if="tab == 'apprentices'" />
       <About v-if="tab == 'about'" />
       <Faqs v-if="tab == 'faqs'" />
-
       <Admin v-if="tab == 'admin'" />
-
       <TandCs v-if="tab == 'tandcs'" />
       <Security v-if="tab == 'security'" />
       <Modals />
@@ -33,11 +31,6 @@ import Apprentices from './components/Apprentices.vue'
 import About from './components/About.vue'
 import Faqs from './components/FAQs.vue'
 import Admin from './components/Admin.vue'
-
-/*
-import SiteAdmin from './components/SiteAdmin.vue'
-*/
-
 import TandCs from './components/footer/TandCs.vue'
 import Security from './components/footer/Security.vue'
 import Modals from './components/Modals.vue'
