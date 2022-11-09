@@ -17,6 +17,8 @@ const socket = io(connStr)
 
 bus.on('contact', () => { bus.emit('showContact') })
 
+bus.on('sendLoadNextCourse', () => { socket.emit('sendLoadNextCourse') })
+
 // --------------------------------------------------------------
 // Admin
 
@@ -56,7 +58,17 @@ bus.on('sendUpdateCourseDate', (data) => { socket.emit('sendUpdateCourseDate', d
 
 bus.on('sendDeleteCourseDate', (data) => { socket.emit('sendDeleteCourseDate', data) })
 
-bus.on('sendLoadCourseDates', (data) => { socket.emit('sendLoadCoursesDate', data) })
+bus.on('sendLoadCourseDates', (data) => { socket.emit('sendLoadCourseDates', data) })
+
+// FAQs
+
+bus.on('sendCreateFaq', (data) => { socket.emit('sendCreateFaq', data) })
+
+bus.on('sendUpdateFaq', (data) => { socket.emit('sendUpdateFaq', data) })
+
+bus.on('sendDeleteFaq', (data) => { socket.emit('sendDeleteFaq', data) })
+
+bus.on('sendLoadFaqs', (data) => { socket.emit('sendLoadFaqs', data) })
 
 // Receive
 
@@ -66,6 +78,8 @@ socket.on('loginError', (data) => { bus.emit('loginError', data) })
 
 socket.on('logout', (data) => { bus.emit('logout', data) })
 
+socket.on('loadNextCourse', (data) => { bus.emit('loadNextCourse', data) })
+
 // Admin
 
 socket.on('loadUsers', (data) => { bus.emit('loadUsers', data) })
@@ -73,5 +87,7 @@ socket.on('loadUsers', (data) => { bus.emit('loadUsers', data) })
 socket.on('loadEmails', (data) => { bus.emit('loadEmails', data) })
 
 socket.on('loadCourseDates', (data) => { bus.emit('loadCourseDates', data) })
+
+socket.on('loadFaqs', (data) => { bus.emit('loadFaqs', data) })
 
 export default bus

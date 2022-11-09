@@ -37,7 +37,20 @@ function _createCourseDate(data) {
     month: '',
     year: '',
     level: '',
-    description: '',
+    description: ''
+  }
+  const keys = Object.keys(data)
+  for (let i = 0; i < keys.length; i++) {
+    initial[keys[i]] = data[keys[i]]
+  }
+  return initial
+}
+
+function _createFaq(data) {
+  const initial = {
+    id: uuidv4(),
+    question: '',
+    answer: ''
   }
   const keys = Object.keys(data)
   for (let i = 0; i < keys.length; i++) {
@@ -78,13 +91,27 @@ function _loadCourseDates(db, io, debugOn) {
 
   if (debugOn) { console.log('loadCourseDates') }
 
-  db.coursesCollection.find().toArray(function(err, res) {
+  db.courseDatesCollection.find().toArray(function(err, res) {
     if (err) throw err
     let courses = []
     if (res.length) {
       courses = res
     }
     io.emit('loadCourseDates', courses)
+  })
+}
+
+function _loadFaqs(db, io, debugOn) {
+
+  if (debugOn) { console.log('loadFaqs') }
+
+  db.faqsCollection.find().toArray(function(err, res) {
+    if (err) throw err
+    let faqs = []
+    if (res.length) {
+      faqs = res
+    }
+    io.emit('loadFaqs', faqs)
   })
 }
 
@@ -223,7 +250,7 @@ module.exports = {
     if (debugOn) { console.log('createCourseDate', data) }
 
     data = _createCourseDate(data)
-    db.coursesCollection.insertOne(data, function(err, res) {
+    db.courseDatesCollection.insertOne(data, function(err, res) {
       if (err) throw err
       io.emit('courseDateCreated', data)
       _loadCourseDates(db, io, debugOn)
@@ -234,11 +261,11 @@ module.exports = {
 
     if (debugOn) { console.log('updateCourseDate', data) }
 
-    db.coursesCollection.findOne({id: data.id}, function(err, res) {
+    db.courseDatesCollection.findOne({id: data.id}, function(err, res) {
       if (err) throw err
       if (res) {
         data = _createCourseDate(data)
-        db.coursesCollection.updateOne({'_id': res._id}, {$set: data}, function(err, res) {
+        db.courseDatesCollection.updateOne({'_id': res._id}, {$set: data}, function(err, res) {
           if (err) throw err
           _loadCourseDates(db, io, debugOn)
         })
@@ -250,7 +277,7 @@ module.exports = {
 
     if (debugOn) { console.log('deleteCourseDate', data) }
 
-    db.coursesCollection.deleteOne({id: data.id}, function(err, res) {
+    db.courseDatesCollection.deleteOne({id: data.id}, function(err, res) {
       if (err) throw err
       _loadCourseDates(db, io, debugOn)
     })
@@ -259,6 +286,49 @@ module.exports = {
   loadCourseDates: function(db, io, data, debugOn) {
 
     _loadCourseDates(db, io, debugOn)
+  },
+
+  createFaq: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('createFaq', data) }
+
+    data = _createFaq(data)
+    db.faqsCollection.insertOne(data, function(err, res) {
+      if (err) throw err
+      io.emit('faqCreated', data)
+      _loadFaqs(db, io, debugOn)
+    })
+  },
+
+  updateFaq: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('updateFaq', data) }
+
+    db.faqsCollection.findOne({id: data.id}, function(err, res) {
+      if (err) throw err
+      if (res) {
+        data = _createFaq(data)
+        db.faqsCollection.updateOne({'_id': res._id}, {$set: data}, function(err, res) {
+          if (err) throw err
+          _loadFaqs(db, io, debugOn)
+        })
+      }
+    })
+  },
+
+  deleteFaq: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('deleteFaq', data) }
+
+    db.faqsCollection.deleteOne({id: data.id}, function(err, res) {
+      if (err) throw err
+      _loadFaqs(db, io, debugOn)
+    })
+  },
+
+  loadFaqs: function(db, io, data, debugOn) {
+
+    _loadFaqs(db, io, debugOn)
   },
 
   login: function(db, io, data, debugOn) {
@@ -308,6 +378,18 @@ module.exports = {
         })
       }
     })
-  }
+  },
+
+  loadNextCourse: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('loadNextCourse', data) }
+
+    db.courseDatesCollection.findOne({}, function(err, res) {
+      if (err) throw err
+      if (res) {
+        io.emit('loadNextCourse', res)
+      }
+    })
+  },
 
 }

@@ -93,7 +93,6 @@
               <i v-if="!user.siteAdmin" class="fas fa-times" />
             </span>
             <input v-if="editing == user.userName" id="editing-siteadmin" type="checkbox" :checked="user.siteAdmin">
-
           </td>
           <td>
             <i class="far fa-edit" :title="'Edit ' + user.userName" @click="editUser(user)" />

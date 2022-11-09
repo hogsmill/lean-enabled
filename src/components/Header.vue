@@ -24,6 +24,9 @@
         <li :class="{'active': tab == 'about'}" @click="setUrl('about')">
           About
         </li>
+        <li :class="{'active': tab == 'faqs'}" @click="setUrl('faqs')">
+          FAQs
+        </li>
         <li :class="{'active': tab == 'contact'}" @click="show('contact')">
           Contact
         </li>

@@ -58,7 +58,7 @@
           </td>
           <td>
             <span v-if="editing != email.email">
-              {{ email.name}}
+              {{ email.name }}
             </span>
             <input v-if="editing == email.email" id="editing-name" type="text" :value="email.name">
           </td>

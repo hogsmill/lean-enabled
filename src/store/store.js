@@ -19,6 +19,7 @@ export const store = createStore({
     users: [],
     emails: [],
     courseDates: [],
+    faqs: [],
     courses: [
       {
         name: 'Improvement Technician',
@@ -96,7 +97,10 @@ export const store = createStore({
       return state.emails
     },
     getCourseDates: (state) => {
-      return state.courses
+      return state.courseDates
+    },
+    getFaqs: (state) => {
+      return state.faqs
     },
     getCourses: (state) => {
       return state.courses
@@ -139,6 +143,9 @@ export const store = createStore({
     },
     updateCourseDates: (state, payload) => {
       state.courseDates = payload
+    },
+    updateFaqs: (state, payload) => {
+      state.faqs = payload
     }
   },
   actions: {
@@ -170,7 +177,10 @@ export const store = createStore({
       commit('updateEmails', payload)
     },
     updateCourseDates: ({ commit }, payload) => {
-      commit('updateCourses', payload)
+      commit('updateCourseDates', payload)
+    },
+    updateFaqs: ({ commit }, payload) => {
+      commit('updateFaqs', payload)
     }
   }
 })

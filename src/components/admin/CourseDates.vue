@@ -94,12 +94,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(course, index) in courses" :key="index">
+        <tr v-for="(courseDate, index) in courseDates" :key="index">
           <td>
-            <span v-if="editing.id != course.id">
-              {{ course.day }}/{{ course.month }}/{{ course.year }}
+            <span v-if="editing.id != courseDate.id">
+              {{ courseDate.day }}/{{ courseDate.month }}/{{ courseDate.year }}
             </span>
-            <select v-if="editing.id == course.id" id="editing-day" :value="editing.day">
+            <select v-if="editing.id == courseDate.id" id="editing-day" :value="editing.day">
               <option value="">
                 -- DD --
               </option>
@@ -107,7 +107,7 @@
                 {{ day }}
               </option>
             </select>
-            <select v-if="editing.id == course.id" id="editing-month" :value="editing.month">
+            <select v-if="editing.id == courseDate.id" id="editing-month" :value="editing.month">
               <option value="">
                 -- MM --
               </option>
@@ -115,7 +115,7 @@
                 {{ month }}
               </option>
             </select>
-            <select v-if="editing.id == course.id" id="editing-year" :value="editing.year">
+            <select v-if="editing.id == courseDate.id" id="editing-year" :value="editing.year">
               <option value="">
                 -- YY --
               </option>
@@ -125,10 +125,10 @@
             </select>
           </td>
           <td>
-            <span v-if="editing.id != course.id">
-              {{ course.level}}
+            <span v-if="editing.id != courseDate.id">
+              {{ courseDate.level }}
             </span>
-            <select v-if="editing.id == course.id" id="editing-level" :value="editing.level">
+            <select v-if="editing.id == courseDate.id" id="editing-level" :value="editing.level">
               <option>
                 -- Select --
               </option>
@@ -144,15 +144,15 @@
             </select>
           </td>
           <td>
-            <span v-if="editing.id != course.id">
-              {{ course.description }}
+            <span v-if="editing.id != courseDate.id">
+              {{ courseDate.description }}
             </span>
-            <input v-if="editing.id == course.id" id="editing-description" type="text" :value="course.description">
+            <input v-if="editing.id == courseDate.id" id="editing-description" type="text" :value="courseDate.description">
           </td>
           <td>
-            <i class="far fa-edit" title="Edit" @click="editCourse(course)" />
-            <i class="far fa-save" title="Save" :class="{'disabled': editing.id != course.id}" @click="saveCourse(course)" />
-            <i class="far fa-trash-alt" title="Delete" @click="deleteCourse(course)" />
+            <i class="far fa-edit" title="Edit" @click="editCourse(courseDate)" />
+            <i class="far fa-save" title="Save" :class="{'disabled': editing.id != courseDate.id}" @click="saveCourse(courseDate)" />
+            <i class="far fa-trash-alt" title="Delete" @click="deleteCourse(courseDate)" />
           </td>
         </tr>
       </tbody>
@@ -170,8 +170,8 @@ export default {
     }
   },
   computed: {
-    courses() {
-      return this.$store.getters.getCourses
+    courseDates() {
+      return this.$store.getters.getCourseDates
     }
   },
   created() {
@@ -193,8 +193,8 @@ export default {
       }
       bus.emit('sendCreateCourseDate', data)
     },
-    editCourse(course) {
-      this.editing = course
+    editCourse(courseDate) {
+      this.editing = courseDate
     },
     saveCourse() {
       const data = {
@@ -208,8 +208,8 @@ export default {
       bus.emit('sendUpdateCourseDate', data)
       this.editing = {}
     },
-    deleteCourse(course) {
-      bus.emit('sendDeleteCourseDate', {id: course.id})
+    deleteCourse(courseDate) {
+      bus.emit('sendDeleteCourseDate', {id: courseDate.id})
     }
   }
 }

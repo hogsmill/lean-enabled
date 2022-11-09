@@ -1,6 +1,9 @@
 <template>
   <div class="next-course">
-    Next course date here
+    Next course:
+    {{ course.day }}/{{ course.month }}/{{ course.year }}
+    - level {{ course.level }}.
+    <span class="contact" @click="contact()">Contact Us</span> for details
   </div>
 </template>
 
@@ -10,32 +13,37 @@ import bus from '../socket.js'
 export default {
   data() {
     return {
-      popular1: null,
-      popular2: null,
-      popular3: null,
+      course: {}
     }
   },
   created() {
-    bus.emit('sendLoadGames')
+    bus.emit('sendLoadNextCourse')
 
-    bus.on('loadGames', (data) => {
-      this.popular1 = data.find((g) => {
-        return g.popular == 1
-      })
-      this.popular2 = data.find((g) => {
-        return g.popular == 2
-      })
-      this.popular3 = data.find((g) => {
-        return g.popular == 3
-      })
+    bus.on('loadNextCourse', (data) => {
+      this.course = data
     })
   },
+  methods: {
+    contact() {
+      this.$store.dispatch('showModal', 'contact')
+    }
+  }
 }
 </script>
 
 
 <style lang="scss">
   .next-course {
-    
+    font-size: 24px;
+
+    .contact {
+      color: #204893;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
   }
 </style>

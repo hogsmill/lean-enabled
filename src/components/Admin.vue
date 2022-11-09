@@ -13,14 +13,15 @@
       <div :class="{'active': tab == 'coursedates'}" @click="setTab('coursedates')">
         Course Dates
       </div>
-      <div :class="{'active': tab == 'other'}" @click="setTab('other')">
-        Other
+      <div :class="{'active': tab == 'faqs'}" @click="setTab('faqs')">
+        FAQs
       </div>
     </div>
     <div class="details">
       <Users v-if="tab == 'users'" />
       <Emails v-if="tab == 'emails'" />
       <CourseDates v-if="tab == 'coursedates'" />
+      <Faqs v-if="tab == 'faqs'" />
     </div>
   </div>
 </template>
@@ -31,12 +32,14 @@ import bus from '../socket.js'
 import Users from './admin/Users.vue'
 import Emails from './admin/Emails.vue'
 import CourseDates from './admin/CourseDates.vue'
+import Faqs from './admin/FAQs.vue'
 
 export default {
   components: {
     Users,
     Emails,
-    CourseDates
+    CourseDates,
+    Faqs
   },
   data() {
     return {

@@ -10,7 +10,8 @@ const port = 4850
 const logFile = prod ? process.argv[4] : 'server.log'
 const usersCollection = 'leanEnabledUsers'
 const emailsCollection = 'leanEnabledEmails'
-const coursesCollection = 'leanEnabledCourses'
+const courseDatesCollection = 'leanEnabledCourseDates'
+const faqsCollection = 'leanEnabledFaqs'
 const contentCollection = 'leanEnabledContent'
 
 ON_DEATH(function(signal, err) {
@@ -86,12 +87,14 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
 
   db.createCollection(usersCollection, function(error, usersCollection) {})
   db.createCollection(emailsCollection, function(error, emailsCollection) {})
-  db.createCollection(coursesCollection, function(error, coursesCollection) {})
+  db.createCollection(courseDatesCollection, function(error, courseDatesCollection) {})
+  db.createCollection(faqsCollection, function(error, faqsCollection) {})
   db.createCollection(contentCollection, function(error, contentCollection) {})
 
   db.usersCollection = db.collection(usersCollection)
   db.emailsCollection = db.collection(emailsCollection)
-  db.coursesCollection = db.collection(coursesCollection)
+  db.courseDatesCollection = db.collection(courseDatesCollection)
+  db.faqsCollection = db.collection(faqsCollection)
   db.contentCollection = db.collection(contentCollection)
 
   sitemap.createSiteMap(db, debugOn)
@@ -119,6 +122,8 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendCheckLogin', (data) => { dbStore.checkLogin(db, io, data, debugOn) })
 
     socket.on('sendLogout', (data) => { dbStore.logout(db, io, data, debugOn) })
+
+    socket.on('sendLoadNextCourse', () => { dbStore.loadNextCourse(db, io, debugOn) })
 
     // Admin
 
@@ -153,6 +158,16 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendDeleteCourseDate', (data) => { dbStore.deleteCourseDate(db, io, data, debugOn) })
 
     socket.on('sendLoadCourseDates', () => { dbStore.loadCourseDates(db, io, debugOn) })
+
+    // Faqs
+
+    socket.on('sendCreateFaq', (data) => { dbStore.createFaq(db, io, data, debugOn) })
+
+    socket.on('sendUpdateFaq', (data) => { dbStore.updateFaq(db, io, data, debugOn) })
+
+    socket.on('sendDeleteFaq', (data) => { dbStore.deleteFaq(db, io, data, debugOn) })
+
+    socket.on('sendLoadFaqs', () => { dbStore.loadFaqs(db, io, debugOn) })
   })
 })
 

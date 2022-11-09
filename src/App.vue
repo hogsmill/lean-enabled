@@ -7,6 +7,7 @@
       <Managers v-if="tab == 'managers'" />
       <Apprentices v-if="tab == 'apprentices'" />
       <About v-if="tab == 'about'" />
+      <Faqs v-if="tab == 'faqs'" />
 
       <Admin v-if="tab == 'admin'" />
 
@@ -30,6 +31,7 @@ import Leaders from './components/Leaders.vue'
 import Managers from './components/Managers.vue'
 import Apprentices from './components/Apprentices.vue'
 import About from './components/About.vue'
+import Faqs from './components/FAQs.vue'
 import Admin from './components/Admin.vue'
 
 /*
@@ -50,6 +52,7 @@ export default {
     Managers,
     Apprentices,
     About,
+    Faqs,
     Admin,
     /*
     SiteAdmin,
