@@ -2,7 +2,7 @@
   <div>
     <Header />
     <div class="content">
-      <NextCourse v-if="tab != 'transformation'" />
+      <NextCourse v-if="showNextCourse()" />
       <Leaders v-if="tab == 'transformation'" />
       <Managers v-if="tab == 'managers'" />
       <Apprentices v-if="tab == 'apprentices'" />
@@ -83,6 +83,11 @@ export default {
     this.$store.dispatch('updateMobile', window.outerWidth < 768)
 
     bus.emit('sendCreateAdminUser')
+  },
+  methods: {
+    showNextCourse() {
+      return this.tab == 'managers' || this.tab == 'apprentices'
+    }
   }
 }
 </script>
