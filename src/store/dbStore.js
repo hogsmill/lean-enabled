@@ -383,10 +383,25 @@ module.exports = {
 
     if (debugOn) { console.log('loadNextCourse', data) }
 
-    db.courseDatesCollection.findOne({}, function(err, res) {
+    db.courseDatesCollection.find().toArray(function(err, res) {
       if (err) throw err
       if (res) {
-        io.emit('loadNextCourse', res)
+        res = res.sort((a, b) => {
+          a = new Date(a.year, a.month - 1, a.day)
+          b = new Date(b.year, b.month - 1, b.day)
+          return a - b
+        })
+        let now = new Date()
+        let course = {}
+        let found = false
+        for (let i = 0; i < res.length; i++) {
+          const d = new Date(res[i].year, res[i].month - 1, res[i].day)
+          if (!found && now - d <= 0) {
+            course = res[i]
+            found = true
+          }
+        }
+        io.emit('loadNextCourse', course)
       }
     })
   },

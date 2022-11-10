@@ -127,7 +127,11 @@ export const store = createStore({
       return state.emails
     },
     getCourseDates: (state) => {
-      return state.courseDates
+      return state.courseDates.sort((a, b) => {
+        a = new Date(a.year, a.month - 1, a.day)
+        b = new Date(b.year, b.month - 1, b.day)
+        return a - b
+      })
     },
     getFaqs: (state) => {
       return state.faqs
