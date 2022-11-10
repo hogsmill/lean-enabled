@@ -36,8 +36,7 @@ function _createCourseDate(data) {
     day: '',
     month: '',
     year: '',
-    level: '',
-    description: ''
+    courseId: ''
   }
   const keys = Object.keys(data)
   for (let i = 0; i < keys.length; i++) {

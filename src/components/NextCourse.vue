@@ -1,9 +1,10 @@
 <template>
   <div class="next-course">
     Next course:
-    {{ course.day }}/{{ course.month }}/{{ course.year }}
-    - level {{ course.level }}.
-    <span class="contact" @click="contact()">Contact Us</span> for details
+    {{ courseDate.day }}/{{ courseDate.month }}/{{ courseDate.year }}
+    - <span class="course-description" @click="courseDescription()">{{ course.name }}</span>
+    (level {{ course.level }})
+    - <span class="contact" @click="contact()">Contact Us</span> for details
   </div>
 </template>
 
@@ -13,28 +14,48 @@ import bus from '../socket.js'
 export default {
   data() {
     return {
-      course: {}
+      course: {},
+      courseDate: {}
+    }
+  },
+  computed: {
+    courses() {
+      return this.$store.getters.getCourses
     }
   },
   created() {
     bus.emit('sendLoadNextCourse')
 
     bus.on('loadNextCourse', (data) => {
-      this.course = data
+      this.courseDate = data
+      this.course = this.courses.find((c) => {
+        return c.id = data.courseId
+      })
     })
   },
   methods: {
     contact() {
       this.$store.dispatch('showModal', 'contact')
+    },
+    courseDescription(course) {
+      this.$store.dispatch('updateCurrentCourseDate', this.courseDate)
+      this.$store.dispatch('updateCurrentCourse', this.course)
+      this.$store.dispatch('updateTab', 'course')
     }
   }
 }
 </script>
 
-
 <style lang="scss">
   .next-course {
     font-size: 24px;
+
+    .course-description {
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
 
     .contact {
       color: #204893;

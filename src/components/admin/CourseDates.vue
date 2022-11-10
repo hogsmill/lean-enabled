@@ -10,10 +10,7 @@
             Date
           </th>
           <th>
-            Level
-          </th>
-          <th>
-            Description
+            Course
           </th>
           <th />
         </tr>
@@ -47,23 +44,14 @@
             </select>
           </td>
           <td>
-            <select id="new-level">
+            <select id="new-description">
               <option>
                 -- Select --
               </option>
-              <option>
-                4
-              </option>
-              <option>
-                5
-              </option>
-              <option>
-                6
+              <option v-for="(course, cind) in courses" :key="cind" :value="course.id">
+                {{ courseDescription(course.id) }}
               </option>
             </select>
-          </td>
-          <td>
-            <input id="new-description" type="text">
           </td>
           <td>
             <button class="btn btn-sm btn-secondary smaller-font" @click="addCourse()">
@@ -83,10 +71,7 @@
             Date
           </th>
           <th>
-            Level
-          </th>
-          <th>
-            Description
+            Course
           </th>
           <th>
             Actions
@@ -126,28 +111,16 @@
           </td>
           <td>
             <span v-if="editing.id != courseDate.id">
-              {{ courseDate.level }}
+              {{ courseDescription(courseDate.courseId) }}
             </span>
-            <select v-if="editing.id == courseDate.id" id="editing-level" :value="editing.level">
+            <select v-if="editing.id == courseDate.id" id="editing-description" :value="courseDate.courseId">
               <option>
                 -- Select --
               </option>
-              <option>
-                4
-              </option>
-              <option>
-                5
-              </option>
-              <option>
-                6
+              <option v-for="(course, cindex) in courses" :key="cindex" :value="course.id">
+                {{ courseDescription(course.id) }}
               </option>
             </select>
-          </td>
-          <td>
-            <span v-if="editing.id != courseDate.id">
-              {{ courseDate.description }}
-            </span>
-            <input v-if="editing.id == courseDate.id" id="editing-description" type="text" :value="courseDate.description">
           </td>
           <td>
             <i class="far fa-edit" title="Edit" @click="editCourse(courseDate)" />
@@ -170,6 +143,9 @@ export default {
     }
   },
   computed: {
+    courses() {
+      return this.$store.getters.getCourses
+    },
     courseDates() {
       return this.$store.getters.getCourseDates
     }
@@ -183,13 +159,18 @@ export default {
     })
   },
   methods: {
+    courseDescription(id) {
+      const course = this.courses.find((c) => {
+        return c.id == id
+      })
+      return course.name + ' (level ' + course.level + ')'
+    },
     addCourse() {
       const data = {
         day: document.getElementById('new-day').value,
         month: document.getElementById('new-month').value,
         year: document.getElementById('new-year').value,
-        level: document.getElementById('new-level').value,
-        description: document.getElementById('new-description').value
+        courseId: document.getElementById('new-description').value
       }
       bus.emit('sendCreateCourseDate', data)
     },
@@ -202,8 +183,7 @@ export default {
         day: document.getElementById('editing-day').value,
         month: document.getElementById('editing-month').value,
         year: document.getElementById('editing-year').value,
-        level: document.getElementById('editing-level').value,
-        description: document.getElementById('editing-description').value
+        courseId: document.getElementById('editing-description').value
       }
       bus.emit('sendUpdateCourseDate', data)
       this.editing = {}
@@ -216,4 +196,7 @@ export default {
 </script>
 
 <style lang="scss">
+select {
+  margin: 2px;
+}
 </style>

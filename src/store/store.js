@@ -22,6 +22,7 @@ export const store = createStore({
     faqs: [],
     courses: [
       {
+        id: 1,
         name: 'Improvement Technician',
         logo: 'technician',
         type: 'Standard',
@@ -30,6 +31,7 @@ export const store = createStore({
         belt: 'yellow'
       },
       {
+        id: 2,
         name: 'Improvement Practitioner',
         logo: 'practitioner',
         type: 'Standard',
@@ -38,6 +40,7 @@ export const store = createStore({
         belt: 'green'
       },
       {
+        id: 3,
         name: 'Improvement Coach (Specialist)',
         logo: 'coach',
         type: 'Standard',
@@ -46,6 +49,7 @@ export const store = createStore({
         belt: 'black'
       },
       {
+        id: 4,
         name: 'Improvement Leader',
         logo: 'leader',
         type: 'Standard',
@@ -76,9 +80,10 @@ export const store = createStore({
           'Proven track record of developing and implementing a fully engaging culture change that links executive boards to front line workforce and creates a successful improvement culture. Winner of HSJ Patient Safety Awards 2018 for Education & Training'
         ],
         endorsements: 'nick-endorsements'
-      },
-
-    ]
+      }
+    ],
+    currentCourse: {},
+    currentCourseDate: {}
   },
   getters: {
     getSite: (state) => {
@@ -132,6 +137,12 @@ export const store = createStore({
     },
     getPeople: (state) => {
       return state.people
+    },
+    getCurrentCourse: (state) => {
+      return state.currentCourse
+    },
+    getCurrentCourseDate: (state) => {
+      return state.currentCourseDate
     }
   },
   mutations: {
@@ -174,6 +185,12 @@ export const store = createStore({
     },
     updateFaqs: (state, payload) => {
       state.faqs = payload
+    },
+    updateCurrentCourse: (state, payload) => {
+      state.currentCourse = payload
+    },
+    updateCurrentCourseDate: (state, payload) => {
+      state.currentCourseDate = payload
     }
   },
   actions: {
@@ -209,6 +226,12 @@ export const store = createStore({
     },
     updateFaqs: ({ commit }, payload) => {
       commit('updateFaqs', payload)
+    },
+    updateCurrentCourse: ({ commit }, payload) => {
+      commit('updateCurrentCourse', payload)
+    },
+    updateCurrentCourseDate: ({ commit }, payload) => {
+      commit('updateCurrentCourseDate', payload)
     }
   }
 })
