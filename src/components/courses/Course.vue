@@ -1,6 +1,6 @@
 <template>
   <div class="course" :class="course.belt">
-    <div class="logo" :class="course.logo" />
+    <div class="logo" :class="course.logo" @click="courseDescription()" />
     <h3>
       {{ course.name }}
     </h3>
@@ -16,15 +16,28 @@
     <p class="belt">
       {{ course.belt }} belt
     </p>
+    <p v-if="detail">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+      dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+      mollit anim id est laborum.
+    </p>
   </div>
 </template>
 
 <script>
 export default {
   props: [
-    'course'
+    'course',
+    'detail'
   ],
   methods: {
+    courseDescription(course) {
+      this.$store.dispatch('updateCurrentCourse', this.course)
+      this.$store.dispatch('updateTab', 'course')
+    }
   }
 }
 </script>
@@ -38,7 +51,7 @@ export default {
   h3 {
     height: 60px;
   }
-  
+
   h3, p {
     color: #fff;
   }
@@ -70,6 +83,10 @@ export default {
     width: 50px;
     background-size: cover;
     background-repeat: no-repeat;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     &.technician {
       background-image: url("../../assets/img/technician.webp");

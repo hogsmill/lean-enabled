@@ -6,7 +6,7 @@
     <h3 v-if="courseDate.day">
       Course Date: {{ courseDate.day }}/{{ courseDate.month }}/{{ courseDate.year }}
     </h3>
-    <Course :course="course" />
+    <Course :course="course" :detail="true" />
     <h3 class="contact" @click="contact()">
       Contact Us for details
     </h3>
@@ -19,6 +19,9 @@
 import Course from './courses/Course.vue'
 
 export default {
+  props: [
+    'detail'
+  ],
   components: {
     Course
   },
