@@ -1,14 +1,23 @@
 <template>
-  <div>
+  <div class="course-page">
     <h2>
       Course Description
     </h2>
     <h3 v-if="courseDate.day">
       Course Date: {{ courseDate.day }}/{{ courseDate.month }}/{{ courseDate.year }}
     </h3>
-    <Course :course="course" :detail="true" />
+    <div class="container-fluid text-center">
+      <div class="row slideanim">
+        <div class="col-sm-3">
+          <Course :course="course" />
+        </div>
+        <div class="col-sm-9">
+          <CourseDetail :course="course" />
+        </div>
+      </div>
+    </div>
     <h3 class="contact" @click="contact()">
-      Contact Us for details
+      <span>Contact Us</span> for details
     </h3>
   </div>
 </template>
@@ -17,13 +26,12 @@
 //import bus from '../socket.js'
 
 import Course from './courses/Course.vue'
+import CourseDetail from './courses/CourseDetail.vue'
 
 export default {
-  props: [
-    'detail'
-  ],
   components: {
-    Course
+    Course,
+    CourseDetail
   },
   computed: {
     course() {
@@ -40,3 +48,19 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.course-page {
+
+  h3 {
+    span {
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+}
+</style>

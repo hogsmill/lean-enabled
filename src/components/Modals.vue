@@ -1,17 +1,20 @@
 <template>
   <div>
     <Contact v-if="modals['contact']" />
+    <Contact-Person v-if="modals['contact-person']" />
     <Login v-if="modals['login']" />
   </div>
 </template>
 
 <script>
 import Contact from './modals/Contact.vue'
+import ContactPerson from './modals/ContactPerson.vue'
 import Login from './modals/Login.vue'
 
 export default {
   components: {
     Contact,
+    ContactPerson,
     Login
   },
   computed: {

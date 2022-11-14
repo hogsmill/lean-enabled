@@ -35,6 +35,25 @@
           </video>
         </div>
       </div>
+      <div class="row slideanim services">
+        <h2>
+          Our Services
+        </h2>
+      </div>
+      <div class="row slideanim services">
+        <div v-for="(service, index) in services" :key="index" class="col-sm-2 service-container">
+          <div class="service">
+            <h3>
+              {{ service.name }}
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+      </div>
       <div class="row slideanim white">
         <h1>
           Full Width Content
@@ -56,31 +75,6 @@
           mollit anim id est laborum.
         </p>
       </div>
-      <div class="row slideanim">
-        <h2>
-          Improvement
-        </h2>
-        <div class="col-sm-3">
-          <div class="course yellow">
-            Level 3
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="course yellow">
-            Level 4
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="course yellow">
-            Level 5
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="course yellow">
-            Level 6
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -90,6 +84,9 @@ import bus from '../socket.js'
 
 export default {
   computed: {
+    services() {
+      return this.$store.getters.getServices
+    }
   },
   methods: {
   }
@@ -120,12 +117,50 @@ export default {
 
   .white {
     background-color: #fff;
+    margin-top: 24px;
   }
 
   h4 {
     &:hover {
       color: #337ab7;
       text-decoration: underline;
+    }
+  }
+
+  h2 {
+    background-color: #fff;
+    opacity: 0.8;
+  }
+
+  .services {
+    display: flex;
+    align-items: stretch;
+    background-color: #fff;
+    opacity: 0.8;
+
+    h2 {
+      margin: 12px auto;
+    }
+
+    .service-container {
+      display: flex;
+      align-items: stretch;
+
+      .service {
+
+        h3 {
+          background-color: #204893;
+          height: 86px;
+          margin-bottom: 0;
+          color: #fff;
+          padding: 3px;
+        }
+
+        p {
+          background-color: #204893;
+          color: #fff;
+        }
+      }
     }
   }
 }

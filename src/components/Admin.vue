@@ -10,6 +10,12 @@
       <div :class="{'active': tab == 'emails'}" @click="setTab('emails')">
         Emails
       </div>
+      <div :class="{'active': tab == 'services'}" @click="setTab('services')">
+        Services
+      </div>
+      <div :class="{'active': tab == 'courses'}" @click="setTab('courses')">
+        Courses
+      </div>
       <div :class="{'active': tab == 'coursedates'}" @click="setTab('coursedates')">
         Course Dates
       </div>
@@ -23,6 +29,8 @@
     <div class="details">
       <Users v-if="tab == 'users'" />
       <Emails v-if="tab == 'emails'" />
+      <Services v-if="tab == 'services'" />
+      <Courses v-if="tab == 'courses'" />
       <CourseDates v-if="tab == 'coursedates'" />
       <Faqs v-if="tab == 'faqs'" />
       <People v-if="tab == 'people'" />
@@ -35,6 +43,8 @@ import bus from '../socket.js'
 
 import Users from './admin/Users.vue'
 import Emails from './admin/Emails.vue'
+import Services from './admin/Services.vue'
+import Courses from './admin/Courses.vue'
 import CourseDates from './admin/CourseDates.vue'
 import Faqs from './admin/FAQs.vue'
 import People from './admin/People.vue'
@@ -43,6 +53,8 @@ export default {
   components: {
     Users,
     Emails,
+    Services,
+    Courses,
     CourseDates,
     Faqs,
     People
@@ -74,7 +86,7 @@ export default {
 
 <style lang="scss">
 .admin {
-  max-width: 850px;
+  max-width: 1200px;
   margin: 100px auto;
 
   h2 {

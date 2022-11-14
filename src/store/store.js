@@ -5,6 +5,8 @@ export const store = createStore({
   state: {
     modals: {
       contact: false,
+      'contact-person': false,
+      login: false
     },
     site: 'lean-enabled.co.uk',
     session: null,
@@ -20,6 +22,26 @@ export const store = createStore({
     emails: [],
     courseDates: [],
     faqs: [],
+    services: [
+      {
+        name: 'Face to Face and Online Training'
+      },
+      {
+        name: '1:1 and Group Coaching'
+      },
+      {
+        name: 'NHS Case Studies'
+      },
+      {
+        name: 'NHS themed Simulations'
+      },
+      {
+        name: 'Group Problem Solving'
+      },
+      {
+        name: 'Guest Speakers'
+      }
+    ],
     courses: [
       {
         id: 1,
@@ -63,6 +85,7 @@ export const store = createStore({
         name: 'Anil Matthew',
         role: 'Chief Exec Officer',
         pic: 'anil-pic',
+        email: '',
         text: [
           'Professional, Chartered Engineer',
           'Lean Six-Sigma Master Black Belt, programmes with 100 companies globally. With over 25 years Lean experience in FMCG, Pharmaceutical, Consumer Healthcare Industries driving Change, structured Problem Solving & Engineering solutions inc. the business improvement turnaround of "failing" NHS Trust (CQC Rating – GOOD)',
@@ -74,6 +97,7 @@ export const store = createStore({
         name: 'Nick Chambers',
         role: 'Chief Operating Officer',
         pic: 'nick-pic',
+        email: '',
         text: [
           'With over 15 years Lean transformation experience in FMCG, Pharmaceutical and Healthcare industry, Nick has implemented significant programmes in driving change, structured problem solving & organisational strategy.',
           'Managed whole organisation improvement Initiatives including coaching, mentored & delivery of lean management systems across entire NHS trusts.',
@@ -82,8 +106,10 @@ export const store = createStore({
         endorsements: 'nick-endorsements'
       }
     ],
+    mission: 'To provide the skills for apprenticeship learners or NHS staff to feel empowered, equipped and confident to drive and manage, measurable and sustainable change in their area of work.',
     currentCourse: {},
-    currentCourseDate: {}
+    currentCourseDate: {},
+    currentPerson: {}
   },
   getters: {
     getSite: (state) => {
@@ -139,14 +165,23 @@ export const store = createStore({
     getCourses: (state) => {
       return state.courses
     },
+    getMission: (state) => {
+      return state.mission
+    },
     getPeople: (state) => {
       return state.people
+    },
+    getServices: (state) => {
+      return state.services
     },
     getCurrentCourse: (state) => {
       return state.currentCourse
     },
     getCurrentCourseDate: (state) => {
       return state.currentCourseDate
+    },
+    getCurrentPerson: (state) => {
+      return state.currentPerson
     }
   },
   mutations: {
@@ -195,6 +230,9 @@ export const store = createStore({
     },
     updateCurrentCourseDate: (state, payload) => {
       state.currentCourseDate = payload
+    },
+    updateCurrentPerson: (state, payload) => {
+      state.currentPerson = payload
     }
   },
   actions: {
@@ -236,6 +274,9 @@ export const store = createStore({
     },
     updateCurrentCourseDate: ({ commit }, payload) => {
       commit('updateCurrentCourseDate', payload)
+    },
+    updateCurrentPerson: ({ commit }, payload) => {
+      commit('updateCurrentPerson', payload)
     }
   }
 })

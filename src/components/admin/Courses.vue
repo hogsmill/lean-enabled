@@ -1,5 +1,5 @@
 <template>
   <div>
-    People editing - TBD
+    Course editing - TBD
   </div>
 </template>
