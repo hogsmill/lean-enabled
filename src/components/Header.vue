@@ -10,10 +10,7 @@
           Admin
         </li>
         <li :class="{'active': tab == 'transformation'}" @click="setTab('transformation')">
-          Leaders
-        </li>
-        <li :class="{'active': tab == 'managers'}" @click="setTab('managers')">
-          Managers
+          Transformation
         </li>
         <li :class="{'active': tab == 'apprentices'}" @click="setUrl('apprentices')">
           Apprentices
@@ -209,6 +206,7 @@ export default {
       this.hide()
     },
     logout() {
+      localStorage.removeItem('session-lean-enabled')
       bus.emit('sendLogout', {session: this.session})
     }
   },
@@ -253,6 +251,7 @@ export default {
           list-style-type: none;
           padding: 15px 13px;
           color: #204893 !important;
+          font-size: x-large;
 
           &.login, &.logout {
             padding: 7px 7px 14px 7px;

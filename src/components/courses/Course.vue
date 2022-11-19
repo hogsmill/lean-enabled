@@ -5,7 +5,7 @@
       {{ course.name }}
     </h3>
     <p>
-      {{ course.type }}
+      {{ course.courseType }}
     </p>
     <p>
       Level {{ course.level }}

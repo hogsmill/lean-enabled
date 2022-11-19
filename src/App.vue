@@ -3,12 +3,12 @@
     <Header />
     <div class="content">
       <NextCourse v-if="showNextCourse()" />
-      <Leaders v-if="tab == 'transformation'" />
-      <Managers v-if="tab == 'managers'" />
+      <Transformation v-if="tab == 'transformation'" />
       <Apprentices v-if="tab == 'apprentices'" />
       <Course v-if="tab == 'course'" />
       <About v-if="tab == 'about'" />
       <Faqs v-if="tab == 'faqs'" />
+      <CaseStudy v-if="tab == 'case-study'" />
       <Admin v-if="tab == 'admin'" />
       <TandCs v-if="tab == 'tandcs'" />
       <Security v-if="tab == 'security'" />
@@ -26,12 +26,12 @@ import params from './lib/params.js'
 
 import Header from './components/Header.vue'
 import NextCourse from './components/NextCourse.vue'
-import Leaders from './components/Leaders.vue'
-import Managers from './components/Managers.vue'
+import Transformation from './components/Transformation.vue'
 import Apprentices from './components/Apprentices.vue'
 import Course from './components/Course.vue'
 import About from './components/About.vue'
 import Faqs from './components/FAQs.vue'
+import CaseStudy from './components/CaseStudy.vue'
 import Admin from './components/Admin.vue'
 import TandCs from './components/footer/TandCs.vue'
 import Security from './components/footer/Security.vue'
@@ -43,16 +43,13 @@ export default {
   components: {
     Header,
     NextCourse,
-    Leaders,
-    Managers,
+    Transformation,
     Apprentices,
     Course,
     About,
     Faqs,
+    CaseStudy,
     Admin,
-    /*
-    SiteAdmin,
-    */
     TandCs,
     Security,
     Modals,
@@ -127,5 +124,13 @@ b, strong {
 }
 .fa-rss-square {
   color: #ee802f !important;
+}
+
+.tab-link {
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline
+  }
 }
 </style>

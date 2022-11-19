@@ -1,57 +1,57 @@
 <template>
   <div class="apprentices">
     <div class="container-fluid text-center">
-      <div class="row slideanim">
-        <div v-for="(course, index) in courses" :key="index" class="col-sm-3">
-          <Course :course="course" />
-        </div>
-      </div>
+      <UserType />
+
+      <!--
+      <TrainingIntro :user-type="userType" />
+      <ServicesIntro v-if="user-type == 'manager'" />
+      <Services v-if="user-type == 'manager'" />
+      <CoursesIntro />
+      <Courses />
+      <CourseMap />
+      <TrainingDescription :user-type="userType" />
+
+      <ManagersTraining v-if="userType == 'manager'" />
+      <ApprenticesTraining v-if="userType == 'apprentice'" />
+      -->
     </div>
   </div>
 </template>
 
 <script>
-import bus from '../socket.js'
+import UserType from './UserType.vue'
 
-import Course from './courses/Course.vue'
+/*
+import ServicesIntro from './content/Services.vue'
+import Services from './content/Services.vue'
+import CoursesIntro from './content/CoursesIntro.vue'
+import Courses from './content/Courses.vue'
+
+import ManagersTraining from './training/ManagersTraining.vue'
+import ApprenticesTraining from './training/ApprenticesTraining.vue'
+*/
 
 export default {
   components: {
-    Course
+    UserType,
+    /*
+    ServicesIntro,
+    Services,
+    CoursesIntro,
+    Courses
+    
+    ManagersTraining,
+    ApprenticesTraining
+    */
   },
   computed: {
-    courses() {
-      return this.$store.getters.getCourses
+    userType() {
+      return this.$store.getters.getUserType
     }
-  },
-  methods: {
   }
 }
 </script>
 
 <style lang="scss">
-.apprentices {
-  background-image: url("../assets/img/GettyImages-855597368.jpeg");
-  background-size: cover;
-
-  .new-content {
-    background-color: #fff;
-    opacity: 0.6;
-    color: #444;
-    font-size: 48px;
-    font-weight: bold;
-    width: 600px;
-    margin: 200px auto;
-  }
-
-  h4 {
-    &:hover {
-      color: #337ab7;
-      text-decoration: underline;
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-}
 </style>

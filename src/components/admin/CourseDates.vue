@@ -74,6 +74,9 @@
             Course
           </th>
           <th>
+            Enabled?
+          </th>
+          <th>
             Actions
           </th>
         </tr>
@@ -123,6 +126,13 @@
             </select>
           </td>
           <td>
+            <span v-if="editing.id != courseDate.id">
+              <i v-if="courseDate.enabled" class="fas fa-check" />
+              <i v-if="!courseDate.enabled" class="fas fa-times" />
+            </span>
+            <input v-if="editing.id == courseDate.id" id="editing-enabled" type="checkbox" :checked="courseDate.enabled">
+          </td>
+          <td>
             <i class="far fa-edit" title="Edit" @click="editCourse(courseDate)" />
             <i class="far fa-save" title="Save" :class="{'disabled': editing.id != courseDate.id}" @click="saveCourse(courseDate)" />
             <i class="far fa-trash-alt" title="Delete" @click="deleteCourse(courseDate)" />
@@ -152,10 +162,12 @@ export default {
   },
   created() {
 
-    bus.emit('sendLoadCourseDates')
+    bus.emit('sendLoad', 'courseDate')
 
-    bus.on('loadCourseDates', (data) => {
-      this.$store.dispatch('updateCourseDates', data)
+    bus.on('load', (data) => {
+      if (data.type == 'courseDate') {
+        this.$store.dispatch('updateCourseDates', data.objects)
+      }
     })
   },
   methods: {
@@ -167,29 +179,32 @@ export default {
     },
     addCourse() {
       const data = {
+        type: 'courseDate',
         day: document.getElementById('new-day').value,
         month: document.getElementById('new-month').value,
         year: document.getElementById('new-year').value,
         courseId: document.getElementById('new-description').value
       }
-      bus.emit('sendCreateCourseDate', data)
+      bus.emit('sendCreate', data)
     },
     editCourse(courseDate) {
       this.editing = courseDate
     },
     saveCourse() {
       const data = {
+        type: 'courseDate',
         id: this.editing.id,
         day: document.getElementById('editing-day').value,
         month: document.getElementById('editing-month').value,
         year: document.getElementById('editing-year').value,
-        courseId: document.getElementById('editing-description').value
+        courseId: document.getElementById('editing-description').value,
+        enabled: document.getElementById('editing-enabled').checked
       }
-      bus.emit('sendUpdateCourseDate', data)
+      bus.emit('sendUpdate', data)
       this.editing = {}
     },
     deleteCourse(courseDate) {
-      bus.emit('sendDeleteCourseDate', {id: courseDate.id})
+      bus.emit('sendDelete', {type: 'courseDate', id: courseDate.id})
     }
   }
 }

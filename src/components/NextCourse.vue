@@ -1,5 +1,5 @@
 <template>
-  <div class="next-course">
+  <div class="next-course" v-if="courseDate.day">
     Next course:
     {{ courseDate.day }}/{{ courseDate.month }}/{{ courseDate.year }}
     - <span class="course-description" @click="courseDescription()">{{ course.name }}</span>

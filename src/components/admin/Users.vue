@@ -69,34 +69,34 @@
       <tbody>
         <tr v-for="(user, index) in users" :key="index">
           <td>
-            <span v-if="editing != user.userName">
+            <span v-if="editing.id != user.id">
               {{ user.userName }}
             </span>
-            <input v-if="editing == user.userName" id="editing-username" type="text" :value="user.userName">
+            <input v-if="editing.id == user.id" id="editing-username" type="text" :value="user.userName">
           </td>
           <td>
-            <span v-if="editing != user.userName">
+            <span v-if="editing.id != user.id">
               {{ user.passCode }}
             </span>
-            <input v-if="editing == user.userName" id="editing-passcode" type="text" :value="user.passCode">
+            <input v-if="editing.id == user.id" id="editing-passcode" type="text" :value="user.passCode">
           </td>
           <td>
-            <span v-if="editing != user.userName">
+            <span v-if="editing.id != user.id">
               <i v-if="user.admin" class="fas fa-check" />
               <i v-if="!user.admin" class="fas fa-times" />
             </span>
-            <input v-if="editing == user.userName" id="editing-admin" type="checkbox" :checked="user.admin">
+            <input v-if="editing.id == user.id" id="editing-admin" type="checkbox" :checked="user.admin">
           </td>
           <td>
-            <span v-if="editing != user.userName">
+            <span v-if="editing.id != user.id">
               <i v-if="user.siteAdmin" class="fas fa-check" />
               <i v-if="!user.siteAdmin" class="fas fa-times" />
             </span>
-            <input v-if="editing == user.userName" id="editing-siteadmin" type="checkbox" :checked="user.siteAdmin">
+            <input v-if="editing.id == user.id" id="editing-siteadmin" type="checkbox" :checked="user.siteAdmin">
           </td>
           <td>
             <i class="far fa-edit" :title="'Edit ' + user.userName" @click="editUser(user)" />
-            <i class="far fa-save" :title="'Save ' + user.userName" :class="{'disabled': editing != user.userName}" @click="saveUser(user)" />
+            <i class="far fa-save" :title="'Save ' + user.userName" :class="{'disabled': editing.id != user.id}" @click="saveUser(user)" />
             <i v-if="notAdmin(user)" class="far fa-trash-alt" :title="'Delete ' + user.userName" @click="deleteUser(user)" />
           </td>
         </tr>
@@ -124,10 +124,12 @@ export default {
   },
   created() {
 
-    bus.emit('sendLoadUsers')
+    bus.emit('sendLoad', 'user')
 
-    bus.on('loadUsers', (data) => {
-      this.$store.dispatch('updateUsers', data)
+    bus.on('load', (data) => {
+      if (data.type == 'user') {
+        this.$store.dispatch('updateUsers', data.objects)
+      }
     })
   },
   methods: {
@@ -136,29 +138,31 @@ export default {
     },
     addUser() {
       const data = {
+        type: 'user',
         userName: document.getElementById('new-username').value,
         passCode: document.getElementById('new-passcode').value,
         admin: document.getElementById('new-admin').checked,
         siteAdmin: document.getElementById('new-siteadmin').checked
       }
-      bus.emit('sendCreateUser', data)
+      bus.emit('sendCreate', data)
     },
     editUser(user) {
-      this.editing = user.userName
+      this.editing = user
     },
     saveUser() {
       const data = {
-        oldUserName: this.editing,
+        type: 'user',
+        id: this.editing.id,
         userName: document.getElementById('editing-username').value,
         passCode: document.getElementById('editing-passcode').value,
         admin: document.getElementById('editing-admin').checked,
         siteAdmin: document.getElementById('editing-siteadmin').checked
       }
-      bus.emit('sendUpdateUser', data)
+      bus.emit('sendUpdate', data)
       this.editing = ''
     },
     deleteUser(user) {
-      bus.emit('sendDeleteUser', {userName: user.userName})
+      bus.emit('sendDelete', {type: 'user', id: user.id})
     }
   }
 }

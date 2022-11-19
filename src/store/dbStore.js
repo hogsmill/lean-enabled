@@ -2,55 +2,81 @@
 const { v4: uuidv4 } = require('uuid')
 
 const passCode = require('./lib/passCode.js')
+const defaults = require('./defaults.js')
 
-function _createUser(data) {
-  const initial = {
+const _objects = {
+  user: {
     userName: '',
     passCode: '',
     admin: false,
     siteAdmin: false,
+    enabled: false
+  },
+  session: {
+    userId: '',
     session: ''
-  }
-  const keys = Object.keys(data)
-  for (let i = 0; i < keys.length; i++) {
-    initial[keys[i]] = data[keys[i]]
-  }
-  return initial
-}
-
-function _createEmail(data) {
-  const initial = {
+  },
+  mission: {
+    mission: ''
+  },
+  service: {
+    title: '',
+    description: '',
+    enabled: false
+  },
+  email: {
     email: '',
-    name: ''
-  }
-  const keys = Object.keys(data)
-  for (let i = 0; i < keys.length; i++) {
-    initial[keys[i]] = data[keys[i]]
-  }
-  return initial
-}
-
-function _createCourseDate(data) {
-  const initial = {
-    id: uuidv4(),
+    name: '',
+    enabled: false
+  },
+  course: {
+    name: '',
+    logo: '',
+    courseType: '',
+    level: '',
+    leanSixSigma: '',
+    belt: '',
+    modules: [],
+    enabled: false
+  },
+  courseDate: {
     day: '',
     month: '',
     year: '',
-    courseId: ''
-  }
-  const keys = Object.keys(data)
-  for (let i = 0; i < keys.length; i++) {
-    initial[keys[i]] = data[keys[i]]
-  }
-  return initial
-}
-
-function _createFaq(data) {
-  const initial = {
-    id: uuidv4(),
+    courseId: '',
+    enabled: false
+  },
+  faq: {
     question: '',
-    answer: ''
+    answer: '',
+    enabled: false
+  },
+  person: {
+    name: '',
+    role: '',
+    email: '',
+    pic: '',
+    endorsements: '',
+    enabled: false
+  },
+  contentConsultancy: {
+    text: []
+  },
+  contentTraining: {
+    text: []
+  },
+  contentServices: {
+    text: []
+  },
+  caseStudy: {
+    header: '',
+    text: []
   }
+}
+
+function _create(data) {
+  const initial = JSON.parse(JSON.stringify(_objects[data.type]))
+  initial.id = uuidv4()
   const keys = Object.keys(data)
   for (let i = 0; i < keys.length; i++) {
     initial[keys[i]] = data[keys[i]]
@@ -58,59 +84,42 @@ function _createFaq(data) {
   return initial
 }
 
-function _loadUsers(db, io, debugOn) {
+function _loadDefaults(db, io, type, debugOn) {
 
-  if (debugOn) { console.log('loadUsers') }
+  if (debugOn) { console.log('creating defaults for', type) }
 
-  db.usersCollection.find().toArray(function(err, res) {
-    if (err) throw err
-    let users = []
-    if (res.length) {
-      users = res
+  const objs = defaults.get(type)
+  if (objs) {
+    let objArray = []
+    for (let i = 0; i < objs.length; i++) {
+      let obj = objs[i]
+      obj.type = type
+      const fullObj = _create(obj)
+      objArray.push(fullObj)
     }
-    io.emit('loadUsers', users)
-  })
+    db.collection.insertMany(objArray, function(err, res) {
+      if (err) throw err
+      io.emit('ObjectCreated', objArray)
+      _load(db, io, type, debugOn)
+    })
+  }
 }
 
-function _loadEmails(db, io, debugOn) {
+function _load(db, io, type, debugOn) {
 
-  if (debugOn) { console.log('loadEmails') }
+  if (debugOn) { console.log('load', type) }
 
-  db.emailsCollection.find().toArray(function(err, res) {
+  db.collection.find({type: type}).toArray(function(err, res) {
     if (err) throw err
-    let emails = []
+    let objects = []
     if (res.length) {
-      emails = res
+      objects = res
     }
-    io.emit('loadEmails', emails)
-  })
-}
-
-function _loadCourseDates(db, io, debugOn) {
-
-  if (debugOn) { console.log('loadCourseDates') }
-
-  db.courseDatesCollection.find().toArray(function(err, res) {
-    if (err) throw err
-    let courses = []
-    if (res.length) {
-      courses = res
+    if (objects.length == 0) {
+      _loadDefaults(db, io, type, debugOn)
+    } else {
+      io.emit('load', {type: type, objects: objects})
     }
-    io.emit('loadCourseDates', courses)
-  })
-}
-
-function _loadFaqs(db, io, debugOn) {
-
-  if (debugOn) { console.log('loadFaqs') }
-
-  db.faqsCollection.find().toArray(function(err, res) {
-    if (err) throw err
-    let faqs = []
-    if (res.length) {
-      faqs = res
-    }
-    io.emit('loadFaqs', faqs)
   })
 }
 
@@ -120,227 +129,91 @@ function _returnLogin(io, data) {
 
 module.exports = {
 
+
+  load: function(db, io, type, debugOn) {
+
+    _load(db, io, type, debugOn)
+  },
+
+  create: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('create', data) }
+
+    data = _create(data)
+    db.collection.insertOne(data, function(err, res) {
+      if (err) throw err
+      io.emit('ObjectCreated', data)
+      _load(db, io, data.type, debugOn)
+    })
+  },
+
+  update: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('update', data) }
+
+    db.collection.findOne({type: data.type, id: data.id}, function(err, res) {
+      if (err) throw err
+      if (res) {
+        data = _create(data)
+        db.collection.updateOne({'_id': res._id}, {$set: data}, function(err, res) {
+          if (err) throw err
+          io.emit('objectCreated', data)
+          _load(db, io, data.type, debugOn)
+        })
+      }
+    })
+  },
+
+  delete: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('delete', data) }
+
+    db.collection.deleteOne({type: data.type, id: data.id}, function(err, res) {
+      if (err) throw err
+      _load(db, io, data.type, debugOn)
+    })
+  },
+
   createAdminUser: function(db, io, debugOn) {
 
     if (debugOn) { console.log('createAdminUser') }
 
-    db.usersCollection.findOne({userName: 'admin'}, function(err, res) {
+    db.collection.findOne({type: 'user', userName: 'admin'}, function(err, res) {
       if (err) throw err
       if (!res) {
-        const data = _createUser({
+        const user = _create({
+          type: 'user',
           userName: 'admin',
           passCode: '110960',
           admin: true,
           siteAdmin: true
         })
-        db.usersCollection.insertOne(data, function(err, res) {
+        db.collection.insertOne(user, function(err, ) {
           if (err) throw err
         })
       }
     })
-  },
-
-  createUser: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('createUser', data) }
-
-    db.usersCollection.findOne({userName: data.userName}, function(err, res) {
-      if (err) throw err
-      if (res) {
-        io.emit('userExists', data)
-      } else {
-        data = _createUser(data)
-        db.usersCollection.insertOne(data, function(err, res) {
-          if (err) throw err
-          io.emit('userCreated', data)
-          _loadUsers(db, io, debugOn)
-        })
-      }
-    })
-  },
-
-  updateUser: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('updateUser', data) }
-
-    db.usersCollection.findOne({userName: data.oldUserName}, function(err, res) {
-      if (err) throw err
-      if (res) {
-        delete data.oldUserName
-        data = _createUser(data)
-        db.usersCollection.updateOne({'_id': res._id}, {$set: data}, function(err, res) {
-          if (err) throw err
-          io.emit('userCreated', data)
-          _loadUsers(db, io, debugOn)
-        })
-      }
-    })
-  },
-
-  deleteUser: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('deleteUser', data) }
-
-    db.usersCollection.deleteOne({userName: data.userName}, function(err, res) {
-      if (err) throw err
-      _loadUsers(db, io, debugOn)
-    })
-  },
-
-  loadUsers: function(db, io, data, debugOn) {
-
-    _loadUsers(db, io, debugOn)
-  },
-
-  createEmail: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('createEmail', data) }
-
-    db.emailsCollection.findOne({email: data.email}, function(err, res) {
-      if (err) throw err
-      if (res) {
-        io.emit('emailExists', data)
-      } else {
-        data = _createEmail(data)
-        db.emailsCollection.insertOne(data, function(err, res) {
-          if (err) throw err
-          io.emit('emailCreated', data)
-          _loadEmails(db, io, debugOn)
-        })
-      }
-    })
-  },
-
-  updateEmail: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('updateEmail', data) }
-
-    db.emailsCollection.findOne({email: data.oldEmail}, function(err, res) {
-      if (err) throw err
-      if (res) {
-        delete data.oldEmail
-        data = _createEmail(data)
-        db.emailsCollection.updateOne({'_id': res._id}, {$set: data}, function(err, res) {
-          if (err) throw err
-          io.emit('emailCreated', data)
-          _loadEmails(db, io, debugOn)
-        })
-      }
-    })
-  },
-
-  deleteEmail: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('deleteEmail', data) }
-
-    db.emailsCollection.deleteOne({email: data.email}, function(err, res) {
-      if (err) throw err
-      _loadEmails(db, io, debugOn)
-    })
-  },
-
-  loadEmails: function(db, io, debugOn) {
-
-    _loadEmails(db, io, debugOn)
-  },
-
-  createCourseDate: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('createCourseDate', data) }
-
-    data = _createCourseDate(data)
-    db.courseDatesCollection.insertOne(data, function(err, res) {
-      if (err) throw err
-      io.emit('courseDateCreated', data)
-      _loadCourseDates(db, io, debugOn)
-    })
-  },
-
-  updateCourseDate: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('updateCourseDate', data) }
-
-    db.courseDatesCollection.findOne({id: data.id}, function(err, res) {
-      if (err) throw err
-      if (res) {
-        data = _createCourseDate(data)
-        db.courseDatesCollection.updateOne({'_id': res._id}, {$set: data}, function(err, res) {
-          if (err) throw err
-          _loadCourseDates(db, io, debugOn)
-        })
-      }
-    })
-  },
-
-  deleteCourseDate: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('deleteCourseDate', data) }
-
-    db.courseDatesCollection.deleteOne({id: data.id}, function(err, res) {
-      if (err) throw err
-      _loadCourseDates(db, io, debugOn)
-    })
-  },
-
-  loadCourseDates: function(db, io, data, debugOn) {
-
-    _loadCourseDates(db, io, debugOn)
-  },
-
-  createFaq: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('createFaq', data) }
-
-    data = _createFaq(data)
-    db.faqsCollection.insertOne(data, function(err, res) {
-      if (err) throw err
-      io.emit('faqCreated', data)
-      _loadFaqs(db, io, debugOn)
-    })
-  },
-
-  updateFaq: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('updateFaq', data) }
-
-    db.faqsCollection.findOne({id: data.id}, function(err, res) {
-      if (err) throw err
-      if (res) {
-        data = _createFaq(data)
-        db.faqsCollection.updateOne({'_id': res._id}, {$set: data}, function(err, res) {
-          if (err) throw err
-          _loadFaqs(db, io, debugOn)
-        })
-      }
-    })
-  },
-
-  deleteFaq: function(db, io, data, debugOn) {
-
-    if (debugOn) { console.log('deleteFaq', data) }
-
-    db.faqsCollection.deleteOne({id: data.id}, function(err, res) {
-      if (err) throw err
-      _loadFaqs(db, io, debugOn)
-    })
-  },
-
-  loadFaqs: function(db, io, data, debugOn) {
-
-    _loadFaqs(db, io, debugOn)
   },
 
   login: function(db, io, data, debugOn) {
 
     if (debugOn) { console.log('login', data) }
 
-    db.usersCollection.findOne({userName: data.userName}, function(err, res) {
+    db.collection.findOne({type: 'user', userName: data.userName}, function(err, res) {
       if (err) throw err
       if (res) {
         if (res.passCode == data.passCode) {
-          db.usersCollection.updateOne({'_id': res._id}, {$set: {session: data.session}}, function(err, ) {
-            res.session = data.session
-            _returnLogin(io, res)
+          const session = _create({
+            type: 'session',
+            userId: res.id,
+            session: data.session
+          })
+          db.collection.insertOne(session, function(err, ) {})
+          db.collection.findOne({type: 'user', id: session.userId}, function(err, user) {
+            session.userName = user.userName
+            session.admin = user.admin
+            session.siteAdmin = user.siteAdmin
+            _returnLogin(io, session)
           })
         } else {
           data.message = 'Incorrect password'
@@ -357,10 +230,15 @@ module.exports = {
 
     if (debugOn) { console.log('checkLogin', data) }
 
-    db.usersCollection.findOne({session: data.session}, function(err, res) {
+    db.collection.findOne({session: data.session}, function(err, res) {
       if (err) throw err
       if (res) {
-        _returnLogin(io, res)
+        db.collection.findOne({type: 'user', id: res.userId}, function(err, user) {
+          delete user._id
+          delete user.passCode
+          user.session = data.session
+          _returnLogin(io, user)
+        })
       }
     })
   },
@@ -369,10 +247,10 @@ module.exports = {
 
     if (debugOn) { console.log('logout', data) }
 
-    db.usersCollection.findOne({session: data.session}, function(err, res) {
+    db.collection.findOne({session: data.session}, function(err, res) {
       if (err) throw err
       if (res) {
-        db.usersCollection.updateOne({'_id': res._id}, {$set: {session: ''}}, function(err, res) {
+        db.collection.deleteOne({session: data.session}, function(err, res) {
           io.emit('logout', {session: data.session})
         })
       }
@@ -383,7 +261,7 @@ module.exports = {
 
     if (debugOn) { console.log('loadNextCourse', data) }
 
-    db.courseDatesCollection.find().toArray(function(err, res) {
+    db.collection.find({type: 'courseDate'}).toArray(function(err, res) {
       if (err) throw err
       if (res) {
         res = res.sort((a, b) => {

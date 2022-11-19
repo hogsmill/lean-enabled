@@ -25,6 +25,9 @@
       <div :class="{'active': tab == 'people'}" @click="setTab('people')">
         People
       </div>
+      <div :class="{'active': tab == 'content'}" @click="setTab('content')">
+        Content
+      </div>
     </div>
     <div class="details">
       <Users v-if="tab == 'users'" />
@@ -34,6 +37,7 @@
       <CourseDates v-if="tab == 'coursedates'" />
       <Faqs v-if="tab == 'faqs'" />
       <People v-if="tab == 'people'" />
+      <Content v-if="tab == 'content'" />
     </div>
   </div>
 </template>
@@ -48,6 +52,7 @@ import Courses from './admin/Courses.vue'
 import CourseDates from './admin/CourseDates.vue'
 import Faqs from './admin/FAQs.vue'
 import People from './admin/People.vue'
+import Content from './admin/Content.vue'
 
 export default {
   components: {
@@ -57,7 +62,8 @@ export default {
     Courses,
     CourseDates,
     Faqs,
-    People
+    People,
+    Content
   },
   data() {
     return {
@@ -127,6 +133,11 @@ export default {
       }
     }
   }
+
+  .edit-hint {
+    font-weight: normal;
+  }
+
   .details {
     margin: 0 24px;
 
@@ -136,7 +147,8 @@ export default {
 
       th, td {
         border: 1px solid;
-        padding: 6px;
+        padding: 3px;
+        vertical-align: top;
       }
 
       th {

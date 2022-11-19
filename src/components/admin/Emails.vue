@@ -51,16 +51,16 @@
       <tbody>
         <tr v-for="(email, index) in emails" :key="index">
           <td>
-            <span v-if="editing != email.email">
+            <span v-if="editing.id != email.id">
               {{ email.email }}
             </span>
-            <input v-if="editing == email.email" id="editing-email" type="text" :value="email.email">
+            <input v-if="editing.id == email.id" id="editing-email" type="text" :value="email.email">
           </td>
           <td>
-            <span v-if="editing != email.email">
+            <span v-if="editing.id != email.id">
               {{ email.name }}
             </span>
-            <input v-if="editing == email.email" id="editing-name" type="text" :value="email.name">
+            <input v-if="editing.id == email.id" id="editing-name" type="text" :value="email.name">
           </td>
           <td>
             <i class="far fa-edit" :title="'Edit ' + email.email" @click="editEmail(email)" />
@@ -89,34 +89,38 @@ export default {
   },
   created() {
 
-    bus.emit('sendLoadEmails')
+    bus.emit('sendLoad', 'email')
 
-    bus.on('loadEmails', (data) => {
-      this.$store.dispatch('updateEmails', data)
+    bus.on('load', (data) => {
+      if (data.type == 'email') {
+        this.$store.dispatch('updateEmails', data.objects)
+      }
     })
   },
   methods: {
     addEmail() {
       const data = {
+        type: 'email',
         email: document.getElementById('new-email').value,
         name: document.getElementById('new-name').value,
       }
-      bus.emit('sendCreateEmail', data)
+      bus.emit('sendCreate', data)
     },
     editEmail(email) {
-      this.editing = email.email
+      this.editing = email
     },
     saveEmail() {
       const data = {
-        oldEmail: this.editing,
+        id: this.editing.id,
+        type: 'email',
         email: document.getElementById('editing-email').value,
         name: document.getElementById('editing-name').value,
       }
-      bus.emit('sendUpdateEmail', data)
+      bus.emit('sendUpdate', data)
       this.editing = ''
     },
-    deleteemail(email) {
-      bus.emit('sendDeleteEmail', {email: email.email})
+    deleteEmail(email) {
+      bus.emit('sendDelete', {type: 'email', mail: email.email})
     }
   }
 }

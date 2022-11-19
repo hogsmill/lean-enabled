@@ -87,34 +87,38 @@ export default {
   },
   created() {
 
-    bus.emit('sendLoadFaqs')
+    bus.emit('sendLoad', 'faq')
 
-    bus.on('loadFaqs', (data) => {
-      this.$store.dispatch('updateFaqs', data)
+    bus.on('load', (data) => {
+      if (data.type == 'faq') {
+        this.$store.dispatch('updateFaqs', data.objects)
+      }
     })
   },
   methods: {
     addFaq() {
       const data = {
+        type: 'faq',
         question: document.getElementById('new-question').value,
         answer: document.getElementById('new-answer').value
       }
-      bus.emit('sendCreateFaq', data)
+      bus.emit('sendCreate', data)
     },
     editFaq(faq) {
       this.editing = faq
     },
     saveFaq() {
       const data = {
+        type: 'faq',
         id: this.editing.id,
         question: document.getElementById('editing-question').value,
         answer: document.getElementById('editing-answer').value
       }
-      bus.emit('sendUpdateFaq', data)
+      bus.emit('sendUpdate', data)
       this.editing = {}
     },
     deleteFaq(faq) {
-      bus.emit('sendDeleteFaq', {id: faq.id})
+      bus.emit('sendDelete', {type: 'faq', id: faq.id})
     }
   }
 }

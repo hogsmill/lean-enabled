@@ -10,7 +10,7 @@ font-face { font-family: Lato; src: url('./fonts/lato/Lato-Regular.ttf'); }
 }
 
 .content {
-  padding-top: 176px;  
+  padding-top: 176px;
 }
 
 h1, h2, h3, h4, p {
@@ -35,10 +35,6 @@ a { font-weight: bold; }
   border-radius: 3px;
 }
 
-#game-name {
-  display: inline-block;
-  width: 30%;
-}
 
 .btn-info {
   color: #fff;
@@ -61,11 +57,6 @@ a { font-weight: bold; }
   color: #fff;
 }
 
-.red { background-color: red; }
-.blue { background-color: blue; }
-.green { background-color: green; }
-.yellow { background-color: yellow; }
-.orange { background-color: orange; }
-.purple { background-color: purple; }
-
 .empty { background-color: #eee; border: 1px solid #aaa; }
+
+.left { text-align: left; }

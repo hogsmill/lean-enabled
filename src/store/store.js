@@ -10,106 +10,32 @@ export const store = createStore({
     },
     site: 'lean-enabled.co.uk',
     session: null,
-    route: '',
-    level: '',
+    path: [],
     userName: '',
     canLogin: false,
     admin: false,
     siteAdmin: false,
     mobile: false,
     tab: 'transformation',
+    userType: 'manager',
     users: [],
     emails: [],
     courseDates: [],
     faqs: [],
-    services: [
-      {
-        name: 'Face to Face and Online Training'
-      },
-      {
-        name: '1:1 and Group Coaching'
-      },
-      {
-        name: 'NHS Case Studies'
-      },
-      {
-        name: 'NHS themed Simulations'
-      },
-      {
-        name: 'Group Problem Solving'
-      },
-      {
-        name: 'Guest Speakers'
-      }
-    ],
-    courses: [
-      {
-        id: 1,
-        name: 'Improvement Technician',
-        logo: 'technician',
-        type: 'Standard',
-        level: 3,
-        leanSixSigma: true,
-        belt: 'yellow'
-      },
-      {
-        id: 2,
-        name: 'Improvement Practitioner',
-        logo: 'practitioner',
-        type: 'Standard',
-        level: 3,
-        leanSixSigma: true,
-        belt: 'green'
-      },
-      {
-        id: 3,
-        name: 'Improvement Coach (Specialist)',
-        logo: 'coach',
-        type: 'Standard',
-        level: 5,
-        leanSixSigma: true,
-        belt: 'black'
-      },
-      {
-        id: 4,
-        name: 'Improvement Leader',
-        logo: 'leader',
-        type: 'Standard',
-        level: 6,
-        leanSixSigma: true,
-        belt: 'master-black'
-      }
-    ],
-    people: [
-      {
-        name: 'Anil Matthew',
-        role: 'Chief Exec Officer',
-        pic: 'anil-pic',
-        email: '',
-        text: [
-          'Professional, Chartered Engineer',
-          'Lean Six-Sigma Master Black Belt, programmes with 100 companies globally. With over 25 years Lean experience in FMCG, Pharmaceutical, Consumer Healthcare Industries driving Change, structured Problem Solving & Engineering solutions inc. the business improvement turnaround of "failing" NHS Trust (CQC Rating – GOOD)',
-          'Managed Global Improvement Teams that Coached, Mentored & delivered Supply chain Improvements to Service, Delivery, Cost (in excess of £50M)'
-        ],
-        endorsements: 'anil-endorsements'
-      },
-      {
-        name: 'Nick Chambers',
-        role: 'Chief Operating Officer',
-        pic: 'nick-pic',
-        email: '',
-        text: [
-          'With over 15 years Lean transformation experience in FMCG, Pharmaceutical and Healthcare industry, Nick has implemented significant programmes in driving change, structured problem solving & organisational strategy.',
-          'Managed whole organisation improvement Initiatives including coaching, mentored & delivery of lean management systems across entire NHS trusts.',
-          'Proven track record of developing and implementing a fully engaging culture change that links executive boards to front line workforce and creates a successful improvement culture. Winner of HSJ Patient Safety Awards 2018 for Education & Training'
-        ],
-        endorsements: 'nick-endorsements'
-      }
-    ],
-    mission: 'To provide the skills for apprenticeship learners or NHS staff to feel empowered, equipped and confident to drive and manage, measurable and sustainable change in their area of work.',
+    services: [],
+    courses: [],
+    people: [],
     currentCourse: {},
     currentCourseDate: {},
-    currentPerson: {}
+    currentPerson: {},
+    expanded: '',
+    content: {
+      mission: '',
+      consultancy: '',
+      training: '',
+      services: '',
+      caseStudy: ''
+    }
   },
   getters: {
     getSite: (state) => {
@@ -143,6 +69,9 @@ export const store = createStore({
     getTab: (state) => {
       return state.tab
     },
+    getUserType: (state) => {
+      return state.userType
+    },
     getModals: (state) => {
       return state.modals
     },
@@ -165,9 +94,6 @@ export const store = createStore({
     getCourses: (state) => {
       return state.courses
     },
-    getMission: (state) => {
-      return state.mission
-    },
     getPeople: (state) => {
       return state.people
     },
@@ -182,6 +108,24 @@ export const store = createStore({
     },
     getCurrentPerson: (state) => {
       return state.currentPerson
+    },
+    getExpanded: (state) => {
+      return state.expanded
+    },
+    getContentMission: (state) => {
+      return state.content.mission
+    },
+    getContentConsultancy: (state) => {
+      return state.content.consultancy
+    },
+    getContentTraining: (state) => {
+      return state.content.training
+    },
+    getContentServices: (state) => {
+      return state.content.services
+    },
+    getContentCaseStudy: (state) => {
+      return state.content.caseStudy
     }
   },
   mutations: {
@@ -201,7 +145,11 @@ export const store = createStore({
       state.mobile = payload
     },
     updateTab: (state, payload) => {
+      state.path.push(payload)
       state.tab = payload
+    },
+    updateUserType: (state, payload) => {
+      state.userType = payload
     },
     showModal: (state, payload) => {
       const modals = Object.keys(state.modals)
@@ -219,11 +167,23 @@ export const store = createStore({
     updateEmails: (state, payload) => {
       state.emails = payload
     },
+    updateMission: (state, payload) => {
+      state.montent.mission = payload
+    },
+    updateCourses: (state, payload) => {
+      state.courses = payload
+    },
     updateCourseDates: (state, payload) => {
       state.courseDates = payload
     },
     updateFaqs: (state, payload) => {
       state.faqs = payload
+    },
+    updatePeople: (state, payload) => {
+      state.people = payload
+    },
+    updateServices: (state, payload) => {
+      state.services = payload
     },
     updateCurrentCourse: (state, payload) => {
       state.currentCourse = payload
@@ -233,6 +193,12 @@ export const store = createStore({
     },
     updateCurrentPerson: (state, payload) => {
       state.currentPerson = payload
+    },
+    updateExpanded: (state, payload) => {
+      state.expanded = payload
+    },
+    updateContent: (state, payload) => {
+      state.content[payload.type] = payload.content
     }
   },
   actions: {
@@ -251,6 +217,9 @@ export const store = createStore({
     updateTab: ({ commit }, payload) => {
       commit('updateTab', payload)
     },
+    updateUserType: ({ commit }, payload) => {
+      commit('updateUserType', payload)
+    },
     showModal: ({ commit }, payload) => {
       commit('showModal', payload)
     },
@@ -263,11 +232,23 @@ export const store = createStore({
     updateEmails: ({ commit }, payload) => {
       commit('updateEmails', payload)
     },
+    updateMission: ({ commit }, payload) => {
+      commit('updateMission', payload)
+    },
+    updateCourses: ({ commit }, payload) => {
+      commit('updateCourses', payload)
+    },
+    updateServices: ({ commit }, payload) => {
+      commit('updateServices', payload)
+    },
     updateCourseDates: ({ commit }, payload) => {
       commit('updateCourseDates', payload)
     },
     updateFaqs: ({ commit }, payload) => {
       commit('updateFaqs', payload)
+    },
+    updatePeople: ({ commit }, payload) => {
+      commit('updatePeople', payload)
     },
     updateCurrentCourse: ({ commit }, payload) => {
       commit('updateCurrentCourse', payload)
@@ -277,6 +258,12 @@ export const store = createStore({
     },
     updateCurrentPerson: ({ commit }, payload) => {
       commit('updateCurrentPerson', payload)
+    },
+    updateExpanded: ({ commit }, payload) => {
+      commit('updateExpanded', payload)
+    },
+    updateContent: ({ commit }, payload) => {
+      commit('updateContent', payload)
     }
   }
 })

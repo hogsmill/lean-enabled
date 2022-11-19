@@ -30,45 +30,13 @@ bus.on('sendCheckLogin', (data) => { socket.emit('sendCheckLogin', data) })
 
 bus.on('sendLogout', (data) => { socket.emit('sendLogout', data) })
 
-// Users
+bus.on('sendCreate', (data) => { socket.emit('sendCreate', data) })
 
-bus.on('sendCreateUser', (data) => { socket.emit('sendCreateUser', data) })
+bus.on('sendUpdate', (data) => { socket.emit('sendUpdate', data) })
 
-bus.on('sendUpdateUser', (data) => { socket.emit('sendUpdateUser', data) })
+bus.on('sendDelete', (data) => { socket.emit('sendDelete', data) })
 
-bus.on('sendDeleteUser', (data) => { socket.emit('sendDeleteUser', data) })
-
-bus.on('sendLoadUsers', (data) => { socket.emit('sendLoadUsers', data) })
-
-// Emails
-
-bus.on('sendCreateEmail', (data) => { socket.emit('sendCreateEmail', data) })
-
-bus.on('sendUpdateEmail', (data) => { socket.emit('sendUpdateEmail', data) })
-
-bus.on('sendDeleteEmail', (data) => { socket.emit('sendDeleteEmail', data) })
-
-bus.on('sendLoadEmails', (data) => { socket.emit('sendLoadEmails', data) })
-
-// Courses
-
-bus.on('sendCreateCourseDate', (data) => { socket.emit('sendCreateCourseDate', data) })
-
-bus.on('sendUpdateCourseDate', (data) => { socket.emit('sendUpdateCourseDate', data) })
-
-bus.on('sendDeleteCourseDate', (data) => { socket.emit('sendDeleteCourseDate', data) })
-
-bus.on('sendLoadCourseDates', (data) => { socket.emit('sendLoadCourseDates', data) })
-
-// FAQs
-
-bus.on('sendCreateFaq', (data) => { socket.emit('sendCreateFaq', data) })
-
-bus.on('sendUpdateFaq', (data) => { socket.emit('sendUpdateFaq', data) })
-
-bus.on('sendDeleteFaq', (data) => { socket.emit('sendDeleteFaq', data) })
-
-bus.on('sendLoadFaqs', (data) => { socket.emit('sendLoadFaqs', data) })
+bus.on('sendLoad', (type) => { socket.emit('sendLoad', type) })
 
 // Receive
 
@@ -82,12 +50,6 @@ socket.on('loadNextCourse', (data) => { bus.emit('loadNextCourse', data) })
 
 // Admin
 
-socket.on('loadUsers', (data) => { bus.emit('loadUsers', data) })
-
-socket.on('loadEmails', (data) => { bus.emit('loadEmails', data) })
-
-socket.on('loadCourseDates', (data) => { bus.emit('loadCourseDates', data) })
-
-socket.on('loadFaqs', (data) => { bus.emit('loadFaqs', data) })
+socket.on('load', (data) => { bus.emit('load', data) })
 
 export default bus

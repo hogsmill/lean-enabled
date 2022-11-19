@@ -8,11 +8,15 @@ const prod = os.hostname() == 'agilesimulations' ? true : false
 
 const port = 4850
 const logFile = prod ? process.argv[4] : 'server.log'
-const usersCollection = 'leanEnabledUsers'
-const emailsCollection = 'leanEnabledEmails'
-const courseDatesCollection = 'leanEnabledCourseDates'
-const faqsCollection = 'leanEnabledFaqs'
-const contentCollection = 'leanEnabledContent'
+
+const collection = 'leanEnabled'
+
+//const usersCollection = 'leanEnabledUsers'
+//const servicesCollection = 'leanEnabledServicess'
+//const emailsCollection = 'leanEnabledEmails'
+//const courseDatesCollection = 'leanEnabledCourseDates'
+//const faqsCollection = 'leanEnabledFaqs'
+//const contentCollection = 'leanEnabledContent'
 
 ON_DEATH(function(signal, err) {
   let logStr = new Date()
@@ -62,7 +66,6 @@ if (!prod) {
 const rss = require('./store/rss.js')
 const sitemap = require('./store/sitemap.js')
 const dbStore = require('./store/dbStore.js')
-const adminStore = require('./store/adminStore.js')
 
 const MongoClient = require('mongodb').MongoClient
 
@@ -85,17 +88,21 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   if (err) throw err
   const db = client.db('db')
 
-  db.createCollection(usersCollection, function(error, usersCollection) {})
-  db.createCollection(emailsCollection, function(error, emailsCollection) {})
-  db.createCollection(courseDatesCollection, function(error, courseDatesCollection) {})
-  db.createCollection(faqsCollection, function(error, faqsCollection) {})
-  db.createCollection(contentCollection, function(error, contentCollection) {})
+  db.createCollection(collection, function(error, collection) {})
+  //db.createCollection(usersCollection, function(error, usersCollection) {})
+  //db.createCollection(servicesCollection, function(error, servicesCollection) {})
+  //db.createCollection(emailsCollection, function(error, emailsCollection) {})
+  //db.createCollection(courseDatesCollection, function(error, courseDatesCollection) {})
+  //db.createCollection(faqsCollection, function(error, faqsCollection) {})
+  //db.createCollection(contentCollection, function(error, contentCollection) {})
 
-  db.usersCollection = db.collection(usersCollection)
-  db.emailsCollection = db.collection(emailsCollection)
-  db.courseDatesCollection = db.collection(courseDatesCollection)
-  db.faqsCollection = db.collection(faqsCollection)
-  db.contentCollection = db.collection(contentCollection)
+  db.collection = db.collection(collection)
+  //db.usersCollection = db.collection(usersCollection)
+  //db.servicesCollection = db.collection(servicesCollection)
+  //db.emailsCollection = db.collection(emailsCollection)
+  //db.courseDatesCollection = db.collection(courseDatesCollection)
+  //db.faqsCollection = db.collection(faqsCollection)
+  //db.contentCollection = db.collection(contentCollection)
 
   sitemap.createSiteMap(db, debugOn)
 
@@ -129,45 +136,14 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
 
     socket.on('sendCreateAdminUser', () => { dbStore.createAdminUser(db, io, debugOn) })
 
-    // Users
+    socket.on('sendCreate', (data) => { dbStore.create(db, io, data, debugOn) })
 
-    socket.on('sendCreateUser', (data) => { dbStore.createUser(db, io, data, debugOn) })
+    socket.on('sendUpdate', (data) => { dbStore.update(db, io, data, debugOn) })
 
-    socket.on('sendUpdateUser', (data) => { dbStore.updateUser(db, io, data, debugOn) })
+    socket.on('sendDelete', (data) => { dbStore.delete(db, io, data, debugOn) })
 
-    socket.on('sendDeleteUser', (data) => { dbStore.deleteUser(db, io, data, debugOn) })
+    socket.on('sendLoad', (type) => { dbStore.load(db, io, type, debugOn) })
 
-    socket.on('sendLoadUsers', () => { dbStore.loadUsers(db, io, debugOn) })
-
-    // Emails
-
-    socket.on('sendCreateEmail', (data) => { dbStore.createEmail(db, io, data, debugOn) })
-
-    socket.on('sendUpdateEmail', (data) => { dbStore.updateEmail(db, io, data, debugOn) })
-
-    socket.on('sendDeleteEmail', (data) => { dbStore.deleteEmail(db, io, data, debugOn) })
-
-    socket.on('sendLoadEmails', () => { dbStore.loadEmails(db, io, debugOn) })
-
-    // Courses
-
-    socket.on('sendCreateCourseDate', (data) => { dbStore.createCourseDate(db, io, data, debugOn) })
-
-    socket.on('sendUpdateCourseDate', (data) => { dbStore.updateCourseDate(db, io, data, debugOn) })
-
-    socket.on('sendDeleteCourseDate', (data) => { dbStore.deleteCourseDate(db, io, data, debugOn) })
-
-    socket.on('sendLoadCourseDates', () => { dbStore.loadCourseDates(db, io, debugOn) })
-
-    // Faqs
-
-    socket.on('sendCreateFaq', (data) => { dbStore.createFaq(db, io, data, debugOn) })
-
-    socket.on('sendUpdateFaq', (data) => { dbStore.updateFaq(db, io, data, debugOn) })
-
-    socket.on('sendDeleteFaq', (data) => { dbStore.deleteFaq(db, io, data, debugOn) })
-
-    socket.on('sendLoadFaqs', () => { dbStore.loadFaqs(db, io, debugOn) })
   })
 })
 
