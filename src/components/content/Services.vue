@@ -1,16 +1,14 @@
 <template>
-  <div class="services">
-    <div class="row slideanim services">
-      <div v-for="(service, index) in services" :key="index" class="col-sm-2 service-container">
-        <div class="service">
-          <div class="pic" :class="picClass(service)" />
-          <h3>
-            {{ service.title }}
-          </h3>
-          <p>
-            {{ service.text }}
-          </p>
-        </div>
+  <div class="row slideanim services">
+    <div v-for="(service, index) in services" :key="index" class="col-sm-2 service-container">
+      <div class="service">
+        <div class="pic" :class="picClass(service)" />
+        <h3>
+          {{ service.title }}
+        </h3>
+        <p>
+          {{ service.text }}
+        </p>
       </div>
     </div>
   </div>
@@ -44,18 +42,18 @@ export default {
 
 <style lang="scss">
 .services {
-  background-color: #fff;
-  opacity: 0.8;
-  margin: 15px;
+  background-image: url("../../assets/img/GettyImages-855597368.jpeg");
+  background-size: cover;
 
   h2 {
-    margin: 12px auto;
+    margin: 15px auto;
   }
 
   .service-container {
     display: flex;
     align-items: stretch;
     margin-bottom: 15px;
+    margin-top: 15px;
 
     .service {
 

@@ -2,12 +2,25 @@
   <div>
     <Header />
     <div class="content">
+
       <NextCourse v-if="showNextCourse()" />
+
+      <!-- Transformation -->
+      <TransformationMain v-if="tab == 'transformation'" />
       <Transformation v-if="tab == 'transformation'" />
+
+      <!-- Apprentices (Training) -->
       <Apprentices v-if="tab == 'apprentices'" />
+
       <Course v-if="tab == 'course'" />
+
+      <!-- About -->
       <About v-if="tab == 'about'" />
+
+      <!-- FAQs  -->
       <Faqs v-if="tab == 'faqs'" />
+
+      <!-- Others -->
       <CaseStudy v-if="tab == 'case-study'" />
       <Admin v-if="tab == 'admin'" />
       <TandCs v-if="tab == 'tandcs'" />
@@ -26,6 +39,7 @@ import params from './lib/params.js'
 
 import Header from './components/Header.vue'
 import NextCourse from './components/NextCourse.vue'
+import TransformationMain from './components/content/TransformationMain.vue'
 import Transformation from './components/Transformation.vue'
 import Apprentices from './components/Apprentices.vue'
 import Course from './components/Course.vue'
@@ -44,6 +58,7 @@ export default {
     Header,
     NextCourse,
     Transformation,
+    TransformationMain,
     Apprentices,
     Course,
     About,
@@ -132,5 +147,21 @@ b, strong {
   &:hover {
     text-decoration: underline
   }
+}
+
+.yellow {
+  background-color: #E7B81C;
+}
+
+.green {
+  background-color: #33878B;
+}
+
+.black {
+  background-color: #2E2E2E;
+}
+
+.master-black {
+  background-color: #000;
 }
 </style>

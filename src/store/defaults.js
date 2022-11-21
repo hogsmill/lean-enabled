@@ -2,7 +2,13 @@
 const _defaults = {
   mission: [
     {
-      mission: 'To provide the skills for apprenticeship learners or NHS staff to feel empowered, equipped and confident to drive and manage, measurable and sustainable change in their area of work.'
+      text: 'To provide the skills for apprenticeship learners or NHS staff to feel empowered, equipped and confident to drive and manage, measurable and sustainable change in their area of work.'
+    }
+  ],
+  transformation: [
+    {
+      text: 'We are a team of Improvement Specialists specialising in helping Healthcare clients ”execute strategy” by delivering long-term performance improvements, which are sustainable and drive positive impact. We provide consultancy services and training.'
+
     }
   ],
   person: [
@@ -156,6 +162,48 @@ const _defaults = {
       text: [
         'We are a team of Improvement Specialists specialising in helping Healthcare clients ”execute strategy” by delivering long-term performance improvements, which are sustainable and drive positive impact.'
       ]
+    }
+  ],
+  contentApprenticesIntro: [
+    {
+      manager: {
+        text: [
+          'Manager apprentices intro'
+        ]
+      },
+      apprentice: {
+        text: [
+          'User apprentices intro'
+        ]
+      },
+    }
+  ],
+  contentCoursesIntro: [
+    {
+      manager: {
+        text: [
+          'Manager training intro'
+        ]
+      },
+      apprentice: {
+        text: [
+          'User training intro'
+        ]
+      },
+    }
+  ],
+  contentServicesIntro: [
+    {
+      manager: {
+        text: [
+          'Manager services intro'
+        ]
+      },
+      apprentice: {
+        text: [
+          'User services intro'
+        ]
+      },
     }
   ],
   caseStudy: [

@@ -1,14 +1,17 @@
 <template>
   <div>
     <h3>
-      Services Description
-      <i v-if="expanded != 'services'" title="Show edit" class="far fa-plus-square" @click="toggleExpanded()" />
-      <i v-if="expanded == 'services'" title="Collapse edit" class="far fa-minus-square" @click="toggleExpanded()" />
+      Apprentices Intro
+      <i v-if="expanded != 'apprentices-intro'" title="Show edit" class="far fa-plus-square" @click="toggleExpanded()" />
+      <i v-if="expanded == 'apprentices-intro'" title="Collapse edit" class="far fa-minus-square" @click="toggleExpanded()" />
     </h3>
-    <div v-if="expanded == 'services'">
+    <div v-if="expanded == 'apprentices-intro'">
       <table>
         <thead>
           <tr>
+            <th>
+              User Type
+            </th>
             <th>
               Text
               <span class="edit-hint" v-if="editing">
@@ -19,16 +22,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="(userType, uindex) in users" :key="uindex">
             <td>
-              <span v-if="!editing">
-                <p v-for="(t, tindex) in services.text" :key="tindex">
+              {{ userType }}
+            </td>
+            <td>
+              <span v-if="editing != userType">
+                <p v-for="(t, tindex) in apprenticesIntro[userType].text" :key="tindex">
                   {{ t }}
                 </p>
               </span>
-              <span v-if="editing">
+              <span v-if="editing == userType">
                 <table class="paragraphs">
-                  <tr v-for="(t, tindex) in services.text" :key="tindex">
+                  <tr v-for="(t, tindex) in apprenticesIntro[userType].text" :key="tindex">
                     <td>
                       <textarea :id="'paragraph-' + tindex" :value="t" />
                     </td>
@@ -43,8 +49,8 @@
               </span>
             </td>
             <td>
-              <i class="far fa-edit" title="Edit" @click="edit()" />
-              <i class="far fa-save" title="Save" :class="{'disabled': !editing}" @click="save()" />
+              <i class="far fa-edit" title="Edit" @click="edit(userType)" />
+              <i class="far fa-save" title="Save" :class="{'disabled': !editing}" @click="save(userType)" />
             </td>
           </tr>
         </tbody>
@@ -59,7 +65,11 @@ import bus from '../../../socket.js'
 export default {
   data() {
     return {
-      editing: false,
+      users: [
+        'manager',
+        'apprentice'
+      ],
+      editing: '',
       text: []
     }
   },
@@ -67,30 +77,30 @@ export default {
     expanded() {
       return this.$store.getters.getExpanded
     },
-    services() {
-      return this.$store.getters.getContentServices
+    apprenticesIntro() {
+      return this.$store.getters.getContentApprenticesIntro
     }
   },
   created() {
 
-    bus.emit('sendLoad', 'contentServices')
+    bus.emit('sendLoad', 'contentApprenticesIntro')
 
     bus.on('load', (data) => {
-      if (data.type == 'contentServices') {
-        this.$store.dispatch('updateContent', {type: 'services', content: data.objects[0]})
+      if (data.type == 'contentApprenticesIntro') {
+        this.$store.dispatch('updateContent', {type: 'apprenticesIntro', content: data.objects[0]})
       }
     })
   },
   methods: {
     toggleExpanded() {
-      const expanded = this.expanded == 'services' ? '' : 'services'
+      const expanded = this.expanded == 'apprentices-intro' ? '' : 'apprentices-intro'
       this.$store.dispatch('updateExpanded', expanded)
     },
-    edit() {
-      this.editing = true
-      this.text = this.services.text
+    edit(userType) {
+      this.editing = userType
+      this.text = this.apprenticesIntro[userType].text
     },
-    addParagraph() {
+    addParagraph(userType) {
       this.text.push('')
     },
     deleteParagraph(n) {
@@ -102,18 +112,16 @@ export default {
       }
       this.text = text
     },
-    save() {
+    save(userType) {
       let i = 0
       const paras = []
       while (document.getElementById('paragraph-' + i)) {
         paras.push(document.getElementById('paragraph-' + i).value)
         i++
       }
-      const data = {
-        type: 'contentServices',
-        id: this.services.id,
-        text: paras
-      }
+      const data = this.apprenticesIntro
+      data.type = 'contentApprenticesIntro'
+      data[userType].text = paras
       bus.emit('sendUpdate', data)
       this.editing = false
     }

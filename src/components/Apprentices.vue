@@ -2,18 +2,15 @@
   <div class="apprentices">
     <div class="container-fluid text-center">
       <UserType />
-
-      <!--
-      <TrainingIntro :user-type="userType" />
-      <ServicesIntro v-if="user-type == 'manager'" />
-      <Services v-if="user-type == 'manager'" />
-      <CoursesIntro />
+      <ApprenticesIntro :user-type="userType" />
+      <CoursesIntro :user-type="userType" />
       <Courses />
+      <ServicesIntro :user-type="userType" />
+      <Services v-if="user-type == 'manager'" />
+      <!--
       <CourseMap />
       <TrainingDescription :user-type="userType" />
-
-      <ManagersTraining v-if="userType == 'manager'" />
-      <ApprenticesTraining v-if="userType == 'apprentice'" />
+      <Comments />
       -->
     </div>
   </div>
@@ -21,29 +18,25 @@
 
 <script>
 import UserType from './UserType.vue'
-
-/*
-import ServicesIntro from './content/Services.vue'
-import Services from './content/Services.vue'
+import ApprenticesIntro from './content/ApprenticesIntro.vue'
 import CoursesIntro from './content/CoursesIntro.vue'
 import Courses from './content/Courses.vue'
+import ServicesIntro from './content/ServicesIntro.vue'
+import Services from './content/Services.vue'
+/*
+import CourseMap from './content/CourseMap.vue'
+import Comments from './content/Comments.vue'
 
-import ManagersTraining from './training/ManagersTraining.vue'
-import ApprenticesTraining from './training/ApprenticesTraining.vue'
 */
 
 export default {
   components: {
     UserType,
-    /*
-    ServicesIntro,
-    Services,
+    ApprenticesIntro,
     CoursesIntro,
-    Courses
-    
-    ManagersTraining,
-    ApprenticesTraining
-    */
+    Courses,
+    ServicesIntro,
+    Services
   },
   computed: {
     userType() {

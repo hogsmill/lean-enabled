@@ -1,23 +1,21 @@
 <template>
-  <div class="transformation">
-    <div class="row slideanim">
-      <div class="col-sm-6">
-        <div class="slide">
-        <i class="fas fa-hands-helping"></i>
-          <h2>
-            Consultancy Services
-          </h2>
-          <p v-for="(text, cindex) in consultancy.text" :key="cindex" v-html="parseText(text)" />
-        </div>
+  <div class="row slideanim transformation">
+    <div class="col-sm-6">
+      <div class="slide">
+        <i class="fas fa-hands-helping" />
+        <h2>
+          Consultancy Services
+        </h2>
+        <p v-for="(text, cindex) in consultancy.text" :key="cindex" v-html="parseText(text)" />
       </div>
-      <div class="col-sm-6">
-        <div class="slide">
-        <i class="fas fa-chalkboard-teacher"></i>
-          <h2>
-            Training Services
-          </h2>
-          <p v-for="(text, tindex) in training.text" :key="tindex" v-html="parseText(text)" />
-        </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="slide">
+        <i class="fas fa-chalkboard-teacher" />
+        <h2>
+          Training Services
+        </h2>
+        <p v-for="(text, tindex) in training.text" :key="tindex" v-html="parseText(text)" />
       </div>
     </div>
   </div>

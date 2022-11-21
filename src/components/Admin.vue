@@ -19,6 +19,9 @@
       <div :class="{'active': tab == 'coursedates'}" @click="setTab('coursedates')">
         Course Dates
       </div>
+      <div :class="{'active': tab == 'comments'}" @click="setTab('comments')">
+        Comments
+      </div>
       <div :class="{'active': tab == 'faqs'}" @click="setTab('faqs')">
         FAQs
       </div>
@@ -35,6 +38,7 @@
       <Services v-if="tab == 'services'" />
       <Courses v-if="tab == 'courses'" />
       <CourseDates v-if="tab == 'coursedates'" />
+      <Comments v-if="tab == 'comments'" />
       <Faqs v-if="tab == 'faqs'" />
       <People v-if="tab == 'people'" />
       <Content v-if="tab == 'content'" />
@@ -50,6 +54,7 @@ import Emails from './admin/Emails.vue'
 import Services from './admin/Services.vue'
 import Courses from './admin/Courses.vue'
 import CourseDates from './admin/CourseDates.vue'
+import Comments from './admin/Comments.vue'
 import Faqs from './admin/FAQs.vue'
 import People from './admin/People.vue'
 import Content from './admin/Content.vue'
@@ -61,6 +66,7 @@ export default {
     Services,
     Courses,
     CourseDates,
+    Comments,
     Faqs,
     People,
     Content

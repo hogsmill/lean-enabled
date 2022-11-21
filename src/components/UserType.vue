@@ -1,24 +1,26 @@
 <template>
-  <div class="user-type">
-    I am
-    <table>
-      <tr>
-        <td>
-          <input type="checkbox" :checked="userType == 'manager'" @click="setUserType('manager')">
-        </td>
-        <td>
-          a <span :class="{'bold': userType == 'manager'}"> Manager</span> looking to check what courses are available
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="checkbox" :checked="userType == 'apprentice'" @click="setUserType('apprentice')">
-        </td>
-        <td>
-          an <span :class="{'bold': userType == 'apprentice'}">Apprentice</span> looking for course content
-        </td>
-      </tr>
-    </table>
+  <div class="row user-type">
+    <div class="user-type-div">
+      I am
+      <table>
+        <tr>
+          <td>
+            <input type="checkbox" :checked="userType == 'manager'" @click="setUserType('manager')">
+          </td>
+          <td>
+            a <span :class="{'bold': userType == 'manager'}"> Manager</span> looking to check what courses are available
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" :checked="userType == 'apprentice'" @click="setUserType('apprentice')">
+          </td>
+          <td>
+            an <span :class="{'bold': userType == 'apprentice'}">Apprentice</span> looking for course content
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -40,18 +42,30 @@ export default {
 
 <style lang="scss">
   .user-type {
-    background-color: #fff;
-    margin: 12px auto;
-    width: 85%;
-    padding: 24px;
-    font-size: xx-large;
+    background-image: url("../assets/img/GettyImages-855597368.jpeg");
+    background-size: cover;
 
-    span {
-      padding: 3px;
+    .user-type-div {
+      opacity: 0.8;
+      background-color: #fff;
+      margin: 24px auto;
+      padding: 24px;
+      display: inline-block;
+      font-size: x-large;
 
-      &.bold {
-        background-color: #204893;
-        color: #fff;
+      input {
+        height: 24px;
+        width: 24px;
+        margin: 12px;
+      }
+
+      span {
+        padding: 3px;
+
+        &.bold {
+          background-color: #A0B4CF;;
+          color: #fff;
+        }
       }
     }
   }

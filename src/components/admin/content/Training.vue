@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>
-      Training
+      Training (Transformation)
       <i v-if="expanded != 'training'" title="Show edit" class="far fa-plus-square" @click="toggleExpanded()" />
       <i v-if="expanded == 'training'" title="Collapse edit" class="far fa-minus-square" @click="toggleExpanded()" />
     </h3>
@@ -22,15 +22,15 @@
           <tr>
             <td>
               <span v-if="!editing">
-                <p v-for="(text, tindex) in training.text" :key="tindex">
-                  {{ text }}
+                <p v-for="(t, tindex) in training.text" :key="tindex">
+                  {{ t }}
                 </p>
               </span>
               <span v-if="editing">
                 <table class="paragraphs">
-                  <tr v-for="(text, tindex) in training.text" :key="tindex">
+                  <tr v-for="(t, tindex) in training.text" :key="tindex">
                     <td>
-                      <textarea :id="'paragraph-' + tindex" :value="text" />
+                      <textarea :id="'paragraph-' + tindex" :value="t" />
                     </td>
                     <td>
                       <i class="fas fa-times" title="Delete this paragraph" @click="deleteParagraph(tindex)" />

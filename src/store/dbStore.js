@@ -17,7 +17,10 @@ const _objects = {
     session: ''
   },
   mission: {
-    mission: ''
+    text: ''
+  },
+  transformation: {
+    text: ''
   },
   service: {
     title: '',
@@ -51,6 +54,11 @@ const _objects = {
     answer: '',
     enabled: false
   },
+  comment: {
+    author: '',
+    comment: '',
+    enabled: false
+  },
   person: {
     name: '',
     role: '',
@@ -67,6 +75,30 @@ const _objects = {
   },
   contentServices: {
     text: []
+  },
+  contentApprenticesIntro: {
+    manager: {
+      text: []
+    },
+    apprentice: {
+      text: []
+    },
+  },
+  contentServicesIntro: {
+    manager: {
+      text: []
+    },
+    apprentice: {
+      text: []
+    },
+  },
+  contentCoursesIntro: {
+    manager: {
+      text: []
+    },
+    apprentice: {
+      text: []
+    },
   },
   caseStudy: {
     header: '',

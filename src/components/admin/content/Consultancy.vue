@@ -22,15 +22,15 @@
           <tr>
             <td>
               <span v-if="!editing">
-                <p v-for="(text, tindex) in consultancy.text" :key="tindex">
-                  {{ text }}
+                <p v-for="(t, tindex) in consultancy.text" :key="tindex">
+                  {{ t }}
                 </p>
               </span>
               <span v-if="editing">
                 <table class="paragraphs">
-                  <tr v-for="(text, tindex) in consultancy.text" :key="tindex">
+                  <tr v-for="(t, tindex) in consultancy.text" :key="tindex">
                     <td>
-                      <textarea :id="'paragraph-' + tindex" :value="text" />
+                      <textarea :id="'paragraph-' + tindex" :value="t" />
                     </td>
                     <td>
                       <i class="fas fa-times" title="Delete this paragraph" @click="deleteParagraph(tindex)" />
@@ -73,10 +73,10 @@ export default {
   },
   created() {
 
-    bus.emit('sendLoad', 'consultancy')
+    bus.emit('sendLoad', 'contentConsultancy')
 
     bus.on('load', (data) => {
-      if (data.type == 'consultancy') {
+      if (data.type == 'contentConsultancy') {
         this.$store.dispatch('updateContent', {type: 'consultancy', content: data.objects[0]})
       }
     })

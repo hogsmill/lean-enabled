@@ -146,24 +146,28 @@
                     <span v-if="editingModule.courseId != course.id || editingModule.module.id != module.id">
                       {{ module.number }}
                     </span>
-                    <input type="text" id="editing-module-number"
-                           v-if="editingModule.courseId == course.id && editingModule.module.id == module.id"
-                           :value="module.number"
+                    <input
+                      type="text" id="editing-module-number"
+                      v-if="editingModule.courseId == course.id && editingModule.module.id == module.id"
+                      :value="module.number"
                     >
                   </td>
                   <td>
                     <span v-if="editingModule.courseId != course.id || editingModule.module.id != module.id">
                       {{ module.name }}
                     </span>
-                    <input type="text" id="editing-module-name"
-                           v-if="editingModule.courseId == course.id && editingModule.module.id == module.id"
-                           :value="module.name"
+                    <input
+                      type="text" id="editing-module-name"
+                      v-if="editingModule.courseId == course.id && editingModule.module.id == module.id"
+                      :value="module.name"
                     >
                   </td>
                   <td>
                     <i class="far fa-edit" :name="'Edit Module ' + module.number" @click="editModule(course, module)" />
-                    <i class="far fa-save" :name="'Save Module ' + module.number"
-                      :class="{'disabled': editingModule.courseId != course.id || editingModule.module.id != module.id}" @click="saveModule(course, module)" />
+                    <i
+                      class="far fa-save" :name="'Save Module ' + module.number"
+                      :class="{'disabled': editingModule.courseId != course.id || editingModule.module.id != module.id}" @click="saveModule(course, module)"
+                    />
                     <i class="far fa-trash-alt" :name="'Delete Module ' + module.number" @click="deleteModule(course, module)" />
                   </td>
                 </tr>

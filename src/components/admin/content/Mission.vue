@@ -12,9 +12,9 @@
       <tr>
         <td>
           <p v-if="editing != 'mission'">
-            {{ mission.mission }}
+            {{ mission.text }}
           </p>
-          <textarea id="editing-mission" v-if="editing == 'mission'" :value="mission.mission" />
+          <textarea id="editing-mission" v-if="editing == 'mission'" :value="mission.text" />
         </td>
         <td>
           <i class="far fa-edit" title="Edit mission" @click="edit()" />
@@ -65,7 +65,7 @@ export default {
       const data = {
         type: 'mission',
         id: this.mission.id,
-        mission: document.getElementById('editing-mission').value
+        text: document.getElementById('editing-mission').value
       }
       bus.emit('sendUpdate', data)
       this.editing = ''

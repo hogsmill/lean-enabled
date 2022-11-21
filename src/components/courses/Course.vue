@@ -46,27 +46,12 @@ export default {
 
   h3, p {
     color: #fff;
+    text-align: center;
   }
 
   .belt {
     text-transform: uppercase;
     font-weight: bold;
-  }
-
-  &.yellow {
-    background-color: #E7B81C;
-  }
-
-  &.green {
-    background-color: #33878B;
-  }
-
-  &.black {
-    background-color: #2E2E2E;
-  }
-
-  &.master-black {
-    background-color: #000;
   }
 
   .logo {

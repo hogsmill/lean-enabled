@@ -21,6 +21,7 @@ export const store = createStore({
     users: [],
     emails: [],
     courseDates: [],
+    comments: [],
     faqs: [],
     services: [],
     courses: [],
@@ -31,9 +32,12 @@ export const store = createStore({
     expanded: '',
     content: {
       mission: '',
+      transformation: '',
       consultancy: '',
       training: '',
-      services: '',
+      apprenticesIntro: '',
+      coursesIntro: '',
+      servicesIntro: '',
       caseStudy: ''
     }
   },
@@ -91,6 +95,9 @@ export const store = createStore({
     getFaqs: (state) => {
       return state.faqs
     },
+    getComments: (state) => {
+      return state.comments
+    },
     getCourses: (state) => {
       return state.courses
     },
@@ -115,14 +122,26 @@ export const store = createStore({
     getContentMission: (state) => {
       return state.content.mission
     },
+    getContentTransformation: (state) => {
+      return state.content.transformation
+    },
     getContentConsultancy: (state) => {
       return state.content.consultancy
     },
     getContentTraining: (state) => {
       return state.content.training
     },
+    getContentApprenticesIntro: (state) => {
+      return state.content.apprenticesIntro
+    },
     getContentServices: (state) => {
       return state.content.services
+    },
+    getContentServicesIntro: (state) => {
+      return state.content.servicesIntro
+    },
+    getContentCoursesIntro: (state) => {
+      return state.content.coursesIntro
     },
     getContentCaseStudy: (state) => {
       return state.content.caseStudy
@@ -175,6 +194,9 @@ export const store = createStore({
     },
     updateCourseDates: (state, payload) => {
       state.courseDates = payload
+    },
+    updateComments: (state, payload) => {
+      state.comments = payload
     },
     updateFaqs: (state, payload) => {
       state.faqs = payload
@@ -243,6 +265,9 @@ export const store = createStore({
     },
     updateCourseDates: ({ commit }, payload) => {
       commit('updateCourseDates', payload)
+    },
+    updateComments: ({ commit }, payload) => {
+      commit('updateComments', payload)
     },
     updateFaqs: ({ commit }, payload) => {
       commit('updateFaqs', payload)

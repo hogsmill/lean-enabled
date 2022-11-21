@@ -22,20 +22,20 @@
           <tr>
             <td>
               <span v-if="!editing">
-                <div class="left" v-for="(text, tindex) in caseStudy.text" :key="tindex">
-                  <h4 v-if="text.type == 'header'">
-                    {{ text.text }}
+                <div class="left" v-for="(t, tindex) in caseStudy.text" :key="tindex">
+                  <h4 v-if="t.type == 'header'">
+                    {{ t.text }}
                   </h4>
-                  <p v-if="text.type == 'text'">
-                    {{ text.text }}
+                  <p v-if="t.type == 'text'">
+                    {{ t.text }}
                   </p>
                 </div>
               </span>
               <span v-if="editing">
                 <table class="paragraphs">
-                  <tr v-for="(text, tindex) in caseStudy.text" :key="tindex">
-                    <td :class="{'heading': text.type == 'header'}">
-                      <textarea :id="'paragraph-' + tindex" :value="text.text" />
+                  <tr v-for="(t, tindex) in caseStudy.text" :key="tindex">
+                    <td :class="{'heading': t.type == 'header'}">
+                      <textarea :id="'paragraph-' + tindex" :value="t.text" />
                     </td>
                     <td>
                       <i class="fas fa-times" title="Delete this paragraph" @click="deleteParagraph(tindex)" />

@@ -1,13 +1,13 @@
 <template>
-  <div class="services">
-    <div class="row slideanim services">
-      <h2>
-        Our Services
-      </h2>
-      <p v-for="(text, sindex) in contentServices.text" :key="sindex">
-        {{ text }}
+  <div class="row slideanim services-intro">
+    <h2>
+      Our Services
+    </h2>
+    <span v-if="contentServicesIntro[userType]">
+      <p v-for="(para, index) in contentServicesIntro[userType].text" :key="index">
+        {{ para }}
       </p>
-    </div>
+    </span>
   </div>
 </template>
 
@@ -15,17 +15,20 @@
 import bus from '../../socket.js'
 
 export default {
+  props: [
+    'userType'
+  ],
   computed: {
-    contentServices() {
-      return this.$store.getters.getContentServices
+    contentServicesIntro() {
+      return this.$store.getters.getContentServicesIntro
     }
   },
   created() {
-    bus.emit('sendLoad', 'contentServices')
+    bus.emit('sendLoad', 'contentServicesIntro')
 
     bus.on('load', (data) => {
-      if (data.type == 'contentServices') {
-        this.$store.dispatch('updateContent', {type: 'services', content: data.objects[0]})
+      if (data.type == 'contentServicesIntro') {
+        this.$store.dispatch('updateContent', {type: 'servicesIntro', content: data.objects[0]})
       }
     })
   }
@@ -33,13 +36,16 @@ export default {
 </script>
 
 <style lang="scss">
-.services {
+.services-intro {
   background-color: #fff;
   opacity: 0.8;
-  margin: 15px;
 
   h2 {
-    margin: 12px auto;
+    margin: 15px auto;
+  }
+
+  p {
+    margin: 24px;
   }
 }
 
