@@ -125,19 +125,24 @@ const _defaults = {
       text: 'Practical hands-on coaching for Executives, Leaders and Team members'
     },
     {
-      title: '1:1 and Group Coaching'
+      title: '1:1 and Group Coaching',
+      text: ''
     },
     {
-      title: 'NHS Case Studies'
+      title: 'NHS Case Studies',
+      text: ''
     },
     {
-      title: 'NHS themed Simulations'
+      title: 'NHS themed Simulations',
+      text: ''
     },
     {
-      title: 'Group Problem Solving'
+      title: 'Group Problem Solving',
+      text: ''
     },
     {
-      title: 'Guest Speakers'
+      title: 'Guest Speakers',
+      text: ''
     }
   ],
   contentConsultancy: [

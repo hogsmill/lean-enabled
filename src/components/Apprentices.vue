@@ -6,7 +6,7 @@
       <CoursesIntro :user-type="userType" />
       <Courses />
       <ServicesIntro :user-type="userType" />
-      <Services v-if="user-type == 'manager'" />
+      <Services v-if="userType == 'manager'" />
       <!--
       <CourseMap />
       <TrainingDescription :user-type="userType" />

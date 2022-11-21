@@ -24,7 +24,7 @@ export default {
     }
   },
   created() {
-    bus.emit('sendLoad', 'contentCoursesIntro')
+    bus.emit('sendLoad', 'contentApprenticesIntro')
 
     bus.on('load', (data) => {
       if (data.type == 'contentApprenticesIntro') {
