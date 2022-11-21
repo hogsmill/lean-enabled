@@ -60,27 +60,27 @@ export default {
       background-color: #204893;
 
       .pic {
-        height: 40px;
+        height: 80px;
         background-size: cover;
         background-color: #fff;
 
-        &.face-to-face-and-online-training {
-          background-image: url("../../assets/img/services/1-1-and-group-coaching.jpeg");
+        &.pic-face-to-face-and-online-training {
+          background-image: url("../../assets/img/services/face-to-face-and-online-training.jpeg");
         }
         &.pic-1-1-and-group-coaching {
-          background-image: url("../../assets/img/services/1-1-and-group-coaching.jpeg");
+          background-image: url("../../assets/img/services/1-1-and-group-coaching.webp");
         }
-        &.nhs-case-studies {
-          background-image: url("../../assets/img/services/1-1-and-group-coaching.jpeg");
+        &.pic-nhs-case-studies {
+          background-image: url("../../assets/img/services/1-1-and-group-coaching.webp");
         }
-        &.nhs-themed-simulations {
-          background-image: url("../../assets/img/services/1-1-and-group-coaching.jpeg");
+        &.pic-nhs-themed-simulations {
+          background-image: url("../../assets/img/services/nhs-themed-simulations.webp");
         }
-        &.group-problem-solving {
-          background-image: url("../../assets/img/services/1-1-and-group-coaching.jpeg");
+        &.pic-group-problem-solving {
+          background-image: url("../../assets/img/services/group-problem-solving.webp");
         }
-        &.guest-speakers {
-          background-image: url("../../assets/img/services/1-1-and-group-coaching.jpeg");
+        &.pic-guest-speakers {
+          background-image: url("../../assets/img/services/1-1-and-group-coaching.webp");
         }
       }
 

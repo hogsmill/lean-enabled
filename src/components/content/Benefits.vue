@@ -1,10 +1,10 @@
 <template>
   <div class="row">
     <h3>
-      Comments
+      Benefits
     </h3>
     <p>
-      Comments here 
+      Benefits here - number trained, outcomes, etc,
     </p>
   </div>
 </template>
