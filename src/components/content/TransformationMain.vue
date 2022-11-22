@@ -8,7 +8,9 @@
     <div class="col-sm-4">
       <div class="main-pic" />
       <div class="quote">
-        <i>"These guys are great"</i> - Jeremy Hunt
+        <span class="quote-text">{{ transformation.quote.text }}</span>
+        -
+        {{ transformation.quote.author }}
       </div>
     </div>
   </div>
@@ -57,6 +59,13 @@ export default {
 
   .quote {
     margin-bottom: 12px;
+    padding-right: 34px;
+    text-align: right;
+
+    .quote-text {
+      font-style: italic;
+      font-weight: bold;
+    }
   }
 }
 </style>

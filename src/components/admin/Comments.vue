@@ -9,6 +9,9 @@
           <th>
             Author
           </th>
+          <td>
+            Scope
+          </td>
           <th>
             Comment
           </th>
@@ -19,6 +22,19 @@
         <tr>
           <td>
             <input id="new-author" type="text">
+          </td>
+          <td>
+            <select id="new-scope">
+              <option value="">
+                -- Select --
+              </option>
+              <option value="stakeholder">
+                Stakeholder
+              </option>
+              <option value="stakeholder">
+                Staff
+              </option>
+            </select>
           </td>
           <td>
             <input id="new-comment" type="text">
@@ -41,6 +57,9 @@
             Author
           </th>
           <th>
+            Scope
+          </th>
+          <th>
             Comment
           </th>
           <th>
@@ -59,9 +78,25 @@
           </td>
           <td>
             <span v-if="editing.id != comment.id">
+              {{ comment.scope }}
+            </span>
+            <select v-if="editing.id == comment.id" id="editing-scope" :value="comment.scope">
+              <option value="">
+                -- Select --
+              </option>
+              <option value="stakeholder">
+                Stakeholder
+              </option>
+              <option value="stakeholder">
+                Staff
+              </option>
+            </select>
+          </td>
+          <td>
+            <span v-if="editing.id != comment.id">
               {{ comment.comment }}
             </span>
-            <input v-if="editing.id == comment.id" id="editing-comment" type="text" :value="comment.comment">
+            <textarea v-if="editing.id == comment.id" id="editing-comment" type="text" :value="comment.comment" />
           </td>
           <td>
             <span v-if="editing.id != comment.id">

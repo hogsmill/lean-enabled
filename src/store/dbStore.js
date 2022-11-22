@@ -57,6 +57,7 @@ const _objects = {
   comment: {
     author: '',
     comment: '',
+    scope: '',
     enabled: false
   },
   person: {

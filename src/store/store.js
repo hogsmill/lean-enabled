@@ -32,7 +32,10 @@ export const store = createStore({
     expanded: '',
     content: {
       mission: '',
-      transformation: '',
+      transformation: {
+        text: '',
+        quote: {}
+      },
       consultancy: '',
       training: '',
       apprenticesIntro: '',
@@ -97,6 +100,18 @@ export const store = createStore({
     },
     getComments: (state) => {
       return state.comments
+    },
+    getScopedComments: (state) => {
+      const comments = {}
+      for (let i = 0; i < state.comments.length; i++) {
+        const comment = state.comments[i]
+        comment.author = comment.author.split(/,/)
+        if (!comments[comment.scope]) {
+          comments[comment.scope] = []
+        }
+        comments[comment.scope].push(comment)
+      }
+      return comments
     },
     getCourses: (state) => {
       return state.courses

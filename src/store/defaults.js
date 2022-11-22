@@ -7,8 +7,11 @@ const _defaults = {
   ],
   transformation: [
     {
-      text: 'We are a team of Improvement Specialists specialising in helping Healthcare clients ”execute strategy” by delivering long-term performance improvements, which are sustainable and drive positive impact. We provide consultancy services and training.'
-
+      text: 'We are a team of Improvement Specialists specialising in helping Healthcare clients ”execute strategy” by delivering long-term performance improvements, which are sustainable and drive positive impact. We provide consultancy services and training.',
+      quote: {
+        text: 'This NHS Trust has the best learning culture across the whole of the NHS',
+        author: 'Jeremy Hunt, Secretary of State for Health and Social Care (1 Feb 2018)'
+      }
     }
   ],
   person: [
@@ -145,6 +148,87 @@ const _defaults = {
       text: ''
     }
   ],
+  comment: [
+    {
+      author: 'Exec Director, Guys & St Thomas NHS',
+      comment: 'The enthusiasm of Kaizen team is amazing and there is a good mix of people with great NHS knowledge and external industries',
+      scope: 'stakeholder',
+      enabled: true
+    },
+    {
+      author: 'Former Director of Performance, CQC',
+      comment: 'The ambition to embed a culture of Improvement here is clear….staff have a passion about improvement…it is very impressive',
+      scope: 'stakeholder',
+      enabled: true
+    },
+    {
+      author: 'Liz Truss  MP, Chief Secretary to the Treasury',
+      comment: 'This approach is delivering huge benefits for patients. It takes a proven method used by companies… eg, Toyota….and its been adapted to suit the hospital – by a leadership team with purpose',
+      scope: 'stakeholder',
+      enabled: true
+    },
+    {
+      author: 'Stephen Hay, Deputy CEO, NHS Improvement',
+      comment: 'When are you rolling Kaizen approach to whole NHS?',
+      scope: 'stakeholder',
+      enabled: true
+    },
+    {
+      author: 'David – Nurse Consultant, Cardiology',
+      comment: 'Yellow Belt training gave me structure to push my project forward',
+      scope: 'staff',
+      enabled: true
+    },
+    {
+      author: 'Louise, Paediatric Lead & A&E',
+      comment: 'Yellow Belt training has helped us formulate a comprehensive plan for service improvement',
+      scope: 'staff',
+      enabled: true
+    },
+    {
+      author: 'Mandy, Technician Team Leader, Pharmacy',
+      comment: 'Yellow Belt has made me realise you only need to make a small change to make a massive difference',
+      scope: 'staff',
+      enabled: true
+    },
+    {
+      author: 'James, Consultant Anaesthetist',
+      comment: 'This was the first time that I have been involved in a Kaizen project and I have been very impressed..',
+      scope: 'staff',
+      enabled: true
+    },
+    {
+      author: 'James, Consultant Anaesthetist',
+      comment: 'This was the first time that I have been involved in a Kaizen project and I have been very impressed..',
+      scope: 'staff',
+      enabled: true
+    },
+    {
+      author: 'Sir Bruce Keogh,  National Medical Director, NHS England',
+      comment: 'What I have seen today is that you’ve been able to harness that desire for change and improvement, but support it by giving people a professional methodology and support, with a very clear focus and common purpose',
+      scope: 'stakeholder',
+      enabled: true
+    },
+    {
+      author: 'Heather – Ward Sister, Baker Ward',
+      comment: 'Improvement Huddles has given our team a voice and we now have a platform to improve things for the patients in our care as well as ourselves. We can iron out frustrations that occur on a day to day basis',
+      scope: 'staff',
+      enabled: true
+    },
+    {
+      author: 'Jesse, Ward Sister, Carlisle Ward',
+      comment: 'We now feel ownership of it [Improvements] the staff feel empowered, they feel heard and they feel proud of their ward',
+      scope: 'staff',
+      enabled: true
+    },
+    {
+      author: 'Shane, Consultant Anaesthetist ',
+      comment: 'I was a bit sceptical but, at the first meeting, it was clear they had a process, they had brought all the right people together – the ICU team, nursing staff, site managers, and management. People wanted to make it better and the Lean improvement methodology helps you drive that. Immediately, I was delighted to start seeing a change in both attitude and results',
+      scope: 'staff',
+      enabled: true
+    },
+  ],
+
   contentConsultancy: [
     {
       text: [

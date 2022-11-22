@@ -9,18 +9,41 @@
       (<i>Use "[text]" for links to site pages</i>)
     </span>
     <table v-if="expanded == 'transformation'">
-      <tr>
-        <td>
-          <p v-if="editing != 'transformation'">
-            {{ transformation.text }}
-          </p>
-          <textarea id="editing-transformation" v-if="editing == 'transformation'" :value="transformation.text" />
-        </td>
-        <td>
-          <i class="far fa-edit" title="Edit transformation" @click="edit()" />
-          <i class="far fa-save" title="Save transformation" :class="{'disabled': editing != 'transformation'}" @click="save()" />
-        </td>
-      </tr>
+      <thead>
+        <tr>
+          <th>
+            Text
+          </th>
+          <th>
+            Quote
+          </th>
+          <th />
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <p v-if="editing != 'transformation'">
+              {{ transformation.text }}
+            </p>
+            <textarea id="editing-transformation-text" v-if="editing == 'transformation'" :value="transformation.text" />
+          </td>
+          <td>
+            <p v-if="editing != 'transformation'">
+              <i>{{ transformation.quote.text }}</i>
+            </p>
+            <p v-if="editing != 'transformation'">
+              {{ transformation.quote.author }}
+            </p>
+            <textarea class="quote-edit" id="editing-transformation-quote-text" v-if="editing == 'transformation'" :value="transformation.quote.text" />
+            <textarea class="quote-edit" id="editing-transformation-quote-author" v-if="editing == 'transformation'" :value="transformation.quote.author" />
+          </td>
+          <td>
+            <i class="far fa-edit" title="Edit transformation" @click="edit()" />
+            <i class="far fa-save" title="Save transformation" :class="{'disabled': editing != 'transformation'}" @click="save()" />
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -64,7 +87,11 @@ export default {
       const data = {
         type: 'transformation',
         id: this.transformation.id,
-        text: document.getElementById('editing-transformation').value
+        text: document.getElementById('editing-transformation-text').value,
+        quote: {
+          text: document.getElementById('editing-transformation-quote-text').value,
+          author: document.getElementById('editing-transformation-quote-author').value
+        }
       }
       bus.emit('sendUpdate', data)
       this.editing = ''

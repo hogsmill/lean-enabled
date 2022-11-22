@@ -8,6 +8,7 @@
       <!-- Transformation -->
       <TransformationMain v-if="tab == 'transformation'" />
       <Transformation v-if="tab == 'transformation'" />
+      <Comments v-if="tab == 'transformation'" :scope="'stakeholder'"/>
 
       <!-- Apprentices (Training) -->
       <Apprentices v-if="tab == 'apprentices'" />
@@ -26,6 +27,9 @@
       <TandCs v-if="tab == 'tandcs'" />
       <Security v-if="tab == 'security'" />
       <Modals />
+
+      <!-- Footer -->
+      <Endorsements />
       <Footer v-if="!mobile" />
     </div>
   </div>
@@ -42,6 +46,7 @@ import NextCourse from './components/NextCourse.vue'
 import TransformationMain from './components/content/TransformationMain.vue'
 import Transformation from './components/Transformation.vue'
 import Apprentices from './components/Apprentices.vue'
+import Comments from './components/content/Comments.vue'
 import Course from './components/Course.vue'
 import About from './components/About.vue'
 import Faqs from './components/FAQs.vue'
@@ -50,6 +55,7 @@ import Admin from './components/Admin.vue'
 import TandCs from './components/footer/TandCs.vue'
 import Security from './components/footer/Security.vue'
 import Modals from './components/Modals.vue'
+import Endorsements from './components/Endorsements.vue'
 import Footer from './components/Footer.vue'
 
 export default {
@@ -61,6 +67,7 @@ export default {
     TransformationMain,
     Apprentices,
     Course,
+    Comments,
     About,
     Faqs,
     CaseStudy,
@@ -68,6 +75,7 @@ export default {
     TandCs,
     Security,
     Modals,
+    Endorsements,
     Footer
   },
   data() {

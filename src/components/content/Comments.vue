@@ -3,13 +3,18 @@
     <h3>
       Comments
     </h3>
-    <div v-for="(comment, index) in comments" :key="index" class="comment">
-      <p>
-        "{{ comment.comment }}"
-      </p>
-      <p class="right">
-        -- {{ comment.author }}
-      </p>
+    <div class="comments">
+      <div v-for="(comment, index) in comments[scope]" :key="index" class="comment">
+        <p class="comment-text">
+          "{{ comment.comment }}"
+        </p>
+        <p class="right">
+          --
+          <span v-for="(a, ind) in comment.author" :key="ind">
+            {{ a }}<br />
+          </span>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -18,9 +23,12 @@
 import bus from '../../socket.js'
 
 export default {
+  props: [
+    'scope'
+  ],
   computed: {
     comments() {
-      return this.$store.getters.getComments
+      return this.$store.getters.getScopedComments
     }
   },
   created() {
@@ -37,11 +45,21 @@ export default {
 </script>
 
 <style lang="scss">
-.comment {
-  margin: 12px 60px;
+.comments {
+  max-width: 800px;
+  margin: 0 auto;
 
-  .right {
-    text-align: right;
+  .comment {
+    margin: 12px 60px;
+
+    .comment-text {
+      text-align: left;
+      font-style: italic;
+      font-weight: bold;
+    }
+    .right {
+      text-align: right;
+    }
   }
 }
 </style>
