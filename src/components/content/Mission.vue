@@ -5,7 +5,7 @@
     </h2>
     <h3>
       <i class="fas fa-quote-left" />
-      {{ mission.mission }}
+      {{ mission.text }}
       <i class="fas fa-quote-right" />
     </h3>
   </div>
