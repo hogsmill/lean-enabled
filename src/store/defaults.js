@@ -48,7 +48,7 @@ const _defaults = {
       level: 3,
       leanSixSigma: true,
       belt: 'yellow',
-      modules: []
+      modules: [],
     },
     {
       name: 'Improvement Practitioner',
@@ -120,6 +120,29 @@ const _defaults = {
       leanSixSigma: true,
       belt: 'master-black',
       modules: []
+    }
+  ],
+  courseComment: [
+    {
+      level: 3,
+      comments: []
+    },
+    {
+      level: 4,
+      comments: []
+    },
+    {
+      level: 5,
+      comments: [
+        'Loved the interaction elements, definitely helped with anxiety levels',
+        'Really nice team of people, good first day',
+        'Fantastic and enthusiastic teachers',
+        'I’ve had more movement and opportunity in the last five weeks in my career than I have had in the last five years!'
+      ]
+    },
+    {
+      level: 6,
+      comments: []
     }
   ],
   service: [

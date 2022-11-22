@@ -24,6 +24,7 @@
         </div>
         <div class="col-sm-6">
           <CourseDetail :course="course" />
+          <CourseComments :course="course" />
         </div>
         <div class="col-sm-3">
           <CourseModules :course="course" />
@@ -39,12 +40,14 @@
 <script>
 import Course from './courses/Course.vue'
 import CourseDetail from './courses/CourseDetail.vue'
+import CourseComments from './courses/CourseComments.vue'
 import CourseModules from './courses/CourseModules.vue'
 
 export default {
   components: {
     Course,
     CourseDetail,
+    CourseComments,
     CourseModules
   },
   computed: {

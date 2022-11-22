@@ -16,7 +16,10 @@
       <div :class="{'active': tab == 'courses'}" @click="setTab('courses')">
         Courses
       </div>
-      <div :class="{'active': tab == 'coursedates'}" @click="setTab('coursedates')">
+      <div :class="{'active': tab == 'course-comments'}" @click="setTab('course-comments')">
+        Course Feedback
+      </div>
+      <div :class="{'active': tab == 'course-dates'}" @click="setTab('course-dates')">
         Course Dates
       </div>
       <div :class="{'active': tab == 'comments'}" @click="setTab('comments')">
@@ -37,7 +40,8 @@
       <Emails v-if="tab == 'emails'" />
       <Services v-if="tab == 'services'" />
       <Courses v-if="tab == 'courses'" />
-      <CourseDates v-if="tab == 'coursedates'" />
+      <CourseComments v-if="tab == 'course-comments'" />
+      <CourseDates v-if="tab == 'course-dates'" />
       <Comments v-if="tab == 'comments'" />
       <Faqs v-if="tab == 'faqs'" />
       <People v-if="tab == 'people'" />
@@ -53,6 +57,7 @@ import Users from './admin/Users.vue'
 import Emails from './admin/Emails.vue'
 import Services from './admin/Services.vue'
 import Courses from './admin/Courses.vue'
+import CourseComments from './admin/CourseComments.vue'
 import CourseDates from './admin/CourseDates.vue'
 import Comments from './admin/Comments.vue'
 import Faqs from './admin/FAQs.vue'
@@ -65,6 +70,7 @@ export default {
     Emails,
     Services,
     Courses,
+    CourseComments,
     CourseDates,
     Comments,
     Faqs,

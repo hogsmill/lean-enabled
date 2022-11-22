@@ -42,6 +42,10 @@ const _objects = {
     modules: [],
     enabled: false
   },
+  courseComment: {
+    level: '',
+    comments: []
+  },
   courseDate: {
     day: '',
     month: '',

@@ -4,6 +4,12 @@
       Comments
     </h3>
     <div class="comments">
+      <p v-if="scope == 'staff'">
+        What course attendees have said about our training initiatives.
+      </p>
+      <p v-if="scope == 'stakeholder'">
+        What senior people have been saying about our consultancy and training prograqms.
+      </p>
       <div v-for="(comment, index) in comments[scope]" :key="index" class="comment">
         <p class="comment-text">
           "{{ comment.comment }}"
@@ -11,7 +17,7 @@
         <p class="right">
           --
           <span v-for="(a, ind) in comment.author" :key="ind">
-            {{ a }}<br />
+            {{ a }}<br>
           </span>
         </p>
       </div>

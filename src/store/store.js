@@ -20,6 +20,7 @@ export const store = createStore({
     userType: 'manager',
     users: [],
     emails: [],
+    courseComments: [],
     courseDates: [],
     comments: [],
     faqs: [],
@@ -87,6 +88,9 @@ export const store = createStore({
     },
     getEmails: (state) => {
       return state.emails
+    },
+    getCourseComments: (state) => {
+      return state.courseComments
     },
     getCourseDates: (state) => {
       return state.courseDates.sort((a, b) => {
@@ -207,6 +211,9 @@ export const store = createStore({
     updateCourses: (state, payload) => {
       state.courses = payload
     },
+    updateCourseComments: (state, payload) => {
+      state.courseComments = payload
+    },
     updateCourseDates: (state, payload) => {
       state.courseDates = payload
     },
@@ -277,6 +284,9 @@ export const store = createStore({
     },
     updateServices: ({ commit }, payload) => {
       commit('updateServices', payload)
+    },
+    updateCourseComments: ({ commit }, payload) => {
+      commit('updateCourseComments', payload)
     },
     updateCourseDates: ({ commit }, payload) => {
       commit('updateCourseDates', payload)
