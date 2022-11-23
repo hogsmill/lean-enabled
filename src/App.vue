@@ -93,8 +93,6 @@ export default {
     }
   },
   created() {
-
-    console.log(window.location)
     
     this.$store.dispatch('updateCanLogin', params.isParam('host') || params.isParam('admin'))
 

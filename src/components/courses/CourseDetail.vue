@@ -29,7 +29,7 @@ export default {
   ],
   methods: {
     getUrl() {
-      return '/'  + window.location.pathname + '/video/L' + course.level + '.mov'
+      return window.location.pathname + 'video/L' + this.course.level + '.mov'
     }
   }
 }
