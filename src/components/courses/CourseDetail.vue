@@ -42,6 +42,7 @@ export default {
     float: right;
     width: 200px;
     height: 400px;
+    margin: 0 0 6px 6px;
   }
   p {
     color: #444;
