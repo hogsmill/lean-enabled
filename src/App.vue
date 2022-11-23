@@ -94,6 +94,8 @@ export default {
   },
   created() {
 
+    console.log(window.location)
+    
     this.$store.dispatch('updateCanLogin', params.isParam('host') || params.isParam('admin'))
 
     this.$store.dispatch('updateMobile', window.outerWidth < 768)
