@@ -28,11 +28,11 @@ export default {
   },
   created() {
 
-    bus.emit('sendLoad', 'caseStudy')
+    bus.emit('sendLoad', 'howItWorks')
 
     bus.on('load', (data) => {
-      if (data.type == 'caseStudy') {
-        this.$store.dispatch('updateContent', {type: 'caseStudy', content: data.objects[0]})
+      if (data.type == 'howItWorks') {
+        this.$store.dispatch('updateContent', {type: 'howItWorks', content: data.objects[0]})
       }
     })
   }
@@ -46,6 +46,9 @@ export default {
 
   h2, h3, p {
     color: #fff;
+  }
+  
+  h3, p {
     text-align: left;
   }
 
