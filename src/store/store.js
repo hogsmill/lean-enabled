@@ -42,7 +42,8 @@ export const store = createStore({
       apprenticesIntro: '',
       coursesIntro: '',
       servicesIntro: '',
-      caseStudy: ''
+      caseStudy: '',
+      howItWorks: ''
     }
   },
   getters: {
@@ -164,6 +165,9 @@ export const store = createStore({
     },
     getContentCaseStudy: (state) => {
       return state.content.caseStudy
+    },
+    getContentHowItWorks: (state) => {
+      return state.content.howItWorks
     }
   },
   mutations: {

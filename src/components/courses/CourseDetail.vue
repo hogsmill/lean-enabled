@@ -1,9 +1,9 @@
 <template>
   <div class="course-detail">
+    <video v-if="course.video" id="video" controls>
+      <source :src="getUrl()" type="video/mp4">
+    </video>
     <p>
-      <video v-if="course.video" id="video" controls>
-        <source :src="getUrl()" type="video/mp4">
-      </video>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
       exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
@@ -40,8 +40,7 @@ export default {
 
   #video {
     float: right;
-    width: 200px;
-    height: 400px;
+    width: 40%;
     margin: 0 0 6px 6px;
   }
   p {

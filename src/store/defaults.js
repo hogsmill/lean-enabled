@@ -350,6 +350,60 @@ const _defaults = {
         }
       ]
     }
+  ],
+  howItWorks: [
+    {
+      text: [
+        {
+          type: 'header',
+          text: 'Key Focus Outcomes'
+        },
+        {
+          type: 'text',
+          text: 'TBD'
+        },
+        {
+          type: 'header',
+          text: 'Daily Team Huddles'
+        },
+        {
+          type: 'text',
+          text: 'TBD'
+        },
+        {
+          type: 'header',
+          text: 'Strategy Deployment'
+        },
+        {
+          type: 'text',
+          text: 'TBD'
+        },
+        {
+          type: 'header',
+          text: 'Staff Capacity and Availability'
+        },
+        {
+          type: 'text',
+          text: 'TBD'
+        },
+        {
+          type: 'header',
+          text: 'Kaizen Team and External Support'
+        },
+        {
+          type: 'text',
+          text: 'TBD'
+        },
+        {
+          type: 'header',
+          text: 'KLeadership Behaviours and Sustainability'
+        },
+        {
+          type: 'text',
+          text: 'TBD'
+        }
+      ]
+    }
   ]
 }
 

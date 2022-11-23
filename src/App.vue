@@ -8,6 +8,7 @@
       <!-- Transformation -->
       <TransformationMain v-if="tab == 'transformation'" />
       <Transformation v-if="tab == 'transformation'" />
+      <HowItWorks v-if="tab == 'transformation'" />
       <Comments v-if="tab == 'transformation'" :scope="'stakeholder'" />
 
       <!-- Apprentices (Training) -->
@@ -45,6 +46,7 @@ import Header from './components/Header.vue'
 import NextCourse from './components/NextCourse.vue'
 import TransformationMain from './components/content/TransformationMain.vue'
 import Transformation from './components/Transformation.vue'
+import HowItWorks from './components/content/HowItWorks.vue'
 import Apprentices from './components/Apprentices.vue'
 import Comments from './components/content/Comments.vue'
 import Course from './components/Course.vue'
@@ -65,6 +67,7 @@ export default {
     NextCourse,
     Transformation,
     TransformationMain,
+    HowItWorks,
     Apprentices,
     Course,
     Comments,
@@ -93,7 +96,7 @@ export default {
     }
   },
   created() {
-    
+
     this.$store.dispatch('updateCanLogin', params.isParam('host') || params.isParam('admin'))
 
     this.$store.dispatch('updateMobile', window.outerWidth < 768)

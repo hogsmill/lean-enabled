@@ -109,6 +109,9 @@ const _objects = {
   caseStudy: {
     header: '',
     text: []
+  },
+  howItWorks: {
+    text: []
   }
 }
 

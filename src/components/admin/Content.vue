@@ -9,6 +9,7 @@
     <ServicesIntro />
     <CoursesIntro />
     <CaseStudy />
+    <HowItWorks />
   </div>
 </template>
 
@@ -24,6 +25,7 @@ import Services from './content/Services.vue'
 import ServicesIntro from './content/ServicesIntro.vue'
 import CoursesIntro from './content/CoursesIntro.vue'
 import CaseStudy from './content/CaseStudy.vue'
+import HowItWorks from './content/HowItWorks.vue'
 
 export default {
   components: {
@@ -35,7 +37,8 @@ export default {
     Services,
     ServicesIntro,
     CoursesIntro,
-    CaseStudy
+    CaseStudy,
+    HowItWorks
   },
   computed: {
     expanded() {
