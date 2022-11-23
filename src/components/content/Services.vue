@@ -56,12 +56,13 @@ export default {
     margin-top: 15px;
 
     .service {
-
+      width: 100%;
       background-color: #204893;
 
       .pic {
         height: 80px;
         background-size: cover;
+        background-position: center;
         background-color: #fff;
 
         &.pic-face-to-face-and-online-training {
@@ -71,7 +72,7 @@ export default {
           background-image: url("../../assets/img/services/1-1-and-group-coaching.webp");
         }
         &.pic-nhs-case-studies {
-          background-image: url("../../assets/img/services/1-1-and-group-coaching.webp");
+          background-image: url("../../assets/img/services/nhs-case-studies.jpeg");
         }
         &.pic-nhs-themed-simulations {
           background-image: url("../../assets/img/services/nhs-themed-simulations.webp");
@@ -80,7 +81,7 @@ export default {
           background-image: url("../../assets/img/services/group-problem-solving.webp");
         }
         &.pic-guest-speakers {
-          background-image: url("../../assets/img/services/1-1-and-group-coaching.webp");
+          background-image: url("../../assets/img/services/guest-speakers.jpeg");
         }
       }
 

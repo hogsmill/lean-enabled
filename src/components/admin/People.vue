@@ -101,9 +101,9 @@
             </span>
           </td>
           <td>
-            <i class="far fa-edit" title="Edit FAQ" @click="editPerson(person)" />
-            <i class="far fa-save" title="Save FAQ" :class="{'disabled': editing.id != person.id}" @click="savePerson(person)" />
-            <i class="far fa-trash-alt" title="Delete FAQ" @click="deletePerson(person)" />
+            <i class="far fa-edit" title="Edit Person" @click="editPerson(person)" />
+            <i class="far fa-save" title="Save Person" :class="{'disabled': editing.id != person.id}" @click="savePerson(person)" />
+            <i class="far fa-trash-alt" title="Delete Person" @click="deletePerson(person)" />
           </td>
         </tr>
       </tbody>

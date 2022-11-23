@@ -8,7 +8,7 @@
       <ServicesIntro :user-type="userType" />
       <Services v-if="userType == 'manager'" />
       <Benefits />
-      <Comments :scope="'staff'"/>
+      <Comments :scope="'staff'" />
       <!--
       <CourseMap />
       <TrainingDescription :user-type="userType" />

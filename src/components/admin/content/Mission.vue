@@ -44,7 +44,6 @@ export default {
   },
   created() {
 
-    console.log(this.mission)
     bus.emit('sendLoad', 'mission')
 
     bus.on('load', (data) => {

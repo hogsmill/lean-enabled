@@ -48,6 +48,7 @@ const _defaults = {
       level: 3,
       leanSixSigma: true,
       belt: 'yellow',
+      video: false,
       modules: [],
     },
     {
@@ -57,6 +58,7 @@ const _defaults = {
       level: 4,
       leanSixSigma: true,
       belt: 'green',
+      video: false,
       modules: [
         { id: '23ffc867-0094-482f-8c5f-ee352b0b99ac', number: 1, name: 'Compliance' },
         { id: '995cd051-c8c1-491e-9917-2483e9c38811', number: 2, name: 'Communication' },
@@ -89,6 +91,7 @@ const _defaults = {
       level: 5,
       leanSixSigma: true,
       belt: 'black',
+      video: true,
       modules: [
         { id: '2c1ca2eb-477c-47f1-b728-e42ff3739c7b', number: 1, name: 'Leading Improvement teams' },
         { id: 'ed2c2a3f-7eb7-4102-96f7-8c7394e970da', number: 2, name: 'Strategic Deployment of C.I' },
@@ -119,6 +122,7 @@ const _defaults = {
       level: 6,
       leanSixSigma: true,
       belt: 'master-black',
+      video: false,
       modules: []
     }
   ],
@@ -129,7 +133,12 @@ const _defaults = {
     },
     {
       level: 4,
-      comments: []
+      comments: [
+        'Excellent course delivery',
+        'Great !  Interactive study day and a nice mix of theory & practical',
+        'Pace of sharing information makes it very engaging',
+        'Extremely interactive, stimulating & thought provoking'
+      ]
     },
     {
       level: 5,

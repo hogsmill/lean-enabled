@@ -8,7 +8,7 @@
       <!-- Transformation -->
       <TransformationMain v-if="tab == 'transformation'" />
       <Transformation v-if="tab == 'transformation'" />
-      <Comments v-if="tab == 'transformation'" :scope="'stakeholder'"/>
+      <Comments v-if="tab == 'transformation'" :scope="'stakeholder'" />
 
       <!-- Apprentices (Training) -->
       <Apprentices v-if="tab == 'apprentices'" />

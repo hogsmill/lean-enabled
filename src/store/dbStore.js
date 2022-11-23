@@ -39,6 +39,7 @@ const _objects = {
     level: '',
     leanSixSigma: '',
     belt: '',
+    video: false,
     modules: [],
     enabled: false
   },

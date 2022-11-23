@@ -21,6 +21,9 @@
           <th>
             Belt
           </th>
+          <th>
+            Video?
+          </th>
           <th />
         </tr>
       </thead>
@@ -56,6 +59,9 @@
             </select>
           </td>
           <td>
+            <input id="new-video" type="checkbox">
+          </td>
+          <td>
             <button class="btn btn-primary smaller-font" @click="addCourse()">
               Add New
             </button>
@@ -83,6 +89,9 @@
           </th>
           <th>
             Belt
+          </th>
+          <th>
+            Video?
           </th>
           <th>
             Modules
@@ -126,6 +135,13 @@
                 {{ belt }}
               </option>
             </select>
+          </td>
+          <td>
+            <span v-if="editing.id != course.id">
+              <i v-if="course.video" class="fas fa-check" />
+              <i v-if="!course.video" class="fas fa-times" />
+            </span>
+            <input v-if="editing.id == course.id" id="editing-video" type="checkbox" :checked="course.video">
           </td>
           <td>
             <table>
@@ -232,7 +248,8 @@ export default {
         courseType: document.getElementById('new-type').value,
         level: document.getElementById('new-level').value,
         leanSixSigma: document.getElementById('new-lean-six-sigma').value,
-        belt: document.getElementById('new-belt').value
+        belt: document.getElementById('new-belt').value,
+        video: document.getElementById('new-video').value
       }
       bus.emit('sendCreate', data)
     },
@@ -263,7 +280,8 @@ export default {
         courseType: document.getElementById('editing-type').value,
         level: document.getElementById('editing-level').value,
         leanSixSigma: document.getElementById('editing-lean-six-sigma').value,
-        belt: document.getElementById('editing-belt').value
+        belt: document.getElementById('editing-belt').value,
+        video: document.getElementById('editing-video').value
       }
       bus.emit('sendUpdate', data)
       this.editing = {}
