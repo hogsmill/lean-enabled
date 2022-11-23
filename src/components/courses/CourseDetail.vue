@@ -2,7 +2,7 @@
   <div class="course-detail">
     <p>
       <video v-if="course.video" id="video" controls>
-        <source :src="root + '/video/L' + course.level + '.mov'" type="video/mp4">
+        <source :src="getUrl()" type="video/mp4">
       </video>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -27,11 +27,11 @@ export default {
   props: [
     'course'
   ],
-  computed: {
-    root() {
-      return this.$store.getters.getRoot
+  methods: {
+    getUrl() {
+      return '/'  + window.location.pathname + '/video/L' + course.level + '.mov'
     }
-  },
+  }
 }
 </script>
 
