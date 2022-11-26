@@ -19,6 +19,10 @@ const _objects = {
   mission: {
     text: ''
   },
+  quote: {
+    author: '',
+    quote: ''
+  },
   transformation: {
     text: ''
   },

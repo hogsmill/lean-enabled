@@ -9,10 +9,6 @@ font-face { font-family: Lato; src: url('./fonts/lato/Lato-Regular.ttf'); }
   color: #204893;
 }
 
-.content {
-  padding-top: 176px;
-}
-
 h1, h2, h3, h4, p {
   color: #204893;
 }

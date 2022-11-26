@@ -25,6 +25,7 @@ export const store = createStore({
     comments: [],
     faqs: [],
     services: [],
+    quotes: [],
     courses: [],
     people: [],
     currentCourse: {},
@@ -89,6 +90,9 @@ export const store = createStore({
     },
     getEmails: (state) => {
       return state.emails
+    },
+    getQuotes: (state) => {
+      return state.quotes
     },
     getCourseComments: (state) => {
       return state.courseComments
@@ -212,6 +216,9 @@ export const store = createStore({
     updateMission: (state, payload) => {
       state.montent.mission = payload
     },
+    updateQuotes: (state, payload) => {
+      state.quotes = payload
+    },
     updateCourses: (state, payload) => {
       state.courses = payload
     },
@@ -282,6 +289,9 @@ export const store = createStore({
     },
     updateMission: ({ commit }, payload) => {
       commit('updateMission', payload)
+    },
+    updateQuotes: ({ commit }, payload) => {
+      commit('updateQuotes', payload)
     },
     updateCourses: ({ commit }, payload) => {
       commit('updateCourses', payload)

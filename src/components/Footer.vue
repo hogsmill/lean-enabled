@@ -1,7 +1,20 @@
 <template>
   <div class="footer">
     <h4>
-      All the legal stuff, etc...
+      Living By Our Values
+      <br>
+      <span>
+        TRUST
+      </span>
+      <span>
+        RESPECT
+      </span>
+      <span>
+        INTEGRITY
+      </span>
+      <span>
+        PEOPLE FOCUSSED
+      </span>
     </h4>
     <div class="row">
       <div class="col-sm-6">
@@ -10,6 +23,11 @@
       <div class="col-sm-2">
         <a @click="setTab('security')">Security</a>
       </div>
+
+      <!-- Safeguarding -->
+
+      <!-- POLICY FROM EXISTING SITE -->
+
       <div class="col-sm-2">
         <a @click="contact()">Contact</a>
       </div>
@@ -50,10 +68,16 @@ export default {
     background-position-y: center;
     background-position-x: 22px;
 
-    h4 {
+    h4, span {
       text-align: center;
       color: #fff;
     }
+
+    span {
+      padding: 0 24px;
+      font-size: 18px;
+    }
+
 
     .col-sm-2, .col-sm-6 {
       text-align: center;

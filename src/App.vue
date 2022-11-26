@@ -1,12 +1,16 @@
 <template>
   <div>
     <Header />
+    <Quotes />
     <div class="content">
 
       <NextCourse v-if="showNextCourse()" />
 
       <!-- Transformation -->
       <TransformationMain v-if="tab == 'transformation'" />
+
+      <!-- Rotating Comments in here -->
+
       <Transformation v-if="tab == 'transformation'" />
       <HowItWorks v-if="tab == 'transformation'" />
       <Comments v-if="tab == 'transformation'" :scope="'stakeholder'" />
@@ -30,8 +34,8 @@
       <Modals />
 
       <!-- Footer -->
-      <Endorsements />
-      <Footer v-if="!mobile" />
+      <Endorsements v-if="tab !='admin'" />
+      <Footer v-if="!mobile && tab !='admin'" />
     </div>
   </div>
 </template>
@@ -43,6 +47,7 @@ import localStorage from './lib/localStorage.js'
 import params from './lib/params.js'
 
 import Header from './components/Header.vue'
+import Quotes from './components/Quotes.vue'
 import NextCourse from './components/NextCourse.vue'
 import TransformationMain from './components/content/TransformationMain.vue'
 import Transformation from './components/Transformation.vue'
@@ -64,6 +69,7 @@ export default {
   name: 'App',
   components: {
     Header,
+    Quotes,
     NextCourse,
     Transformation,
     TransformationMain,

@@ -5,6 +5,204 @@ const _defaults = {
       text: 'To provide the skills for apprenticeship learners or NHS staff to feel empowered, equipped and confident to drive and manage, measurable and sustainable change in their area of work.'
     }
   ],
+  quote: [
+    {
+      quote: 'Practice the philosophy of continuous improvement. Get a little bit better every single day.',
+      author: 'Brian Tracy'
+    },
+    {
+      quote: 'We are what we repeatedly do. Excellence, then, is not an act but a habit.',
+      author: 'Will Durant'
+    },
+    {
+      quote: 'The message of the Kaizen strategy is that not a day should go by without some kind of improvement being made somewhere in the company.',
+      author: 'Masaaki Imai'
+    },
+    {
+      quote: 'The biggest room in the world is the room for improvement.',
+      author: 'Helmut Schmidt'
+    },
+    {
+      quote: 'Success is the product of daily habits—not once-in-a-lifetime transformations.',
+      author: 'James Clear'
+    },
+    {
+      quote: 'Great things are done by a series of small things brought together.',
+      author: 'Vincent Van Gough'
+    },
+    {
+      quote: 'Any organization’s competitiveness, ability to adapt, and culture arise from the routines and habits by which the people in the organization conduct themselves every day. It is an issue of human behaviour.',
+      author: 'Mike Rother'
+    },
+    {
+      quote: 'Measurement is the first step that leads to control and eventually to improvement. If you can’t measure something, you can’t understand it. If you can’t understand it, you can’t control it. If you can’t control it, you can’t improve it.',
+      author: 'H.James Harrington'
+    },
+    {
+      quote: 'This is a fundamental truth about any sort of practice: If you never push yourself beyond your comfort zone, you will never improve.',
+      author: 'Anders Ericsson'
+    },
+    {
+      quote: 'Small daily improvements over time lead to stunning results.',
+      author: 'Robin Sharma'
+    },
+    {
+      quote: 'Discipline is choosing between what you want now and what you want most.',
+      author: 'Abraham Lincoln'
+    },
+    {
+      quote: 'I fear not the man who has practiced 10,000 kicks, but I do fear the man who has practiced one kick 10,000 times.',
+      author: 'Bruce Lee'
+    },
+    {
+      quote: 'If you are going to achieve excellence in big things, you develop the habit in little matters. Excellence is not an exception, it is a prevailing attitude.',
+      author: 'Colin Powell'
+    },
+    {
+      quote: 'Motivation is what gets you started. Habit is what keeps you going.',
+      author: 'Jim Rohn'
+    },
+    {
+      quote: 'You’ll never change your life until you change something you do daily. The secret of your success is found in your daily routine.',
+      author: 'John C. Maxwell'
+    },
+    {
+      quote: 'I have learned that champions aren’t just born; champions can be made when they embrace and commit to life-changing positive habits.',
+      author: 'Lewis Howes'
+    },
+    {
+      quote: 'We improve by 1% every day. In just 70 days, you’re twice as good.',
+      author: 'Alan Weiss'
+    },
+    {
+      quote: 'Excellence is an art won by training and habituation.',
+      author: 'Aristotle'
+    },
+    {
+      quote: 'If I had one hour to save the world, I would spend fifty-five minutes defining the problem and only five minutes finding the solution.',
+      author: 'Albert Einstein'
+    },
+    {
+      quote: 'Don\’t say it can not be done, rather say, you don\’t know how to do it yet.',
+      author: 'Tomas Bata'
+    },
+    {
+      quote: 'Perfection is not attainable. But if we chase perfection, we can catch excellence.',
+      author: 'Vince Lombardi'
+    },
+    {
+      quote: 'If you define the problem correctly, you almost have the solution.',
+      author: 'Steve Jobs'
+    },
+    {
+      quote: 'Without continual growth and progress, such words as improvement, achievement, and success have no meaning.',
+      author: 'Benjamin Franklin'
+    },
+    {
+      quote: 'If you always do what you\’ve always done, you’ll always get what you\’ve always got.',
+      author: 'Henry Ford'
+    },
+    {
+      quote: 'If you can\'t describe what you are doing as a process, you don\'t know what you\'re doing.',
+      author: 'W. Edwards Deming'
+    },
+    {
+      quote: 'Everything can be improved.',
+      author: 'Clarence W. Barron'
+    },
+    {
+      quote: 'Almost all quality improvement comes via simplification of design, manufacturing, layout, processes, and procedures.',
+      author: 'Tom Peters'
+    },
+    {
+      quote: 'If you can\’t explain something simply, you don’t understand it well enough.',
+      author: 'Albert Einstein'
+    },
+    {
+      quote: 'The most dangerous kind of waste is the waste we do not recognize.',
+      author: 'Shigeo Shingo'
+    },
+    {
+      quote: 'Manage the cause, not the result.',
+      author: 'W.E Deming'
+    },
+    {
+      quote: 'Focus on being productive, instead of busy.',
+      author: 'Tim Ferris'
+    },
+    {
+      quote: 'Coming together is a beginning, staying together is progress, and working together is success.',
+      author: 'Henry Ford'
+    },
+    {
+      quote: 'Great things are done by a series of small things brought together.',
+      author: 'Vincent Van Gough'
+    },
+    {
+      quote: 'Watch the little things; a small leak will sink a great ship.',
+      author: 'Benjamin Franklin'
+    },
+    {
+      quote: 'Growth and improvement is about acknowledging weakness.',
+      author: 'Tony Frontier'
+    },
+    {
+      quote: 'Strive for continuous improvement, instead of perfection.',
+      author: 'Kim Collins'
+    },
+    {
+      quote: 'Continuous improvement is better than delayed perfection.',
+      author: 'Mark Twain'
+    },
+    {
+      quote: 'To improve is to change; to be perfect is to change often.',
+      author: 'Winston Churchill'
+    },
+    {
+      quote: 'Excellent firms don\'t believe in excellence - only in constant improvement and constant change.',
+      author: 'Tom Peters'
+    },
+    {
+      quote: 'The message of the Kaizen strategy is that not a day should go by without some kind of improvement being made somewhere in the company.',
+      author: 'Masaaki Imai'
+    },
+    {
+      quote: 'Almost all quality improvement comes via simplification of design, manufacturing... layout, processes, and procedures.',
+      author: 'Tom Peters'
+    },
+    {
+      quote: 'Without change, there is no innovation, creativity or incentive for improvement.',
+      author: 'William Pollard'
+    },
+    {
+      quote: 'Change is never easy, but always possible.',
+      author: 'Barack Obama'
+    },
+    {
+      quote: 'He who rejects change is the architect of decay.',
+      author: 'Harold Wilson'
+    },
+    {
+      quote: 'Deciding what not to do is as important as deciding what to do.',
+      author: 'Steve Jobs'
+    },
+    {
+      quote: 'Improvement usually means doing something we have never done before.',
+      author: 'Shigeo Shingo'
+    },
+    {
+      quote: 'Do not be afraid of improving slowly. Be afraid of standing still.',
+      author: 'Leo Babauta'
+    },
+    {
+      quote: 'Excellence is not a destination, it is a continuous journey that never ends.',
+      author: 'Brian Tracy'
+    },
+    {
+      quote: 'Some people try to make everything complicated, be the person who tries to make everything simple.',
+      author: 'Dave Waters'
+    }
+  ],
   transformation: [
     {
       text: 'We are a team of Improvement Specialists specialising in helping Healthcare clients ”execute strategy” by delivering long-term performance improvements, which are sustainable and drive positive impact. We provide consultancy services and training.',

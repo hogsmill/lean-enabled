@@ -21,6 +21,9 @@
         <li :class="{'active': tab == 'faqs'}" @click="setUrl('faqs')">
           FAQs
         </li>
+
+        <!-- BLOG -->
+        
         <li :class="{'active': tab == 'contact'}" @click="show('contact')">
           Contact
         </li>
@@ -274,6 +277,7 @@ export default {
 
           &:hover, &.active  {
             font-weight: bold;
+            text-decoration: underline;
           }
         }
       }

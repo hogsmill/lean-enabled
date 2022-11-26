@@ -13,7 +13,7 @@
       <div class="slide">
         <i class="fas fa-chalkboard-teacher" />
         <h2>
-          Training Services
+          Bespoke Training Services
         </h2>
         <p v-for="(text, tindex) in training.text" :key="tindex" v-html="parseText(text)" />
       </div>

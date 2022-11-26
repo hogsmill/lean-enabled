@@ -10,6 +10,9 @@
       <div :class="{'active': tab == 'emails'}" @click="setTab('emails')">
         Emails
       </div>
+      <div :class="{'active': tab == 'quotes'}" @click="setTab('quotes')">
+        Quotes
+      </div>
       <div :class="{'active': tab == 'services'}" @click="setTab('services')">
         Services
       </div>
@@ -17,7 +20,7 @@
         Courses
       </div>
       <div :class="{'active': tab == 'course-comments'}" @click="setTab('course-comments')">
-        Course Feedback
+        Feedback
       </div>
       <div :class="{'active': tab == 'course-dates'}" @click="setTab('course-dates')">
         Course Dates
@@ -38,6 +41,7 @@
     <div class="details">
       <Users v-if="tab == 'users'" />
       <Emails v-if="tab == 'emails'" />
+      <Quotes v-if="tab == 'quotes'" />
       <Services v-if="tab == 'services'" />
       <Courses v-if="tab == 'courses'" />
       <CourseComments v-if="tab == 'course-comments'" />
@@ -55,6 +59,7 @@ import bus from '../socket.js'
 
 import Users from './admin/Users.vue'
 import Emails from './admin/Emails.vue'
+import Quotes from './admin/Quotes.vue'
 import Services from './admin/Services.vue'
 import Courses from './admin/Courses.vue'
 import CourseComments from './admin/CourseComments.vue'
@@ -68,6 +73,7 @@ export default {
   components: {
     Users,
     Emails,
+    Quotes,
     Services,
     Courses,
     CourseComments,
@@ -132,7 +138,7 @@ export default {
 
     div {
       display: inline-block;
-      width: 120px;
+      width: 100px;
       border-bottom: 1px solid #204893;
       background-color: #fff;
       position: relative;
