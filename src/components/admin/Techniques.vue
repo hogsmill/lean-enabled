@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>
-      New Service
+      New Technique
     </h3>
     <table>
       <thead>
@@ -24,7 +24,7 @@
             <textarea id="new-description" type="text" />
           </td>
           <td>
-            <button class="btn btn-primary smaller-font" @click="addservice()">
+            <button class="btn btn-primary smaller-font" @click="addTechnique()">
               Add New
             </button>
           </td>
@@ -32,7 +32,7 @@
       </tbody>
     </table>
     <h3>
-      Services
+      Techniques
     </h3>
     <table>
       <thead>
@@ -47,23 +47,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(service, index) in services" :key="index">
+        <tr v-for="(technique, index) in techniques" :key="index">
           <td>
-            <span v-if="editing.id != service.id">
-              {{ service.title }}
+            <span v-if="editing.id != technique.id">
+              {{ technique.title }}
             </span>
-            <input v-if="editing.id == service.id" id="editing-title" type="text" :value="service.title">
+            <input v-if="editing.id == technique.id" id="editing-title" type="text" :value="technique.title">
           </td>
           <td>
-            <span v-if="editing.id != service.id">
-              {{ service.description }}
+            <span v-if="editing.id != technique.id">
+              {{ technique.description }}
             </span>
-            <textarea v-if="editing.id == service.id" id="editing-description" type="text" :value="service.description" />
+            <textarea v-if="editing.id == technique.id" id="editing-description" type="text" :value="technique.description" />
           </td>
           <td>
-            <i class="far fa-edit" :title="'Edit ' + service.title" @click="editService(service)" />
-            <i class="far fa-save" :title="'Save ' + service.title" :class="{'disabled': editing.id != service.id}" @click="saveService(service)" />
-            <i class="far fa-trash-alt" :title="'Delete ' + service.title" @click="deleteService(service)" />
+            <i class="far fa-edit" :title="'Edit ' + technique.title" @click="editTechnique(technique)" />
+            <i class="far fa-save" :title="'Save ' + technique.title" :class="{'disabled': editing.id != technique.id}" @click="saveTechnique(technique)" />
+            <i class="far fa-trash-alt" :title="'Delete ' + technique.title" @click="deleteTechnique(technique)" />
           </td>
         </tr>
       </tbody>
@@ -81,35 +81,35 @@ export default {
     }
   },
   computed: {
-    services() {
-      return this.$store.getters.getServices
+    techniques() {
+      return this.$store.getters.getTechniques
     }
   },
   created() {
 
-    bus.emit('sendLoad', 'service')
+    bus.emit('sendLoad', 'technique')
 
     bus.on('load', (data) => {
-      if (data.type == 'service') {
-        this.$store.dispatch('updateServices', data.objects)
+      if (data.type == 'technique') {
+        this.$store.dispatch('updateTechniques', data.objects)
       }
     })
   },
   methods: {
-    addService() {
+    addTechnique() {
       const data = {
-        type: 'service',
+        type: 'technique',
         title: document.getElementById('new-title').value,
         description: document.getElementById('new-description').value
       }
       bus.emit('sendCreate', data)
     },
-    editService(service) {
-      this.editing = service
+    editTechnique(technique) {
+      this.editing = technique
     },
-    saveService() {
+    saveTechnique() {
       const data = {
-        type: 'service',
+        type: 'technique',
         id: this.editing.id,
         title: document.getElementById('editing-title').value,
         description: document.getElementById('editing-description').value
@@ -117,8 +117,8 @@ export default {
       bus.emit('sendUpdate', data)
       this.editing = {}
     },
-    deleteService(service) {
-      bus.emit('sendDeleteService', {type: 'service', id: service.id})
+    deleteTechnique(technique) {
+      bus.emit('sendDeleteTechnique', {type: 'technique', id: technique.id})
     }
   }
 }

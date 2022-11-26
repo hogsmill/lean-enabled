@@ -354,8 +354,30 @@ const _defaults = {
   ],
   service: [
     {
+      title: 'Practical hands-on coaching for Executives, Leaders and Team members',
+      text: ''
+    },
+    {
+      title: 'Design and build Lean systems, connecting strategic priorities through to the front-line service',
+      text: ''
+    },
+    {
+      title: 'Proven effective Lean Problem-solving training, to strengthen your workforce capability',
+      text: ''
+    },
+    {
+      title: 'Facilitated Improvement workshops, through teamwork to achieve rapid results',
+      text: ''
+    },
+    {
+      title: 'Implement Lean methods and Visual Management to sustain performance',
+      text: ''
+    }
+  ],
+  technique: [
+    {
       title: 'Face to Face and Online Training',
-      text: 'Practical hands-on coaching for Executives, Leaders and Team members'
+      text: ''
     },
     {
       title: '1:1 and Group Coaching',

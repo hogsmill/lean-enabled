@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="users">
     <h3>
       New User
     </h3>
@@ -169,4 +169,7 @@ export default {
 </script>
 
 <style lang="scss">
+.users {
+  margin-top: 64px;
+}
 </style>

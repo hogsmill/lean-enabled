@@ -7,6 +7,19 @@
           Consultancy Services
         </h2>
         <p v-for="(text, cindex) in consultancy.text" :key="cindex" v-html="parseText(text)" />
+        <p>
+          We provide the following services
+        </p>
+        <table>
+          <tr v-for="(service, sindex) in services" :key="sindex">
+            <td>
+              <div class="bullet" :class="'service-' + parseInt(sindex + 1)" />
+            </td>
+            <td>
+              {{ service.title }}
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
     <div class="col-sm-6">
@@ -31,17 +44,26 @@ export default {
     consultancy() {
       return this.$store.getters.getContentConsultancy
     },
+    services() {
+      return this.$store.getters.getServices
+    },
     training() {
       return this.$store.getters.getContentTraining
     }
   },
   created() {
     bus.emit('sendLoad', 'contentConsultancy')
+    bus.emit('sendLoad', 'service')
     bus.emit('sendLoad', 'contentTraining')
 
     bus.on('load', (data) => {
       if (data.type == 'contentConsultancy') {
         this.$store.dispatch('updateContent', {type: 'consultancy', content: data.objects[0]})
+      }
+    })
+    bus.on('load', (data) => {
+      if (data.type == 'service') {
+        this.$store.dispatch('updateServices', data.objects)
       }
     })
     bus.on('load', (data) => {
@@ -95,20 +117,40 @@ export default {
     }
   }
 
-  .new-content {
-    font-size: 24px;
-    text-align: left;
-    background-color: #fff;
-    opacity: 0.6;
-    color: #444;
-    font-weight: bold;
-    width: 800px;
-    margin: 50px auto;
-    padding: 24px;
+  table {
+
+    td {
+      text-align: left;
+      vertical-align: middle;
+      padding: 6px;
+
+      .bullet {
+        height: 24px;
+        width: 24px;
+        background-size: cover;
+      }
+
+      .service-1 {
+        background-image: url("../assets/img/services/service-1.webp");
+      }
+      .service-2 {
+        background-image: url("../assets/img/services/service-2.webp");
+      }
+      .service-3 {
+        background-image: url("../assets/img/services/service-3.webp");
+      }
+      .service-4 {
+        background-image: url("../assets/img/services/service-4.webp");
+      }
+      .service-5 {
+        background-image: url("../assets/img/services/service-5.webp");
+      }
+    }
   }
 
-  li {
-  }
+  li::marker {
+      font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 768px) {

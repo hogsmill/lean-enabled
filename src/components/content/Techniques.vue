@@ -1,13 +1,13 @@
 <template>
-  <div class="row slideanim services">
-    <div v-for="(service, index) in services" :key="index" class="col-sm-2 service-container">
-      <div class="service">
-        <div class="pic" :class="picClass(service)" />
+  <div class="row slideanim techniques">
+    <div v-for="(technique, index) in techniques" :key="index" class="col-sm-2 technique-container">
+      <div class="technique">
+        <div class="pic" :class="picClass(technique)" />
         <h3>
-          {{ service.title }}
+          {{ technique.title }}
         </h3>
         <p>
-          {{ service.text }}
+          {{ technique.text }}
         </p>
       </div>
     </div>
@@ -19,29 +19,29 @@ import bus from '../../socket.js'
 
 export default {
   computed: {
-    services() {
-      return this.$store.getters.getServices
+    techniques() {
+      return this.$store.getters.getTechniques
     }
   },
   created() {
-    bus.emit('sendLoad', 'service')
+    bus.emit('sendLoad', 'technique')
 
     bus.on('load', (data) => {
-      if (data.type == 'service') {
-        this.$store.dispatch('updateServices', data.objects)
+      if (data.type == 'technique') {
+        this.$store.dispatch('updateTechniques', data.objects)
       }
     })
   },
   methods: {
-    picClass(service) {
-      return 'pic-' + service.title.replace(/[\s:]/g, '-').toLowerCase()
+    picClass(technique) {
+      return 'pic-' + technique.title.replace(/[\s:]/g, '-').toLowerCase()
     }
   }
 }
 </script>
 
 <style lang="scss">
-.services {
+.techniques {
   background-image: url("../../assets/img/GettyImages-855597368.jpeg");
   background-size: cover;
 
@@ -49,13 +49,13 @@ export default {
     margin: 15px auto;
   }
 
-  .service-container {
+  .technique-container {
     display: flex;
     align-items: stretch;
     margin-bottom: 15px;
     margin-top: 15px;
 
-    .service {
+    .technique {
       width: 100%;
       background-color: #204893;
 
@@ -66,22 +66,22 @@ export default {
         background-color: #fff;
 
         &.pic-face-to-face-and-online-training {
-          background-image: url("../../assets/img/services/face-to-face-and-online-training.jpeg");
+          background-image: url("../../assets/img/techniques/face-to-face-and-online-training.jpeg");
         }
         &.pic-1-1-and-group-coaching {
-          background-image: url("../../assets/img/services/1-1-and-group-coaching.webp");
+          background-image: url("../../assets/img/techniques/1-1-and-group-coaching.webp");
         }
         &.pic-nhs-case-studies {
-          background-image: url("../../assets/img/services/nhs-case-studies.jpeg");
+          background-image: url("../../assets/img/techniques/nhs-case-studies.jpeg");
         }
         &.pic-nhs-themed-simulations {
-          background-image: url("../../assets/img/services/nhs-themed-simulations.webp");
+          background-image: url("../../assets/img/techniques/nhs-themed-simulations.webp");
         }
         &.pic-group-problem-solving {
-          background-image: url("../../assets/img/services/group-problem-solving.webp");
+          background-image: url("../../assets/img/techniques/group-problem-solving.webp");
         }
         &.pic-guest-speakers {
-          background-image: url("../../assets/img/services/guest-speakers.jpeg");
+          background-image: url("../../assets/img/techniques/guest-speakers.jpeg");
         }
       }
 

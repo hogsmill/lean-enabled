@@ -7,14 +7,14 @@
       <div :class="{'active': tab == 'users'}" @click="setTab('users')">
         Users
       </div>
-      <div :class="{'active': tab == 'emails'}" @click="setTab('emails')">
-        Emails
-      </div>
       <div :class="{'active': tab == 'quotes'}" @click="setTab('quotes')">
         Quotes
       </div>
       <div :class="{'active': tab == 'services'}" @click="setTab('services')">
         Services
+      </div>
+      <div :class="{'active': tab == 'techniques'}" @click="setTab('techniques')">
+        Techniques
       </div>
       <div :class="{'active': tab == 'courses'}" @click="setTab('courses')">
         Courses
@@ -39,9 +39,10 @@
       </div>
     </div>
     <div class="details">
+      <Emails v-if="tab == 'users'" />
       <Users v-if="tab == 'users'" />
-      <Emails v-if="tab == 'emails'" />
       <Quotes v-if="tab == 'quotes'" />
+      <Techniques v-if="tab == 'techniques'" />
       <Services v-if="tab == 'services'" />
       <Courses v-if="tab == 'courses'" />
       <CourseComments v-if="tab == 'course-comments'" />
@@ -60,6 +61,7 @@ import bus from '../socket.js'
 import Users from './admin/Users.vue'
 import Emails from './admin/Emails.vue'
 import Quotes from './admin/Quotes.vue'
+import Techniques from './admin/Techniques.vue'
 import Services from './admin/Services.vue'
 import Courses from './admin/Courses.vue'
 import CourseComments from './admin/CourseComments.vue'
@@ -75,6 +77,7 @@ export default {
     Emails,
     Quotes,
     Services,
+    Techniques,
     Courses,
     CourseComments,
     CourseDates,

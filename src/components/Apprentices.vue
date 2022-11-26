@@ -6,7 +6,7 @@
       <CoursesIntro :user-type="userType" />
       <Courses />
       <ServicesIntro :user-type="userType" />
-      <Services v-if="userType == 'manager'" />
+      <Techniques v-if="userType == 'manager'" />
       <Benefits />
       <Comments :scope="'staff'" />
       <!--
@@ -23,7 +23,7 @@ import ApprenticesIntro from './content/ApprenticesIntro.vue'
 import CoursesIntro from './content/CoursesIntro.vue'
 import Courses from './content/Courses.vue'
 import ServicesIntro from './content/ServicesIntro.vue'
-import Services from './content/Services.vue'
+import Techniques from './content/Techniques.vue'
 import Benefits from './content/Benefits.vue'
 import Comments from './content/Comments.vue'
 /*
@@ -38,7 +38,7 @@ export default {
     CoursesIntro,
     Courses,
     ServicesIntro,
-    Services,
+    Techniques,
     Benefits,
     Comments
   },

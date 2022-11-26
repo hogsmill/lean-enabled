@@ -31,6 +31,11 @@ const _objects = {
     description: '',
     enabled: false
   },
+  technique: {
+    title: '',
+    description: '',
+    enabled: false
+  },
   email: {
     email: '',
     name: '',
