@@ -13,9 +13,6 @@
       <div :class="{'active': tab == 'services'}" @click="setTab('services')">
         Services
       </div>
-      <div :class="{'active': tab == 'techniques'}" @click="setTab('techniques')">
-        Techniques
-      </div>
       <div :class="{'active': tab == 'courses'}" @click="setTab('courses')">
         Courses
       </div>
@@ -31,6 +28,9 @@
       <div :class="{'active': tab == 'faqs'}" @click="setTab('faqs')">
         FAQs
       </div>
+      <div :class="{'active': tab == 'blog'}" @click="setTab('blog')">
+        Blog
+      </div>
       <div :class="{'active': tab == 'people'}" @click="setTab('people')">
         People
       </div>
@@ -42,13 +42,14 @@
       <Emails v-if="tab == 'users'" />
       <Users v-if="tab == 'users'" />
       <Quotes v-if="tab == 'quotes'" />
-      <Techniques v-if="tab == 'techniques'" />
+      <Techniques v-if="tab == 'services'" />
       <Services v-if="tab == 'services'" />
       <Courses v-if="tab == 'courses'" />
       <CourseComments v-if="tab == 'course-comments'" />
       <CourseDates v-if="tab == 'course-dates'" />
       <Comments v-if="tab == 'comments'" />
       <Faqs v-if="tab == 'faqs'" />
+      <Blog v-if="tab == 'blog'" />
       <People v-if="tab == 'people'" />
       <Content v-if="tab == 'content'" />
     </div>
@@ -68,6 +69,7 @@ import CourseComments from './admin/CourseComments.vue'
 import CourseDates from './admin/CourseDates.vue'
 import Comments from './admin/Comments.vue'
 import Faqs from './admin/FAQs.vue'
+import Blog from './admin/Blog.vue'
 import People from './admin/People.vue'
 import Content from './admin/Content.vue'
 
@@ -83,6 +85,7 @@ export default {
     CourseDates,
     Comments,
     Faqs,
+    Blog,
     People,
     Content
   },

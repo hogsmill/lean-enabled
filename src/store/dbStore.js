@@ -73,6 +73,15 @@ const _objects = {
     answer: '',
     enabled: false
   },
+  blog: {
+    day: '',
+    month: '',
+    year: '',
+    title: '',
+    text: [],
+    file: '',
+    enabled: false
+  },
   comment: {
     author: '',
     comment: '',

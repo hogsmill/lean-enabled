@@ -20,6 +20,9 @@
       <!-- About -->
       <About v-if="tab == 'about'" />
 
+      <!-- Blog  -->
+      <Blog v-if="tab == 'blog'" />
+
       <!-- FAQs  -->
       <Faqs v-if="tab == 'faqs'" />
 
@@ -55,6 +58,7 @@ import Comments from './components/content/Comments.vue'
 import Course from './components/Course.vue'
 import About from './components/About.vue'
 import Faqs from './components/FAQs.vue'
+import Blog from './components/Blog.vue'
 import CaseStudy from './components/CaseStudy.vue'
 import Admin from './components/Admin.vue'
 import TandCs from './components/footer/TandCs.vue'
@@ -78,6 +82,7 @@ export default {
     Comments,
     About,
     Faqs,
+    Blog,
     CaseStudy,
     Admin,
     TandCs,
