@@ -17,19 +17,15 @@
       </span>
     </h4>
     <div class="row">
-      <div class="col-sm-6">
+      <dov class="col-sm-2" />
+      <div class="col-sm-2">
         <a @click="setTab('safeguarding')">Safeguarding</a>
       </div>
       <div class="col-sm-2">
-        <a @click="setTab('security')">Security</a>
+        <a href="/docs/policy.pdf" target="blank">Training Policy</a>
       </div>
-
-      <!-- Safeguarding -->
-
-      <!-- POLICY FROM EXISTING SITE -->
-
       <div class="col-sm-2">
-        <a @click="contact()">Contact</a>
+        <a @click="show()">Contact</a>
       </div>
       <div class="col-sm-2">
         <a href="https://www.linkedin.com/company/lean-enabled-group/" title="LinkedIn">
@@ -51,8 +47,8 @@ export default {
     setTab(tab) {
       this.$store.dispatch('updateTab', tab)
     },
-    contact() {
-      bus.emit('contact', {})
+    show() {
+      this.$store.dispatch('showModal', 'contact')
     }
   }
 }
@@ -79,7 +75,7 @@ export default {
     }
 
 
-    .col-sm-2, .col-sm-6 {
+    .col-sm-2 {
       text-align: center;
       vertical-align: middle;
 

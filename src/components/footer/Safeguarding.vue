@@ -12,13 +12,13 @@
           <div class="safeguarding-person">
             <div class="pic" :class="person.pic" />
             <h4>
-              {{ person.name}}
+              {{ person.name }}
             </h4>
             <p>
               {{ person.role }}
             </p>
             <p>
-               <i class="fas fa-envelope" /> {{ person.email }}
+              <i class="fas fa-envelope" /> {{ person.email }}
             </p>
             <p>
               <i class="fas fa-phone" /> {{ person.phone }}
@@ -38,17 +38,17 @@
           Email:
           <a @click="show('contact')">
             safeguarding@lean-enabled-group.co.uk
-            </a>
+          </a>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <img src="/img/safeguarding/safe1.png" />
+        <img src="/img/safeguarding/safe1.png">
       </div>
       <div class="col-sm-6">
         <div class="extremism">
-          <img src="/img/safeguarding/safe3.png" />
+          <img src="/img/safeguarding/safe3.png">
           <div>
             <h2>
               Do your part to help prevent extremism

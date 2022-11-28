@@ -4,7 +4,7 @@
       <source :src="getUrl()" type="video/mp4">
     </video>
     <p v-for="(para, index) in course.description.text" :key="index">
-      {{ para}}
+      {{ para }}
     </p>
     <p v-if="course.description.activities.length">
       Typical activities include:
@@ -79,7 +79,7 @@ export default {
     width: 40%;
     margin: 0 0 6px 6px;
   }
-  
+
   p {
     color: #444;
     text-align: left;
