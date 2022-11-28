@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <h4>
+    <h4 @click="setTab('values')">
       Living By Our Values
       <br>
       <span>
@@ -18,7 +18,7 @@
     </h4>
     <div class="row">
       <div class="col-sm-6">
-        <a @click="setTab('tandcs')">T&Cs and Privacy</a>
+        <a @click="setTab('safeguarding')">Safeguarding</a>
       </div>
       <div class="col-sm-2">
         <a @click="setTab('security')">Security</a>

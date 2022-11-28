@@ -6,6 +6,7 @@ export const store = createStore({
     modals: {
       contact: false,
       'contact-person': false,
+      safeguarding: false,
       login: false
     },
     site: 'lean-enabled.co.uk',
@@ -29,6 +30,8 @@ export const store = createStore({
     quotes: [],
     courses: [],
     people: [],
+    safeguardingTeam: [],
+    values: [],
     currentCourse: {},
     currentCourseDate: {},
     currentPerson: {},
@@ -129,11 +132,17 @@ export const store = createStore({
     getPeople: (state) => {
       return state.people
     },
+    getSafeguardingTeam: (state) => {
+      return state.safeguardingTeam
+    },
     getServices: (state) => {
       return state.services
     },
     getTechniques: (state) => {
       return state.techniques
+    },
+    getValues: (state) => {
+      return state.values
     },
     getCurrentCourse: (state) => {
       return state.currentCourse
@@ -241,11 +250,17 @@ export const store = createStore({
     updatePeople: (state, payload) => {
       state.people = payload
     },
+    updateSafeguarding: (state, payload) => {
+      state.safeguardingTeam = payload
+    },
     updateServices: (state, payload) => {
       state.services = payload
     },
     updateTechniques: (state, payload) => {
       state.techniques = payload
+    },
+    updateValues: (state, payload) => {
+      state.values = payload
     },
     updateCurrentCourse: (state, payload) => {
       state.currentCourse = payload
@@ -309,6 +324,9 @@ export const store = createStore({
     updateTechniques: ({ commit }, payload) => {
       commit('updateTechniques', payload)
     },
+    updateValues: ({ commit }, payload) => {
+      commit('updateValues', payload)
+    },
     updateCourseComments: ({ commit }, payload) => {
       commit('updateCourseComments', payload)
     },
@@ -323,6 +341,9 @@ export const store = createStore({
     },
     updatePeople: ({ commit }, payload) => {
       commit('updatePeople', payload)
+    },
+    updateSafeguarding: ({ commit }, payload) => {
+      commit('updateSafeguarding', payload)
     },
     updateCurrentCourse: ({ commit }, payload) => {
       commit('updateCurrentCourse', payload)

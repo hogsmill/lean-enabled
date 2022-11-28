@@ -8,9 +8,6 @@
 
       <!-- Transformation -->
       <TransformationMain v-if="tab == 'transformation'" />
-
-      <!-- Rotating Comments in here -->
-
       <Transformation v-if="tab == 'transformation'" />
       <HowItWorks v-if="tab == 'transformation'" />
       <Comments v-if="tab == 'transformation'" :scope="'stakeholder'" />
@@ -30,7 +27,8 @@
       <CaseStudy v-if="tab == 'case-study'" />
       <Admin v-if="tab == 'admin'" />
       <TandCs v-if="tab == 'tandcs'" />
-      <Security v-if="tab == 'security'" />
+      <Values v-if="tab == 'values'" />
+      <Safeguarding v-if="tab == 'safeguarding'" />
       <Modals />
 
       <!-- Footer -->
@@ -60,7 +58,8 @@ import Faqs from './components/FAQs.vue'
 import CaseStudy from './components/CaseStudy.vue'
 import Admin from './components/Admin.vue'
 import TandCs from './components/footer/TandCs.vue'
-import Security from './components/footer/Security.vue'
+import Safeguarding from './components/footer/Safeguarding.vue'
+import Values from './components/footer/Values.vue'
 import Modals from './components/Modals.vue'
 import Endorsements from './components/Endorsements.vue'
 import Footer from './components/Footer.vue'
@@ -82,7 +81,8 @@ export default {
     CaseStudy,
     Admin,
     TandCs,
-    Security,
+    Safeguarding,
+    Values,
     Modals,
     Endorsements,
     Footer

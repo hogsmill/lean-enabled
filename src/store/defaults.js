@@ -5,6 +5,57 @@ const _defaults = {
       text: 'To provide the skills for apprenticeship learners or NHS staff to feel empowered, equipped and confident to drive and manage, measurable and sustainable change in their area of work.'
     }
   ],
+  value: [
+    {
+      title: 'Trust',
+      text: [
+        'Together we deliver on our promises and ensure our commitments are honoured. Trust is made and maintained through meaningful relationships alongside a strong track record of consistent support and delivery.',
+        'We will build this with our customers through:'
+      ],
+      points: [
+        'Being open, honest and committed to providing excellent value for money',
+        'Teaching and shared learning throughout the NHS'
+      ]
+    },
+    {
+      title: 'Respect',
+      text: [
+        'We support and inspire all our learners to help them to achieve great things. Central to this is our day-to-day working culture, which is based on the following foundations:'
+      ],
+      points: [
+        'We ensure our workplace is safe and free of harassment and bullying',
+        'We create an environment for our staff and our learners that promotes mutual respect, and where issues raised are resolved quickly.',
+        'We will hold individuals to account where there is a lack of respect and will do this in a respectful way'
+      ]
+    },
+    {
+      title: 'Integrity',
+      text: [
+        'We will demonstrate are committed to performance with integrity. Doing what we believe is right and doing the right thing for our customers is at the heart of everything we do. The decisions we make and then underpinning what we say we will do with actually what we need to do, demonstrates not only our commitment but also our integrity.',
+        'In doing so, we demonstrate integrity in action, therefore, at every level we will:'
+      ],
+      points: [
+        'Act legally and fairly, within the expectations of all regulations and policies',
+        'Encourage employees to speak up if something does not feel right or does not align with our values',
+        'Develop principles, not exploit loopholes',
+        'Encourage employees to seek guidance when in any doubt'
+      ]
+    },
+    {
+      title: 'People Focussed',
+      text: [
+        'We focus on the individual, doing what is right for our learners and customers. We are committed to the highest standard of ethical practice in our work.',
+        'To do this, we work with our customers to improve healthcare training and tailor to NHS Trusts own Vision, Values and Strategy. We will build relationships by taking the time to look at issues through the eyes of others and providing products of real benefit.',
+        'We will:'
+      ],
+      points: [
+        'Focusing on the consumer\'s needs and expectations, building on their vision with experience and energy.',
+        'Ensure learner satisfaction is paramount at all times through regular reviews, feedback and adjustment.',
+        'Constantly improving in the pursuit of excellence',
+        'Support our delivery teams and recognise that by focussing on their needs will in turn ensure the right focus on our learners is maintained.'
+      ]
+    }
+  ],
   quote: [
     {
       quote: 'Practice the philosophy of continuous improvement. Get a little bit better every single day.',
@@ -205,7 +256,11 @@ const _defaults = {
   ],
   transformation: [
     {
-      text: 'We are a team of Improvement Specialists specialising in helping Healthcare clients ”execute strategy” by delivering long-term performance improvements, which are sustainable and drive positive impact. We provide consultancy services and training.',
+      text: [
+        'Lean Enabled Group is an operational management consultancy who help clients to transform and improve their ways of working.',
+        'We are passionate about improving our client’s operations and we can help you implement continuous improvement methodologies – to improve processes, pathways, efficiencies and quality while reducing costs using Lean and Six Sigma methods.',
+        'For many years we have listened closely to our clients to understand their needs and collaborated to ‘help make their business better’. As experts in business transformation and change management we engage leaders and teams and drive measurable and sustainable improvement in business processes and people performance.'
+      ],
       quote: {
         text: 'This NHS Trust has the best learning culture across the whole of the NHS',
         author: 'Jeremy Hunt, Secretary of State for Health and Social Care (1 Feb 2018)'
@@ -238,6 +293,30 @@ const _defaults = {
       endorsements: 'nick-endorsements'
     }
   ],
+  safeguarding: [
+    {
+      name: 'Sarah Chambers',
+      pic: 'sarah',
+      role: 'Deputy Safeguarding Lead',
+      email: 'sarah.chambers@lean-enabled.co.uk',
+      phone: '0203 907 7717'
+    },
+    {
+      name: 'Nick Chambers',
+      pic: 'nick',
+      role: 'Deputy Safeguardingh Lead',
+      email: 'nick.chambers@lean-enabled.co.uk',
+      phone: '0203 907 7717'
+    },
+    {
+      name: 'Sara Hanif',
+      pic: 'sara',
+      role: 'Safeguarding lead',
+      email: 'sara,hanif@lean-enabled.co.uk',
+      phone: '0203 907 7717'
+    },
+
+  ],
   course: [
     {
       name: 'Improvement Technician',
@@ -247,7 +326,65 @@ const _defaults = {
       leanSixSigma: true,
       belt: 'yellow',
       video: false,
-      modules: [],
+      description: {
+        text: [
+          'Improvement Technicians are responsible for delivery and coaching of improvement activity within an area of responsibility, often associated with Lean and Six Sigma methodologies. They can be found across all industry sectors and functions including automotive, banking, engineering, food products, IT, property, retail, telecoms Local and County Councils, NHS, Voluntary / Charity, Utilities, Pharmaceuticals, Insurance, Hospitality etc.',
+          'Typically, Technicians work as a member of an operational team to resolve problems - preventing re-occurrence, engaging others in issues affecting them and to support the improvement of performance.'
+        ],
+        activities: [
+          'Engaging team members in the identification of improvement opportunities and relevant countermeasures and controls',
+          'Initiating and facilitating improvement activities through to confirmed resolution',
+          'Providing local expertise in business improvement methods and basic tools to team'
+        ]
+      },
+      knowledge: [
+        { title: 'Compliance', text: 'Legislative and customer compliance requirements including environment and health and safety' },
+        { title: 'Team formation & leadership', text: 'Improvement team roles and responsibilities in a change environment' },
+        { title: 'Self-development', text: 'Different sources for knowledge development' },
+        { title: 'Project management', text: 'Project charter, Gantt chart, reporting documentation, Red Amber Green (RAG) status, communication (verbal and non-verbal channels) and implementation plans' },
+        { title: 'Change management', text: 'Roles of the manager and leader within change. Influencing, reinforcement and coaching principles' },
+        { title: 'Principles & methods', text: 'Six Sigma principles per ISO13053 (International Organisation for Standardisation), interim containment actions, Lean principles' },
+        { title: 'Project selection & scope', text: 'Selection matrix, scoping tree' },
+        { title: 'Problem definition', text: 'Exploratory data analysis, data collection planning, problem and goal statements' },
+        { title: 'Process mapping & analysis', text: 'Supplier Input Process Output Customer (SIPOC), process mapping, value and waste analysis, performance metrics - discrete data' },
+        { title: 'Data acquisition for analysis', text: 'Data stratification, sampling theory, data types, variation types and sources, data collection tools, operational definition and principles of measurement error' },
+        { title: 'Basic statistics & measures', text: 'Control charts - discrete data' },
+        { title: 'Process capability & performance', text: 'Capability analysis - continuous data' },
+        { title: 'Root cause analysis', text: 'Histograms' },
+        { title: 'Experimentation', text: 'Active analysis versus one factor at a time, Plan Do Check Act' },
+        { title: 'Identification & prioritisation', text: 'Brainstorming, selection criteria' },
+        { title: 'Sustainability & control', text: 'Process' }
+      ],
+      skills: [
+        { title: 'Compliance', text: 'Work in accordance with organisational controls and statutory regulations' },
+        { title: 'Communication', text: 'Share improvement progress through appropriate reporting' },
+        { title: 'Project management', text: 'Plan, manage and implement improvement activities. Identify and support management of risks. Develop the business case for improvement activity and implementation' },
+        { title: 'Change management', text: 'Engage through communications. Reinforce – positively and negatively. Effectively coach peers' },
+        { title: 'Principles and methods', text: 'Use a structured method and appropriate improvement tools engaging with subject matter experts to deliver business benefits' },
+        { title: 'Project selection and Scoping', text: 'Identify and scope improvement projects and establish clear measurable objectives' },
+        { title: 'Problem definition', text: 'Develop a problem/opportunity statement supported by validated data' },
+        { title: 'Voice of the customer', text: 'Apply techniques to identify customers, their requirements and translate these to metrics' },
+        { title: 'Process mapping & analysis', text: 'Apply process mapping tools to visualise processes, analyse process performance establishing key insights for performance improvement' },
+        { title: 'Lean tools', text: 'Apply techniques such as identification and removal of 8 wastes, 5S (Sort, Shine, Set, Standardise, Sustain), standard work, kaizen, visual displays and controls, error proofing, preventative maintenance' },
+        { title: 'Data acquisition for analysis', text: 'Develop data collection plan and validated measurement processes to understand performance' },
+        { title: 'Basic statistics & measures', text: 'Establish patterns and trends in data over time using tally, pie, run/trend and pareto charts' },
+        { title: 'Data analysis-statistical methods', text: 'Identify common and special cause variation' },
+        { title: 'Process capability & performance', text: 'Analyse product/process performance using good quality data' },
+        { title: 'Root cause analysis', text: 'Use cause and effect diagrams, technique of 5 whys and graphical analysis to understand and verify root causes' },
+        { title: 'Identification & prioritisation', text: 'Identify and prioritise improvement solutions' },
+        { title: 'Benchmarking', text: 'Recognise the value of sharing best practice' },
+        { title: 'Sustainability & control', text: 'Create control and reaction plans with detection measures, identify opportunities to embed changes to leverage benefit to the business.' }
+      ],
+      behaviours: [
+        { title: 'Drive for results', text: 'Clear commitment for identifying opportunities and delivering improvements, pays attention to detail' },
+        { title: 'Team-working', text: 'Helps when asked, works effectively in a diverse team, considers impact of own actions on others, motivates peers' },
+        { title: 'Professionalism', text: 'Acts in a moral, legal and socially appropriate manner, aligns behaviours to the organisations values, trusted to working on own when appropriate' },
+        { title: 'Continuous development', text: 'Acts upon feedback, reflects on performance and has a desire for learning' },
+        { title: 'Safe working', text: 'Ensures safety of self and others, challenges safety' }
+      ],
+      modules: [
+
+      ],
     },
     {
       name: 'Improvement Practitioner',
@@ -257,6 +394,68 @@ const _defaults = {
       leanSixSigma: true,
       belt: 'green',
       video: false,
+      description: {
+        text: [
+          'Improvement Practitioners use a blend of Lean and Six Sigma, project and change management principles and tools to identify and lead the delivery of change across organisational functions and processes. Improvement Practitioners can be found across all sectors and functions including automotive, banking, engineering, food products, IT, property, retail, telecoms, Local and County Councils, NHS, Voluntary / Charity, Utilities, Pharmaceuticals, Insurance, Hospitality etc.​',
+          'Typically, Practitioners lead smaller projects and/or play a key supporting role in a larger programme – tackling issues that may require swift problem solving, or re-occurring challenges that require in-depth analysis and the implementation of a range of effective and sustainable countermeasures.',
+          'They are the focal point for all stakeholders and responsible for communication throughout a project.'
+        ],
+        activities: [
+          'Identifying potential opportunities, diagnosing issues, proposing solutions and implementing changes and controls',
+          'Coaching teams and sharing best practice',
+          'When leading projects they may manage small teams ensuring motivation and momentum, and be responsible for the successful'
+        ]
+      },
+      knowledge: [
+        { title: 'Compliance', text: 'Legislative and customer compliance requirements including environment and health and safety' },
+        { title: 'Team formation & leadership', text: 'Decision-making techniques e.g. consensus, authority rule, majority rule' },
+        { title: 'Project management', text: 'Business case, risk analysis and management, toll-gate reviews, work breakdown structure, lessons learned, pilot studies, project review, process management and measures, benefits tracking' },
+        { title: 'Presentation & reporting', text: 'Reporting templates, message mapping, case for change' },
+        { title: 'Change management', text: 'Stakeholder identification, analysis and management (RACI). Change curve, resistance characteristics, change sponsorship, compelling point of view' },
+        { title: 'Principles & methods', text: 'Business value of Lean and Six Sigma improvement methods - 8D, practical problem solving, Define Measure Analyse Improve Control, Design for Six Sigma' },
+        { title: 'Project selection & scope', text: 'Y=f(x) equation (outputs are the result of inputs), business scorecard cascade' },
+        { title: 'Problem definition', text: 'Cost of Poor Quality, problem analysis models such as Is/Is Not' },
+        { title: 'Process mapping & analysis', text: 'Swim lane, value stream map, performance metrics – continuous, Parameter diagram, Takt time, Overall Equipment Effectiveness, theory of constraints principles, Kanban' },
+        { title: 'Data analysis – basic tools', text: 'Spreadsheets and pivot table analysis, statistical analysis software' },
+        { title: 'Measurement systems', text: 'Repeatability and Reproducibility principles' },
+        { title: 'Basic statistics & measures', text: 'Control charts - attribute data, principles of normality' },
+        { title: 'Data analysis - statistical methods', text: 'Measures of central tendency and spread' },
+        { title: 'Process capability & performance', text: 'Capability analysis – continuous data for normal distribution' },
+        { title: 'Root cause analysis', text: 'Key principles including symptoms, failure-mode, potential/verified cause, critical inputs, escape point. Graphical representation of data with dot, scatter and box plots' },
+        { title: 'Experimentation', text: 'Active versus passive analytics, design of experiments, experiment plan' },
+        { title: 'Identification & prioritisation', text: 'Selection and prioritisation matrix, Failure Mode and Effects Analysis' }
+      ],
+      skills: [
+        { title: 'Compliance', text: 'Work in accordance with organisational controls and statutory regulations' },
+        { title: 'Communication', text: 'Speak and write clearly. Influence others, question effectively. Plan and deliver meetings presenting insight to engage audiences' },
+        { title: 'Coaching', text: 'Observe, listen, use questioning, provide feedback and spot learning opportunities' },
+        { title: 'Project management', text: 'Define, sequence, plan and schedule activities with phases and milestones. Estimate effort and duration. Create and update project charter. Review progress' },
+        { title: 'Change management', text: 'Sponsorship contract, surface and manage resistance, build compelling narratives for change, assess change impact' },
+        { title: 'Principals and Methods', text: 'Select and apply a structured method and appropriate improvement tools engaging with subject matter experts to deliver business benefits' },
+        { title: 'Project selection and Scoping', text: 'Support the identification of improvement opportunity and the scoping of these projects' },
+        { title: 'Problem definition', text: 'Support development of problem/opportunity statements' },
+        { title: 'Voice of the customer', text: 'Support application of techniques to identify and prioritise customers, their requirements and ensure balance against the stated and unstated needs of the business (Voice of the Business)' },
+        { title: 'Process mapping & analysis', text: 'Process map to measure and analyse flow and value. Identify interfaces, functional responsibilities and ownership. Use insight to identify potential opportunities and map future state' },
+        { title: 'Lean tools', text: 'Seek in-process waste through understanding of value within the value stream' },
+        { title: 'Measurements systems', text: 'Plan, carry out and assess results of a measurement system study' },
+        { title: 'Data acquisition for analysis', text: 'Develop a sampling strategy' },
+        { title: 'Basic statistics & measures', text: 'Use graphical analysis to understand distribution and stability' },
+        { title: 'Data analysis-statistical methods', text: 'Identify data-types and select analysis methods and tools. Assess time series data stability and analyse making relevant insight' },
+        { title: 'Process capability & performance', text: 'Select methods and metrics for analysis' },
+        { title: 'Root cause analysis', text: 'Select and apply the appropriate graphical tool dependent on the data type to identify patterns, trends and signals to establish hypothesis' },
+        { title: 'Experimentation & optimisation', text: 'Plan designed experiment with clear objectives, and appropriate levels of Measurement Systems Analysis, analyse experiment data and optimise' },
+        { title: 'Identification & prioritisation', text: 'Identify and prioritise factors, ideas and solutions' },
+        { title: 'Data analysis – SPC', text: 'Select and apply appropriate tools for ongoing monitoring and control. Analyse and interpret control charts' },
+        { title: 'Benchmarking', text: 'Conduct structured benchmarking to support target setting' },
+        { title: 'Sustainability & control', text: 'Identify failure modes and embed learning from improvements' }
+      ],
+      behaviours: [
+        { title: 'Drive for results', text: 'Continuous drive for change and encourages others to deliver results across functional areas capturing and standardising best practice' },
+        { title: 'Team-working', text: 'Awareness of own and others’ working styles. Creates high performing team' },
+        { title: 'Professionalism', text: 'Promotes a moral, legal and socially appropriate working manner, aligns behaviours to the organisations values. Maintains flexibility to needs of project' },
+        { title: 'Continuous development', text: 'Proactively seeks and acts on feedback. Reflects on performance and has a desire for development. Adapts quickly to working with new situations/stakeholders/challenges' },
+        { title: 'Safe working', text: 'Ensures safety of self and others, speaks out to challenge safety issues' },
+      ],
       modules: [
         { id: '23ffc867-0094-482f-8c5f-ee352b0b99ac', number: 1, name: 'Compliance' },
         { id: '995cd051-c8c1-491e-9917-2483e9c38811', number: 2, name: 'Communication' },
@@ -290,6 +489,67 @@ const _defaults = {
       leanSixSigma: true,
       belt: 'black',
       video: true,
+      description: {
+        text: [
+          'Improvement Specialists are responsible for leading the deployment of improvement strategy, for training others and for providing broad and deep technical expertise in advanced and complex Lean and Six Sigma, Project and Change Management principles and tools to enable identification and delivery of improvement opportunities aligned to key business goals.',
+          'Improvement Specialists typically report to Improvement Leaders who develop the improvement strategy and governance processes, and who provide technical guidance on advanced analysis. Improvement Specialists manage (directly and/or matrix) Improvement Practitioners who lead smaller improvement projects aligned to the improvement strategy.',
+          'A typical ratio of Improvement Specialists to Improvement Practitioners in an organisation could be 1:10. In comparison with the work of an Improvement Practitioner, Improvement Specialists draw on their advanced knowledge and skills in applying Improvement principles and tools across a range of programmes/ projects/areas to build the capability of others.  They also swiftly visualise processes, problems and opportunities and use both graphical and statistical analysis to deliver improvements.',
+          'They work closely with other Improvement Specialists to support the delivery of improvement strategy, working on multiple simultaneous projects linked to key business objectives, identifying and engaging both subject matter experts and key stakeholders. Their work generally requires them to interact with others but typically involves a high-degree of autonomy.'
+        ],
+        activities: [
+
+        ]
+      },
+      knowledge: [
+        { title: 'Leading improvement teams', text: 'Personality types, team development stages, motivational techniques, situational leadership, learning styles, mentoring models' },
+        { title: 'Project planning', text: 'Multi-element business case, financial plan, benefits realisation plan, risk management plan, project plan' },
+        { title: 'Project reviews & coaching', text: 'Coaching models, Maslow’s hierarchy of needs' },
+        { title: 'Change planning', text: 'Change management methods, impact/readiness, influencing strategies' },
+        { title: 'Commercial environment', text: 'Business and economic risks including changes in legislation, government regulation or trading condidtions that can impact all aspects of improvement from Project Selection through to selection/implementation of improvements' },
+        { title: 'Principles & methods for Improvement', text: 'How to apply Improvement Methods (eg. Practical Problem Solving, Define-Measure-Analyse-Improve-Control, 8-Disciplines, Identify-Define-Optimise-Verify) across all functions, policy deployment principles, Lean culture' },
+        { title: 'Voice of the customer', text: 'Interviewing and focus groups, Quality Function Deployment principles and how to build a House of Quality' },
+        { title: 'Process mapping & analysis', text: 'Activity network diagrams, design structure matrix, process modelling, key function diagrams and analysis' },
+        { title: 'Data acquisition planning', text: 'Stratification, rational sub-groups, power and sample size' },
+        { title: 'Statistics & measures', text: 'Probability distributions and how to test for fit of probability distributions to data. Confidence intervals, central limit theorem. How to test data for stability and normaility and strategies for dealing with non-stable or non-normal data' },
+        { title: 'Lean concepts and tools', text: 'Principles of Lean Thinking and Lean tools including origins and cultural aspects critical to successful application within an organisation.' },
+        { title: 'Measurement system analysis', text: 'Repeatability & Reproducibility analysis. Long term measurement error' },
+        { title: 'Process capability', text: 'Data transformation, life data analysis and prediction' },
+        { title: 'Root cause analysis', text: 'Matrix plots, multi-vari charts, hypothesis testing principles and methods, correlation and regression principles and methods' },
+        { title: 'Experimentation', text: 'Principles of full and fractitional designed experiments including replicates, repeats, randomisation, blocking and centre points, resolution and confounding. Planning and analysis using residuals, main effects & interaction plots, hierarchy of terms, Response Surface Method, Split plots, Analysis of variance (ANOVA). Approaches for model optimisation' },
+        { title: 'Identification & prioritisation', text: 'Creativity tools e.g. theory of inventive problem solving (TRIZ), Pugh matrix' },
+        { title: 'Failure mode avoidance', text: 'System state flow, boundary diagram, interface analysis tables, fault tree analysis, robustness checklist, tolerance design and analysis. Principles and links between Failure Modes and Effects analysis for concepts, designs, processes.' },
+        { title: 'Sustainability & control', text: 'Control and reaction plans. Prevention controls' }
+      ],
+      skills: [
+        { title: 'Leading improvement teams', text: 'Holding team members/stakeholders to account for delivering agreed actions within an improvement project and building/maintaining appropriate stakeholder relationships inside and outside the organisation to deliver improvement project objectives' },
+        { title: 'Strategic Deployment of Continuous Improvement', text: 'Contribute to deployment of improvement strategy, participating as an active member of the improvement community' },
+        { title: 'Communication', text: 'Prepare and present concise proposals and plans. Capture and share progress through effective formats and channels. Use and handle questions effectively. Build rapport with others.' },
+        { title: 'Capability Development', text: 'Train, facilitate and critique the application of tools used by improvement practitioners including tool-selection, links between tools, how they are used within a structured method, analsysis of results and presentation of recommendations' },
+        { title: 'Project planning', text: 'Plan and manage finances, multi-stakeholder delivery and benefits realisation' },
+        { title: 'Change planning', text: 'Design reinforcement, engagement and communication strategies' },
+        { title: 'Principles and Methods for Improvement', text: 'Guide others on the selection of appropriate methods (eg. Practical Problem Solving, Define-Measure-Analyse-Improve-Control, 8-Disciplines, Identify-Define-Optimise-Verify) to deliver improvements. Conduct gateway assessments to ensure suitability of projects to progress' },
+        { title: 'Project selection & scope', text: 'Guides others on the selection and scoping of improvement projects and the intial response to product/process performance issues. Identify, scope and prioritise improvement opportunities that map to high-level organisation objectives and key value-streams' },
+        { title: 'Process mapping & analysis', text: 'Guide others on the selection of appropriate process mapping and analysis tools. Critique improved state' },
+        { title: 'Lean tools', text: 'Identify and analyse value-streams using appropriate methods and tools to optimise flow to customer. Develop a plan for Lean deployment within the organisation including effective and relevant performance metrics.' },
+        { title: 'Measurement', text: 'Guide others on the planning, analysis and interpretation of data collection & measurement studies including the design of tests to recreate failures & steps to diagnose/reduce short & long-term measurement variation' },
+        { title: 'Statistics & measures', text: 'Confirm data and fit for a range distribution models. Establish predictions. Calculate confidence intervals' },
+        { title: 'Data analysis-statistical methods', text: 'Model random behaviour and make inferences with levels of confidence. Calculate/recommend sample size. Test hypotheses for all data types. Assess input/output correlation. Generate, analyse and interpret simple and multiple predictive relationship models' },
+        { title: 'Process capability & performance', text: 'Identify data stability/distribution issues and apply appropriate strategies to enable robust Capability Analysis. Analyse life data to establish rates and patterns' },
+        { title: 'Root cause analysis', text: 'Make appropriate use of data to assess contribution of critical inputs/root cause(s) to product/process performance using appropriate graphical and statistical tools to draw and coomunicate conclusions' },
+        { title: 'Experimentation & optimisation', text: 'Guide others on the planning, analysis and interpretation of experiments. Plan,conduct, analyse and optimise both full & fractional experiments' },
+        { title: 'Data analysis – Statistical Process Control', text: 'Monitor and asses ongoing process variation and changes through chart-selection, control-limit setting, sample sizing/frequency and control-rules' },
+        { title: 'Benchmarking', text: 'Guide others on benchmarking to support all stages of improvement projects including future-state design' },
+        { title: 'Failure mode avoidance', text: 'Decompose complex systems in order to define main functions. Anaylse system interactions. Cascade knowledge through fault tree analysis. Create and assess design rules, standards & verification methods. Complete robustness studies to select appropriate control strategies and detection methods' },
+        { title: 'Sustainability & control', text: 'Guide others on control and sustainability planning including methods and tools to maintain benefits, extraction of learning, replication, sharing and consolidation of new knowledge into organisational learning' }
+      ],
+      behaviours: [
+        { title: 'Drive for results', text: 'Co-ordinates and delivers sustained improvement across the business by engaging with, and inspiring stakeholders; adopting a can-do attitude' },
+        { title: 'Team-working', text: 'Leads cross functional project teams proactively, regularly supports others and replicates learning' },
+        { title: 'Professionalism', text: 'Exemplifies high standard of professional integrity, ethics and trust within the organisation, whilst maintaining flexibility to the needs of the business' },
+        { title: 'Process Thinking', text: 'Drives process-thinking and customer-focused, data-driven decision making' },
+        { title: 'Continuous development', text: 'Identifies & models opportunities for development of self & others' },
+        { title: 'Safe working', text: 'Adopts a proactive approach to safety, encouraging others and suggesting compliance improvements' }
+      ],
       modules: [
         { id: '2c1ca2eb-477c-47f1-b728-e42ff3739c7b', number: 1, name: 'Leading Improvement teams' },
         { id: 'ed2c2a3f-7eb7-4102-96f7-8c7394e970da', number: 2, name: 'Strategic Deployment of C.I' },
@@ -321,6 +581,63 @@ const _defaults = {
       leanSixSigma: true,
       belt: 'master-black',
       video: false,
+      description: {
+        text: [
+          'Improvement Leaders are responsible for developing improvement strategy, providing leadership in improvement for the business and for coaching and supporting Improvement Specialists in advanced analysis. The Improvement Leader typically reports to Board members or Heads of Department and manages (directly and/or matrix) a team of Improvement Specialists, who deploy the strategy, and lead improvement projects.  They work closely with all functions of the business to support the setting and achievement of business goals, often accountable for Improvement activities within the largest-scale and highest priority programmes of work. For example, they may develop top-level Value Stream Maps to identify improvement opportunities that are then scoped into projects to be delivered by Improvement Specialists or they may design new products/processes/services. The role is typically office-based but involves working wherever their improvement activities are focussed for example they could be working on the shop floor or at customer/supplier premises.',
+          'Improvement Leaders have high-level expertise in Lean, Six Sigma, Project and Change management and are recognised as the specialists in leading improvement strategy.'
+        ],
+        activities: [
+          'Developing Improvement strategy and providing leadership in improvement for the business',
+          'Developing processes and resources to support improvement strategy deployment such as guidance for structured project reviews',
+          'Training, coaching and mentoring Improvement Specialists and senior stakeholders',
+          'Designing and sourcing training solutions for the business',
+          'Leading large-scale, complex Improvement activities and Sustainability (Improvement or Sustainability activities)',
+          'Managing a team of Improvement Specialists'
+        ]
+      },
+      knowledge: [
+        { title: 'Strategy development', text: 'Policy deployment principles and Hoshin Kanri Porter’s 5 forces, Strengths Weaknesses Opportunities Threats (SWOT)/Political Economic Social Technological Legal Economic (PESTLE), Ansoff’s growth matrix, Boston Consulting Group growth share matrix, GE-McKinsey matrix' },
+        { title: 'Business benefits', text: 'Net present value, activity based costing' },
+        { title: 'Team formation & leadership', text: 'Team types and constraints, dysfunctional teams, emotional intelligence, Neuro-linguistic programming techniques, reinforcement strategies' },
+        { title: 'Self-development', text: 'Latest thinking in Continuous Improvement and Operational Excellence' },
+        { title: 'Presentation and reporting', text: 'Single page reporting – A3 thinking' },
+        { title: 'Project selection and scoping', text: 'Business performance metrics' },
+        { title: 'Measurement systems', text: 'Audit Measurement System' },
+        { title: 'Data analysis – statistical methods', text: 'Regression (multiple & binary logistic), forecasting and queuing theory' },
+        { title: 'Experimentation and optimisation', text: 'Monte Carlo and Discrete Event simulation. Balanced and unbalanced designs, General Linear Mode' }
+      ],
+      skills: [
+        { title: 'Strategic deployment of continuous improvement', text: 'Contribute to the business planning cycle and lead the development of improvement strategy. Analyse current state and identify opportunities. Develop deployment plans considering key enablers. Contribute to the development of an improvement culture. Maintain engagement through effective communication' },
+        { title: 'Business benefits', text: 'Identify, quantify and communicate financial and non-financial benefits' },
+        { title: 'Team formation and leadership', text: 'Use appropriate tools and techniques to identify, diagnose and resolve sources of under-performance and conflict within teams' },
+        { title: 'Capability Development', text: 'Design, source and evaluate learning interventions. Facilitate multi-functional workshops. Advise on selection of individuals for different levels of training' },
+        { title: 'Project management', text: 'Plan and manage an improvement programme with appropriate levels of governance. Apply processes for managing a portfolio of improvement projects including reporting, escalation, audit and risk management/mitigation' },
+        { title: 'Reviewing projects and coaching others', text: 'Provide guidance for structured project reviews. Conduct group coaching reviews. Identify, diagnose and resolve project performance issues' },
+        { title: 'Presentation and reporting', text: 'Critique own and others’ improvement reports/presentations' },
+        { title: 'Change management', text: 'Assess the effectiveness of change and identify opportunities to improve outcomes, guiding and supporting others to deliver results' },
+        { title: 'Principles and methods', text: 'Clearly communicate the importance of appropriate method-selection to others, and enable the organisation to make appropriate decisions through learning and tools' },
+        { title: 'Project selection and scoping', text: 'Establish guidelines for project identification and prioritisation. Assess effectiveness of identification and prioritisation processes and implement counter-measures to enhance outcomes. Engage leadership team to identify improvement opportunities' },
+        { title: 'Problem definition', text: 'Promote importance of evidence-driven problem definition in everyday work' },
+        { title: 'Voice of Customer(VOC)', text: 'Coach others on the importance of understanding VOC. Identify ways that an organisation can improve customer insight through feedback loops to enable improvement activities to be focused appropriately' },
+        { title: 'Process mapping and analysis', text: 'Apply process thinking to identify opportunities to improve business and process performance and maintain ongoing process control' },
+        { title: 'Lean concepts and tools', text: 'Easily translate and communicate fundamental Lean concepts for application to a wide range of business functions. Assess the effectiveness of a Lean strategy and make recommendations for improving outcomes' },
+        { title: 'Data acquisition for analysis', text: 'Assess data acquisition conducted by others in terms of tool selection and application, conclusions and recommendations' },
+        { title: 'Statistics and graphical analysis', text: 'Assess and guide graphical and statistical analysis conducted by others in terms of tool selection and application, conclusions and recommendations. Communicate opportunities for robust application of basic data analysis methods and engage others to extend/embed the application of data-driven approaches. Investigate and evaluate measurement and analysis approaches which extend the capabilities of the organisation. Establish strategies for gathering and analysing life-cycle data' },
+        { title: 'Process capability and performance', text: 'Make recommendations on how an organisation can drive improvement through the selection of tools and metrics for process capability analysis' },
+        { title: 'Root cause analysis', text: 'Guide and coach others in planning to ensure efficiency of approach' },
+        { title: 'Experimentation, optimisation and simulation', text: 'Support the building of mathematical models and exploitation of these' },
+        { title: 'Identification & prioritisation', text: 'Develop a Creative Thinking strategy to support improvements' },
+        { title: 'Failure Mode Avoidance', text: 'Communicate the business case, aims, methods & key tools. Identify opportunities for application within product and project life cycles including Lean Design' },
+        { title: 'Data analysis – Statistical Process Control', text: 'Make recommendation on how an organisation can drive sustained improvement through the application of Statistical Process Control' },
+        { title: 'Benchmarking', text: 'Develop a benchmarking strategy to support an improvement programme' }
+      ],
+      behaviours: [
+        { title: 'Drive for results', text: 'Be a primary advocate for Improvement and Operational Excellence acting as a role model for others, focused on improving customer experience and delivering benefits' },
+        { title: 'Team Working', text: 'Actively seeks opportunities for improving team performance and coaches others to resolve under-performance issues' },
+        { title: 'Professionalism', text: 'Demonstrates personal resilience. Challenge, influence & engage seniors' },
+        { title: 'Strategic Thinking', text: 'Drives future thinking for themselves and others. Actively seeks out new ideas, opportunities methods and tools. Build a knowledge and best practice sharing network' },
+        { title: 'Safe Working', text: 'Recognises opportunities to improve safe working practices' }
+      ],
       modules: []
     }
   ],
@@ -484,24 +801,30 @@ const _defaults = {
   contentConsultancy: [
     {
       text: [
-        'We work to improve healthcare training tailored to NHS Trusts own Vision, Values and Strategy. We build relationships by taking the time to look at issues through the eyes of others and providing products of real benefit.',
-        'We provide consultancy services using Lean Six Sigma principles to deliver efficency inprovements and reductions of waste'
+        'Our team looks at your organisation in depth, highlighting any possible areas where there may be waste. We’ll help you to quickly identify areas for improvement, develop a strategy for transformation and crucially, support both you and your team through the process.',
+        'We work closely with you to assess where improvements can be made. Then together, we develop and implement a practical strategy which going forward will transform your processes to drive continuous improvement and a culture change through the entire workforce.'
       ]
     }
   ],
   contentTraining: [
     {
       text: [
-        'We provide Lean Six Sigma training to empower trusts and their departments to enjoy ongoing improvements',
-        'Our vision is to build staff capability across the NHS and to be recognised as a "Centre of Excellence" by applying NHS best practices with industry best practices.',
-        'See a [Case Study] for an example of throughput increase.'
+        'Our bespoke training and consultancy supports the drive for sustainable profitability and growth within your organisation and is suitable for those wishing to build their business improvement, continuous improvement or process improvement capability. We also offer Improvement Apprenticeships which can be funded through the Apprenticeship Levy.',
+        'To summarise, you will be equipped with the knowledge, skills and behavioural competencies required to support an operational excellence programme and contribute significantly to the bottom line of your organisation.'
+      ],
+      points: [
+        'Ensure all operational improvement activities are linked to the achievement of your organisation’s strategic objectives',
+        'Capture the ‘Voice of the Customer’ to ensure any potential operational changes are aligned to customer requirements',
+        'Apply the simple, robust, structured and proven approach of DMAIC (Define, Measure, Analyse, Improve & Control) to operational improvement'
       ]
     }
   ],
   contentServices: [
     {
       text: [
-        'We are a team of Improvement Specialists specialising in helping Healthcare clients ”execute strategy” by delivering long-term performance improvements, which are sustainable and drive positive impact.'
+        'Lean Enabled Group is an operational management consultancy who help clients to transform and improve their ways of working.',
+        'We are passionate about improving our client’s operations and we can help you implement continuous improvement methodologies – to improve processes, pathways, efficiencies and quality while reducing costs using Lean and Six Sigma methods.',
+        'For many years we have listened closely to our clients to understand their needs and collaborated to ‘help make their business better’. As experts in business transformation and change management we engage leaders and teams and drive measurable and sustainable improvement in business processes and people performance.'
       ]
     }
   ],
@@ -576,7 +899,23 @@ const _defaults = {
       text: [
         {
           type: 'header',
-          text: 'Key Focus Outcomes'
+          text: 'Strategy Deployment'
+        },
+        {
+          type: 'text',
+          text: 'TBD'
+        },
+        {
+          type: 'header',
+          text: 'Kaizen Team'
+        },
+        {
+          type: 'text',
+          text: 'TBD'
+        },
+        {
+          type: 'header',
+          text: 'Leadership Behaviours and Sustainability'
         },
         {
           type: 'text',
@@ -590,9 +929,9 @@ const _defaults = {
           type: 'text',
           text: 'TBD'
         },
-        {
+         {
           type: 'header',
-          text: 'Strategy Deployment'
+          text: 'Key Focus Outcomes'
         },
         {
           type: 'text',
@@ -600,23 +939,7 @@ const _defaults = {
         },
         {
           type: 'header',
-          text: 'Staff Capacity and Availability'
-        },
-        {
-          type: 'text',
-          text: 'TBD'
-        },
-        {
-          type: 'header',
-          text: 'Kaizen Team and External Support'
-        },
-        {
-          type: 'text',
-          text: 'TBD'
-        },
-        {
-          type: 'header',
-          text: 'KLeadership Behaviours and Sustainability'
+          text: 'Staff Capability'
         },
         {
           type: 'text',

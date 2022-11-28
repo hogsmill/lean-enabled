@@ -17,6 +17,9 @@ p {
   color: #444;
 }
 
+li {
+  text-align: left
+}
 button { margin: 2px; }
 
 .float-right {

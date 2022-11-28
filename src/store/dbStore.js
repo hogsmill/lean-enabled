@@ -19,6 +19,11 @@ const _objects = {
   mission: {
     text: ''
   },
+  value: {
+    title: 'Trust',
+    text: [],
+    points: []
+  },
   quote: {
     author: '',
     quote: ''
@@ -81,6 +86,13 @@ const _objects = {
     pic: '',
     endorsements: '',
     enabled: false
+  },
+  safeguarding: {
+    name: '',
+    pic: '',
+    role: '',
+    email: '',
+    phone: ''
   },
   contentConsultancy: {
     text: []

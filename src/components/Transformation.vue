@@ -29,6 +29,15 @@
           Bespoke Training Services
         </h2>
         <p v-for="(text, tindex) in training.text" :key="tindex" v-html="parseText(text)" />
+        <ul>
+          <li v-for="(point, pindex) in training.points" :key="pindex">
+            {{ point }}
+          </li>
+        </ul>
+        <p>
+          See a <span class="tab-link" tab="case-study">Case Study</span>
+          for an example of throughput increase.
+        </p>
       </div>
     </div>
   </div>

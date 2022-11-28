@@ -1,12 +1,12 @@
 <template>
   <div class="quotes">
-    <span class="quote-text">
+    <span v-if="randomQuote" class="quote-text">
       "{{ randomQuote.quote }}"
     </span>
-    <span>
+    <span v-if="randomQuote">
       -
     </span>
-    <span class="quote-author">
+    <span v-if="randomQuote" class="quote-author">
       {{ randomQuote.author }}
     </span>
   </div>
@@ -58,6 +58,7 @@ export default {
 .quotes {
   background-color: #DAD8DB;
   padding-top: 176px;
+  height: 212px;
 
   span {
     margin: 0 3px;

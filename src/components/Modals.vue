@@ -2,6 +2,7 @@
   <div>
     <Contact v-if="modals['contact']" />
     <Contact-Person v-if="modals['contact-person']" />
+    <Safeguarding v-if="modals['safeguarding']" />
     <Login v-if="modals['login']" />
   </div>
 </template>
@@ -9,12 +10,14 @@
 <script>
 import Contact from './modals/Contact.vue'
 import ContactPerson from './modals/ContactPerson.vue'
+import Safeguarding from './modals/Safeguarding.vue'
 import Login from './modals/Login.vue'
 
 export default {
   components: {
     Contact,
     ContactPerson,
+    Safeguarding,
     Login
   },
   computed: {

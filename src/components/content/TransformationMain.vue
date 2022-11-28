@@ -2,7 +2,9 @@
   <div class="row slideanim transformation-main">
     <div class="col-sm-8">
       <div class="main-para">
-        {{ transformation.text }}
+        <p v-for="(para, index) in transformation.text" :key="index">
+          {{ para }}
+        </p>
       </div>
     </div>
     <div class="col-sm-4">

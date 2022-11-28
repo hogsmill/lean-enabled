@@ -8,7 +8,7 @@
     </h3>
     <div class="container-fluid text-center">
       <div class="row slideanim">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <Course :course="course" />
           <h4>
             Other Courses
@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-7">
           <CourseDetail :course="course" />
           <CourseComments :course="course" />
         </div>
