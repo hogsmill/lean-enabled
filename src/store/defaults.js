@@ -799,14 +799,27 @@ const _defaults = {
   ],
   blog: [
     {
-      day: 1,
-      month: 1,
-      year: 2020,
+      day: 21,
+      month: 10,
+      year: 2021,
       title: 'McKinsey Report',
       text: [
         'Postpandemic skill gaps need filling, and formal learning alone won’t do the trick. Scaling the lost art of one-on-one learning can make the difference.',
         'Find out more in this McKinsey report',
         '{https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/reviving-the-art-of-apprenticeship-to-unlock-continuous-skill-development|Reviving the art of apprenticeship to unlock continuous skill development}'
+      ],
+      enabled: false
+    },
+    {
+      day: 1,
+      month: 9,
+      year: 2018,
+      title: 'CQC Report',
+      text: [
+        'Demand on health and social care services is increasing year-on-year. This increased workload puts quality of care at risk but, despite these pressures, we have found that hospital trusts that put a focus on continuous quality improvement have demonstrated that they can deliver high-quality care.',
+        'In those trusts we have rated as outstanding, we have found a culture of quality improvement embedded throughout the organisation.',
+        'Find out more in this report',
+        '~CQC Report sharing Learnings from hospital trusts on a journey of QI  SEPT 2018.pdf~',
       ],
       enabled: false
     }

@@ -25,9 +25,22 @@ function urlLink(text, linkText) {
   return text
 }
 
+function fileLink(text, linkText) {
+  let link = linkText.match(/\{(.*)\}/)
+  link = link[1].split('|')
+  const file = link[0]
+  let words = file
+  if (link.length > 1) {
+    words = link[1]
+  }
+  text = text.replace(linkText, '<a href="/docs/blog/' + file + '" target="blank">' + words + '</a>')
+  return text
+}
+
 // Format:
 //    Page: [page|text]
 //    URL:  {url|text}
+//    File: ~file|text~
 //
 function replaceLinks(text) {
   let found = true
