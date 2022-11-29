@@ -70,24 +70,28 @@ export default {
 </script>
 
 <style lang="scss">
-.blog-index {
-  margin: 12px;
-  padding: 12px;
-  background-color: #DAD8DB;
+.blog {
+  margin: 0 auto;
+  max-width: 950px;
 
-  h4 {
-    text-align: left;
-    font-size: large;
-  }
-}
+  .blog-index {
+    margin: 12px;
+    padding: 12px;
+    background-color: #DAD8DB;
 
-.blog-post {
-  margin: 12px;
-  padding: 12px;
-
-  h4 {
-    text-align: right;
+    h4 {
+      text-align: left;
+      font-size: large;
+    }
   }
 
+  .blog-post {
+    margin: 12px;
+    padding: 12px;
+
+    h4 {
+      text-align: right;
+    }
+  }
 }
 </style>
