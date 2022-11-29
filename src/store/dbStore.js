@@ -80,6 +80,7 @@ const _objects = {
     title: '',
     text: [],
     file: '',
+    pic: '',
     enabled: false
   },
   comment: {

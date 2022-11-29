@@ -15,7 +15,6 @@
           "{{ comment.comment }}"
         </p>
         <p class="right">
-          --
           <span v-for="(a, ind) in comment.author" :key="ind">
             {{ a }}<br>
           </span>
@@ -65,6 +64,10 @@ export default {
     }
     .right {
       text-align: right;
+
+      span:first-of-type {
+        font-weight: bold;
+      }
     }
   }
 }

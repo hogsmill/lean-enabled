@@ -58,7 +58,7 @@ export default {
 .quotes {
   background-color: #DAD8DB;
   padding-top: 176px;
-  height: 212px;
+  height: 232px;
 
   span {
     margin: 0 3px;

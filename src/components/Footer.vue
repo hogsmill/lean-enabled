@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
-    <h4 @click="setTab('values')">
-      Living By Our Values
+    <h4 class="values" @click="setTab('values')">
+        Living By Our Values
       <br>
       <span>
         TRUST
@@ -17,12 +17,15 @@
       </span>
     </h4>
     <div class="row">
-      <dov class="col-sm-2" />
+      <div class="col-sm-2" />
       <div class="col-sm-2">
         <a @click="setTab('safeguarding')">Safeguarding</a>
       </div>
       <div class="col-sm-2">
         <a href="/docs/policy.pdf" target="blank">Training Policy</a>
+      </div>
+      <div class="col-sm-2">
+        <a @click="setTab('faqs')">FAQs</a>
       </div>
       <div class="col-sm-2">
         <a @click="show()">Contact</a>
@@ -69,11 +72,17 @@ export default {
       color: #fff;
     }
 
+    .values {
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
     span {
       padding: 0 24px;
       font-size: 18px;
     }
-
 
     .col-sm-2 {
       text-align: center;

@@ -241,7 +241,7 @@ export default {
       border: 0;
       font-size: 16px !important;
       line-height: 1.42857143 !important;
-      letter-spacing: 4px;
+      letter-spacing: 2px;
       border-radius: 0;
       font-family: Montserrat, sans-serif;
 

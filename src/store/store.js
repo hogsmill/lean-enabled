@@ -25,6 +25,7 @@ export const store = createStore({
     courseDates: [],
     comments: [],
     faqs: [],
+    blog: [],
     services: [],
     techniques: [],
     quotes: [],
@@ -110,6 +111,9 @@ export const store = createStore({
     },
     getFaqs: (state) => {
       return state.faqs
+    },
+    getBlog: (state) => {
+      return state.blog
     },
     getComments: (state) => {
       return state.comments
@@ -206,6 +210,11 @@ export const store = createStore({
     updateTab: (state, payload) => {
       state.path.push(payload)
       state.tab = payload
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     },
     updateUserType: (state, payload) => {
       state.userType = payload
@@ -246,6 +255,9 @@ export const store = createStore({
     },
     updateFaqs: (state, payload) => {
       state.faqs = payload
+    },
+    updateBlog: (state, payload) => {
+      state.blog = payload
     },
     updatePeople: (state, payload) => {
       state.people = payload
@@ -338,6 +350,9 @@ export const store = createStore({
     },
     updateFaqs: ({ commit }, payload) => {
       commit('updateFaqs', payload)
+    },
+    updateBlog: ({ commit }, payload) => {
+      commit('updateBlog', payload)
     },
     updatePeople: ({ commit }, payload) => {
       commit('updatePeople', payload)

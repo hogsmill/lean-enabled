@@ -797,7 +797,20 @@ const _defaults = {
       enabled: true
     },
   ],
-
+  blog: [
+    {
+      day: 1,
+      month: 1,
+      year: 2020,
+      title: 'McKinsey Report',
+      text: [
+        'Postpandemic skill gaps need filling, and formal learning alone won’t do the trick. Scaling the lost art of one-on-one learning can make the difference.',
+        'Find out more in this McKinsey report',
+        '{https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/reviving-the-art-of-apprenticeship-to-unlock-continuous-skill-development|Reviving the art of apprenticeship to unlock continuous skill development}'
+      ],
+      enabled: false
+    }
+  ],
   contentConsultancy: [
     {
       text: [

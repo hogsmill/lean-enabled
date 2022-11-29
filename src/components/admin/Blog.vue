@@ -47,7 +47,7 @@
             <input type="text" id="new-title">
           </td>
           <td>
-            <button class="btn btn-sm btn-secondary smaller-font" @click="addCourse()">
+            <button class="btn btn-sm btn-secondary smaller-font" @click="addBlog()">
               Add
             </button>
           </td>
@@ -57,6 +57,7 @@
     <h3>
       Blog Entries
     </h3>
+    {{ editing }}
     <table>
       <thead>
         <tr>
@@ -64,7 +65,13 @@
             Date
           </th>
           <th>
-            Course
+            Title
+          </th>
+          <th>
+            Content
+          </th>
+          <th>
+            File
           </th>
           <th>
             Enabled?
@@ -75,12 +82,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(courseDate, index) in courseDates" :key="index">
+        <tr v-for="(post, index) in blog" :key="index">
           <td>
-            <span v-if="editing.id != courseDate.id">
-              {{ courseDate.day }}/{{ courseDate.month }}/{{ courseDate.year }}
+            <span v-if="editing.id != post.id">
+              {{ post.day }}/{{ post.month }}/{{ post.year }}
             </span>
-            <select v-if="editing.id == courseDate.id" id="editing-day" :value="editing.day">
+            <select v-if="editing.id == post.id" id="editing-day" :value="editing.day">
               <option value="">
                 -- DD --
               </option>
@@ -88,7 +95,7 @@
                 {{ day }}
               </option>
             </select>
-            <select v-if="editing.id == courseDate.id" id="editing-month" :value="editing.month">
+            <select v-if="editing.id == post.id" id="editing-month" :value="editing.month">
               <option value="">
                 -- MM --
               </option>
@@ -96,7 +103,7 @@
                 {{ month }}
               </option>
             </select>
-            <select v-if="editing.id == courseDate.id" id="editing-year" :value="editing.year">
+            <select v-if="editing.id == post.id" id="editing-year" :value="editing.year">
               <option value="">
                 -- YY --
               </option>
@@ -106,32 +113,130 @@
             </select>
           </td>
           <td>
-            <span v-if="editing.id != courseDate.id">
-              {{ courseDescription(courseDate.courseId) }}
+            <span v-if="editing.id != post.id">
+              {{ post.title }}
             </span>
-            <select v-if="editing.id == courseDate.id" id="editing-description" :value="courseDate.courseId">
-              <option>
-                -- Select --
-              </option>
-              <option v-for="(course, cindex) in courses" :key="cindex" :value="course.id">
-                {{ courseDescription(course.id) }}
-              </option>
-            </select>
+            <input type="text" v-if="editing.id == post.id" id="editing-title" :value="post.title">
           </td>
           <td>
-            <span v-if="editing.id != courseDate.id">
-              <i v-if="courseDate.enabled" class="fas fa-check" />
-              <i v-if="!courseDate.enabled" class="fas fa-times" />
+            <span v-if="editing.id != post.id">
+              <p v-for="(para, pindex) in post.text" :key="pindex">
+                {{ para }}
+              </p>
             </span>
-            <input v-if="editing.id == courseDate.id" id="editing-enabled" type="checkbox" :checked="courseDate.enabled">
+            <span v-if="editing.id == post.id">
+              <table>
+                <tr v-for="(para, pindex) in text" :key="pindex">
+                  <td>
+                    <textarea :id="'paragraph-' + pindex" :value="text[pindex]" />
+                  </td>
+                  <td>
+                    <i class="fas fa-times" title="Delete this paragraph" @click="deleteParagraph(pindex)" />
+                  </td>
+                </tr>
+              </table>
+              <button class="btn btn-primary smaller-font" @click="addParagraph()">
+                Add New Paragraph
+              </button>
+            </span>
           </td>
           <td>
-            <i class="far fa-edit" title="Edit" @click="editCourse(courseDate)" />
-            <i class="far fa-save" title="Save" :class="{'disabled': editing.id != courseDate.id}" @click="saveCourse(courseDate)" />
-            <i class="far fa-trash-alt" title="Delete" @click="deleteCourse(courseDate)" />
+            <span v-if="editing.id != post.id">
+              {{ post.file }}
+            </span>
+            <input type="text" v-if="editing.id == post.id" id="editing-file" :value="post.file">
+          </td>
+          <td>
+            <span v-if="editing.id != post.id">
+              <i v-if="post.enabled" class="fas fa-check" />
+              <i v-if="!post.enabled" class="fas fa-times" />
+            </span>
+            <input v-if="editing.id == post.id" id="editing-enabled" type="checkbox" :checked="post.enabled">
+          </td>
+          <td>
+            <i class="far fa-edit" title="Edit" @click="editBlog(post)" />
+            <i class="far fa-save" title="Save" :class="{'disabled': editing.id != post.id}" @click="saveBlog(post)" />
+            <i class="far fa-trash-alt" title="Delete" @click="deleteBlog(post)" />
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </template>
+
+<script>
+import bus from '../../socket.js'
+
+export default {
+  data() {
+    return {
+      editing: {},
+      text: []
+    }
+  },
+  computed: {
+    blog() {
+      return this.$store.getters.getBlog
+    }
+  },
+  created() {
+
+    bus.emit('sendLoad', 'blog')
+
+    bus.on('load', (data) => {
+      if (data.type == 'blog') {
+        this.$store.dispatch('updateBlog', data.objects)
+      }
+    })
+  },
+  methods: {
+    addBlog() {
+      const data = {
+        type: 'blog',
+        day: document.getElementById('new-day').value,
+        month: document.getElementById('new-month').value,
+        year: document.getElementById('new-year').value,
+        title: document.getElementById('new-title').value
+      }
+      bus.emit('sendCreate', data)
+    },
+    editBlog(blog) {
+      this.editing = blog
+      this.text = blog.text
+    },
+    addParagraph() {
+      this.text.push('')
+    },
+    saveBlog() {
+      const text = []
+      for (let i = 0; i < this.text.length; i++) {
+        const para = document.getElementById('paragraph-' + i).value
+        text.push(para)
+      }
+      console.log(text)
+      const data = {
+        type: 'blog',
+        id: this.editing.id,
+        day: document.getElementById('editing-day').value,
+        month: document.getElementById('editing-month').value,
+        year: document.getElementById('editing-year').value,
+        title: document.getElementById('editing-title').value,
+        text: text,
+        file: document.getElementById('editing-file').value,
+        enabled: document.getElementById('editing-enabled').checked
+      }
+      bus.emit('sendUpdate', data)
+      this.editing = {}
+    },
+    deleteBlog(blog) {
+      bus.emit('sendDelete', {type: 'blog', id: blog.id})
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+select {
+  margin: 2px;
+}
+</style>

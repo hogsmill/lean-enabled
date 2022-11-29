@@ -1,21 +1,53 @@
-
-function link(text) {
-  let tab = text.replace(/\s/g, '-').toLowerCase()
-  tab = tab.slice(1, -1)
-  text = text.replace(/\[/, '<span class="tab-link" tab="' + tab + '">')
-  text = text.replace(/\]/, '</span>')
+function pageLink(text, linkText) {
+  let link = linkText.match(/\[(.*)\]/)
+  link = link[1].split('|')
+  let tab = ''
+  let words = link[0]
+  if (link.length == 1) {
+    tab = link[0].replace(/\s/g, '-').toLowerCase()
+  } else {
+    tab = link[0]
+    words = link[1]
+  }
+  text = text.replace(linkText, '<span class="tab-link" tab="' + tab + '">' + words + '</span>')
   return text
 }
 
+function urlLink(text, linkText) {
+  let link = linkText.match(/\{(.*)\}/)
+  link = link[1].split('|')
+  const url = link[0]
+  let words = url
+  if (link.length > 1) {
+    words = link[1]
+  }
+  text = text.replace(linkText, '<a href="' + url + '" target="blank">' + words + '</a>')
+  return text
+}
+
+// Format:
+//    Page: [page|text]
+//    URL:  {url|text}
+//
 function replaceLinks(text) {
-  //while (text.match(/\[/)) {
-    const linkText = text.match(/(\[[A-Za-z\s]*\])/)
-    if (linkText) {
-      text = text.replace(linkText[1], link(linkText[1]))
+  let found = true
+  while (found) {
+    found = false
+    const urlText = text.match(/\{[^\}]*\}/)
+    if (urlText) {
+      found = true
+      text = urlLink(text, urlText[0])
     }
-  //}
+    const linkText = text.match(/\[[^\]]*\]/)
+    if (linkText) {
+      found = true
+      text = pageLink(text, linkText[0])
+    }
+
+  }
   return text
 }
+
 module.exports = {
 
   parse: function(text) {
