@@ -1,14 +1,14 @@
 <template>
   <div class="row">
-    <div class="benefits">
+    <div class="problem-solving">
       <h2>
-        {{ benefits.header }}
+        {{ problemSolving.header }}
       </h2>
       <p>
-        {{ benefits.intro }}
+        {{ problemSolving.intro }}
       </p>
       <ol>
-        <li v-for="(bullet, index) in benefits.bullets" :key="index">
+        <li v-for="(bullet, index) in problemSolving.bullets" :key="index">
           <b>
             {{ bullet.header }}.
           </b>
@@ -24,16 +24,16 @@ import bus from '../../socket.js'
 
 export default {
   computed: {
-    benefits() {
-      return this.$store.getters.getContentBenefits
+    problemSolving() {
+      return this.$store.getters.getContentProblemSolving
     }
   },
   created() {
-    bus.emit('sendLoad', 'contentBenefits')
+    bus.emit('sendLoad', 'contentProblemSolving')
 
     bus.on('load', (data) => {
-      if (data.type == 'contentBenefits') {
-        this.$store.dispatch('updateContent', {type: 'benefits', content: data.objects[0]})
+      if (data.type == 'contentProblemSolving') {
+        this.$store.dispatch('updateContent', {type: 'problemSolving', content: data.objects[0]})
       }
     })
   }
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-.benefits {
+.problem-solving {
   background-color: #204893;
   margin: 12px auto;
   padding: 24px;

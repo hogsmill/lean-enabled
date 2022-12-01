@@ -104,6 +104,31 @@ const _objects = {
     email: '',
     phone: ''
   },
+  contentProblemSolving: {
+    header: '',
+    intro: '',
+    bullets: []
+  },
+  contentBenefits: {
+    header: '',
+    intro: '',
+    bullets: []
+  },
+  contentFactors: {
+    header: '',
+    intro: '',
+    bullets: []
+  },
+  contentWhy: {
+    header: '',
+    intro: '',
+    bullets: []
+  },
+  contentReasons: {
+    header: '',
+    intro: '',
+    bullets: []
+  },
   contentConsultancy: {
     text: []
   },

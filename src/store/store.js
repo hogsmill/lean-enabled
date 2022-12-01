@@ -43,6 +43,31 @@ export const store = createStore({
         text: '',
         quote: {}
       },
+      problemSolving: {
+        header: '',
+        intro: '',
+        bullets: []
+      },
+      benefits: {
+        header: '',
+        intro: '',
+        bullets: []
+      },
+      why: {
+        header: '',
+        intro: '',
+        bullets: []
+      },
+      reasons: {
+        header: '',
+        intro: '',
+        bullets: []
+      },
+      factors: {
+        header: '',
+        intro: '',
+        bullets: []
+      },
       consultancy: '',
       training: '',
       apprenticesIntro: '',
@@ -163,6 +188,12 @@ export const store = createStore({
     getContentMission: (state) => {
       return state.content.mission
     },
+    getContentProblemSolving: (state) => {
+      return state.content.problemSolving
+    },
+    getContentBenefits: (state) => {
+      return state.content.benefits
+    },
     getContentTransformation: (state) => {
       return state.content.transformation
     },
@@ -189,6 +220,15 @@ export const store = createStore({
     },
     getContentHowItWorks: (state) => {
       return state.content.howItWorks
+    },
+    getContentFactors: (state) => {
+      return state.content.factors
+    },
+    getContentWhy: (state) => {
+      return state.content.why
+    },
+    getContentReasons: (state) => {
+      return state.content.reasons
     }
   },
   mutations: {

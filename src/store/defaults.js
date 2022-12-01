@@ -824,6 +824,38 @@ const _defaults = {
       enabled: false
     }
   ],
+  contentProblemSolving: [
+    {
+      header: '6 things about Problem Solving training your boss needs to know',
+      intro: 'Training can be an expensive investment, including course costs, travel and lost productivity while learners are away from their day-jobs. Articulating the ROI of training to key stakeholders can sometimes be difficult, but when it comes to Problem Solving training, the value is clear. Here are 6 things about Problem Solving training that your boss needs to know:',
+      bullets: [
+        {
+          header: 'Problem Solving can lead to real, measurable, results for the organization',
+          text: 'Many “soft-skills” trainings come with “soft-metrics” on the value they will provide back to the organization. Problem solving skills development can yield tangible results in the core business metrics many organizations already use: reduced time to resolve incidents and process variation, improved product quality, and increased system and equipment availability.'
+        },
+        {
+          header: 'Problem Solving is not just an individual skill, it’s about the team',
+          text: 'While Problem Solving training can be very beneficial to individuals, approaching it as a team activity can be tremendously valuable. Overall process efficiency improves when each team member knows their role and what they need to do to contribute to overall success. With complex problems, even the best problem solvers need assitance from others to gather the correct data and understand what’s gone wrong. It really helps when everyone is using a common language for finding cause.'
+        },
+        {
+          header: 'Problem Solving training can help the team be more agile',
+          text: 'Agility is all about being able to change course faster and more frequently. Problem Solving training will help the team develop a culture of continuous improvement – remaining aware of signals in their environment and learning how to effectively analyze and respond to them. It also provides a structure for evaluating and addressing feedback (both technical and from users) and to identify when a change in course is needed.'
+        },
+        {
+          header: 'Problem Solving can lower costs',
+          text: 'As systems and processes age and become more complex, the costs of operating and repairing them increases. Problem Solving training provides a set of tools to help the team avoid recurring issues by ensuring that root cause is identified and preventative measures are implemented to avoid it from coming back again.'
+        },
+        {
+          header: 'Problem Solving can boost team morale',
+          text: 'Employees are happier when they feel like they have some control over their environment and an opportunity to make things better. By implementing a consistent Problem Solving method, team members will have a clear understanding of what to do when they see something that can be improved and they’re empowered to tackle it themselves. This consistency reduces firefighting which lowers stress and can significantly boost team morale.'
+        },
+        {
+          header: 'Problem Solving is a skill that can help managers, not just individual contributors',
+          text: 'From diagnosing performance variation across teams, to designing and optimizing business processes, to addressing quality issues in production, managers spend most of their day solving problems of one type or another. Problem Solving training can provide managers a structured approach for capturing, diagnosing, and addressing the problems they face in any business environment.'
+        }
+      ]
+    }
+  ],
   contentConsultancy: [
     {
       text: [
@@ -859,76 +891,208 @@ const _defaults = {
       manager: {
         text: [
           'WHY?',
-          '"Don’t Overlook Your Best Training Assets"',
-          'as effective training quickly translate to improved ROI, productivity, and overall employee satisfaction',
-          'Accessing apprenticeship programmes with the benefit of the apprenticeship levy is certainly a “no-brainer” too!',
-          'Important factors also include:',
-          'ARTICLE 1:',
-          '1. Apprenticeships can lead to real, measurable, results for the organization',
-          'Many "soft-skills" trainings come with "soft-metrics" on the value they will provide back to the organization. Problem solving skills development can yield tangible results in the core business metrics many organizations already use: reduced time to resolve incidents and process variation, improved product quality, and increased system and equipment availability.',
-          '2. Apprenticeships is not just an individual skill, it’s about the team',
-          'While Problem Solving training can be very beneficial to individuals, approaching it as a team activity can be tremendously valuable. Overall process efficiency improves when each team member knows their role and what they need to do to contribute to overall success. With complex problems, even the best problem solvers need assitance from others to gather the correct data and understand what’s gone wrong. It really helps when everyone is using a common language for finding cause.',
-          '3. Apprenticeships training can help the team be more agile',
-          'Agility is all about being able to change course faster and more frequently. Problem Solving training will help the team develop a culture of continuous improvement – remaining aware of signals in their environment and learning how to effectively analyze and respond to them. It also provides a structure for evaluating and addressing feedback (both technical and from users) and to identify when a change in course is needed.',
-          '4. Apprenticeships can lower costs',
-          'As systems and processes age and become more complex, the costs of operating and repairing them increases. Problem Solving training provides a set of tools to help the team avoid recurring issues by ensuring that root cause is identified and preventative measures are implemented to avoid it from coming back again.',
-          '5. Apprenticeships can boost team morale',
-          'Employees are happier when they feel like they have some control over their environment and an opportunity to make things better. By implementing a consistent Problem Solving method, team members will have a clear understanding of what to do when they see something that can be improved and they’re empowered to tackle it themselves. This consistency reduces firefighting which lowers stress and can significantly boost team morale.',
-          '6. Apprenticeships is a skill that can help managers, not just individual contributors',
-          'From diagnosing performance variation across teams, to designing and optimizing business processes, to addressing quality issues in production, managers spend most of their day solving problems of one type or another. Problem Solving training can provide managers a structured approach for capturing, diagnosing, and addressing the problems they face in any business environment.',
-          '1. Cost-effective',
-          'Apprenticeships are one of the most cost-effective ways for businesses to obtain managers. Apprenticeship funding is available so that there is no cost for the training (using the Apprenticeship levy)',
-          '2. Teach key Improvement skills',
-          'All of our Apprenticeships cover how to:',
-          'manage personal development',
-          'develop working relationships with colleagues',
-          'communicate information and knowledge ',
-          'set objectives and support for team members', 
-          'plan, allocate and monitor the work of a team.',
-          '3. Accelerate careers',
-          'The Improvement apprenticeship is a qualification that enables employees to accelerate their careers, go after promotions and advance within the business.',
-          '4. Improve productivity',
-          'Once equipped with the proper improvement, project and change management skills and techniques learned on the apprenticeship, your staff will be more productive themselves and drive higher productivity within the teams they work within.',
-          '5. Drive innovation',
-          'It is a great way to upskill fellow members of staff and empowering them to bring new and innovative ideas to the team. Innovation can also be driven by a newly-recruited apprentice with different experiences and insights that can help to grow your business, team or department - our courses cover a range of areas that develop creative problem-solving skills that can be put to use in real business scenarios in the future (and help solve your business problems today also!)',
-          '6. Improve retention',
-          'Promoting apprenticeships to your staff shows that you are actively developing the skills needed to advance employees to the next level and also demonstrates that you are actively supporting ongoing development.',
-          'Demonstrating these qualities can help you to attract the best talent to your business and retain staff for longer.',
-          '7. Business-specific training',
-          'Arguably one of the biggest benefits is that you can help you improve capabilities and performance within your business, all while saving on costs and building your reputation as the leader within your department.'
-        ]
+          '"Don’t Overlook Your Best Training Assets" as effective training quickly translate to improved ROI, productivity, and overall employee satisfaction',
+          'Accessing apprenticeship programmes with the benefit of the apprenticeship levy is certainly a “no-brainer” too!'
+          ]
       },
       apprentice: {
-        text: [
-          'Top 10 reasons why you should do an apprenticeship!',
-          '1. Gain the right skills and experience',
-          'An apprenticeship allows you to acquire valuable skills and experience in your chosen sector, which improves your CV and employability when you’ve finished training. You will learn in the work environment, developing the practical skills and understanding you need to excel in your role.',
-          'Usually, employers favour candidates with the right qualification, as well as practical experience. This means that an apprenticeship makes you a stronger candidate when looking for permanent employment.',
-          '2. Learn while you work',
-          'You will have the opportunity to study and learn (whilst on the Apprenticeship) alongside your day to day job. You will be granted Off-the-job training which consists of a minimum of six hours per week (irrespective of the hours worked by the apprentice per week).',
-          'Off the job training includes the teaching of theory (for example, lectures, role playing, simulation exercises, online learning, and manufacturer training), practical training, shadowing, mentoring, industry visits, and attendance at competitions, learning support and time spent writing assessments/assignments.',
-          '3. Guidance and support',
-          'Throughout the apprenticeship program, you will benefit from the encouragement and support of your colleagues and employer. You will also have access to comprehensive training, support and a course mentor to offer additional help and resources required to improve your skills and complete the study successfully.',
-          '4. Professional qualification',
-          'As well as gaining a nationally recognised and professional qualification, an apprenticeship allows you to build links to local businesses, and to develop the necessary skills and experience needed to drive your career successfully into the future. There are plenty of opportunities to progress onto the next level of apprenticeship and continue to grow.',
-          '5. Stay ahead of your peers',
-          'In the job market, university graduates often suffer from lack of practical work experience. By doing an apprenticeship you will already be ahead with between one and two years of experience in the workplace. It is believed that from many employers that this will give you a positive head-start in job hunting stake.',
-          '6. Cost',
-          'There are no tuition fees or costs to you as a learner when doing an apprenticeship programme. Apprenticeships are funded by the employer and government. You will be paid a salary for the duration of your apprenticeship.',
-          'Don\’t be misinformed about apprenticeships, they are not just for younger people. Anyone not already in full time education can enrol and apprenticeships are a great door opener for those who want a career change.',
-          '7. Learn from the experts',
-          'Interacting with experts is the massive perk of an apprenticeship. You will be working alongside these experts who know the ins and outs of the role, as well as how the sector works. You will have the opportunity to ask these experts questions and gain first hand insight. This will give you a real life understanding of the job rather than a classroom simulation.',
-          'Remember, the training you will receive takes place on the job, meaning you are learning in the same environment as working.',
-          '8. Become an asset',
-          'Apart from being cost effective to the employer, it will offer you the opportunity to develop and become an essential part of the team. This means that you will get trained and supported, until you become a skilled and reliable part of the workforce, increasing your chances of staying on with your employer once your apprenticeship is completed.',
-          '9. No debt',
-          'In the UK, you could face a debt of more than £40k by the time you graduate if you go to university. However, with an apprenticeship, you have no tuition fees… Quite the opposite!',
-          'Your employer will pay you to get the qualification. You will start a professional career in the industry of your choice with a means to progress and take further training.',
-          '10. Networking',
-          'One of the most essential skills in any workplace is networking and connecting with people. With an apprenticeship you will be meeting key people in the industry who could positively impact your future job prospects within new teams, departments and sectors.'
-        ]
+        text: []
       },
     }
+  ],
+  contentReasons: [
+    {
+      header: 'Top 10 reasons why you should do an apprenticeship!',
+      intro: '',
+      bullets: [
+        {
+          header: 'Gain the right skills and experience',
+          text: 'An apprenticeship allows you to acquire valuable skills and experience in your chosen sector, which improves your CV and employability when you’ve finished training. You will learn in the work environment, developing the practical skills and understanding you need to excel in your role.' +
+            '<br>Usually, employers favour candidates with the right qualification, as well as practical experience. This means that an apprenticeship makes you a stronger candidate when looking for permanent employment.'
+        },
+        {
+          header: 'Learn while you work',
+          text: 'You will have the opportunity to study and learn (whilst on the Apprenticeship) alongside your day to day job. You will be granted Off-the-job training which consists of a minimum of six hours per week (irrespective of the hours worked by the apprentice per week).' +
+            '<br>Off the job training includes the teaching of theory (for example, lectures, role playing, simulation exercises, online learning, and manufacturer training), practical training, shadowing, mentoring, industry visits, and attendance at competitions, learning support and time spent writing assessments/assignments.'
+        },
+        {
+          header: 'Guidance and support',
+          text: 'Throughout the apprenticeship program, you will benefit from the encouragement and support of your colleagues and employer. You will also have access to comprehensive training, support and a course mentor to offer additional help and resources required to improve your skills and complete the study successfully.'
+
+        },
+        {
+          header: 'Professional qualification',
+          text: 'As well as gaining a nationally recognised and professional qualification, an apprenticeship allows you to build links to local businesses, and to develop the necessary skills and experience needed to drive your career successfully into the future. There are plenty of opportunities to progress onto the next level of apprenticeship and continue to grow.'
+
+        },
+        {
+          header: 'Stay ahead of your peers',
+          text: 'In the job market, university graduates often suffer from lack of practical work experience. By doing an apprenticeship you will already be ahead with between one and two years of experience in the workplace. It is believed that from many employers that this will give you a positive head-start in job hunting stake.'
+        },
+        {
+          header: 'Cost',
+          text: 'There are no tuition fees or costs to you as a learner when doing an apprenticeship programme. Apprenticeships are funded by the employer and government. You will be paid a salary for the duration of your apprenticeship.' +
+            '<br>Don\’t be misinformed about apprenticeships, they are not just for younger people. Anyone not already in full time education can enrol and apprenticeships are a great door opener for those who want a career change.'
+        },
+        {
+          header: 'Learn from the experts',
+          text: 'Interacting with experts is the massive perk of an apprenticeship. You will be working alongside these experts who know the ins and outs of the role, as well as how the sector works. You will have the opportunity to ask these experts questions and gain first hand insight. This will give you a real life understanding of the job rather than a classroom simulation.' +
+            '<br>Remember, the training you will receive takes place on the job, meaning you are learning in the same environment as working.'
+        },
+        {
+          header: 'Become an asset',
+          text: 'Apart from being cost effective to the employer, it will offer you the opportunity to develop and become an essential part of the team. This means that you will get trained and supported, until you become a skilled and reliable part of the workforce, increasing your chances of staying on with your employer once your apprenticeship is completed.'
+        },
+        {
+          header: 'No debt',
+          text: 'In the UK, you could face a debt of more than £40k by the time you graduate if you go to university. However, with an apprenticeship, you have no tuition fees… Quite the opposite!' +
+            '<br>Your employer will pay you to get the qualification. You will start a professional career in the industry of your choice with a means to progress and take further training.'
+        },
+        {
+          header: 'Networking',
+          text: 'One of the most essential skills in any workplace is networking and connecting with people. With an apprenticeship you will be meeting key people in the industry who could positively impact your future job prospects within new teams, departments and sectors.'
+        }
+      ]
+    }
+  ],
+  contentFactors: [
+    {
+      header: '',
+      intro: 'Important factors also include:',
+      bullets: [
+        {
+          header: 'Apprenticeships can lead to real, measurable, results for the organization',
+          text: 'Many "soft-skills" trainings come with "soft-metrics" on the value they will provide back to the organization. Problem solving skills development can yield tangible results in the core business metrics many organizations already use: reduced time to resolve incidents and process variation, improved product quality, and increased system and equipment availability.'
+        },
+        {
+          header: 'Apprenticeships is not just an individual skill, it\’s about the team',
+          text: 'While Problem Solving training can be very beneficial to individuals, approaching it as a team activity can be tremendously valuable. Overall process efficiency improves when each team member knows their role and what they need to do to contribute to overall success. With complex problems, even the best problem solvers need assitance from others to gather the correct data and understand what’s gone wrong. It really helps when everyone is using a common language for finding cause.',
+        },
+        {
+          header: 'Apprenticeships training can help the team be more agile',
+          text: 'Agility is all about being able to change course faster and more frequently. Problem Solving training will help the team develop a culture of continuous improvement – remaining aware of signals in their environment and learning how to effectively analyze and respond to them. It also provides a structure for evaluating and addressing feedback (both technical and from users) and to identify when a change in course is needed.'
+        },
+        {
+          header: 'Apprenticeships can lower costs',
+          text: 'As systems and processes age and become more complex, the costs of operating and repairing them increases. Problem Solving training provides a set of tools to help the team avoid recurring issues by ensuring that root cause is identified and preventative measures are implemented to avoid it from coming back again.'
+        },
+        {
+          header: 'Apprenticeships can boost team morale',
+          text: 'Employees are happier when they feel like they have some control over their environment and an opportunity to make things better. By implementing a consistent Problem Solving method, team members will have a clear understanding of what to do when they see something that can be improved and they\’re empowered to tackle it themselves. This consistency reduces firefighting which lowers stress and can significantly boost team morale.'
+        },
+        {
+          header: 'Apprenticeships is a skill that can help managers, not just individual contributors',
+          text: 'From diagnosing performance variation across teams, to designing and optimizing business processes, to addressing quality issues in production, managers spend most of their day solving problems of one type or another. Problem Solving training can provide managers a structured approach for capturing, diagnosing, and addressing the problems they face in any business environment.',
+        }
+      ]
+    }
+  ],
+  contentWhy: [
+    {
+      header: 'Why',
+      intro: '',
+      bullets: [
+        {
+          header: 'Cost-effective',
+          text: 'Apprenticeships are one of the most cost-effective ways for businesses to obtain managers. Apprenticeship funding is available so that there is no cost for the training (using the Apprenticeship levy)'
+        },
+        {
+          header: 'Teach key Improvement skills',
+          text:   'All of our Apprenticeships cover how to:' +
+            '<ul>' +
+            '  <li>manage personal development</li>' +
+            '  <li>develop working relationships with colleagues</li>' +
+            '  <li>communicate information and knowledge</li>' +
+            '  <li>set objectives and support for team members</li>' + 
+            '  <li>plan, allocate and monitor the work of a team</li>' +
+            '<ul>'
+        },
+        {
+          header: 'Accelerate careers',
+          text: 'The Improvement apprenticeship is a qualification that enables employees to accelerate their careers, go after promotions and advance within the business.',
+
+
+        },
+        {
+          header: 'Improve productivity',
+          text:   'Once equipped with the proper improvement, project and change management skills and techniques learned on the apprenticeship, your staff will be more productive themselves and drive higher productivity within the teams they work within.'
+        },
+        {
+          header: 'Drive innovation',
+          text:   'It is a great way to upskill fellow members of staff and empowering them to bring new and innovative ideas to the team. Innovation can also be driven by a newly-recruited apprentice with different experiences and insights that can help to grow your business, team or department - our courses cover a range of areas that develop creative problem-solving skills that can be put to use in real business scenarios in the future (and help solve your business problems today also!)'
+        },
+        {
+          header: 'Improve retention',
+          text: 'Promoting apprenticeships to your staff shows that you are actively developing the skills needed to advance employees to the next level and also demonstrates that you are actively supporting ongoing development.' +
+            '<br>Demonstrating these qualities can help you to attract the best talent to your business and retain staff for longer.',
+        },
+        {
+          header: 'Business-specific training',
+          text:   'Arguably one of the biggest benefits is that you can help you improve capabilities and performance within your business, all while saving on costs and building your reputation as the leader within your department.'
+        },
+        {
+          header: 'Set the example and foster a learning culture',
+          text: 'An effective learning culture starts from the top, and is cascaded throughout all levels.' +
+            '<br>A successful learning culture promises:' +
+            '<ul>' +
+            '  <li>Increased productivity (and increased profit!)</li>' +
+            '  <li>Improved employee satisfaction levels</li>' +
+            '  <li>Decreased employee turnover</li>' +
+            '  <li>A culture of knowledge sharing</li>' +
+            '  <li>Improved learning agility</li>' +
+            '<ul>' +
+            'Training programs can also take advantage of managers\’ daily interaction with employees by incorporating managers into structured post-training activities. These can range from on-the-job assessments to encouragement when employees find changes challenging to implement and maintain.'
+
+        },
+        {
+          header: 'Communicate the value of employee development',
+          text: 'A manager\’s role in training and development includes communicating (both through words and action) that the company values their employees’ growth.' +
+            '<br>The first step to valuing employee development is simply to make enough time for it. So when you train employees, give them the time they need to fully participate in training activities and complete assessments.' +
+            '<br>Managers should also take care to recognize employee improvement both during training and on-the-job. This will help employees feel appreciated and motivated to keep growing.'
+        },
+        {
+          header: 'Create opportunities for on-the-job practice',
+          text: 'New skills and knowledge gained during training simply won\’t stick if learners don\’t get a chance to apply them in the workplace. In other words, companies run the risk of wasting a significant portion of their training investment if employees aren\’t given the opportunity to practice.' +
+            '<br>Managers should collaborate with trainers to provide employees with opportunities to practice what they\’ve learned in “safe to fail” spaces, like role-plays and simulations games.'
+        },
+        {
+          header: 'Set training and performance goals',
+          text: 'Author of 7 Habits of Highly Effective People, Stephen Covey, said “Stop setting goals. Goals are pure fantasy unless you have a specific plan to achieve them.” A key part of a manager\’s role in training and development is to support their team in setting meaningful and achievable goals and plotting out the road to achieve them.' +
+            '<br>Training goals should relate to job-specific skills. But they should also relate to broader professional development activities that help employees advance within the organisation and realise their career ambitions. Managers have the privilege of working closely with employees to identify the knowledge and skills they\’ll need for these goals in the short term and in the long run.' +
+            '<br>Setting measurable KPIs is always advised, too – the cliché that what is measured can be achieved is worth taking seriously. Managers should work together with employees to establish areas for development, and find ways to quantify their goals. For example, a new sales employee may need to aim for 20% more sales per quarter after training is complete.' +
+            '<br>The manager’s role in training also extends to communicating training expectations to their team. All employees should know how their participation in training will affect their performance reviews and advancement opportunities.'
+        },
+        {
+          header: 'Maximise training funding – using the Apprenticeship Levy',
+          text: 'Remember apprenticeships provide opportunities for an existing workforce to continue their education, not just "entry-level school leavers".'
+        }
+      ]
+    }
+  ],
+  contentBenefits: [
+    {
+      header: 'Benefits',
+      intro: 'Benefits also include:',
+      bullets: [
+        {
+          header: 'Improved Retention',
+          text: 'Investing in your existing staff helps to allow and encourage them to feel more confident, continuing to invest in you and your business. Statistics show that companies who enrol in apprenticeships programmes have a significant increase in the levels of retention. Staff may not feel as though they need to leave companies to pursue their training or educational desires and in fact, may find themselves able to progress within your company and bring their experience and expertise to new facets of the company.'
+        },
+        {
+          header: 'Reduce the costs and risks often associated with recruitment and training',
+          text: 'Whilst recruiting new staff can be seen to help by adding a fresh new perspective to an existing workforce; there is no denying the cost implications and risks involved in hiring new employees. By building on your existing staff’s skill levels through apprenticeships can reduce the time and money spent hunting for the skills required in an unknown employee and rather allow your existing loyal staff to upskill and fill the gaps you identify within your organisation. In addition to the cost-saving implications in regards to reduced recruitment; there is also the ability for your existing staff to train to degree level without the associated costs of gaining a degree.'
+        },
+        {
+          header: 'Improve production',
+          text: 'By helping your staff to become more skilled and qualified in their work you, in turn, help them to work more productively and effectively. This means that your company can continue to grow – with staff who keep abreast the latest techniques.'
+        },
+        {
+          header: 'Tailored to your specific industry needs',
+          text: 'One of the major advantages of apprenticeships programmes is that they are occupation focussed rather than being qualification led. Apprenticeship standards specifically meet the needs of the employer and the industry. This means that your employees are truly earning skills and knowledge which directly relates to your industry and their occupation.'
+        }
+      ],
+    }
+
   ],
   contentCoursesIntro: [
     {

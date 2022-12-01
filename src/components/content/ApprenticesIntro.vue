@@ -8,13 +8,25 @@
         {{ para }}
       </p>
     </span>
+    <Reasons v-if="userType == 'apprentice'" />
+    <Factors v-if="userType == 'manager'" />
+    <Why v-if="userType == 'manager'" />
   </div>
 </template>
 
 <script>
 import bus from '../../socket.js'
 
+import Reasons from './Reasons.vue'
+import Factors from './Factors.vue'
+import Why from './Why.vue'
+
 export default {
+  components: {
+    Reasons,
+    Factors,
+    Why
+  },
   props: [
     'userType'
   ],

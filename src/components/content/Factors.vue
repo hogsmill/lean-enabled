@@ -1,18 +1,18 @@
 <template>
   <div class="row">
-    <div class="benefits">
+    <div class="factors">
       <h2>
-        {{ benefits.header }}
+        {{ factors.header }}
       </h2>
       <p>
-        {{ benefits.intro }}
+        {{ factors.intro }}
       </p>
       <ol>
-        <li v-for="(bullet, index) in benefits.bullets" :key="index">
+        <li v-for="(bullet, index) in factors.bullets" :key="index">
           <b>
             {{ bullet.header }}.
           </b>
-          {{ bullet.text }}
+            {{ bullet.text }}
         </li>
       </ol>
     </div>
@@ -24,16 +24,16 @@ import bus from '../../socket.js'
 
 export default {
   computed: {
-    benefits() {
-      return this.$store.getters.getContentBenefits
+    factors() {
+      return this.$store.getters.getContentFactors
     }
   },
   created() {
-    bus.emit('sendLoad', 'contentBenefits')
+    bus.emit('sendLoad', 'contentFactors')
 
     bus.on('load', (data) => {
-      if (data.type == 'contentBenefits') {
-        this.$store.dispatch('updateContent', {type: 'benefits', content: data.objects[0]})
+      if (data.type == 'contentFactors') {
+        this.$store.dispatch('updateContent', {type: 'factors', content: data.objects[0]})
       }
     })
   }
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-.benefits {
+.factors {
   background-color: #204893;
   margin: 12px auto;
   padding: 24px;
@@ -54,4 +54,5 @@ export default {
   li {
     margin-bottom: 12px;
   }
-}</style>
+}
+</style>
