@@ -13,7 +13,7 @@
           Transformation
         </li>
         <li :class="{'active': tab == 'apprentices'}" @click="setUrl('apprentices')">
-          Apprentices
+          Apprenticeships
         </li>
         <li :class="{'active': tab == 'about'}" @click="setUrl('about')">
           About

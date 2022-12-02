@@ -262,7 +262,7 @@ const _defaults = {
         'For many years we have listened closely to our clients to understand their needs and collaborated to ‘help make their business better’. As experts in business transformation and change management we engage leaders and teams and drive measurable and sustainable improvement in business processes and people performance.'
       ],
       quote: {
-        text: 'This NHS Trust has the best learning culture across the whole of the NHS',
+        text: 'Today I have seen the best learning culture across the whole of the NHS',
         author: 'Jeremy Hunt, Secretary of State for Health and Social Care (1 Feb 2018)'
       }
     }

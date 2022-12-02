@@ -1,7 +1,7 @@
 <template>
   <div class="row slideanim training">
     <h2>
-      Apprentice Training
+      Apprenticeship Training
     </h2>
     <span v-if="contentApprenticesIntro[userType]">
       <p v-for="(para, index) in contentApprenticesIntro[userType].text" :key="index">

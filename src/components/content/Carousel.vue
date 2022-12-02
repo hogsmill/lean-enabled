@@ -1,111 +1,51 @@
 <template>
-  <div class="sliderm demo">
-    <div class="sliderm__slider">
-      <div class="sliderm__slides">
-        <div v-for="(n, index) in 7" :key="index" class="sliderm__slide">
-          <img :src="require('../../assets/img/carousel/image-' + n + '.jpeg')" />
-          Caption image {{ n }}
-        </div>
-      </div>
-    </div>
-  </div>
+  <Carousel :autoplay="2000" :wrap-around="true">
+    <Slide v-for="slide in 10" :key="slide">
+      <div class="carousel__item">{{ slide }}</div>
+    </Slide>
+
+    <template #addons>
+      <Pagination />
+    </template>
+  </Carousel>
 </template>
 
 <script>
-import Sliderm from 'sliderm'
-import 'sliderm/src/assets/scss/index.scss'
+import { defineComponent } from 'vue'
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
 
-export default {
-  mounted() {
-    const sliderm = new Sliderm('.demo', {
-      /**
-       * Display the arrow buttons.
-       *
-       * @type {Boolean}
-       */
-      arrow: true,
-      /**
-       * Display the pagination, dot, dot, dots.
-       *
-       * @type {Boolean}
-       */
-      pagination: true,
-      /**
-       * Display the spinner when loading the slider.
-       *
-       * @type {Boolean}
-       */
-      spinner: true,
-      /**
-       * Slide column group or just single column group.
-       *
-       * @type {Boolean}
-       */
-      grouping: false,
-      /**
-       * Transform the slider into a carousel.
-       *
-       * @type {Boolean}
-       */
-      loop: true,
-      /**
-       * Preview a part of the previous and next item.
-       *
-       * @type {Boolean}
-       */
-      preview: false,
-      /**
-       * Make the slider responsive.
-       *
-       * @type {Boolean}
-       */
-      breakpoint: true,
-      /**
-       * Add support for mobile devices to touch left and right swipe.
-       *
-       * @type {Boolean}
-       */
-      touch: true,
-      /**
-       * Autoplay the carousel.
-       *
-       * @type {Boolean}
-       */
-      autoplay: true,
-      /**
-       * How many items per view
-       *
-       * @type {Boolean}
-       */
-      columns: 4,
-      /**
-       * The duration of transition.
-       *
-       * @type {Number}
-       */
-      duration: 1000,
-      /**
-       * The spacing between each item.
-       *
-       * @type {Number}
-       */
-      spacing: 10,
+import 'vue3-carousel/dist/carousel.css'
 
-    })
-
-    sliderm.on('slide.start', () => {
-      console.log('Just starting to slide!')
-    })
-    sliderm.on('slide.end', () => {
-      console.log('The slider is stopped.')
-    })
-  }
-}
+export default defineComponent({
+  name: 'Autoplay',
+  components: {
+    Carousel,
+    Slide,
+    Pagination,
+  },
+})
 </script>
 
 <style>
-  .demo {
-    width: 80%;
-    margin: 60px auto;
-  }
+.carousel__item {
+  min-height: 200px;
+  width: 100%;
+  background-color: var(--vc-clr-primary);
+  color: var(--vc-clr-white);
+  font-size: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel__slide {
+  padding: 10px;
+}
+
+.carousel__prev,
+.carousel__next {
+  box-sizing: content-box;
+  border: 5px solid white;
+}
 </style>
