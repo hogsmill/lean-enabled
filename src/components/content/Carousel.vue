@@ -3,7 +3,7 @@
     <div class="sliderm__slider">
       <div class="sliderm__slides">
         <div class="sliderm__slide">
-          <img :src="require('../../assests/img/carousel/image-1.jpeg'" />
+          <img :src="require('../../assets/img/carousel/image-1.jpeg')" />
           Caption image 1
         </div>
         <div class="sliderm__slide"><img src="/img/carousel/image-2.jpeg" />
