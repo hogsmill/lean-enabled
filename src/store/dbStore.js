@@ -19,6 +19,10 @@ const _objects = {
   mission: {
     text: ''
   },
+  carousel: {
+    name: '',
+    slides: []
+  },
   value: {
     title: 'Trust',
     text: [],

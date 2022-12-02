@@ -10,6 +10,7 @@
     <CoursesIntro />
     <CaseStudy />
     <HowItWorks />
+    <Carousel />
   </div>
 </template>
 
@@ -26,6 +27,7 @@ import ServicesIntro from './content/ServicesIntro.vue'
 import CoursesIntro from './content/CoursesIntro.vue'
 import CaseStudy from './content/CaseStudy.vue'
 import HowItWorks from './content/HowItWorks.vue'
+import Carousel from './content/Carousel.vue'
 
 export default {
   components: {
@@ -38,7 +40,8 @@ export default {
     ServicesIntro,
     CoursesIntro,
     CaseStudy,
-    HowItWorks
+    HowItWorks,
+    Carousel
   },
   computed: {
     expanded() {

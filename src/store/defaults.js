@@ -5,6 +5,53 @@ const _defaults = {
       text: 'To provide the skills for apprenticeship learners or NHS staff to feel empowered, equipped and confident to drive and manage, measurable and sustainable change in their area of work.'
     }
   ],
+  carousel: [
+    {
+      name: 'transformation',
+      slides: [
+        {
+          image: 'image-1.jpeg',
+          caption: 'Caption 1'
+        },
+        {
+          image: 'image-2.jpeg',
+          caption: 'Caption 2'
+        },
+        {
+          image: 'image-3.jpeg',
+          caption: 'Caption 3'
+        },
+        {
+          image: 'image-4.jpeg',
+          caption: 'Caption 4'
+        },
+        {
+          image: 'image-5.jpeg',
+          caption: 'Caption 5'
+        },
+        {
+          image: 'image-6.jpeg',
+          caption: 'Caption 6'
+        },
+        {
+          image: 'image-7.jpeg',
+          caption: 'Caption 7'
+        },
+        //{
+        //  image: 'image-8.jpg',
+        //  caption: ''
+        //},
+        //{
+        //  image: 'image-9.jpg',
+        //  caption: ''
+        //},
+        //{
+        //  image: 'image-10.jpg',
+        //  caption: ''
+        //}
+      ]
+    }
+  ],
   value: [
     {
       title: 'Trust',
@@ -820,6 +867,17 @@ const _defaults = {
         'In those trusts we have rated as outstanding, we have found a culture of quality improvement embedded throughout the organisation.',
         'Find out more in this report',
         '~CQC Report sharing Learnings from hospital trusts on a journey of QI  SEPT 2018.pdf~',
+      ],
+      enabled: false
+    },
+    {
+      day: 2,
+      month: 12,
+      year: 2022,
+      title: 'Case Study',
+      text: [
+        'We have a case study',
+        '[case-study|Case Study]'
       ],
       enabled: false
     }

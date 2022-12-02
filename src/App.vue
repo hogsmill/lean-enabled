@@ -8,7 +8,7 @@
 
       <!-- Transformation -->
       <TransformationMain v-if="tab == 'transformation'" />
-      <Carousel v-if="tab == 'transformation'" />
+      <Carousel v-if="tab == 'transformation'" :carousel="'transformation'"/>
       <Transformation v-if="tab == 'transformation'" />
       <HowItWorks v-if="tab == 'transformation'" />
       <Comments v-if="tab == 'transformation'" :scope="'stakeholder'" />

@@ -21,6 +21,7 @@ export const store = createStore({
     userType: 'manager',
     users: [],
     emails: [],
+    carousels: [],
     courseComments: [],
     courseDates: [],
     comments: [],
@@ -229,6 +230,9 @@ export const store = createStore({
     },
     getContentReasons: (state) => {
       return state.content.reasons
+    },
+    getCarousels: (state) => {
+      return state.carousels
     }
   },
   mutations: {
@@ -297,7 +301,12 @@ export const store = createStore({
       state.faqs = payload
     },
     updateBlog: (state, payload) => {
-      state.blog = payload
+      const blog = payload.sort((a, b) => {
+        a = new Date(a.year, a.month, a.day)
+        b = new Date(b.year, b.month, b.day)
+        return b - a
+      })
+      state.blog = blog
     },
     updatePeople: (state, payload) => {
       state.people = payload
@@ -328,6 +337,9 @@ export const store = createStore({
     },
     updateContent: (state, payload) => {
       state.content[payload.type] = payload.content
+    },
+    updateCarousels: (state, payload) => {
+      state.carousels = payload
     }
   },
   actions: {
@@ -414,6 +426,9 @@ export const store = createStore({
     },
     updateContent: ({ commit }, payload) => {
       commit('updateContent', payload)
+    },
+    updateCarousels: ({ commit }, payload) => {
+      commit('updateCarousels', payload)
     }
   }
 })

@@ -1,10 +1,10 @@
 <template>
-  <Carousel :autoplayxxx="3000" :wrap-around="true" :itemsToShow="5" :transition="1000">
-    <Slide v-for="slide in 7" :key="slide">
+  <Carousel :autoplay="5000" :wrap-around="true" :itemsToShow="5" :transition="1000">
+    <Slide v-for="(slide, index) in thisCarousel()" :key="index">
       <div class="carousel__item">
         <div class="slide-content">
-          <img :src="require('../../assets/img/carousel/image-' + slide + '.jpeg')" />
-          <span>Caption {{ slide }}</span>
+          <img :src="require('../../assets/img/carousel/' + slide.image)" />
+          <span>{{ slide.caption }}</span>
         </div>
       </div>
     </Slide>
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import bus from '../../socket.js'
+
 import { defineComponent } from 'vue'
 import { Carousel, Pagination, Slide } from 'vue3-carousel'
 
@@ -22,6 +24,32 @@ export default defineComponent({
   components: {
     Carousel,
     Slide
+  },
+  props: [
+    'carousel'
+  ],
+  computed: {
+    carousels() {
+      return this.$store.getters.getCarousels
+    }
+  },
+  created() {
+
+    bus.emit('sendLoad', 'carousel')
+
+    bus.on('load', (data) => {
+      if (data.type == 'carousel') {
+        this.$store.dispatch('updateCarousels', data.objects)
+      }
+    })
+  },
+  methods: {
+    thisCarousel() {
+      const c = this.carousels.find((c) => {
+        return c.name == this.carousel
+      })
+      return c ? c.slides : []
+    }
   }
 })
 </script>

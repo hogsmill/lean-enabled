@@ -20,7 +20,7 @@
             Blog Index
           </h3>
           <div v-for="(post, index) in blog" :key="index">
-            <h4>
+            <h4 @click="selectPost(post)" :class="{'selected': post.id == currentPost.id}">
               {{ getDate(post) }}
               {{ post.title }}
             </h4>
@@ -34,6 +34,7 @@
 <script>
 import bus from '../socket.js'
 
+import dateFuns from '../lib/date.js'
 import textFuns from '../lib/text.js'
 
 export default {
@@ -58,13 +59,28 @@ export default {
       }
     })
   },
+  updated() {
+    const links = document.getElementsByClassName('tab-link')
+    for (let i = 0; i < links.length; i++) {
+      const tab = links[i].getAttribute('tab')
+      links[i].addEventListener('click', () => {
+        this.setTab(tab)
+      })
+    }
+  },
   methods: {
     getDate(post) {
-      return post.day + '-' + post.month  + '-' + post.year
+      return dateFuns.getDate(post.day, post.month, post.year)
     },
     parseText(text) {
       return textFuns.parse(text)
     },
+    selectPost(post) {
+      this.currentPost = post
+    },
+    setTab(tab) {
+      this.$store.dispatch('updateTab', tab)
+    }
   }
 }
 </script>
@@ -82,6 +98,12 @@ export default {
     h4 {
       text-align: left;
       font-size: large;
+      padding: 3px;
+
+      &.selected {
+        background-color: #204893;
+        color: #fff;
+      }
     }
   }
 

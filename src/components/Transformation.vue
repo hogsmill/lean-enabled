@@ -99,7 +99,7 @@ export default {
         this.toggleMenu()
       }
       this.$store.dispatch('updateTab', tab)
-    },
+    }
   }
 }
 </script>
