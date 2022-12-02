@@ -1,3 +1,7 @@
+function root() {
+  return location.hostname == 'agilesimulations.co.uk' ? '/lean-enabled' : ''  
+}
+
 function pageLink(text, linkText) {
   let link = linkText.match(/\[(.*)\]/)
   link = link[1].split('|')
@@ -33,7 +37,7 @@ function fileLink(text, linkText) {
   if (link.length > 1) {
     words = link[1]
   }
-  text = text.replace(linkText, '<a href="/docs/blog/' + file + '" target="blank">' + words + '</a>')
+  text = text.replace(linkText, '<a href="' + root() + '/docs/blog/' + file + '" target="blank">' + words + '</a>')
   return text
 }
 
