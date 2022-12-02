@@ -44,11 +44,11 @@
     </div>
     <div class="row">
       <div class="col-sm-6">
-        <img src="/img/safeguarding/safe1.png">
+        <img :src="link('safe1.png')">
       </div>
       <div class="col-sm-6">
         <div class="extremism">
-          <img src="/img/safeguarding/safe3.png">
+          <img :src="link('safe3.png')">
           <div>
             <h2>
               Do your part to help prevent extremism
@@ -87,7 +87,6 @@ export default {
     bus.emit('sendLoad', 'safeguarding')
 
     bus.on('load', (data) => {
-      console.log(data)
       if (data.type == 'safeguarding') {
         this.$store.dispatch('updateSafeguarding', data.objects)
       }
@@ -99,6 +98,10 @@ export default {
     },
     show() {
       this.$store.dispatch('showModal', 'safeguarding')
+    },
+    link(file) {
+      const root = location.hostname == 'agilesimulations.co.uk' ? '/lean-enabled' : ''
+      return root + '/img/safeguarding/' + file
     }
   }
 }
