@@ -67,9 +67,9 @@
         </div>
       </div>
     </div>
-    <p>
+    <h3>
       Please <a @click="contact()">Contact Us</a> for more information.
-    </p>
+    </h3>
   </div>
 </template>
 
