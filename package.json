@@ -16,6 +16,7 @@
     "package-lock.json": "^1.0.0",
     "pkg.json": "^2.0.8",
     "sass": "^1.56.1",
+    "sliderm": "^1.1.0",
     "socket.io": "^4.5.4",
     "socket.io-client": "^4.5.4",
     "tiny-emitter": "^2.1.0",

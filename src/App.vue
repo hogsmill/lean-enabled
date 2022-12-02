@@ -8,6 +8,7 @@
 
       <!-- Transformation -->
       <TransformationMain v-if="tab == 'transformation'" />
+      <Carousel v-if="tab == 'transformation'" />
       <Transformation v-if="tab == 'transformation'" />
       <HowItWorks v-if="tab == 'transformation'" />
       <Comments v-if="tab == 'transformation'" :scope="'stakeholder'" />
@@ -52,6 +53,7 @@ import Quotes from './components/Quotes.vue'
 import NextCourse from './components/NextCourse.vue'
 import TransformationMain from './components/content/TransformationMain.vue'
 import Transformation from './components/Transformation.vue'
+import Carousel from './components/content/Carousel.vue'
 import HowItWorks from './components/content/HowItWorks.vue'
 import Apprentices from './components/Apprentices.vue'
 import Comments from './components/content/Comments.vue'
@@ -75,6 +77,7 @@ export default {
     Quotes,
     NextCourse,
     Transformation,
+    Carousel,
     TransformationMain,
     HowItWorks,
     Apprentices,
