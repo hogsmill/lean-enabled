@@ -1,12 +1,13 @@
 <template>
-  <Carousel :autoplay="2000" :wrap-around="true">
-    <Slide v-for="slide in 10" :key="slide">
-      <div class="carousel__item">{{ slide }}</div>
+  <Carousel :autoplayxxx="3000" :wrap-around="true" :itemsToShow="5" :transition="1000">
+    <Slide v-for="slide in 7" :key="slide">
+      <div class="carousel__item">
+        <div class="slide-content">
+          <img :src="require('../../assets/img/carousel/image-' + slide + '.jpeg')" />
+          <span>Caption {{ slide }}</span>
+        </div>
+      </div>
     </Slide>
-
-    <template #addons>
-      <Pagination />
-    </template>
   </Carousel>
 </template>
 
@@ -20,18 +21,15 @@ export default defineComponent({
   name: 'Autoplay',
   components: {
     Carousel,
-    Slide,
-    Pagination,
-  },
+    Slide
+  }
 })
 </script>
 
-<style>
+<style lang="scss">
 .carousel__item {
-  min-height: 200px;
+  height: 300px;
   width: 100%;
-  background-color: var(--vc-clr-primary);
-  color: var(--vc-clr-white);
   font-size: 20px;
   border-radius: 8px;
   display: flex;
@@ -41,6 +39,13 @@ export default defineComponent({
 
 .carousel__slide {
   padding: 10px;
+}
+
+.slide-content {
+  img {
+    width: 100%;
+  }
+  text-align: center;
 }
 
 .carousel__prev,
