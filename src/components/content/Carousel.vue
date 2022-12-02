@@ -2,7 +2,8 @@
   <div class="sliderm demo">
     <div class="sliderm__slider">
       <div class="sliderm__slides">
-        <div class="sliderm__slide"><img src="/img/carousel/image-1.jpeg" />
+        <div class="sliderm__slide">
+          <img :src="require('../../assests/img/carousel/image-1.jpeg'" />
           Caption image 1
         </div>
         <div class="sliderm__slide"><img src="/img/carousel/image-2.jpeg" />
