@@ -2,27 +2,9 @@
   <div class="sliderm demo">
     <div class="sliderm__slider">
       <div class="sliderm__slides">
-        <div class="sliderm__slide">
-          <img :src="require('../../assets/img/carousel/image-1.jpeg')" />
-          Caption image 1
-        </div>
-        <div class="sliderm__slide"><img src="/img/carousel/image-2.jpeg" />
-          Caption image 2
-        </div>
-        <div class="sliderm__slide"><img src="/img/carousel/image-3.jpeg" />
-          Caption image 3
-        </div>
-        <div class="sliderm__slide"><img src="/img/carousel/image-4.jpeg" />
-          Caption image 4
-        </div>
-        <div class="sliderm__slide"><img src="/img/carousel/image-5.jpeg" />
-          Caption image 5
-        </div>
-        <div class="sliderm__slide"><img src="/img/carousel/image-6.jpeg" />
-          Caption image 6
-        </div>
-        <div class="sliderm__slide"><img src="/img/carousel/image-7.jpeg" />
-          Caption image 7
+        <div v-for="(n, index) in 7" :key="index" class="sliderm__slide">
+          <img :src="require('../../assets/img/carousel/image-' + n + '.jpeg')" />
+          Caption image {{ n }}
         </div>
       </div>
     </div>
