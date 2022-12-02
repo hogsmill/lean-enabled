@@ -1,9 +1,9 @@
 <template>
-  <Carousel :autoplay="5000" :wrap-around="true" :itemsToShow="5" :transition="1000">
+  <Carousel :autoplay="5000" :wrap-around="true" :items-to-show="5" :transition="1000">
     <Slide v-for="(slide, index) in thisCarousel()" :key="index">
       <div class="carousel__item">
         <div class="slide-content">
-          <img :src="require('../../assets/img/carousel/' + slide.image)" />
+          <img :src="require('../../assets/img/carousel/' + slide.image)">
           <span>{{ slide.caption }}</span>
         </div>
       </div>

@@ -55,9 +55,14 @@
       </tbody>
     </table>
     <h3>
+      Upload File
+    </h3>
+    <div>
+      TBD
+    </div>
+    <h3>
       Blog Entries
     </h3>
-    {{ editing }}
     <table>
       <thead>
         <tr>

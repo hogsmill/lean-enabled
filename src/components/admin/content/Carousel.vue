@@ -9,8 +9,8 @@
       <table>
         <thead>
           <tr>
-           <th>
-             Name
+            <th>
+              Name
             </th>
             <th colspan="2">
               Slides
@@ -27,7 +27,7 @@
               <table class="slides">
                 <tr v-for="(slide, sindex) in carousel.slides" :key="sindex">
                   <td>
-                    <img :src="require('../../../assets/img/carousel/' + slide.image)" />
+                    <img :src="require('../../../assets/img/carousel/' + slide.image)">
                   </td>
                   <td>
                     <span v-if="editing.id != carousel.id">

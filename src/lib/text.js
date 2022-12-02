@@ -26,7 +26,7 @@ function urlLink(text, linkText) {
 }
 
 function fileLink(text, linkText) {
-  let link = linkText.match(/\{(.*)\}/)
+  let link = linkText.match(/~(.*)~/)
   link = link[1].split('|')
   const file = link[0]
   let words = file
@@ -55,6 +55,11 @@ function replaceLinks(text) {
     if (linkText) {
       found = true
       text = pageLink(text, linkText[0])
+    }
+    const fileText = text.match(/~[^~]*~/)
+    if (fileText) {
+      found = true
+      text = fileLink(text, fileText[0])
     }
 
   }

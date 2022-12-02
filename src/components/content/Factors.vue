@@ -12,7 +12,7 @@
           <b>
             {{ bullet.header }}.
           </b>
-            {{ bullet.text }}
+          {{ bullet.text }}
         </li>
       </ol>
     </div>
