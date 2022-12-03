@@ -38,8 +38,8 @@
               <option value="">
                 -- YY --
               </option>
-              <option v-for="(year, y) in 5" :key="y">
-                {{ 2021 + year }}
+              <option v-for="(year, y) in 20" :key="y">
+                {{ 2015 + year }}
               </option>
             </select>
           </td>
@@ -76,7 +76,7 @@
             Content
           </th>
           <th>
-            File
+            Image
           </th>
           <th>
             Enabled?
@@ -112,8 +112,8 @@
               <option value="">
                 -- YY --
               </option>
-              <option v-for="(year, y) in 5" :key="y">
-                {{ 2021 + year }}
+              <option v-for="(year, y) in 20" :key="y" :value="2015 + year">
+                {{ 2015 + year }}
               </option>
             </select>
           </td>
@@ -243,5 +243,13 @@ export default {
 <style lang="scss">
 select {
   margin: 2px;
+}
+
+span {
+  table {
+    td {
+      border: none;
+    }
+  }
 }
 </style>
