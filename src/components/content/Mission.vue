@@ -37,7 +37,7 @@ export default {
 .mission {
 
   h3 {
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     color: #204893;
     font-style: italic;
     margin: 12px;

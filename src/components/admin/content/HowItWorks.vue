@@ -10,49 +10,50 @@
         <thead>
           <tr>
             <th>
+              Building Block
+            </th>
+            <th>
               Text
-              <span class="edit-hint" v-if="editing">
-                (<i>Use "[text]" for links to site pages</i>)
-              </span>
             </th>
             <th />
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="(block, index) in howItWorks" :key="index">
             <td>
-              <span v-if="!editing">
-                <div class="left" v-for="(t, tindex) in howItWorks.text" :key="tindex">
-                  <h4 v-if="t.type == 'header'">
-                    {{ t.text }}
-                  </h4>
-                  <p v-if="t.type == 'text'">
-                    {{ t.text }}
-                  </p>
-                </div>
+              <span v-if="editing.id != block.id">
+                {{ block.header }}
               </span>
-              <span v-if="editing">
-                <table class="paragraphs">
-                  <tr v-for="(t, tindex) in howItWorks.text" :key="tindex">
-                    <td :class="{'heading': t.type == 'header'}">
-                      <textarea :id="'paragraph-' + tindex" :value="t.text" />
-                    </td>
-                    <td>
-                      <i class="fas fa-times" title="Delete this paragraph" @click="deleteParagraph(tindex)" />
-                    </td>
-                  </tr>
-                </table>
-                <button class="btn btn-primary smaller-font" @click="addHeading()">
-                  Add New Heading
-                </button>
+              <input type="text" id="editing-header" v-if="editing.id == block.id" :value="block.header">
+            </td>
+            <td>
+              <table v-if="editing.id != block.id" class="paragraphs">
+                <tr v-for="(text, tindex) in block.text" :key="tindex">
+                  <td class="left">
+                    {{ text }}
+                  </td>
+                  <td />
+                </tr>
+              </table>
+              <table v-if="editing.id == block.id" class="paragraphs">
+                <tr v-for="(t, tindex) in text" :key="tindex">
+                  <td class="left">
+                    <textarea :id="'paragraph-' + tindex" :value="t" />
+                  </td>
+                  <td>
+                    <i class="fas fa-times" title="Delete this paragraph" @click="deleteParagraph(tindex)" />
+                  </td>
+                </tr>
+              </table>
+              <span v-if="editing.id == block.id">
                 <button class="btn btn-primary smaller-font" @click="addParagraph()">
                   Add New Paragraph
                 </button>
               </span>
             </td>
             <td>
-              <i class="far fa-edit" title="Edit" @click="edit()" />
-              <i class="far fa-save" title="Save" :class="{'disabled': !editing}" @click="save()" />
+              <i class="far fa-edit" title="Edit" @click="edit(block)" />
+              <i class="far fa-save" title="Save" :class="{'disabled': !editing}" @click="save(block)" />
             </td>
           </tr>
         </tbody>
@@ -67,7 +68,7 @@ import bus from '../../../socket.js'
 export default {
   data() {
     return {
-      editing: false,
+      editing: {},
       text: []
     }
   },
@@ -85,7 +86,7 @@ export default {
 
     bus.on('load', (data) => {
       if (data.type == 'howItWorks') {
-        this.$store.dispatch('updateContent', {type: 'howItWorks', content: data.objects[0]})
+        this.$store.dispatch('updateContent', {type: 'howItWorks', content: data.objects})
       }
     })
   },
@@ -94,21 +95,12 @@ export default {
       const expanded = this.expanded == 'how-it-works' ? '' : 'how-it-works'
       this.$store.dispatch('updateExpanded', expanded)
     },
-    edit() {
-      this.editing = true
-      this.text = this.howItWorks.text
-    },
-    addHeading() {
-      this.text.push({
-        type: 'header',
-        text: ''
-      })
+    edit(block) {
+      this.editing = block
+      this.text = block.text
     },
     addParagraph() {
-      this.text.push({
-        type: 'text',
-        text: ''
-      })
+      this.text.push('')
     },
     deleteParagraph(n) {
       const text = []
@@ -120,22 +112,17 @@ export default {
       this.text = text
     },
     save() {
-      let i = 0
       const paras = []
-      while (document.getElementById('paragraph-' + i)) {
+      for (let i = 0; i < this.text.length; i++) {
         const element = document.getElementById('paragraph-' + i)
-        paras.push({
-          type: this.text[i].type,
-          text: element.value
-        })
-        i++
+        paras.push(element.value)
       }
-      console.log(paras)
-      const data = {
-        type: 'howItWorks',
-        id: this.howItWorks.id,
-        text: paras
-      }
+      const data = this.editing
+      delete data._id
+      data.header = document.getElementById('editing-header').value
+      data.type = 'howItWorks',
+      data.text = paras
+
       bus.emit('sendUpdate', data)
       this.editing = false
     }

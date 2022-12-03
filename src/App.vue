@@ -10,7 +10,7 @@
       <TransformationMain v-if="tab == 'transformation'" />
       <Carousel v-if="tab == 'transformation'" :carousel="'transformation'"/>
       <Transformation v-if="tab == 'transformation'" />
-      <HowItWorks v-if="tab == 'transformation'" />
+      <HowItWorks v-if="tab == 'transformation'" :scope="'short'" />
       <Comments v-if="tab == 'transformation'" :scope="'stakeholder'" />
 
       <!-- Apprentices (Training) -->
@@ -28,6 +28,7 @@
       <Faqs v-if="tab == 'faqs'" />
 
       <!-- Others -->
+      <HowItWorks v-if="tab == 'how-it-works'" :scope="'full'" />
       <CaseStudy v-if="tab == 'case-study'" />
       <Admin v-if="tab == 'admin'" />
       <TandCs v-if="tab == 'tandcs'" />

@@ -171,6 +171,8 @@ const _objects = {
     text: []
   },
   howItWorks: {
+    image: '',
+    header: '',
     text: []
   }
 }

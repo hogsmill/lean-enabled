@@ -49,6 +49,10 @@ export default {
     max-width: 80%;
     margin: 24px auto;
     padding: 12px;
+
+    p:first-of-type {
+      font-size: x-large;
+    }
   }
 
   .main-pic {
