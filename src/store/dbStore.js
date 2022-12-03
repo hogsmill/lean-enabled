@@ -83,8 +83,7 @@ const _objects = {
     year: '',
     title: '',
     text: [],
-    file: '',
-    pic: '',
+    image: '',
     enabled: false
   },
   comment: {

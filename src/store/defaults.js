@@ -850,6 +850,7 @@ const _defaults = {
       month: 10,
       year: 2021,
       title: 'McKinsey Report',
+      image: '',
       text: [
         'Postpandemic skill gaps need filling, and formal learning alone won’t do the trick. Scaling the lost art of one-on-one learning can make the difference.',
         'Find out more in this McKinsey report',
@@ -862,6 +863,7 @@ const _defaults = {
       month: 9,
       year: 2018,
       title: 'CQC Report',
+      image: 'cqc.png',
       text: [
         'Demand on health and social care services is increasing year-on-year. This increased workload puts quality of care at risk but, despite these pressures, we have found that hospital trusts that put a focus on continuous quality improvement have demonstrated that they can deliver high-quality care.',
         'In those trusts we have rated as outstanding, we have found a culture of quality improvement embedded throughout the organisation.',
@@ -875,6 +877,7 @@ const _defaults = {
       month: 12,
       year: 2022,
       title: 'Case Study',
+      image: '',
       text: [
         'We have a case study',
         '[case-study|Case Study]'

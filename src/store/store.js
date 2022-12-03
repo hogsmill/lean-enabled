@@ -27,6 +27,7 @@ export const store = createStore({
     comments: [],
     faqs: [],
     blog: [],
+    currentBlogPost: {},
     services: [],
     techniques: [],
     quotes: [],
@@ -140,6 +141,9 @@ export const store = createStore({
     },
     getBlog: (state) => {
       return state.blog
+    },
+    getCurrentBlogPost: (state) => {
+      return state.currentBlogPost
     },
     getComments: (state) => {
       return state.comments
@@ -301,12 +305,10 @@ export const store = createStore({
       state.faqs = payload
     },
     updateBlog: (state, payload) => {
-      const blog = payload.sort((a, b) => {
-        a = new Date(a.year, a.month, a.day)
-        b = new Date(b.year, b.month, b.day)
-        return b - a
-      })
-      state.blog = blog
+      state.blog = payload
+    },
+    updateCurrentBlogPost: (state, payload) => {
+      state.currentBlogPost = payload
     },
     updatePeople: (state, payload) => {
       state.people = payload
@@ -405,6 +407,9 @@ export const store = createStore({
     },
     updateBlog: ({ commit }, payload) => {
       commit('updateBlog', payload)
+    },
+    updateCurrentBlogPost: ({ commit }, payload) => {
+      commit('updateCurrentBlogPost', payload)
     },
     updatePeople: ({ commit }, payload) => {
       commit('updatePeople', payload)

@@ -1,7 +1,7 @@
 <template>
   <div class="row how-it-works">
     <h2 @click="setTab('how-it-works')" :class="scope">
-      How It Works {{ step }}
+      How It Works
     </h2>
     <div class="pic">
       <i v-if="scope == 'short'" :class="{'disabled': step < 1}" class="fas fa-chevron-left" @click="previousStep()" />

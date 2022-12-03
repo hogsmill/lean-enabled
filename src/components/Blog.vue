@@ -10,6 +10,7 @@
             <h4>
               {{ getDate(currentPost) }}
             </h4>
+            <img v-if="currentPost.image" :src="require(`../assets/img/blog/${currentPost.image}`)">
             <p v-for="(para, pindex) in currentPost.text" :key="pindex" v-html="parseText(para)" />
           </div>
         </div>
@@ -38,14 +39,12 @@ import dateFuns from '../lib/date.js'
 import textFuns from '../lib/text.js'
 
 export default {
-  data() {
-    return {
-      currentPost: {}
-    }
-  },
   computed: {
     blog() {
       return this.$store.getters.getBlog
+    },
+    currentPost() {
+      return this.$store.getters.getCurrentBlogPost
     }
   },
   created() {
@@ -54,8 +53,13 @@ export default {
 
     bus.on('load', (data) => {
       if (data.type == 'blog') {
-        this.currentPost = data.objects[0]
-        this.$store.dispatch('updateBlog', data.objects)
+      const posts = data.objects.sort((a, b) => {
+        a = new Date(a.year, a.month - 1, a.day)
+        b = new Date(b.year, b.month - 1, b.day)
+        return b - a
+      })
+      this.$store.dispatch('updateCurrentBlogPost', posts[0])
+      this.$store.dispatch('updateBlog', posts)
       }
     })
   },
@@ -76,7 +80,7 @@ export default {
       return textFuns.parse(text)
     },
     selectPost(post) {
-      this.currentPost = post
+      this.$store.dispatch('updateCurrentBlogPost', post)
     },
     setTab(tab) {
       this.$store.dispatch('updateTab', tab)
@@ -113,6 +117,12 @@ export default {
 
     h4 {
       text-align: right;
+    }
+
+    img {
+      float: right;
+      width: 40%;
+      margin: 0 0 6px 6px;
     }
   }
 }
