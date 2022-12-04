@@ -3,6 +3,7 @@
     <div class="container-fluid text-center">
       <UserType />
       <ApprenticesIntro :user-type="userType" />
+      <Carousel :carousel="'apprentices'" />
       <ProblemSolving />
       <CoursesIntro :user-type="userType" />
       <Courses />
@@ -28,6 +29,8 @@ import ServicesIntro from './content/ServicesIntro.vue'
 import Techniques from './content/Techniques.vue'
 import Benefits from './content/Benefits.vue'
 import Comments from './content/Comments.vue'
+import Carousel from './content/Carousel.vue'
+
 /*
 import CourseMap from './content/CourseMap.vue'
 
@@ -43,7 +46,8 @@ export default {
     ServicesIntro,
     Techniques,
     Benefits,
-    Comments
+    Comments,
+    Carousel
   },
   computed: {
     userType() {

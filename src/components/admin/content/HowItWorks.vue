@@ -28,9 +28,9 @@
             </td>
             <td>
               <table v-if="editing.id != block.id" class="paragraphs">
-                <tr v-for="(text, tindex) in block.text" :key="tindex">
+                <tr v-for="(t, tindex) in block.text" :key="tindex">
                   <td class="left">
-                    {{ text }}
+                    {{ t }}
                   </td>
                   <td />
                 </tr>

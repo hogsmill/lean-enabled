@@ -218,7 +218,6 @@ export default {
         const para = document.getElementById('paragraph-' + i).value
         text.push(para)
       }
-      console.log(text)
       const data = {
         type: 'blog',
         id: this.editing.id,

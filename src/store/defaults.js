@@ -36,19 +36,40 @@ const _defaults = {
         {
           image: 'image-7.jpeg',
           caption: 'Caption 7'
+        }
+      ]
+    },
+    {
+      name: 'apprentices',
+      slides: [
+        {
+          image: 'image-1.jpeg',
+          caption: 'Caption 1'
         },
-        //{
-        //  image: 'image-8.jpg',
-        //  caption: ''
-        //},
-        //{
-        //  image: 'image-9.jpg',
-        //  caption: ''
-        //},
-        //{
-        //  image: 'image-10.jpg',
-        //  caption: ''
-        //}
+        {
+          image: 'image-2.jpeg',
+          caption: 'Caption 2'
+        },
+        {
+          image: 'image-3.jpeg',
+          caption: 'Caption 3'
+        },
+        {
+          image: 'image-4.jpeg',
+          caption: 'Caption 4'
+        },
+        {
+          image: 'image-5.jpeg',
+          caption: 'Caption 5'
+        },
+        {
+          image: 'image-6.jpeg',
+          caption: 'Caption 6'
+        },
+        {
+          image: 'image-7.jpeg',
+          caption: 'Caption 7'
+        }
       ]
     }
   ],

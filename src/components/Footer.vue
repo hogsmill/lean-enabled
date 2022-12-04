@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <h4 class="values" @click="setTab('values')">
-        Living By Our Values
+      Living By Our Values
       <br>
       <span>
         TRUST
