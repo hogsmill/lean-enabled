@@ -867,6 +867,25 @@ const _defaults = {
   ],
   blog: [
     {
+      day: 1,
+      month: 6,
+      year: 2007,
+      title: 'Going Lean in the NHS',
+      image: 'Going-lean.png',
+      text: [
+        'Lean thinking, developed from the Toyota Production System, has been applied in many competitive sectors. Tesco, for example, is one of the biggest and most successful lean companies in the world.',
+        'Such thinking is increasingly being applied to health services in the UK and overseas to:',
+        '- improve the quality of patient care',
+        '- improve safety',
+        '- eliminate delays',
+        '- reduce length of stay',
+        'while using no more resources',
+        'Some healthcare organisations in the UK are already obtaining real benefits by the adoption of this approach.',
+        'This guide includes NHS case studies showing the principles and benefits achieved.',
+        '~Going-Lean-in-the-NHS.pdf~'
+      ]
+    },
+    {
       day: 21,
       month: 10,
       year: 2021,
