@@ -48,13 +48,13 @@
       </thead>
       <tbody>
         <tr v-for="(quote, index) in quotes" :key="index">
-          <td>
+          <td class="left">
             <span v-if="editing.id != quote.id">
               {{ quote.author }}
             </span>
             <input v-if="editing.id == quote.id" id="editing-author" type="text" :value="quote.author">
           </td>
-          <td>
+          <td class="left">
             <span v-if="editing.id != quote.id">
               {{ quote.quote }}
             </span>

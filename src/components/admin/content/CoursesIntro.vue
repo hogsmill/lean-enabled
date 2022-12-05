@@ -6,7 +6,6 @@
       <i v-if="expanded == 'courses-intro'" title="Collapse edit" class="far fa-minus-square" @click="toggleExpanded()" />
     </h3>
     <div v-if="expanded == 'courses-intro'">
-      {{ coursesIntro }}
       <table>
         <thead>
           <tr>

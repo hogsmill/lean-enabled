@@ -70,7 +70,7 @@
       </thead>
       <tbody>
         <tr v-for="(comment, index) in comments" :key="index">
-          <td>
+          <td class="left">
             <span v-if="editing.id != comment.id">
               {{ comment.author }}
             </span>
@@ -92,7 +92,7 @@
               </option>
             </select>
           </td>
-          <td>
+          <td class="left">
             <span v-if="editing.id != comment.id">
               {{ comment.comment }}
             </span>

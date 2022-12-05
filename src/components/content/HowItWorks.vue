@@ -93,18 +93,15 @@ export default {
 
   .pic {
     width: 56%;
-    height: 400px;
     margin: 0 auto;
 
     img {
-      //height: 400px;
       width: 80%;
     }
     .fas {
       color: #fff;
-      position: relative;
-      top: 46%;
       font-size: xxx-large;
+      display: contents;
 
       &.fa-chevron-left {
         float: left;
