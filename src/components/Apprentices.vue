@@ -4,7 +4,7 @@
       <UserType />
       <ApprenticesIntro :user-type="userType" />
       <Carousel :carousel="'apprentices'" />
-      <ProblemSolving />
+      <ProblemSolving v-if="userType == 'apprentice'" />
       <CoursesIntro :user-type="userType" />
       <Courses />
       <ServicesIntro :user-type="userType" />
