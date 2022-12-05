@@ -38,6 +38,8 @@ bus.on('sendDelete', (data) => { socket.emit('sendDelete', data) })
 
 bus.on('sendLoad', (type) => { socket.emit('sendLoad', type) })
 
+bus.on('sendUploadFile', (type) => { socket.emit('sendUploadFile', type) })
+
 // Receive
 
 socket.on('loginSuccess', (data) => { bus.emit('loginSuccess', data) })
@@ -51,5 +53,7 @@ socket.on('loadNextCourse', (data) => { bus.emit('loadNextCourse', data) })
 // Admin
 
 socket.on('load', (data) => { bus.emit('load', data) })
+
+socket.on('fileUploaded', (data) => { bus.emit('fileUploaded', data) })
 
 export default bus

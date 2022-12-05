@@ -12,7 +12,7 @@
             <th>
               Name
             </th>
-            <th colspan="2">
+            <th>
               Slides
             </th>
             <th />
@@ -25,9 +25,25 @@
             </td>
             <td>
               <table class="slides">
+                <thead>
+                  <tr>
+                    <th>
+                      Images
+                    </th>
+                    <th>
+                      Captions
+                    </th>
+                  </tr>
+                </thead>
                 <tr v-for="(slide, sindex) in carousel.slides" :key="sindex">
                   <td>
-                    <img :src="require('../../../assets/img/carousel/' + slide.image)">
+                    <img v-if="slide.image" :src="require('../../../assets/img/carousel/' + slide.image)">
+                    <div v-if="editing.id == carousel.id">
+                      <input type="file" :id="'upload-' + sindex">
+                      <button @click="submitFile(sindex)">
+                        Upload Image
+                      </button>
+                    </div>
                   </td>
                   <td>
                     <span v-if="editing.id != carousel.id">
@@ -76,6 +92,12 @@ export default {
         this.$store.dispatch('updateCarousels', data.objects)
       }
     })
+
+    bus.on('fileUploaded', (data) => {
+      if (data.id == this.editing.id) {
+        this.editing.slides[data.slide].image = data.name
+      }
+    })
   },
   methods: {
     toggleExpanded() {
@@ -85,11 +107,22 @@ export default {
     edit(carousel) {
       this.editing = carousel
     },
-    addHeading() {
-      this.text.push({
-        type: 'header',
-        text: ''
-      })
+    submitFile(s) {
+      const element = document.getElementById('upload-' + s)
+      const file = element.files[0]
+      const fileReader = new FileReader()
+      fileReader.readAsArrayBuffer(file)
+      const data = {
+        name: file.name,
+        type: 'carousel',
+        fileType: 'image',
+        id: this.editing.id,
+        slide: s
+      }
+      fileReader.onload = () => {
+        data.content = fileReader.result
+        bus.emit('sendUploadFile', data)
+      }
     },
     save() {
       const newSlides = []

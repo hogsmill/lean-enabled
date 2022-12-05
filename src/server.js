@@ -11,13 +11,6 @@ const logFile = prod ? process.argv[4] : 'server.log'
 
 const collection = 'leanEnabled'
 
-//const usersCollection = 'leanEnabledUsers'
-//const servicesCollection = 'leanEnabledServicess'
-//const emailsCollection = 'leanEnabledEmails'
-//const courseDatesCollection = 'leanEnabledCourseDates'
-//const faqsCollection = 'leanEnabledFaqs'
-//const contentCollection = 'leanEnabledContent'
-
 ON_DEATH(function(signal, err) {
   let logStr = new Date()
   if (signal) {
@@ -89,20 +82,7 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
   const db = client.db('db')
 
   db.createCollection(collection, function(error, collection) {})
-  //db.createCollection(usersCollection, function(error, usersCollection) {})
-  //db.createCollection(servicesCollection, function(error, servicesCollection) {})
-  //db.createCollection(emailsCollection, function(error, emailsCollection) {})
-  //db.createCollection(courseDatesCollection, function(error, courseDatesCollection) {})
-  //db.createCollection(faqsCollection, function(error, faqsCollection) {})
-  //db.createCollection(contentCollection, function(error, contentCollection) {})
-
   db.collection = db.collection(collection)
-  //db.usersCollection = db.collection(usersCollection)
-  //db.servicesCollection = db.collection(servicesCollection)
-  //db.emailsCollection = db.collection(emailsCollection)
-  //db.courseDatesCollection = db.collection(courseDatesCollection)
-  //db.faqsCollection = db.collection(faqsCollection)
-  //db.contentCollection = db.collection(contentCollection)
 
   sitemap.createSiteMap(db, debugOn)
 
@@ -143,6 +123,8 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
     socket.on('sendDelete', (data) => { dbStore.delete(db, io, data, debugOn) })
 
     socket.on('sendLoad', (type) => { dbStore.load(db, io, type, debugOn) })
+
+    socket.on('sendUploadFile', (type) => { dbStore.uploadFile(db, io, type, debugOn) })
 
   })
 })

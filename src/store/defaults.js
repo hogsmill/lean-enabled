@@ -1233,6 +1233,14 @@ const _defaults = {
   howItWorks: [
     {
       image: 'how-it-works.png',
+      header: 'Building Blocks',
+      text: [
+        'Our transformational approach is centred arounf 6 buidling blocks',
+        '(Click arrows for details)'
+      ]
+    },
+    {
+      image: 'block-1.png',
       header: 'Strategy Deployment',
       text: [
         'Strategy Deployment is a technique for ensuring that an organisation\'s strategic goals and objectives drive activities at every level. The goal is to provide consistent direction and clear communications so that every employee pulls in the same direction (toward "True North") simultaneously. The strategic planning process aims to ensure that the corporate objectives (Strategy), management plans (Tactics), and the tasks accomplished by all employees (Operations) are in sync with each other.',
@@ -1241,8 +1249,8 @@ const _defaults = {
       ]
     },
     {
-      image: 'how-it-works.png',
-      header: 'Kaizen Team',
+      image: 'block-2.png',
+      header: 'Improvement Team',
       text: [
         'It is important that your internal Improvement Team have the capability to help define, support and coach teams through the Improvement System (each building block) supporting successful and measurable execution of your Organisations strategic objectives.',
         'However, we often see internal Improvement teams focussed on reactive tasks and activities (firefighting!) and less on organisational priorities.',
@@ -1250,7 +1258,7 @@ const _defaults = {
         ]
     },
     {
-      image: 'how-it-works.png',
+      image: 'block-3.png',
       header: 'Leadership Behaviours and Sustainability',
       text: [
         'Leadership behaviours are actions and conduct that leaders incorporate into their management styles in order to effectively lead their teams, motivate them, and achieve their goals. Importantly, leaders at all levels play a critical role to ensure and support their respective teams to drive actions timely using structured problem solving methods.',
@@ -1260,7 +1268,16 @@ const _defaults = {
       ]
     },
     {
-      image: 'how-it-works.png',
+      image: 'block-4.png',
+      header: 'Staff Dapacity and Capability',
+      text: [
+        'Effective capability building of staff, through formal Improvement training programmes (including Improvement Apprenticeship training – add link onto Website) is key to developing the mindsets and behaviours that delivers transformational gains whilst creating your \'army of problem solvers\'!.',
+        'The \'army\' are critical in helping you embed and sustain change, they are your \'execution engine\' for continuous value improvement!',
+        'How robust is your staff training and capability programme?'
+      ]
+    },
+    {
+      image: 'block-5.png',
       header: 'Daily Team Huddles',
       text: [
         'Daily Team huddles are consistent, regular discussions (often 15 minutes in length) in which staff at all levels communicate, share and address key performance indicators and areas of improvement. The purpose is to provide an open channel where your team members can safely share any questions as well as improvement ideas. The more effective Team huddles have KPIs and organisational priorities cascaded (through Strategy deployment) with a Team Performance Board in place also – and progress is visible on a daily and weekly basis.',
@@ -1268,7 +1285,7 @@ const _defaults = {
       ]
     },
     {
-      image: 'how-it-works.png',
+      image: 'block-6.png',
       header: 'Key Focus Projects',
       text: [
         'The key focus projects, or year 1 projects are the key / critical alignment of departments, services and teams and structured improvement approaches (eg A3) employed to deliver the goals and objectives (with KPIs showing clear tangible delivery and benefits!).',
@@ -1276,15 +1293,7 @@ const _defaults = {
         'What structured methods do you employ to deliver your key projects?'
       ]
     },
-    {
-      image: 'how-it-works.png',
-      header: 'Staff Capability',
-      text: [
-        'Effective capability building of staff, through formal Improvement training programmes (including Improvement Apprenticeship training – add link onto Website) is key to developing the mindsets and behaviours that delivers transformational gains whilst creating your \'army of problem solvers\'!.',
-        'The \'army\' are critical in helping you embed and sustain change, they are your \'execution engine\' for continuous value improvement!',
-        'How robust is your staff training and capability programme?'
-      ]
-    }
+
   ]
 }
 

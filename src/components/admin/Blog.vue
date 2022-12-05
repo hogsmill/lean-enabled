@@ -55,12 +55,6 @@
       </tbody>
     </table>
     <h3>
-      Upload File
-    </h3>
-    <div>
-      TBD
-    </div>
-    <h3>
       Blog Entries
     </h3>
     <table>
@@ -77,6 +71,9 @@
           </th>
           <th>
             Image
+          </th>
+          <th>
+            File
           </th>
           <th>
             Enabled?
@@ -146,6 +143,15 @@
             </span>
           </td>
           <td>
+            <img v-if="post.image" :src="require('../../assets/img/blog/' + post.image)">
+            <div v-if="editing.id == post.id">
+              <input type="file" id="upload-image">
+              <button @click="submitFile('image')">
+                Upload Image
+              </button>
+            </div>
+          </td>
+          <td>
             <span v-if="editing.id != post.id">
               {{ post.file }}
             </span>
@@ -193,6 +199,12 @@ export default {
         this.$store.dispatch('updateBlog', data.objects)
       }
     })
+
+    bus.on('fileUploaded', (data) => {
+      if (data.id == this.editing.id) {
+        this.editing[data.fileType] = data.name
+      }
+    })
   },
   methods: {
     addBlog() {
@@ -212,6 +224,22 @@ export default {
     addParagraph() {
       this.text.push('')
     },
+    submitFile(type) {
+      const element = document.getElementById('upload-' + type)
+      const file = element.files[0]
+      const fileReader = new FileReader()
+      fileReader.readAsArrayBuffer(file)
+      const data = {
+        name: file.name,
+        type: 'blog',
+        id: this.editing.id,
+        fileType: type
+      }
+      fileReader.onload = () => {
+        data.content = fileReader.result
+        bus.emit('sendUploadFile', data)
+      }
+    },
     saveBlog() {
       const text = []
       for (let i = 0; i < this.text.length; i++) {
@@ -226,7 +254,8 @@ export default {
         year: document.getElementById('editing-year').value,
         title: document.getElementById('editing-title').value,
         text: text,
-        file: document.getElementById('editing-file').value,
+        file: this.editing.file,
+        image: this.editing.image,
         enabled: document.getElementById('editing-enabled').checked
       }
       bus.emit('sendUpdate', data)
@@ -242,6 +271,10 @@ export default {
 <style lang="scss">
 select {
   margin: 2px;
+}
+
+img {
+  width: 200px;
 }
 
 span {

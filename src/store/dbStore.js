@@ -1,6 +1,8 @@
 
 const { v4: uuidv4 } = require('uuid')
 
+const fs = require('fs')
+
 const passCode = require('./lib/passCode.js')
 const defaults = require('./defaults.js')
 
@@ -273,6 +275,26 @@ module.exports = {
     db.collection.deleteOne({type: data.type, id: data.id}, function(err, res) {
       if (err) throw err
       _load(db, io, data.type, debugOn)
+    })
+  },
+
+  uploadFile: function(db, io, data, debugOn) {
+
+    if (debugOn) { console.log('uploadFile', data) }
+
+    const fileDirs = {
+      'image': 'img',
+      'file': 'docs'
+    }
+
+    const file = __dirname + '/../assets/' + fileDirs[data.fileType] + '/' + data.type + '/' + data.name
+    fs.writeFile(file, data.content, err => {
+      if (err) {
+        console.error(err);
+      } else {
+        delete data.content
+        io.emit('fileUploaded', data)
+      }
     })
   },
 
