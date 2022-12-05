@@ -16,6 +16,8 @@
       <!-- Apprentices (Training) -->
       <Apprentices v-if="tab == 'apprentices'" />
 
+      <Reasons v-if="tab == 'ten-reasons'" />
+
       <Course v-if="tab == 'course'" />
 
       <!-- About -->
@@ -59,6 +61,7 @@ import HowItWorks from './components/content/HowItWorks.vue'
 import Apprentices from './components/Apprentices.vue'
 import Comments from './components/content/Comments.vue'
 import Course from './components/Course.vue'
+import Reasons from './components/content/Reasons.vue'
 import About from './components/About.vue'
 import Faqs from './components/FAQs.vue'
 import Blog from './components/Blog.vue'
@@ -83,6 +86,7 @@ export default {
     HowItWorks,
     Apprentices,
     Course,
+    Reasons,
     Comments,
     About,
     Faqs,

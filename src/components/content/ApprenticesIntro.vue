@@ -4,11 +4,8 @@
       Apprenticeship Training
     </h2>
     <span v-if="contentApprenticesIntro[userType]">
-      <p v-for="(para, index) in contentApprenticesIntro[userType].text" :key="index">
-        {{ para }}
-      </p>
+      <p v-for="(para, index) in contentApprenticesIntro[userType].text" :key="index" v-html="parseText(para)" />
     </span>
-    <Reasons v-if="userType == 'apprentice'" />
     <Factors v-if="userType == 'manager'" />
     <Why v-if="userType == 'manager'" />
   </div>
@@ -17,13 +14,13 @@
 <script>
 import bus from '../../socket.js'
 
-import Reasons from './Reasons.vue'
+import textFuns from '../../lib/text.js'
+
 import Factors from './Factors.vue'
 import Why from './Why.vue'
 
 export default {
   components: {
-    Reasons,
     Factors,
     Why
   },
@@ -43,6 +40,23 @@ export default {
         this.$store.dispatch('updateContent', {type: 'apprenticesIntro', content: data.objects[0]})
       }
     })
+  },
+  updated() {
+    const links = document.getElementsByClassName('tab-link')
+    for (let i = 0; i < links.length; i++) {
+      const tab = links[i].getAttribute('tab')
+      links[i].addEventListener('click', () => {
+        this.setTab(tab)
+      })
+    }
+  },
+  methods: {
+    setTab(tab) {
+      this.$store.dispatch('updateTab', tab)
+    },
+    parseText(text) {
+      return textFuns.parse(text)
+    },
   }
 }
 </script>

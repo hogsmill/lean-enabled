@@ -59,3 +59,11 @@ a { font-weight: bold; }
 .empty { background-color: #eee; border: 1px solid #aaa; }
 
 .left { text-align: left; }
+
+.tab-link {
+  font-weight: bold;
+  color: #204893;
+}
+.tab-link:hover {
+  text-decoration: underline;
+}

@@ -997,7 +997,10 @@ const _defaults = {
           ]
       },
       apprentice: {
-        text: []
+        text: [
+          'Apprentice training not only helps you and your team in youe everyday work, it is also invaluable to your longer term career.',
+          'Click [ten-reasons|here] for 10 reasons why taking apprenticeshipy training can benefit your career and your everyday work'
+        ]
       },
     }
   ],

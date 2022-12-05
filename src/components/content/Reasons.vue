@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row reasons-row">
     <div class="reasons">
       <h2>
         {{ reasons.header }}
@@ -41,18 +41,24 @@ export default {
 </script>
 
 <style lang="scss">
-.reasons {
-  background-color: #204893;
-  margin: 12px auto;
-  padding: 24px;
-  max-width: 964px;
+.reasons-row {
+  background-image: url("../../assets/img/jeremy-hunt.jpeg");
+  background-size: cover;
 
-  h2, p, b, li {
-    color: #fff !important;
-  }
+  .reasons {
+    border: 1px solid;
+    margin: 48px auto;
+    background-color: #204893;
+    padding: 24px;
+    max-width: 964px;
 
-  li {
-    margin-bottom: 12px;
+    h2, p, b, li {
+      color: #fff !important;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
   }
 }
 </style>
