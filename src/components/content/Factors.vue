@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row factors-row">
     <div class="factors">
       <h2>
         {{ factors.header }}
@@ -41,18 +41,23 @@ export default {
 </script>
 
 <style lang="scss">
-.factors {
-  background-color: #204893;
-  margin: 12px auto;
-  padding: 24px;
-  max-width: 964px;
+.factors-row {
+  background-image: url("../../assets/img/jeremy-hunt.jpeg");
+  background-size: cover;
 
-  h2, p, b, li {
-    color: #fff !important;
-  }
+  .factors {
+    background-color: #204893;
+    margin: 48px auto;
+    padding: 24px;
+    max-width: 964px;
 
-  li {
-    margin-bottom: 12px;
+    h2, p, b, li {
+      color: #fff !important;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
   }
 }
 </style>

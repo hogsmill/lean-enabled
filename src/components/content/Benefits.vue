@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row benefits-row">
     <div class="benefits">
       <h2>
         {{ benefits.header }}
@@ -41,17 +41,21 @@ export default {
 </script>
 
 <style lang="scss">
-.benefits {
-  background-color: #204893;
-  margin: 12px auto;
-  padding: 24px;
-  max-width: 964px;
+.benefits-row {
 
-  h2, p, b, li {
-    color: #fff !important;
-  }
+  .benefits {
+    background-color: #204893;
+    margin: 12px auto;
+    padding: 24px;
+    max-width: 964px;
 
-  li {
-    margin-bottom: 12px;
+    h2, p, b, li {
+      color: #fff !important;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
   }
-}</style>
+}
+</style>

@@ -1119,7 +1119,7 @@ const _defaults = {
   contentFactors: [
     {
       header: '',
-      intro: 'Important factors also include:',
+      intro: 'Important factors to consider when considering apprenticeship training include:',
       bullets: [
         {
           header: 'Apprenticeships can lead to real, measurable, results for the organization',
