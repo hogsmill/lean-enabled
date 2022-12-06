@@ -1275,12 +1275,12 @@ const _defaults = {
     {
       manager: {
         text: [
-          'Manager services intro'
+          'We use a variety of techniques to make our training courses interesting and engaging, including:'
         ]
       },
       apprentice: {
         text: [
-          'User services intro'
+          'We use a variety of techniques to make our training courses interesting and engaging, including:'
         ]
       },
     }
