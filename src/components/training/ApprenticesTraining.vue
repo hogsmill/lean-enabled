@@ -7,8 +7,6 @@
 </template>
 
 <script>
-//import bus from '../socket.js'
-
 import Course from '../courses/Course.vue'
 
 export default {

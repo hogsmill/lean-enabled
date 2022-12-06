@@ -17,6 +17,7 @@
       <Apprentices v-if="tab == 'apprentices'" />
 
       <Reasons v-if="tab == 'ten-reasons'" />
+      <Why v-if="tab == 'why'" />
 
       <Course v-if="tab == 'course'" />
 
@@ -62,6 +63,7 @@ import Apprentices from './components/Apprentices.vue'
 import Comments from './components/content/Comments.vue'
 import Course from './components/Course.vue'
 import Reasons from './components/content/Reasons.vue'
+import Why from './components/content/Why.vue'
 import About from './components/About.vue'
 import Faqs from './components/FAQs.vue'
 import Blog from './components/Blog.vue'
@@ -87,6 +89,7 @@ export default {
     Apprentices,
     Course,
     Reasons,
+    Why,
     Comments,
     About,
     Faqs,

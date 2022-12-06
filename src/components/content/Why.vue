@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row why-row">
     <div class="why">
       <h2>
         {{ why.header }}
@@ -41,17 +41,23 @@ export default {
 </script>
 
 <style lang="scss">
-.why {
-  background-color: #204893;
-  margin: 12px auto;
-  padding: 24px;
-  max-width: 964px;
+.why-row {
+  background-image: url("../../assets/img/jeremy-hunt.jpeg");
+  background-size: cover;
 
-  h2, p, b, li {
-    color: #fff !important;
-  }
+  .why {
+    background-color: #204893;
+    margin: 48px auto;
+    padding: 24px;
+    max-width: 964px;
 
-  li {
-    margin-bottom: 12px;
+    h2, p, b, li {
+      color: #fff !important;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
   }
-}</style>
+}
+</style>

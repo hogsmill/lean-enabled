@@ -8,7 +8,7 @@
       <CoursesIntro :user-type="userType" />
       <Courses />
       <ServicesIntro :user-type="userType" />
-      <Techniques v-if="userType == 'manager'" />
+      <Techniques />
       <Benefits />
       <Comments :scope="'staff'" />
       <!--

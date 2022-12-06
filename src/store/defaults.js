@@ -10,32 +10,60 @@ const _defaults = {
       name: 'transformation',
       slides: [
         {
-          image: 'image-1.jpeg',
+          image: 'trans-1.jpeg',
           caption: 'Caption 1'
         },
         {
-          image: 'image-2.jpeg',
+          image: 'trans-2.jpeg',
           caption: 'Caption 2'
         },
         {
-          image: 'image-3.jpeg',
+          image: 'trans-3.jpeg',
           caption: 'Caption 3'
         },
         {
-          image: 'image-4.jpeg',
+          image: 'trans-4.jpeg',
           caption: 'Caption 4'
         },
         {
-          image: 'image-5.jpeg',
+          image: 'trans-5.jpeg',
           caption: 'Caption 5'
         },
         {
-          image: 'image-6.jpeg',
+          image: 'trans-6.jpeg',
           caption: 'Caption 6'
         },
         {
-          image: 'image-7.jpeg',
+          image: 'trans-7.jpeg',
           caption: 'Caption 7'
+        },
+        {
+          image: 'trans-8.jpeg',
+          caption: 'Caption 8'
+        },
+        {
+          image: 'trans-9.jpeg',
+          caption: 'Caption 9'
+        },
+        {
+          image: 'trans-10.jpeg',
+          caption: 'Caption 10'
+        },
+        {
+          image: 'trans-11.jpeg',
+          caption: 'Caption 11'
+        },
+        {
+          image: 'trans-12.jpeg',
+          caption: 'Caption 12'
+        },
+        {
+          image: 'trans-13.jpeg',
+          caption: 'Caption 13'
+        },
+        {
+          image: 'trans-14.jpeg',
+          caption: 'Caption 14'
         }
       ]
     },
@@ -43,32 +71,60 @@ const _defaults = {
       name: 'apprentices',
       slides: [
         {
-          image: 'image-1.jpeg',
+          image: 'app-1.jpeg',
           caption: 'Caption 1'
         },
         {
-          image: 'image-2.jpeg',
+          image: 'app-2.jpeg',
           caption: 'Caption 2'
         },
         {
-          image: 'image-3.jpeg',
+          image: 'app-3.jpeg',
           caption: 'Caption 3'
         },
         {
-          image: 'image-4.jpeg',
+          image: 'app-4.jpeg',
           caption: 'Caption 4'
         },
         {
-          image: 'image-5.jpeg',
+          image: 'app-5.jpeg',
           caption: 'Caption 5'
         },
         {
-          image: 'image-6.jpeg',
+          image: 'app-6.jpeg',
           caption: 'Caption 6'
         },
         {
-          image: 'image-7.jpeg',
+          image: 'app-7.jpeg',
           caption: 'Caption 7'
+        },
+        {
+          image: 'app-8.jpeg',
+          caption: 'Caption 8'
+        },
+        {
+          image: 'app-9.jpeg',
+          caption: 'Caption 9'
+        },
+        {
+          image: 'app-10.jpeg',
+          caption: 'Caption 10'
+        },
+        {
+          image: 'app-11.jpeg',
+          caption: 'Caption 11'
+        },
+        {
+          image: 'app-12.jpeg',
+          caption: 'Caption 12'
+        },
+        {
+          image: 'app-13.jpeg',
+          caption: 'Caption 13'
+        },
+        {
+          image: 'app-14.jpeg',
+          caption: 'Caption 14'
         }
       ]
     }
@@ -993,13 +1049,14 @@ const _defaults = {
         text: [
           'WHY?',
           '"Don’t Overlook Your Best Training Assets" as effective training quickly translate to improved ROI, productivity, and overall employee satisfaction',
-          'Accessing apprenticeship programmes with the benefit of the apprenticeship levy is certainly a “no-brainer” too!'
+          'Accessing apprenticeship programmes with the benefit of the apprenticeship levy is certainly a “no-brainer” too!',
+          'Click [why|here] for reasons why apprenticeship training can benefit your department and work force'
           ]
       },
       apprentice: {
         text: [
           'Apprentice training not only helps you and your team in youe everyday work, it is also invaluable to your longer term career.',
-          'Click [ten-reasons|here] for 10 reasons why taking apprenticeshipy training can benefit your career and your everyday work'
+          'Click [ten-reasons|here] for 10 reasons why taking apprenticeship training can benefit your career and your everyday work'
         ]
       },
     }

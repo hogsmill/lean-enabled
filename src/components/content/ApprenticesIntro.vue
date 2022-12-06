@@ -7,7 +7,6 @@
       <p v-for="(para, index) in contentApprenticesIntro[userType].text" :key="index" v-html="parseText(para)" />
     </span>
     <Factors v-if="userType == 'manager'" />
-    <Why v-if="userType == 'manager'" />
   </div>
 </template>
 
@@ -17,12 +16,10 @@ import bus from '../../socket.js'
 import textFuns from '../../lib/text.js'
 
 import Factors from './Factors.vue'
-import Why from './Why.vue'
 
 export default {
   components: {
-    Factors,
-    Why
+    Factors
   },
   props: [
     'userType'
