@@ -1,14 +1,16 @@
 <template>
   <div class="quotes">
-    <span v-if="randomQuote" class="quote-text">
-      "{{ randomQuote.quote }}"
-    </span>
-    <span v-if="randomQuote">
-      -
-    </span>
-    <span v-if="randomQuote" class="quote-author">
-      {{ randomQuote.author }}
-    </span>
+    <div class="quote-div">
+      <span v-if="randomQuote" class="quote-text">
+        "{{ randomQuote.quote }}"
+      </span>
+      <span v-if="randomQuote">
+        -
+      </span>
+      <span v-if="randomQuote" class="quote-author">
+        {{ randomQuote.author }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -60,16 +62,21 @@ export default {
   padding-top: 176px;
   height: 232px;
 
-  span {
-    margin: 0 3px;
-  }
+  .quote-div {
+    max-width: 80%;
+    margin: 0 auto;
 
-  .quote-text {
-    font-style: italic;
-  }
+    span {
+      margin: 0 3px;
+    }
 
-  .quote-author {
-    font-weight: bold;
+    .quote-text {
+      font-style: italic;
+    }
+
+    .quote-author {
+      font-weight: bold;
+    }
   }
 }
 </style>
