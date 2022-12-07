@@ -1285,6 +1285,12 @@ const _defaults = {
       },
     }
   ],
+  contentYouTube: [
+    {
+      name: 'TBD',
+      url: 'https://www.youtube.com/embed/3VHZ-EuLypk'
+    }
+  ],
   caseStudy: [
     {
       header: 'Vaccination Centre Case Study',

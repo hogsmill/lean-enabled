@@ -167,6 +167,10 @@ const _objects = {
       text: []
     },
   },
+  contentYouTube: {
+    name: '',
+    url: ''
+  },
   caseStudy: {
     header: '',
     text: []

@@ -70,6 +70,10 @@ export const store = createStore({
         intro: '',
         bullets: []
       },
+      youTube: {
+        name: '',
+        url: ''
+      },
       consultancy: '',
       training: '',
       apprenticesIntro: '',
@@ -234,6 +238,9 @@ export const store = createStore({
     },
     getContentReasons: (state) => {
       return state.content.reasons
+    },
+    getContentYouTube: (state) => {
+      return state.content.youTube
     },
     getCarousels: (state) => {
       return state.carousels

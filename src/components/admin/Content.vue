@@ -11,6 +11,7 @@
     <CaseStudy />
     <HowItWorks />
     <Carousel />
+    <YouTube />
   </div>
 </template>
 
@@ -28,6 +29,7 @@ import CoursesIntro from './content/CoursesIntro.vue'
 import CaseStudy from './content/CaseStudy.vue'
 import HowItWorks from './content/HowItWorks.vue'
 import Carousel from './content/Carousel.vue'
+import YouTube from './content/YouTube.vue'
 
 export default {
   components: {
@@ -41,7 +43,8 @@ export default {
     CoursesIntro,
     CaseStudy,
     HowItWorks,
-    Carousel
+    Carousel,
+    YouTube
   },
   computed: {
     expanded() {
