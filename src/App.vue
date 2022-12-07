@@ -8,6 +8,8 @@
 
       <!-- Transformation -->
       <TransformationMain v-if="tab == 'transformation'" />
+      <YouTube v-if="tab == 'transformation'" />
+
       <Carousel v-if="tab == 'transformation'" :carousel="'transformation'" />
       <Transformation v-if="tab == 'transformation'" />
       <HowItWorks v-if="tab == 'transformation'" :scope="'short'" />
@@ -56,6 +58,7 @@ import Header from './components/Header.vue'
 import Quotes from './components/Quotes.vue'
 import NextCourse from './components/NextCourse.vue'
 import TransformationMain from './components/content/TransformationMain.vue'
+import YouTube from './components/content/YouTube.vue'
 import Transformation from './components/Transformation.vue'
 import Carousel from './components/content/Carousel.vue'
 import HowItWorks from './components/content/HowItWorks.vue'
@@ -85,6 +88,7 @@ export default {
     Transformation,
     Carousel,
     TransformationMain,
+    YouTube,
     HowItWorks,
     Apprentices,
     Course,
