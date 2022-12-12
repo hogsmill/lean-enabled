@@ -271,6 +271,12 @@ export const store = createStore({
         behavior: 'smooth'
       })
     },
+    back: (state) => {
+      state.tab = state.path.pop()
+      if (!state.path.length) {
+        state.tab = 'transformation'
+      }
+    },
     updateUserType: (state, payload) => {
       state.userType = payload
     },
@@ -352,6 +358,9 @@ export const store = createStore({
     }
   },
   actions: {
+    back: ({ commit }) => {
+      commit('back')
+    },
     updateCanLogin: ({ commit }, payload) => {
       commit('updateCanLogin', payload)
     },

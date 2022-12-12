@@ -1,5 +1,5 @@
 <template>
-  <div class="row slideanim training">
+  <div class="row slideanim apprenticeships">
     <h2>
       Apprenticeship Training
     </h2>
@@ -14,6 +14,7 @@
 import bus from '../../socket.js'
 
 import textFuns from '../../lib/text.js'
+import domFuns from '../../lib/dom.js'
 
 import Factors from './Factors.vue'
 
@@ -39,13 +40,7 @@ export default {
     })
   },
   updated() {
-    const links = document.getElementsByClassName('tab-link')
-    for (let i = 0; i < links.length; i++) {
-      const tab = links[i].getAttribute('tab')
-      links[i].addEventListener('click', () => {
-        this.setTab(tab)
-      })
-    }
+    domFuns.addLinkEvents(this.$store)
   },
   methods: {
     setTab(tab) {
@@ -59,7 +54,7 @@ export default {
 </script>
 
 <style lang="scss">
-.training {
+.apprenticeships {
   background-color: #fff;
   opacity: 0.8;
 
@@ -69,6 +64,10 @@ export default {
 
   p {
     margin: 24px;
+  }
+
+  p:first-of-type {
+    font-size: large;
   }
 }
 

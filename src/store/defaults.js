@@ -1047,15 +1047,14 @@ const _defaults = {
     {
       manager: {
         text: [
-          'WHY?',
-          '"Don’t Overlook Your Best Training Assets" as effective training quickly translate to improved ROI, productivity, and overall employee satisfaction',
-          'Accessing apprenticeship programmes with the benefit of the apprenticeship levy is certainly a “no-brainer” too!',
-          'Click [why|here] for reasons why apprenticeship training can benefit your department and work force'
-          ]
+          'Empower your team to solve problems that improves performance and increases quality, safety and productivity through Improvement Apprenticeships. Upskilling your team through Improvement training and 1:1 coaching that is 100% funded through the Apprenticeship levy, delivered through first-class blended training.',
+          'Let us help you build your staff capability through our Improvement Apprenticeship training courses. %Please contact us% for more information'
+        ]
       },
       apprentice: {
         text: [
-          'Apprentice training not only helps you and your team in youe everyday work, it is also invaluable to your longer term career.',
+          'The improvement apprenticeships are designed to fit the needs of the NHS, build your capability, enabling you to up-skill your team – building the army of problem solvers – together through teamwork, apply structured improvement methods to solve simple, complex and wicked problems within your team, service and department – resulting in successful, measurable, robust and sustainable improvements – building an improvement and learning culture.',
+          'Let us help you decide on your Apprenticeship Training course - Level 3, Level 4, Level 5 or Level 6. %Please contact us% for more information',
           'Click [ten-reasons|here] for 10 reasons why taking apprenticeship training can benefit your career and your everyday work'
         ]
       },

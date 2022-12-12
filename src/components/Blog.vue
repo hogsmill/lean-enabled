@@ -37,6 +37,7 @@ import bus from '../socket.js'
 
 import dateFuns from '../lib/date.js'
 import textFuns from '../lib/text.js'
+import domFuns from '../lib/dom.js'
 
 export default {
   computed: {
@@ -64,13 +65,7 @@ export default {
     })
   },
   updated() {
-    const links = document.getElementsByClassName('tab-link')
-    for (let i = 0; i < links.length; i++) {
-      const tab = links[i].getAttribute('tab')
-      links[i].addEventListener('click', () => {
-        this.setTab(tab)
-      })
-    }
+    domFuns.addLinkEvents(this.$store)
   },
   methods: {
     getDate(post) {

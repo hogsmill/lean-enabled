@@ -53,6 +53,7 @@ import bus from './socket.js'
 
 import localStorage from './lib/localStorage.js'
 import params from './lib/params.js'
+import router from './lib/router.js'
 
 import Header from './components/Header.vue'
 import Quotes from './components/Quotes.vue'
@@ -128,6 +129,8 @@ export default {
     this.$store.dispatch('updateMobile', window.outerWidth < 768)
 
     bus.emit('sendCreateAdminUser')
+
+    router.init(this.$store)
   },
   methods: {
     showNextCourse() {

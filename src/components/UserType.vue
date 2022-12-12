@@ -5,14 +5,14 @@
         I am (<i>click to select</i>)
       </div>
       <div class="input-div" :class="{'selected': userType == 'manager'}" @click="setUserType('manager')">
-        <i v-if="userType != 'manager'" class="fas fa-check" />
-        <i v-if="userType == 'manager'" class="fas fa-times" />
-        a Manager looking to check what courses are available
+        <i v-if="userType == 'manager'" class="fas fa-check" />
+        <i v-if="userType != 'manager'" class="fas fa-times" />
+        Line Manager looking into Improvement training courses for my team
       </div>
       <div class="input-div" :class="{'selected': userType == 'apprentice'}" @click="setUserType('apprentice')">
-        <i v-if="userType != 'apprentice'" class="fas fa-check" />
-        <i v-if="userType == 'apprentice'" class="fas fa-times" />
-        an Apprentice looking for course content
+        <i v-if="userType == 'apprentice'" class="fas fa-check" />
+        <i v-if="userType != 'apprentice'" class="fas fa-times" />
+        a Member of Staff looking into improvement training courses for myself
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@ export default {
           margin: 0 3px;
 
           &.fa-check {
-            color: green;
+            color: #fff;
           }
           &.fa-times {
             color: red;

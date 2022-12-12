@@ -60,10 +60,10 @@ a { font-weight: bold; }
 
 .left { text-align: left; }
 
-.tab-link {
+.tab-link, .contact-link {
   font-weight: bold;
   color: #204893;
 }
-.tab-link:hover {
+.tab-link:hover, .contact-link:hover {
   text-decoration: underline;
 }

@@ -1,5 +1,11 @@
 function root() {
-  return location.hostname == 'agilesimulations.co.uk' ? '/lean-enabled' : ''  
+  return location.hostname == 'agilesimulations.co.uk' ? '/lean-enabled' : ''
+}
+
+function contactLink(text, linkText) {
+  const link = linkText.match(/\%([\w\s]*)\%/)
+  text = text.replace(linkText, '<span class="contact-link">' + link[1] + '</span>')
+  return text
 }
 
 function pageLink(text, linkText) {
@@ -45,11 +51,17 @@ function fileLink(text, linkText) {
 //    Page: [page|text]
 //    URL:  {url|text}
 //    File: ~file|text~
+//    Contact: %text%
 //
 function replaceLinks(text) {
   let found = true
   while (found) {
     found = false
+    const contactText = text.match(/\%[\w\s]*\%/)
+    if (contactText) {
+      found = true
+      text = contactLink(text, contactText[0])
+    }
     const urlText = text.match(/\{[^\}]*\}/)
     if (urlText) {
       found = true
