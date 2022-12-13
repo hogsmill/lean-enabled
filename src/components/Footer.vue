@@ -22,7 +22,7 @@
         <a @click="setTab('safeguarding')">Safeguarding</a>
       </div>
       <div class="col-sm-2">
-        <a href="/docs/policy.pdf" target="blank">Training Policy</a>
+        <a :href="root() + '/docs/policy.pdf'" target="blank">Training Policy</a>
       </div>
       <div class="col-sm-2">
         <a @click="setTab('faqs')">FAQs</a>
@@ -45,6 +45,8 @@
 <script>
 import bus from '../socket.js'
 
+import domFuns from '../lib/dom.js'
+
 export default {
   methods: {
     setTab(tab) {
@@ -52,6 +54,9 @@ export default {
     },
     show() {
       this.$store.dispatch('showModal', 'contact')
+    },
+    root() {
+      return domFuns.root()
     }
   }
 }

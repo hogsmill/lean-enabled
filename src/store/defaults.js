@@ -979,6 +979,18 @@ const _defaults = {
         '[case-study|Case Study]'
       ],
       enabled: false
+    },
+    {
+      day: 13,
+      month: 12,
+      year: 2022,
+      title: 'Using lean to discharge patients before 12PM',
+      image: 'Discharges-before-12-thanks-to-lean-1536x768.jpeg',
+      text: [
+        'This nurses-led experiment in Barcelona’s Hospital Clinic is proving successful in getting more patients discharged on time and avoiding surgery cancellations.',
+        '{https://planet-lean.com/lean-healthcare-discharges/|Using lean to discharge patients before 12PM - Planet Lean}'
+      ],
+      enabled: false
     }
   ],
   contentProblemSolving: [

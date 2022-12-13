@@ -7,7 +7,7 @@
       <div class="input-div" :class="{'selected': userType == 'manager'}" @click="setUserType('manager')">
         <i v-if="userType == 'manager'" class="fas fa-check" />
         <i v-if="userType != 'manager'" class="fas fa-times" />
-        Line Manager looking into Improvement training courses for my team
+        a Line Manager looking into Improvement training courses for my team
       </div>
       <div class="input-div" :class="{'selected': userType == 'apprentice'}" @click="setUserType('apprentice')">
         <i v-if="userType == 'apprentice'" class="fas fa-check" />
@@ -74,7 +74,7 @@ export default {
           padding: 3px;
 
           &.bold {
-            background-color: #A0B4CF;;
+            background-color: #A0B4CF;
             color: #fff;
           }
         }

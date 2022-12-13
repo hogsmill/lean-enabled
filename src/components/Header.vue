@@ -3,7 +3,7 @@
     <div v-if="mobile" class="hamburger">
       <i class="fas fa-hamburger" @click="toggleMenu()" />
     </div>
-    <div class="logo" />
+    <div class="logo" @click="setTab('transformation')" />
     <div class="nav-bar">
       <ul :class="{ 'hide': mobile && hideMenu }">
         <li v-if="canLogin && session && (admin || siteAdmin)" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
@@ -235,6 +235,10 @@ export default {
       min-height: 180px;
       width: 235px;
       float: left;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .nav-bar {

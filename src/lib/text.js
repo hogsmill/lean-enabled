@@ -1,3 +1,4 @@
+
 function root() {
   return location.hostname == 'agilesimulations.co.uk' ? '/lean-enabled' : ''
 }
