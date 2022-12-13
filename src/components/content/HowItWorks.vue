@@ -26,6 +26,8 @@
 <script>
 import bus from '../../socket.js'
 
+import domFuns from '../../lib/dom.js'
+
 export default {
   props: [
     'scope'
@@ -56,7 +58,7 @@ export default {
       return this.scope == 'full' || index == this.step
     },
     setTab(tab) {
-      this.$store.dispatch('updateTab', tab)
+      domFuns.setTab(this.$store, tab)
     },
     previousStep() {
       if (this.step) {

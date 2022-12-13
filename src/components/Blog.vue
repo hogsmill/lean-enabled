@@ -78,7 +78,7 @@ export default {
       this.$store.dispatch('updateCurrentBlogPost', post)
     },
     setTab(tab) {
-      this.$store.dispatch('updateTab', tab)
+      domFuns.setTab(this.$store, tab)
     }
   }
 }

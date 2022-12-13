@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     setTab(tab) {
-      this.$store.dispatch('updateTab', tab)
+      domFuns.setTab(this.$store, tab)
     },
     parseText(text) {
       return textFuns.parse(text)

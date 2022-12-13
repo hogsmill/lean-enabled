@@ -50,7 +50,7 @@ import domFuns from '../lib/dom.js'
 export default {
   methods: {
     setTab(tab) {
-      this.$store.dispatch('updateTab', tab)
+      domFuns.setTab(this.$store, tab)
     },
     show() {
       this.$store.dispatch('showModal', 'contact')

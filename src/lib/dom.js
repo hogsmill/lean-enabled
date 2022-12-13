@@ -1,4 +1,15 @@
 
+function toggleMenu() {
+  console.log('TBD - toggleMenu for mobile')
+}
+
+function _setTab(store, tab) {
+  if (store.getters.getMobile) {
+    toggleMenu()
+  }
+  store.dispatch('updateTab', tab)
+}
+
 const DomFuns = {
 
   root: function() {
@@ -10,7 +21,7 @@ const DomFuns = {
     for (let i = 0; i < links.length; i++) {
       const tab = links[i].getAttribute('tab')
       links[i].addEventListener('click', () => {
-        store.dispatch('updateTab', tab)
+        _setTab(store, tab)
       })
     }
     links = document.getElementsByClassName('contact-link')
@@ -20,6 +31,10 @@ const DomFuns = {
         store.dispatch('showModal', 'contact')
       })
     }
+  },
+
+  setTab: function(store, tab) {
+    _setTab(store, tab)
   }
 }
 

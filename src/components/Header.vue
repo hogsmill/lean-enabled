@@ -70,6 +70,7 @@
 <script>
 import bus from '../socket.js'
 
+import domFuns from '../lib/dom.js'
 import params from '../lib/params.js'
 import mailFuns from '../lib/mail.js'
 
@@ -189,16 +190,13 @@ export default {
       this.show('forgotten')
     },
     setTab(tab) {
-      if (this.mobile) {
-        this.toggleMenu()
-      }
-      this.$store.dispatch('updateTab', tab)
+      domFuns.setTab(this.$store, tab)
     },
     setUrl(tab) {
       if (window.location.href.match(/\?.*=/)) {
         window.location.href = window.location.origin + '?' + tab
       } else {
-        this.$store.dispatch('updateTab', tab)
+        domFuns.setTab(this.$store, tab)
       }
     },
     sendContact() {

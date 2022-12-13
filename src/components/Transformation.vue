@@ -90,10 +90,7 @@ export default {
       return textFuns.parse(text)
     },
     setTab(tab) {
-      if (this.mobile) {
-        this.toggleMenu()
-      }
-      this.$store.dispatch('updateTab', tab)
+      domFuns.setTab(this.$store, tab)
     }
   }
 }

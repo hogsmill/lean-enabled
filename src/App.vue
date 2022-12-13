@@ -36,7 +36,6 @@
       <HowItWorks v-if="tab == 'how-it-works'" :scope="'full'" />
       <CaseStudy v-if="tab == 'case-study'" />
       <Admin v-if="tab == 'admin'" />
-      <TandCs v-if="tab == 'tandcs'" />
       <Values v-if="tab == 'values'" />
       <Safeguarding v-if="tab == 'safeguarding'" />
       <Modals />
@@ -73,7 +72,6 @@ import Faqs from './components/FAQs.vue'
 import Blog from './components/Blog.vue'
 import CaseStudy from './components/CaseStudy.vue'
 import Admin from './components/Admin.vue'
-import TandCs from './components/footer/TandCs.vue'
 import Safeguarding from './components/footer/Safeguarding.vue'
 import Values from './components/footer/Values.vue'
 import Modals from './components/Modals.vue'
@@ -101,7 +99,6 @@ export default {
     Blog,
     CaseStudy,
     Admin,
-    TandCs,
     Safeguarding,
     Values,
     Modals,
