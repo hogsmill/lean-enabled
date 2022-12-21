@@ -8,6 +8,11 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-169282102-1');
+
+      window.history.pushState(null, null, window.location.href)
+      window.onpopstate = function () {
+        window.history.go(1)
+      }
     </script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
