@@ -44,6 +44,9 @@ export default {
     blog() {
       return this.$store.getters.getBlog
     },
+    tab() {
+      return this.$store.getters.getTab
+    },
     currentPost() {
       return this.$store.getters.getCurrentBlogPost
     }
@@ -54,13 +57,16 @@ export default {
 
     bus.on('load', (data) => {
       if (data.type == 'blog') {
-      const posts = data.objects.sort((a, b) => {
-        a = new Date(a.year, a.month - 1, a.day)
-        b = new Date(b.year, b.month - 1, b.day)
-        return b - a
-      })
-      this.$store.dispatch('updateCurrentBlogPost', posts[0])
-      this.$store.dispatch('updateBlog', posts)
+        const posts = data.objects.sort((a, b) => {
+          a = new Date(a.year, a.month - 1, a.day)
+          b = new Date(b.year, b.month - 1, b.day)
+          return b - a
+        })
+        if (!this.currentPost.title) {
+          this.$store.dispatch('updateCurrentBlogPost', posts[0])
+          domFuns.setTab(this.$store, 'blog: ' + posts[0].title)
+        }
+        this.$store.dispatch('updateBlog', posts)
       }
     })
   },
@@ -76,9 +82,7 @@ export default {
     },
     selectPost(post) {
       this.$store.dispatch('updateCurrentBlogPost', post)
-    },
-    setTab(tab) {
-      domFuns.setTab(this.$store, tab)
+      domFuns.setTab(this.$store, 'blog: ' + post.title)
     }
   }
 }

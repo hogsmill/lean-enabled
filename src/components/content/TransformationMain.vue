@@ -51,7 +51,8 @@ export default {
     padding: 12px;
 
     p:first-of-type {
-      font-size: x-large;
+      font-size: xx-large;
+      color: #204893;
     }
   }
 

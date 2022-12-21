@@ -34,10 +34,6 @@
             {{ point }}
           </li>
         </ul>
-        <p>
-          See a <span class="tab-link" tab="case-study">Case Study</span>
-          for an example of throughput increase.
-        </p>
       </div>
     </div>
   </div>

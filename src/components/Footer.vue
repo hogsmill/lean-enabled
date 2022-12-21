@@ -37,6 +37,9 @@
         <a href="https://youtu.be/KHDSo9vnUiA" title="You Tube">
           <i class="fab fa-youtube" />
         </a>
+        <a href="https://twitter.com/kaizen_anil_mbb" title="Twitter">
+          <i class="fab fa-twitter" />
+        </a>
       </div>
     </div>
   </div>

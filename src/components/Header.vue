@@ -10,27 +10,19 @@
           Admin
         </li>
         <li :class="{'active': tab == 'transformation'}" @click="setTab('transformation')">
-          Transformation
+          {{ header.Transformation }}
         </li>
         <li :class="{'active': tab == 'apprentices'}" @click="setUrl('apprentices')">
-          Apprenticeships
+          {{ header.Apprenticeships }}
         </li>
         <li :class="{'active': tab == 'about'}" @click="setUrl('about')">
-          About
+          {{ header.About }}
         </li>
-        <li :class="{'active': tab == 'blog'}" @click="setUrl('blog')">
-          Blog
+        <li :class="{'active': tab == 'blog' || tab.match(/^blog: /)}" @click="setUrl('blog')">
+          {{ header.Blog }}
         </li>
-        <!--
-        <li :class="{'active': tab == 'faqs'}" @click="setUrl('faqs')">
-          FAQs
-        </li>
-        -->
-
-        <!-- BLOG -->
-
         <li :class="{'active': tab == 'contact'}" @click="show('contact')">
-          Contact
+          {{ header.Contact }}
         </li>
         <li v-if="canLogin && !mobile && !session" class="login" @click="show('login')">
           <i class="fas fa-sign-in-alt" title="Login" />
@@ -91,6 +83,9 @@ export default {
     mobile() {
       return this.$store.getters.getMobile
     },
+    header() {
+      return this.$store.getters.getHeader
+    },
     tab() {
       return this.$store.getters.getTab
     },
@@ -123,6 +118,14 @@ export default {
       this.clearLogin()
     }
 
+    bus.emit('sendLoad', 'header')
+
+    bus.on('load', (data) => {
+      if (data.type == 'header') {
+        this.$store.dispatch('updateHeader', data.objects[0])
+      }
+    })
+
     bus.on('showContact', () => {
       self.show('feedback')
     })
@@ -154,9 +157,9 @@ export default {
     setTabFromParams() {
       const tabs = [
         'transformation',
-        'managers',
         'apprentices',
-        'about'
+        'about',
+        'blog'
       ]
       for (let i = 0; i < tabs.length; i++) {
         if (params.isParam(tabs[i])) {
@@ -195,9 +198,8 @@ export default {
     setUrl(tab) {
       if (window.location.href.match(/\?.*=/)) {
         window.location.href = window.location.origin + '?' + tab
-      } else {
-        domFuns.setTab(this.$store, tab)
       }
+      domFuns.setTab(this.$store, tab)
     },
     sendContact() {
       mailFuns.post({

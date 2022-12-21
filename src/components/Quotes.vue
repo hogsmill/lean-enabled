@@ -60,11 +60,13 @@ export default {
 .quotes {
   background-color: #DAD8DB;
   padding-top: 176px;
-  height: 232px;
+  height: 262px;
 
   .quote-div {
     max-width: 80%;
     margin: 0 auto;
+    font-size: x-large;
+    line-height: 1.1;
 
     span {
       margin: 0 3px;

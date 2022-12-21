@@ -1,6 +1,7 @@
 <template>
   <div class="apprentices">
     <div class="container-fluid text-center">
+      <ApprenticeshipsIntro />
       <UserType />
       <ApprenticesIntro :user-type="userType" />
       <Carousel :carousel="'apprentices'" />
@@ -22,6 +23,7 @@
 <script>
 import UserType from './UserType.vue'
 import ProblemSolving from './content/ProblemSolving.vue'
+import ApprenticeshipsIntro from './content/ApprenticeshipsIntro.vue'
 import ApprenticesIntro from './content/ApprenticesIntro.vue'
 import CoursesIntro from './content/CoursesIntro.vue'
 import Courses from './content/Courses.vue'
@@ -31,14 +33,10 @@ import Benefits from './content/Benefits.vue'
 import Comments from './content/Comments.vue'
 import Carousel from './content/Carousel.vue'
 
-/*
-import CourseMap from './content/CourseMap.vue'
-
-*/
-
 export default {
   components: {
     UserType,
+    ApprenticeshipsIntro,
     ApprenticesIntro,
     ProblemSolving,
     CoursesIntro,

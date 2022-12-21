@@ -1,15 +1,15 @@
 <template>
-  <div class="row how-it-works">
-    <h2 @click="setTab('how-it-works')" :class="scope">
-      How It Works
+  <div class="row building-blocks">
+    <h2 @click="setTab('building-blocks')" :class="scope">
+      Building Blocks
     </h2>
     <div class="pic">
       <i v-if="scope == 'short'" :class="{'disabled': step < 1}" class="fas fa-chevron-left" @click="previousStep()" />
-      <img v-if="howItWorks" :src="require(`../../assets/img/building-blocks/${howItWorks[step].image}`)">
+      <img v-if="buildingBlocks" :src="require(`../../assets/img/building-blocks/${buildingBlocks[step].image}`)">
       <i v-if="scope == 'short'" :class="{'disabled': step > textLength - 2}" class="fas fa-chevron-right" @click="nextStep()" />
     </div>
     <div class="text">
-      <span v-for="(block, index) in howItWorks" :key="index">
+      <span v-for="(block, index) in buildingBlocks" :key="index">
         <h3 v-if="showText(index)">
           {{ block.header }}
         </h3>
@@ -39,17 +39,17 @@ export default {
     }
   },
   computed: {
-    howItWorks() {
-      return this.$store.getters.getContentHowItWorks
+    buildingBlocks() {
+      return this.$store.getters.getContentBuildingBlocks
     }
   },
   created() {
 
-    bus.emit('sendLoad', 'howItWorks')
+    bus.emit('sendLoad', 'buildingBlocks')
 
     bus.on('load', (data) => {
-      if (data.type == 'howItWorks') {
-        this.$store.dispatch('updateContent', {type: 'howItWorks', content: data.objects})
+      if (data.type == 'buildingBlocks') {
+        this.$store.dispatch('updateContent', {type: 'buildingBlocks', content: data.objects})
       }
     })
   },
@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss">
-.how-it-works {
+.building-blocks {
   margin: 0 auto;
   background-color: #204893;
 
