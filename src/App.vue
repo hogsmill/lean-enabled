@@ -12,7 +12,7 @@
 
       <Carousel v-if="tab == 'transformation'" :carousel="'transformation'" />
       <Transformation v-if="tab == 'transformation'" />
-      <HowItWorks v-if="tab == 'transformation'" :scope="'short'" />
+      <BuildingBlocks v-if="tab == 'transformation'" :scope="'short'" />
       <Comments v-if="tab == 'transformation'" :scope="'stakeholder'" />
 
       <!-- Apprentices (Training) -->
@@ -27,13 +27,13 @@
       <About v-if="tab == 'about'" />
 
       <!-- Blog  -->
-      <Blog v-if="tab == 'blog'" />
+      <Blog v-if="tab == 'blog' || tab.match(/^blog: /)" />
 
       <!-- FAQs  -->
       <Faqs v-if="tab == 'faqs'" />
 
       <!-- Others -->
-      <HowItWorks v-if="tab == 'how-it-works'" :scope="'full'" />
+      <BuildingBlocks v-if="tab == 'how-it-works'" :scope="'full'" />
       <CaseStudy v-if="tab == 'case-study'" />
       <Admin v-if="tab == 'admin'" />
       <Values v-if="tab == 'values'" />
@@ -61,7 +61,7 @@ import TransformationMain from './components/content/TransformationMain.vue'
 import YouTube from './components/content/YouTube.vue'
 import Transformation from './components/Transformation.vue'
 import Carousel from './components/content/Carousel.vue'
-import HowItWorks from './components/content/HowItWorks.vue'
+import BuildingBlocks from './components/content/BuildingBlocks.vue'
 import Apprentices from './components/Apprentices.vue'
 import Comments from './components/content/Comments.vue'
 import Course from './components/Course.vue'
@@ -88,7 +88,7 @@ export default {
     Carousel,
     TransformationMain,
     YouTube,
-    HowItWorks,
+    BuildingBlocks,
     Apprentices,
     Course,
     Reasons,
