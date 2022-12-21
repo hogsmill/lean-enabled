@@ -4,16 +4,15 @@
       Case Study
       <i v-if="expanded != 'case-study'" title="Show edit" class="far fa-plus-square" @click="toggleExpanded()" />
       <i v-if="expanded == 'case-study'" title="Collapse edit" class="far fa-minus-square" @click="toggleExpanded()" />
+      <i v-if="expanded == 'case-study'" class="fas fa-question-circle" @click="toggleShowHelp()" />
     </h3>
     <div v-if="expanded == 'case-study'">
+      <Help v-if="showHelp" />
       <table>
         <thead>
           <tr>
             <th>
               Text
-              <span class="edit-hint" v-if="editing">
-                (<i>Use "[text]" for links to site pages</i>)
-              </span>
             </th>
             <th />
           </tr>
@@ -64,7 +63,12 @@
 <script>
 import bus from '../../../socket.js'
 
+import Help from './Help.vue'
+
 export default {
+  components: {
+    Help
+  },
   data() {
     return {
       editing: false,
@@ -74,6 +78,9 @@ export default {
   computed: {
     expanded() {
       return this.$store.getters.getExpanded
+    },
+    showHelp() {
+      return this.$store.getters.getShowHelp
     },
     caseStudy() {
       return this.$store.getters.getContentCaseStudy
@@ -93,6 +100,9 @@ export default {
     toggleExpanded() {
       const expanded = this.expanded == 'case-study' ? '' : 'case-study'
       this.$store.dispatch('updateExpanded', expanded)
+    },
+    toggleShowHelp() {
+      this.$store.dispatch('updateShowHelp', this.showHelp ? false : true)
     },
     edit() {
       this.editing = true
@@ -130,7 +140,6 @@ export default {
         })
         i++
       }
-      console.log(paras)
       const data = {
         type: 'caseStudy',
         id: this.caseStudy.id,

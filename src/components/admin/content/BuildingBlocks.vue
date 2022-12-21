@@ -1,11 +1,13 @@
 <template>
   <div>
     <h3>
-      How It Works
-      <i v-if="expanded != 'how-it-works'" title="Show edit" class="far fa-plus-square" @click="toggleExpanded()" />
-      <i v-if="expanded == 'how-it-works'" title="Collapse edit" class="far fa-minus-square" @click="toggleExpanded()" />
+      Building Blocks
+      <i v-if="expanded != 'building-blocks'" title="Show edit" class="far fa-plus-square" @click="toggleExpanded()" />
+      <i v-if="expanded == 'building-blocks'" title="Collapse edit" class="far fa-minus-square" @click="toggleExpanded()" />
+      <i v-if="expanded == 'building-blocks'" class="fas fa-question-circle" @click="toggleShowHelp()" />
     </h3>
-    <div v-if="expanded == 'how-it-works'">
+    <div v-if="expanded == 'building-blocks'">
+      <Help v-if="showHelp" />
       <table>
         <thead>
           <tr>
@@ -19,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(block, index) in howItWorks" :key="index">
+          <tr v-for="(block, index) in buildingBlocks" :key="index">
             <td>
               <span v-if="editing.id != block.id">
                 {{ block.header }}
@@ -65,7 +67,12 @@
 <script>
 import bus from '../../../socket.js'
 
+import Help from './Help.vue'
+
 export default {
+  components: {
+    Help
+  },
   data() {
     return {
       editing: {},
@@ -76,24 +83,30 @@ export default {
     expanded() {
       return this.$store.getters.getExpanded
     },
-    howItWorks() {
-      return this.$store.getters.getContentHowItWorks
+    showHelp() {
+      return this.$store.getters.getShowHelp
+    },
+    buildingBlocks() {
+      return this.$store.getters.getContentBuildingBlocks
     }
   },
   created() {
 
-    bus.emit('sendLoad', 'howItWorks')
+    bus.emit('sendLoad', 'buildingBlocks')
 
     bus.on('load', (data) => {
-      if (data.type == 'howItWorks') {
-        this.$store.dispatch('updateContent', {type: 'howItWorks', content: data.objects})
+      if (data.type == 'buildingBlocks') {
+        this.$store.dispatch('updateContent', {type: 'buildingBlocks', content: data.objects})
       }
     })
   },
   methods: {
     toggleExpanded() {
-      const expanded = this.expanded == 'how-it-works' ? '' : 'how-it-works'
+      const expanded = this.expanded == 'building-blocks' ? '' : 'building-blocks'
       this.$store.dispatch('updateExpanded', expanded)
+    },
+    toggleShowHelp() {
+      this.$store.dispatch('updateShowHelp', this.showHelp ? false : true)
     },
     edit(block) {
       this.editing = block
@@ -120,7 +133,7 @@ export default {
       const data = this.editing
       delete data._id
       data.header = document.getElementById('editing-header').value
-      data.type = 'howItWorks',
+      data.type = 'buildingBlocks',
       data.text = paras
 
       bus.emit('sendUpdate', data)

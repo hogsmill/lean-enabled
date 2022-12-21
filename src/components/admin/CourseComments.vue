@@ -118,7 +118,6 @@ export default {
       // TODO: Why do we need this?
       delete data._id
       data.comments = comments
-      console.log(data)
       bus.emit('sendUpdate', data)
     }
   }

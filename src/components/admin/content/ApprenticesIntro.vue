@@ -4,8 +4,10 @@
       Apprentices Intro
       <i v-if="expanded != 'apprentices-intro'" title="Show edit" class="far fa-plus-square" @click="toggleExpanded()" />
       <i v-if="expanded == 'apprentices-intro'" title="Collapse edit" class="far fa-minus-square" @click="toggleExpanded()" />
+      <i v-if="expanded == 'apprentices-intro'" class="fas fa-question-circle" @click="toggleShowHelp()" />
     </h3>
     <div v-if="expanded == 'apprentices-intro'">
+      <Help v-if="showHelp" />
       <table>
         <thead>
           <tr>
@@ -62,7 +64,12 @@
 <script>
 import bus from '../../../socket.js'
 
+import Help from './Help.vue'
+
 export default {
+  components: {
+    Help
+  },
   data() {
     return {
       users: [
@@ -76,6 +83,9 @@ export default {
   computed: {
     expanded() {
       return this.$store.getters.getExpanded
+    },
+    showHelp() {
+      return this.$store.getters.getShowHelp
     },
     apprenticesIntro() {
       return this.$store.getters.getContentApprenticesIntro
@@ -95,6 +105,9 @@ export default {
     toggleExpanded() {
       const expanded = this.expanded == 'apprentices-intro' ? '' : 'apprentices-intro'
       this.$store.dispatch('updateExpanded', expanded)
+    },
+    toggleShowHelp() {
+      this.$store.dispatch('updateShowHelp', this.showHelp ? false : true)
     },
     edit(userType) {
       this.editing = userType

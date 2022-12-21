@@ -4,8 +4,10 @@
       Courses Intro
       <i v-if="expanded != 'courses-intro'" title="Show edit" class="far fa-plus-square" @click="toggleExpanded()" />
       <i v-if="expanded == 'courses-intro'" title="Collapse edit" class="far fa-minus-square" @click="toggleExpanded()" />
+      <i v-if="expanded == 'courses-intro'" class="fas fa-question-circle" @click="toggleShowHelp()" />
     </h3>
     <div v-if="expanded == 'courses-intro'">
+      <Help v-if="showHelp" />
       <table>
         <thead>
           <tr>
@@ -14,9 +16,6 @@
             </th>
             <th>
               Text
-              <span class="edit-hint" v-if="editing">
-                (<i>Use "[text]" for links to site pages</i>)
-              </span>
             </th>
             <th />
           </tr>
@@ -62,7 +61,12 @@
 <script>
 import bus from '../../../socket.js'
 
+import Help from './Help.vue'
+
 export default {
+  components: {
+    Help
+  },
   data() {
     return {
       users: [
@@ -76,6 +80,9 @@ export default {
   computed: {
     expanded() {
       return this.$store.getters.getExpanded
+    },
+    showHelp() {
+      return this.$store.getters.getShowHelp
     },
     coursesIntro() {
       return this.$store.getters.getContentCoursesIntro
@@ -95,6 +102,9 @@ export default {
     toggleExpanded() {
       const expanded = this.expanded == 'courses-intro' ? '' : 'courses-intro'
       this.$store.dispatch('updateExpanded', expanded)
+    },
+    toggleShowHelp() {
+      this.$store.dispatch('updateShowHelp', this.showHelp ? false : true)
     },
     edit(userType) {
       this.editing = userType
