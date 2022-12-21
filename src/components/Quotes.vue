@@ -81,4 +81,11 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 1100px) {
+  .quotes {
+    height: 180px;
+    padding-top: 80px;
+  }
+}
 </style>

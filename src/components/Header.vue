@@ -230,7 +230,7 @@ export default {
     z-index: 10;
 
     .logo {
-      background-image: url("../assets/img/LEG_logos_final-01.webp");
+      background-image: url("../assets/img/logo.webp");
       background-repeat: no-repeat;
       min-height: 180px;
       width: 235px;
@@ -344,6 +344,26 @@ export default {
       color: #fff;
     }
   }
+
+@media screen and (max-width: 1100px) {
+  .nav {
+    height: 80px;
+
+    .logo {
+      background-image: url("../assets/img/logo-small.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 50px;
+      width: 50px;
+    }
+
+    .nav-bar {
+      ul {
+        margin-top: 0;
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 767px) {
   nav {
