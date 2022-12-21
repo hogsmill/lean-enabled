@@ -1,5 +1,14 @@
 
 const _defaults = {
+  header: [
+    {
+      Transformation: 'Transformation',
+      Apprenticeships: 'Apprenticeships',
+      About: 'About Us',
+      Blog: 'Blog',
+      Contact: 'Contact'
+    }
+  ],
   mission: [
     {
       text: 'To provide the skills for apprenticeship learners or NHS staff to feel empowered, equipped and confident to drive and manage, measurable and sustainable change in their area of work.'
@@ -381,9 +390,9 @@ const _defaults = {
   transformation: [
     {
       text: [
-        'Lean Enabled Group is an operational management consultancy who help clients to transform and improve their ways of working.',
-        'We are passionate about improving our client’s operations and we can help you implement continuous improvement methodologies – to improve processes, pathways, efficiencies and quality while reducing costs using Lean and Six Sigma methods.',
-        'For many years we have listened closely to our clients to understand their needs and collaborated to ‘help make their business better’. As experts in business transformation and change management we engage leaders and teams and drive measurable and sustainable improvement in business processes and people performance.'
+        'Experts In Transformation',
+        'Lean Enabled Group offer services to design and implement Improvement systems that strategically connect the Executive Board through to your front-line services embedded robust reporting processes.',
+        'We have extensive NHS experience having supported over 10 NHS Trusts nationwide.'
       ],
       quote: {
         text: 'Today I have seen the best learning culture across the whole of the NHS',
@@ -393,7 +402,7 @@ const _defaults = {
   ],
   person: [
     {
-      name: 'Anil Matthew',
+      name: 'Anil Mathew',
       role: 'Chief Exec Officer',
       pic: 'anil-pic',
       email: '',
@@ -923,6 +932,62 @@ const _defaults = {
   ],
   blog: [
     {
+      day: 20,
+      month: 9,
+      year: 2021,
+      title: 'Change Management: Why It\’s So Important, and So Challenging, in Health Care Environments',
+      image:'change-2.png',
+      text: [
+        'Medical professionals excel at finding solutions in patient care. “We are great at coming up with the ‘next big thing’: we have brilliant people who are at the front lines of innovation,” says Louise Keogh Weed, program director of the Leadership Strategies for Evolving Health Care Executives program and a practice transformation specialist at the Harvard Medical School Center for Primary Care.',
+        '“Where we fall short is actually implementing it, because it’s a different skill set and fewer people want to do it.”',
+        '{https://www.hsph.harvard.edu/ecpe/change-management-why-its-so-important-and-so-challenging-in-health-care-environments/|Change Management: Why It\’s So Important, and So Challenging, in Health Care Environments}'
+      ]
+    },
+    {
+      day: 10,
+      month: 5,
+      year: 2021,
+      title: 'The 3 Most Effective Organizational Change Management Models in Healthcare Practices',
+      image:'change.png',
+      text: [
+        'Change management models are a crucial part of any organization. Healthcare settings in particular are known to be resistant to change and have a lot on the line when it comes to implementation. In order to stay competitive, it is important to know how best to implement change management strategies that will keep your organization running smoothly and efficiently. There are many different models for change management frameworks, but which ones work the best for healthcare?',
+        '{https://www.givainc.com/blog/index.cfm/2021/5/10/the-3-most-effective-change-management-models-for-healthcare-practices|The 3 Most Effective Organizational Change Management Models in Healthcare Practices}'
+      ]
+    },
+    {
+      day: 1,
+      month: 2,
+      year: 2014,
+      title: '(Still) learning from Toyota',
+      text: [
+        'A retired Toyota executive describes how to overcome common management challenges associated with applying lean, and reflects on the ways that Toyota continues to push the boundaries of lean thinking.',
+        '{https://www.mckinsey.com/industries/automotive-and-assembly/our-insights/still-learning-from-toyota|(Still) learning from Toyota}'
+      ]
+    },
+    {
+      day: 24,
+      month: 6,
+      year: 2011,
+      title: 'How Toyota Pulls Improvement from the Front Line',
+      text: [
+        'Toyota is famous for its Toyota Production System, an approach that effectively engages front-line workers in improving their work. As I argued in my last post, “pulling” improvement from the front line is critical to continually improve operations, and Toyota does it very well. Companies that “push” work improvements from the top usually generate tepid front-line enthusiasm.',
+        'Despite some missteps in the last couple of years, Toyota’s ascent to the top of the auto industry has been for one reason: quality. And a big reason for its unrivaled quality is worker participation in process improvement. A platitude? Hardly. The company implements an average of nine ideas per employee per year, as described in Chuck Yorke and Norman Bodek’s book All You Gotta Do Is Ask.',
+        '{https://hbr.org/2011/06/how-toyota-pulls-improvement-f|How Toyota Pulls Improvement from the Front Line}'
+      ]
+    },
+    {
+      day: 1,
+      month: 11,
+      year: 2017,
+      title: 'Embedding a culture of quality improvement',
+      image: 'embedding.png',
+      text: [
+        'Quality improvement refers to the use of systematic tools and methods to continuously improve the quality of care and outcomes for patients. A growing number of health care providers in England and abroad have begun efforts to embed quality improvement methodologies in their work. This report explores the factors that have helped organisations to launch a quality improvement strategy, and the key enablers for sustaining a focus on continuous quality improvement.',
+        'The report draws on a roundtable event, semi-structured interviews with senior NHS leaders and stakeholders involved in quality improvement initiatives, and a literature review. It identifies relevant learning from organisations that have already adopted quality improvement approaches, and focuses on how senior leaders can create the right conditions for quality improvement to emerge and flourish.',
+        '~Embedding-culture-QI-Kings-Fund-November-2017.pdf|mbedding a culture of quality improvement~'
+      ]
+    },
+    {
       day: 1,
       month: 6,
       year: 2007,
@@ -965,18 +1030,6 @@ const _defaults = {
         'In those trusts we have rated as outstanding, we have found a culture of quality improvement embedded throughout the organisation.',
         'Find out more in this report',
         '~CQC Report sharing Learnings from hospital trusts on a journey of QI  SEPT 2018.pdf~',
-      ],
-      enabled: false
-    },
-    {
-      day: 2,
-      month: 12,
-      year: 2022,
-      title: 'Case Study',
-      image: '',
-      text: [
-        'We have a case study',
-        '[case-study|Case Study]'
       ],
       enabled: false
     },
@@ -1057,6 +1110,12 @@ const _defaults = {
   ],
   contentApprenticesIntro: [
     {
+      intro: {
+        text: [
+          'Experts In Apprenticeships',
+          'Lean Enabled Group offer Apprenticeships and provide bespoke training to meet your ROI goals……..we are Award Winning for Education & Training in the NHS!'
+        ]
+      },
       manager: {
         text: [
           'Empower your team to solve problems that improves performance and increases quality, safety and productivity through Improvement Apprenticeships. Upskilling your team through Improvement training and 1:1 coaching that is 100% funded through the Apprenticeship levy, delivered through first-class blended training.',
@@ -1302,31 +1361,8 @@ const _defaults = {
       url: 'https://www.youtube.com/embed/3VHZ-EuLypk'
     }
   ],
-  caseStudy: [
-    {
-      header: 'Vaccination Centre Case Study',
-      intro: 'Applying Lean Six Sigma principles to throughput in a NHS vaccination centre increased the amount of people vaccinated per day by 50%',
-      text: [
-        {
-          type: 'header',
-          text: 'Outcomes'
-        },
-        {
-          type: 'text',
-          text: 'Throughput increased by 50%'
-        },
-        {
-          type: 'header',
-          text: 'What We Did'
-        },
-        {
-          type: 'text',
-          text: 'Lots of training'
-        }
-      ]
-    }
-  ],
-  howItWorks: [
+  caseStudy: [],
+  buildingBlocks: [
     {
       image: 'how-it-works.png',
       header: 'Building Blocks',
@@ -1365,7 +1401,7 @@ const _defaults = {
     },
     {
       image: 'block-4.png',
-      header: 'Staff Dapacity and Capability',
+      header: 'Staff Capacity and Capability',
       text: [
         'Effective capability building of staff, through formal Improvement training programmes (including Improvement Apprenticeship training – add link onto Website) is key to developing the mindsets and behaviours that delivers transformational gains whilst creating your \'army of problem solvers\'!.',
         'The \'army\' are critical in helping you embed and sustain change, they are your \'execution engine\' for continuous value improvement!',

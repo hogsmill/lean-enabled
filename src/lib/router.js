@@ -1,4 +1,6 @@
 
+let called = false
+
 function init(store) {
 
   document.addEventListener('keydown', function(event) {
@@ -8,24 +10,14 @@ function init(store) {
     }
   })
 
-  document.onmouseover = function() {
-    //User's mouse is inside the page.
-    window.innerDocClick = true
-  }
-
-  document.onmouseleave = function() {
-    //User's mouse has left the page.
-    window.innerDocClick = false
-  }
-
-  window.onhashchange = function() {
-    if (window.innerDocClick) {
-        //Your own in-page mechanism triggered the hash change
+  window.addEventListener('popstate', () => {
+    if (!called) {
+      called = true
+      store.dispatch('back')
     } else {
-      alert('here')
-        //Browser back button was clicked
+      called = false
     }
-  }
+  })
 }
 
 const Router = {

@@ -15,8 +15,10 @@ export const store = createStore({
     userName: '',
     canLogin: false,
     admin: false,
+    showHelp: false,
     siteAdmin: false,
     mobile: false,
+    header: {},
     tab: 'transformation',
     userType: 'manager',
     users: [],
@@ -27,7 +29,12 @@ export const store = createStore({
     comments: [],
     faqs: [],
     blog: [],
-    currentBlogPost: {},
+    currentBlogPost: {
+      day: '',
+      month: '',
+      year: '',
+      title: ''
+    },
     services: [],
     techniques: [],
     quotes: [],
@@ -80,7 +87,7 @@ export const store = createStore({
       coursesIntro: '',
       servicesIntro: '',
       caseStudy: '',
-      howItWorks: ''
+      buildingBlocks: ''
     }
   },
   getters: {
@@ -97,6 +104,9 @@ export const store = createStore({
     getAdmin: (state) => {
       return state.admin
     },
+    getShowHelp: (state) => {
+      return state.showHelp
+    },
     getSiteAdmin: (state) => {
       return state.siteAdmin
     },
@@ -111,6 +121,9 @@ export const store = createStore({
     },
     getMobile: (state) => {
       return state.mobile
+    },
+    getHeader: (state) => {
+      return state.header
     },
     getTab: (state) => {
       return state.tab
@@ -227,8 +240,8 @@ export const store = createStore({
     getContentCaseStudy: (state) => {
       return state.content.caseStudy
     },
-    getContentHowItWorks: (state) => {
-      return state.content.howItWorks
+    getContentBuildingBlocks: (state) => {
+      return state.content.buildingBlocks
     },
     getContentFactors: (state) => {
       return state.content.factors
@@ -262,6 +275,9 @@ export const store = createStore({
     updateMobile: (state, payload) => {
       state.mobile = payload
     },
+    updateHeader: (state, payload) => {
+      state.header = payload
+    },
     updateTab: (state, payload) => {
       state.path.push(payload)
       state.tab = payload
@@ -272,7 +288,14 @@ export const store = createStore({
       })
     },
     back: (state) => {
-      state.tab = state.path.pop()
+      state.path.pop()
+      state.tab = state.path[state.path.length - 1]
+      let title = ''
+      if (state.tab && (title = state.tab.match(/^blog: (.*)/))) {
+        state.currentBlogPost = state.blog.find(function(b) {
+          return b.title == title[1]
+        })
+      }
       if (!state.path.length) {
         state.tab = 'transformation'
       }
@@ -292,6 +315,9 @@ export const store = createStore({
     },
     updateUsers: (state, payload) => {
       state.users = payload
+    },
+    updateShowHelp: (state, payload) => {
+      state.showHelp = payload
     },
     updateEmails: (state, payload) => {
       state.emails = payload
@@ -375,6 +401,12 @@ export const store = createStore({
     },
     updateTab: ({ commit }, payload) => {
       commit('updateTab', payload)
+    },
+    updateShowHelp: ({ commit }, payload) => {
+      commit('updateShowHelp', payload)
+    },
+    updateHeader: ({ commit }, payload) => {
+      commit('updateHeader', payload)
     },
     updateUserType: ({ commit }, payload) => {
       commit('updateUserType', payload)

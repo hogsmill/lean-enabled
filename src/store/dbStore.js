@@ -18,6 +18,7 @@ const _objects = {
     userId: '',
     session: ''
   },
+  header: {},
   mission: {
     text: ''
   },
@@ -175,7 +176,7 @@ const _objects = {
     header: '',
     text: []
   },
-  howItWorks: {
+  buildingBlocks: {
     image: '',
     header: '',
     text: []
