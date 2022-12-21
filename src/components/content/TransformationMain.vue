@@ -1,5 +1,5 @@
 <template>
-  <div class="row slideanim transformation-main">
+  <div class="row content slideanim transformation-main">
     <div class="col-sm-8">
       <div class="main-para">
         <p v-for="(para, index) in transformation.text" :key="index">

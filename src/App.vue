@@ -8,6 +8,7 @@
 
       <!-- Transformation -->
       <TransformationMain v-if="tab == 'transformation'" />
+      <Podcast v-if="tab == 'transformation'" />
       <YouTube v-if="tab == 'transformation'" />
 
       <Carousel v-if="tab == 'transformation'" :carousel="'transformation'" />
@@ -58,6 +59,7 @@ import Header from './components/Header.vue'
 import Quotes from './components/Quotes.vue'
 import NextCourse from './components/NextCourse.vue'
 import TransformationMain from './components/content/TransformationMain.vue'
+import Podcast from './components/content/Podcast.vue'
 import YouTube from './components/content/YouTube.vue'
 import Transformation from './components/Transformation.vue'
 import Carousel from './components/content/Carousel.vue'
@@ -85,6 +87,7 @@ export default {
     Quotes,
     NextCourse,
     Transformation,
+    Podcast,
     Carousel,
     TransformationMain,
     YouTube,

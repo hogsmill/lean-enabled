@@ -67,3 +67,8 @@ a { font-weight: bold; }
 .tab-link:hover, .contact-link:hover {
   text-decoration: underline;
 }
+
+.row.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}

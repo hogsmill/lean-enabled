@@ -1,5 +1,5 @@
 <template>
-  <div class="row slideanim apprenticeships">
+  <div class="row content slideanim apprenticeships">
     <h2>
       Apprenticeship Training
     </h2>

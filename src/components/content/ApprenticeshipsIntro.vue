@@ -1,10 +1,10 @@
 <template>
-  <div v-if="contentApprenticesIntro['intro']" class="row slideanim apprenticeships">
-    <div class="col-sm-5">
+  <div v-if="contentApprenticesIntro['intro']" class="row content slideanim apprenticeships-intro">
+    <div class="col-sm-8">
       <p v-for="(para, index) in contentApprenticesIntro['intro'].text" :key="index" v-html="parseText(para)" />
     </div>
-    <div class="col-sm-7">
-      <img :src="require(`../../assets/img/apprentice.png`)" />
+    <div class="col-sm-4">
+      <img :src="require(`../../assets/img/apprentice.png`)">
     </div>
   </div>
 </template>
@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss">
-.apprenticeships {
+.apprenticeships-intro {
   background-color: #fff;
   opacity: 0.8;
 

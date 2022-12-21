@@ -393,6 +393,7 @@ const _defaults = {
         'Experts In Transformation',
         'Lean Enabled Group offer services to design and implement Improvement systems that strategically connect the Executive Board through to your front-line services embedded robust reporting processes.',
         'We have extensive NHS experience having supported over 10 NHS Trusts nationwide.'
+        'Listen to our podcast below'
       ],
       quote: {
         text: 'Today I have seen the best learning culture across the whole of the NHS',

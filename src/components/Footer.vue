@@ -30,17 +30,17 @@
       <div class="col-sm-2">
         <a @click="show()">Contact</a>
       </div>
-      <div class="col-sm-2">
-        <a href="https://www.linkedin.com/company/lean-enabled-group/" title="LinkedIn">
-          <i class="fab fa-linkedin" />
-        </a>
-        <a href="https://youtu.be/KHDSo9vnUiA" title="You Tube">
-          <i class="fab fa-youtube" />
-        </a>
-        <a href="https://twitter.com/kaizen_anil_mbb" title="Twitter">
-          <i class="fab fa-twitter" />
-        </a>
-      </div>
+    </div>
+    <div class="row social">
+      <a href="https://www.linkedin.com/company/lean-enabled-group/" title="LinkedIn">
+        <i class="fab fa-linkedin" />
+      </a>
+      <a href="https://youtu.be/KHDSo9vnUiA" title="You Tube">
+        <i class="fab fa-youtube" />
+      </a>
+      <a href="https://twitter.com/kaizen_anil_mbb" title="Twitter">
+        <i class="fab fa-twitter" />
+      </a>
     </div>
   </div>
 </template>
@@ -100,11 +100,23 @@ export default {
         margin: 0 auto;
         color: #fff;
       }
+    }
+
+    .social {
+      text-align: right;
 
       .fab {
         color: #fff;
-        margin: 0 12px;
-        font-size: xxx-large
+        margin: 8px;
+        font-size: xx-large;
+
+        &.fa-youtube {
+          color: #FE0000;
+        }
+
+        &.fa-twitter {
+          color: #1C9BEF;
+        }
       }
     }
   }
