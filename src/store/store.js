@@ -18,6 +18,7 @@ export const store = createStore({
     showHelp: false,
     siteAdmin: false,
     mobile: false,
+    menuHidden: true,
     header: {},
     tab: 'transformation',
     userType: 'manager',
@@ -121,6 +122,9 @@ export const store = createStore({
     },
     getMobile: (state) => {
       return state.mobile
+    },
+    getMenuHidden: (state) => {
+      return state.menuHidden
     },
     getHeader: (state) => {
       return state.header
@@ -275,6 +279,9 @@ export const store = createStore({
     updateMobile: (state, payload) => {
       state.mobile = payload
     },
+    updateMenuHidden: (state, payload) => {
+      state.menuHidden = payload
+    },
     updateHeader: (state, payload) => {
       state.header = payload
     },
@@ -309,6 +316,9 @@ export const store = createStore({
         state.modals[modals[i]] = false
       }
       state.modals[payload] = true
+      if (state.mobile) {
+        window.scrollTo(0, 0)
+      }
     },
     hideModal: (state, payload) => {
       state.modals[payload] = false
@@ -398,6 +408,9 @@ export const store = createStore({
     },
     updateMobile: ({ commit }, payload) => {
       commit('updateMobile', payload)
+    },
+    updateMenuHidden: ({ commit }, payload) => {
+      commit('updateMenuHidden', payload)
     },
     updateTab: ({ commit }, payload) => {
       commit('updateTab', payload)

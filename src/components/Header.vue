@@ -5,7 +5,7 @@
     </div>
     <div class="logo" @click="setTab('transformation')" />
     <div class="nav-bar">
-      <ul :class="{ 'hide': mobile && hideMenu }">
+      <ul :class="{ 'hide': mobile && menuHidden }">
         <li v-if="canLogin && session && (admin || siteAdmin)" :class="{'active': tab == 'admin'}" @click="setTab('admin')">
           Admin
         </li>
@@ -33,29 +33,6 @@
         </li>
       </ul>
     </div>
-
-    <div id="feedback-mobile" class="feedback-mobile" v-if="mobileContact">
-      <div class="float-right mr-2 mt-1">
-        <button type="button" class="close" @click="hide" aria-label="Close">
-          <i class="fas fa-times" />
-        </button>
-      </div>
-      <div class="mt-4">
-        <p class="feedback-form">
-          Thanks for visiting Agile Simulations; please let us know what you would like
-          to know, or tell us, in the comments box below
-        </p>
-        <div class="feedback-form">
-          <input type="text" id="email" class="form-control" placeholder="Email (optional)">
-          <br>
-          <textarea id="comments" rows="6" class="form-control" placeholder="Your comments" />
-          <br>
-          <button class="btn btn-primary smaller-font" @click="sendContact()">
-            Send
-          </button>
-        </div>
-      </div>
-    </div>
   </nav>
 </template>
 
@@ -67,12 +44,6 @@ import params from '../lib/params.js'
 import mailFuns from '../lib/mail.js'
 
 export default {
-  data() {
-    return {
-      mobileContact: false,
-      hideMenu: true
-    }
-  },
   computed: {
     site() {
       return this.$store.getters.getSite
@@ -82,6 +53,9 @@ export default {
     },
     mobile() {
       return this.$store.getters.getMobile
+    },
+    menuHidden() {
+      return this.$store.getters.getMenuHidden
     },
     header() {
       return this.$store.getters.getHeader
@@ -108,6 +82,7 @@ export default {
   created() {
     const self = this
 
+    console.log('here', this.mobile, window.innerWidth)
     this.setTabFromParams()
 
     const session = localStorage.getItem('session-lean-enabled')
@@ -172,21 +147,11 @@ export default {
       localStorage.removeItem('session-lean-enabled')
     },
     toggleMenu() {
-      this.hideMenu = !this.hideMenu
-      this.hide()
+      const hidden = !this.menuHidden
+      this.$store.dispatch('updateMenuHidden', hidden)
     },
     show(modal) {
-      if (this.mobile) {
-        this.mobileContact = !this.mobileContact
-        window.scrollTo(0, 0)
-      } else {
-        this.$store.dispatch('showModal', modal)
-      }
-    },
-    hide(modal) {
-      if (this.mobile) {
-        this.mobileContact = false
-      }
+      this.$store.dispatch('showModal', modal)
     },
     forgotten() {
       this.hide('login')
@@ -222,132 +187,127 @@ export default {
 </script>
 
 <style lang="scss">
-  .nav {
-    background-color: #DAD8DB;
-    padding: 0 12px;
-    position: fixed;
-    width: 100%;
-    z-index: 10;
+.nav {
+  background-color: #DAD8DB;
+  padding: 0 12px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
 
-    .logo {
-      background-image: url("../assets/img/logo.webp");
-      background-repeat: no-repeat;
-      min-height: 180px;
-      width: 235px;
-      float: left;
+  .logo {
+    background-image: url("../assets/img/logo.webp");
+    background-repeat: no-repeat;
+    min-height: 180px;
+    width: 235px;
+    float: left;
 
-      &:hover {
-        cursor: pointer;
-      }
+    &:hover {
+      cursor: pointer;
     }
+  }
 
-    .nav-bar {
-      border: 0;
-      font-size: 16px !important;
-      line-height: 1.42857143 !important;
-      letter-spacing: 2px;
-      border-radius: 0;
-      font-family: Montserrat, sans-serif;
+  .nav-bar {
+    border: 0;
+    font-size: 16px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 2px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
 
-      ul {
-        float: right;
-        margin-top: 50px;
-        margin-bottom: 0;
+    ul {
+      float: right;
+      margin-top: 50px;
+      margin-bottom: 0;
 
-        &.hide {
-          height: 0;
+      &.hide {
+        height: 0;
+      }
+
+      li {
+        display: inline-block;
+        list-style-type: none;
+        padding: 15px 13px;
+        color: #204893 !important;
+        font-size: x-large;
+
+        &.login, &.logout {
+          padding: 7px 7px 14px 7px;
         }
 
-        li {
-          display: inline-block;
-          list-style-type: none;
-          padding: 15px 13px;
-          color: #204893 !important;
+        .fas, .far {
+          position: relative;
+          top: 3px;
           font-size: x-large;
+          color: #fff;
+        }
 
-          &.login, &.logout {
-            padding: 7px 7px 14px 7px;
-          }
+        &:hover {
+          opacity: 0.9;
 
           .fas, .far {
-            position: relative;
-            top: 3px;
-            font-size: x-large;
-            color: #fff;
+            color: #f4511e;
           }
+        }
 
-          &:hover {
-            opacity: 0.9;
-
-            .fas, .far {
-              color: #f4511e;
-            }
-          }
-
-          &:hover, &.active  {
-            font-weight: bold;
-            text-decoration: underline;
-          }
+        &:hover, &.active  {
+          font-weight: bold;
+          background-color: #eee;
         }
       }
     }
+  }
+}
+
+.feedback {
+  .fa-times {
+    margin: 6px;
+  }
+
+  h4 {
+    letter-spacing: initial;
+    text-align: center;
+    font-size: xx-large;
   }
 
   .feedback {
-    .fa-times {
-      margin: 6px;
-    }
+    letter-spacing: 0;
+    color: #212529;
+  }
 
-    h4 {
-      letter-spacing: initial;
-      text-align: center;
-      font-size: xx-large;
-    }
+  p.feedback-form {
+    margin-bottom: 12px;
+  }
 
-    .feedback {
-      letter-spacing: 0;
-      color: #212529;
-    }
+  .feedback-form {
+    width: 80%;
+    margin: 0 auto;
 
-    p.feedback-form {
-      margin-bottom: 12px;
-    }
-
-    .feedback-form {
-      width: 80%;
+    table {
       margin: 0 auto;
 
-      table {
-        margin: 0 auto;
+      td {
+        padding: 6px;
 
-        td {
-          padding: 6px;
+        &.forgotten {
+          text-align: right;
+        }
 
-          &.forgotten {
-            text-align: right;
-          }
+        &.login-button {
+          text-align: center;
 
-          &.login-button {
-            text-align: center;
-
-            span {
-              color: #fff;
-            }
+          span {
+            color: #fff;
           }
         }
       }
     }
   }
-
-  .feedback-mobile {
-    p {
-      color: #fff;
-    }
-  }
+}
 
 @media screen and (max-width: 1100px) {
   .nav {
     height: 80px;
+    font-size: large;
 
     .logo {
       background-image: url("../assets/img/logo-small.png");
@@ -367,29 +327,30 @@ export default {
 
 @media screen and (max-width: 767px) {
   nav {
-
     .hamburger {
       height: 42px;
 
       .fa-hamburger {
-        color: #fff;
+        color: #204893;
         font-size: 32px;
         margin: 4px 0 0 0;
-        float: right;
+        float: none;
       }
     }
 
     .nav-bar {
-
       &.hide {
         display: none;
       }
 
       ul {
-        padding: 0;
+        position: absolute;
+        top: 40px;
+        background-color: #DAD8DB;
 
         li {
           width: 100%;
+          padding: 8px 13px !important;
         }
       }
     }

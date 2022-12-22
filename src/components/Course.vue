@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     contact() {
-      this.$store.dispatch('showModal', 'contact')
+      this.$store.dispatch('showModal', 'contact-course')
     },
     courseDescription(course) {
       this.$store.dispatch('updateCurrentCourse', course)

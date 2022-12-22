@@ -1,11 +1,7 @@
 
-function toggleMenu() {
-  console.log('TBD - toggleMenu for mobile')
-}
-
 function _setTab(store, tab) {
   if (store.getters.getMobile) {
-    toggleMenu()
+    store.dispatch('updateMenuHidden', true)
   }
   store.dispatch('updateTab', tab)
 }

@@ -43,7 +43,7 @@
 
       <!-- Footer -->
       <Endorsements v-if="tab !='admin'" />
-      <Footer v-if="!mobile && tab !='admin'" />
+      <Footer v-if="tab !='admin'" />
     </div>
   </div>
 </template>
@@ -126,7 +126,7 @@ export default {
 
     this.$store.dispatch('updateCanLogin', params.isParam('host') || params.isParam('admin'))
 
-    this.$store.dispatch('updateMobile', window.outerWidth < 768)
+    this.$store.dispatch('updateMobile', window.innerWidth < 768)
 
     bus.emit('sendCreateAdminUser')
 
