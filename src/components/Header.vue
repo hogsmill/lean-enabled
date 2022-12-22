@@ -315,6 +315,8 @@ export default {
       background-size: contain;
       height: 50px;
       width: 50px;
+      position: absolute;
+      top: 2px;
     }
 
     .nav-bar {
