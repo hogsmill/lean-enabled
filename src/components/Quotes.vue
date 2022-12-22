@@ -38,11 +38,9 @@ export default {
     bus.on('load', (data) => {
       if (data.type == 'quote') {
         this.$store.dispatch('updateQuotes', data.objects)
+        this.setQuote()
       }
     })
-  },
-  mounted() {
-    this.setQuote()
   },
   methods: {
     setQuote() {
@@ -88,6 +86,11 @@ export default {
   .quotes {
     height: 180px;
     padding-top: 80px;
+
+    .quote-div {
+      font-size: large;
+
+    }
   }
 }
 </style>

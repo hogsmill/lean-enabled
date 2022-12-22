@@ -251,7 +251,7 @@ export default {
 
         &:hover, &.active  {
           font-weight: bold;
-          background-color: #eee;
+          text-decoration: underline;
         }
       }
     }
@@ -353,6 +353,11 @@ export default {
         li {
           width: 100%;
           padding: 8px 13px !important;
+
+          &:hover, &.active {
+            text-decoration: none !important;
+            background-color: #eee;
+          }
         }
       }
     }

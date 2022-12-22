@@ -295,10 +295,13 @@ export const store = createStore({
       })
     },
     back: (state) => {
+      if (!state.path.length) {
+        window.history.go(1)
+      }
       state.path.pop()
       state.tab = state.path[state.path.length - 1]
       let title = ''
-      if (state.tab && (title = state.tab.match(/^blog: (.*)/))) {
+      if (state.tab && title && (title = state.tab.match(/^blog: (.*)/))) {
         state.currentBlogPost = state.blog.find(function(b) {
           return b.title == title[1]
         })
