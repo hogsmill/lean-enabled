@@ -64,6 +64,8 @@ export default {
 
   .quote-div {
     max-width: 80%;
+    max-height: 72px;
+    overflow: ellipsis;
     margin: 0 auto;
     font-size: x-large;
     line-height: 1.1;

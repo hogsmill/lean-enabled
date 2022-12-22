@@ -327,7 +327,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 860px) {
   nav {
     .hamburger {
       height: 42px;
