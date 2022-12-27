@@ -97,7 +97,7 @@
           <td>
             <i class="far fa-edit" :title="'Edit ' + user.userName" @click="editUser(user)" />
             <i class="far fa-save" :title="'Save ' + user.userName" :class="{'disabled': editing.id != user.id}" @click="saveUser(user)" />
-            <i v-if="notAdmin(user)" class="far fa-trash-alt" :title="'Delete ' + user.userName" @click="deleteUser(user)" />
+            <i class="far fa-trash-alt" :class="{'disabled': user.siteAdmin}" :title="'Delete ' + user.userName" @click="deleteUser(user)" />
           </td>
         </tr>
       </tbody>
@@ -134,6 +134,7 @@ export default {
   },
   methods: {
     notAdmin(user) {
+      console.log(user.userName + ' != \'admin\' || ' + this.admin)
       return user.userName != 'admin' || this.admin
     },
     addUser() {

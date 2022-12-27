@@ -128,7 +128,7 @@ export default {
 
     this.$store.dispatch('updateMobile', window.innerWidth < 768)
 
-    bus.emit('sendCreateAdminUser')
+    bus.emit('sendCreateAdminUsers')
 
     router.init(this.$store)
   },

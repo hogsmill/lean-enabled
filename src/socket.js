@@ -22,7 +22,7 @@ bus.on('sendLoadNextCourse', () => { socket.emit('sendLoadNextCourse') })
 // --------------------------------------------------------------
 // Admin
 
-bus.on('sendCreateAdminUser', (data) => { socket.emit('sendCreateAdminUser', data) })
+bus.on('sendCreateAdminUsers', (data) => { socket.emit('sendCreateAdminUsers', data) })
 
 bus.on('sendLogin', (data) => { socket.emit('sendLogin', data) })
 

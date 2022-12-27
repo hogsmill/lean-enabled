@@ -114,7 +114,7 @@ MongoClient.connect(url, { useUnifiedTopology: true, maxIdleTimeMS: maxIdleTime 
 
     // Admin
 
-    socket.on('sendCreateAdminUser', () => { dbStore.createAdminUser(db, io, debugOn) })
+    socket.on('sendCreateAdminUsers', () => { dbStore.createAdminUsers(db, io, debugOn) })
 
     socket.on('sendCreate', (data) => { dbStore.create(db, io, data, debugOn) })
 

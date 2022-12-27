@@ -303,7 +303,7 @@ module.exports = {
     })
   },
 
-  createAdminUser: function(db, io, debugOn) {
+  createAdminUsers: function(db, io, debugOn) {
 
     if (debugOn) { console.log('createAdminUser') }
 
@@ -316,6 +316,22 @@ module.exports = {
           passCode: '110960',
           admin: true,
           siteAdmin: true
+        })
+        db.collection.insertOne(user, function(err, ) {
+          if (err) throw err
+        })
+      }
+    })
+
+    db.collection.findOne({type: 'user', userName: 'lean'}, function(err, res) {
+      if (err) throw err
+      if (!res) {
+        const user = _create({
+          type: 'user',
+          userName: 'lean',
+          passCode: '6sigma',
+          admin: true,
+          siteAdmin: false
         })
         db.collection.insertOne(user, function(err, ) {
           if (err) throw err
