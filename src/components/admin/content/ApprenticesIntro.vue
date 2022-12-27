@@ -133,6 +133,7 @@ export default {
         i++
       }
       const data = this.apprenticesIntro
+      delete data._id
       data.type = 'contentApprenticesIntro'
       data[userType].text = paras
       bus.emit('sendUpdate', data)
