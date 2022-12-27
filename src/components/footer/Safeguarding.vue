@@ -37,7 +37,7 @@
         <div class="col-sm-6">
           Email:
           <a @click="show('contact')">
-            safeguarding@lean-enabled-group.co.uk
+            safeguarding@lean-enabled.co.uk
           </a>
         </div>
       </div>
@@ -60,7 +60,7 @@
             <p>
               Alternatively, email us on
               <a @click="show('contact')">
-                safeguarding@lean-enabled-group.co.uk
+                safeguarding@lean-enabled.co.uk
               </a>
             </p>
           </div>
