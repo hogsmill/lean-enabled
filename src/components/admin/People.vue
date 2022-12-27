@@ -38,7 +38,7 @@
       </tbody>
     </table>
     <h3>
-      FAQs
+      People
     </h3>
     <table>
       <thead>
@@ -172,6 +172,7 @@ export default {
         i++
       }
       const data = this.editing
+      delete data._id
       data.type = 'person',
       data.name = document.getElementById('editing-name').value,
       data.role = document.getElementById('editing-role').value,

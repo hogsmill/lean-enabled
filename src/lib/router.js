@@ -4,9 +4,11 @@ let called = false
 function init(store) {
 
   document.addEventListener('keydown', function(event) {
-    const key = event.key
-    if (key === 'Backspace' || key === 'Delete') {
-        store.dispatch('back')
+    if (store.getters.getTab != 'admin') {
+      const key = event.key
+      if (key === 'Backspace' || key === 'Delete') {
+          store.dispatch('back')
+      }
     }
   })
 

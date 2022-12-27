@@ -48,7 +48,7 @@ export default {
       this.randomQuote = this.quotes[rand]
       window.setTimeout(() => {
         this.setQuote()
-      }, 5000)
+      }, 1000)
     }
   }
 }
